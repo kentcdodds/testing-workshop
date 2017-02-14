@@ -1,0 +1,18 @@
+{
+  "extends": [
+    "kentcdodds",
+    "kentcdodds/jest"
+  ],
+  "rules": {
+    "max-len": [
+      2,
+      80
+    ],
+    "import/newline-after-import": "off",
+    "import/no-unassigned-import": "off",
+    "no-console": "off",
+    "func-names": "off",
+    "complexity": ["error", 8],
+    "babel/new-cap": "off",
+  }
+}
