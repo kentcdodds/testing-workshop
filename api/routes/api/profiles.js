@@ -18,7 +18,7 @@ router.param('username', (req, res, next, username) => {
     .catch(next)
 })
 
-router.get('/:username', auth.optional, (req, res, next) => {
+router.get('/:username', auth.optional, (req, res) => {
   if (req.payload) {
     User.findById(req.payload.id).then(user => {
       if (!user) {

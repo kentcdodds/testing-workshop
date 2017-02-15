@@ -11,7 +11,7 @@ export default (state = {}, action) => {
       return {
         ...action.payload.profile,
       }
+    default:
+      return state
   }
-
-  return state
 }

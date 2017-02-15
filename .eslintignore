@@ -1,1 +1,3 @@
 **/node_modules/**
+scripts/install.js
+scripts/verify.js

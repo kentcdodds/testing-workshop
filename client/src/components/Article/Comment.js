@@ -1,6 +1,6 @@
-import DeleteButton from './DeleteButton'
-import {Link} from 'react-router'
 import React from 'react'
+import {Link} from 'react-router'
+import DeleteButton from './DeleteButton'
 
 const Comment = props => {
   const comment = props.comment
@@ -22,7 +22,11 @@ const Comment = props => {
         <span className="date-posted">
           {new Date(comment.createdAt).toDateString()}
         </span>
-        <DeleteButton show={show} slug={props.slug} commentId={comment.id} />
+        <DeleteButton
+          show={show}
+          slug={props.slug}
+          commentId={comment.id}
+        />
       </div>
     </div>
   )

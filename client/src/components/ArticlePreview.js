@@ -1,7 +1,7 @@
 import React from 'react'
+import {connect} from 'react-redux'
 import {Link} from 'react-router'
 import agent from '../agent'
-import {connect} from 'react-redux'
 
 const FAVORITED_CLASS = 'btn btn-sm btn-primary'
 const NOT_FAVORITED_CLASS = 'btn btn-sm btn-outline-primary'

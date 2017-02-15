@@ -1,6 +1,6 @@
-import ArticleActions from './ArticleActions'
-import {Link} from 'react-router'
 import React from 'react'
+import {Link} from 'react-router'
+import ArticleActions from './ArticleActions'
 
 const ArticleMeta = props => {
   const article = props.article

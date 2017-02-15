@@ -1,7 +1,8 @@
 {
   "extends": [
     "kentcdodds",
-    "kentcdodds/jest"
+    "kentcdodds/react",
+    "kentcdodds/jest",
   ],
   "rules": {
     "max-len": [
@@ -14,5 +15,8 @@
     "func-names": "off",
     "complexity": ["error", 8],
     "babel/new-cap": "off",
+    "consistent-return": "off",
+    "func-style": "off",
+    "react/prop-types": "off",
   }
 }

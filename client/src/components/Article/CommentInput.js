@@ -1,6 +1,6 @@
 import React from 'react'
-import agent from '../../agent'
 import {connect} from 'react-redux'
+import agent from '../../agent'
 
 const mapDispatchToProps = dispatch => ({
   onSubmit: payload => dispatch({type: 'ADD_COMMENT', payload}),

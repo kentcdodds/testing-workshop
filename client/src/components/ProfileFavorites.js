@@ -1,8 +1,8 @@
-import {Profile, mapStateToProps} from './Profile'
 import React from 'react'
 import {Link} from 'react-router'
-import agent from '../agent'
 import {connect} from 'react-redux'
+import agent from '../agent'
+import {Profile, mapStateToProps} from './Profile'
 
 const mapDispatchToProps = dispatch => ({
   onLoad: payload => dispatch({type: 'PROFILE_FAVORITES_PAGE_LOADED', payload}),
