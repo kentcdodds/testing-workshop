@@ -6,7 +6,9 @@ const mongodBin = isWindows ?
 const dbPath = path.join(__dirname, './.mongo-db')
 const mongoDesc = [
   'Create the .mongo-db directory and start the mongod process.',
-  ifWindows(' If this fails, try updating mongodBin in package-scripts.js'),
+  isWindows ?
+    ' If this fails, try updating mongodBin in package-scripts.js' :
+    '',
 ].join('')
 
 module.exports = {
@@ -27,7 +29,7 @@ module.exports = {
       description: 'start the client dev server',
     },
     lint: {
-      script: 'eslint api/ client/',
+      script: 'eslint .',
       description: 'lint project files',
     },
     format: {
@@ -46,43 +48,34 @@ module.exports = {
   },
 }
 
-function ifWindows(windowsVale, altValue = '') {
-  return isWindows ? windowsVale : altValue
-}
-
 function concurrent(scripts) {
   const {
     colors,
     scripts: quotedScripts,
     names,
   } = Object.keys(scripts).reduce(reduceScripts, {
-    colors: '',
-    scripts: '',
-    names: '',
+    colors: [],
+    scripts: [],
+    names: [],
   })
   const flags = [
     '--kil-others',
-    `--prefix-colors "${colors}"`,
+    `--prefix-colors "${colors.join(',')}"`,
     '--prefix "[{name}]"',
-    `--names "${names}"`,
-    quotedScripts,
+    `--names "${names.join(',')}"`,
+    quotedScripts.join(' '),
   ]
   return `concurrently ${flags.join(' ')}`
 
-  function reduceScripts(accumulator, scriptName, index) {
-    const prefix = index === 0 ? '' : ','
+  function reduceScripts(accumulator, scriptName) {
     const {script, color} = scripts[scriptName]
-    accumulator.names += `${prefix}${scriptName}`
-    accumulator.colors += `${prefix}${color}`
-    accumulator.scripts += ` "${script}"`
+    accumulator.names.push(scriptName)
+    accumulator.colors.push(color)
+    accumulator.scripts.push(`"${script}"`)
     return accumulator
   }
 }
 
 function series(scripts) {
   return scripts.join(' && ')
-}
-
-function install(dir = '') {
-  return `node ./scripts/install ${dir}`
 }
