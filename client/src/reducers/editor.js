@@ -22,7 +22,7 @@ export default (state = {}, action) => {
       if (action.subtype === 'ARTICLE_SUBMITTED') {
         return {...state, inProgress: true}
       }
-      break
+      return state
     case 'ADD_TAG':
       return {
         ...state,

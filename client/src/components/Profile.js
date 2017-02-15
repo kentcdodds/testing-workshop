@@ -3,6 +3,7 @@ import {Link} from 'react-router'
 import {connect} from 'react-redux'
 import agent from '../agent'
 import ArticleList from './ArticleList'
+import smiley from './smiley-cyrus.jpg'
 
 const EditProfileSettings = props => {
   if (props.isUser) {
@@ -122,7 +123,11 @@ class Profile extends React.Component {
             <div className="row">
               <div className="col-xs-12 col-md-10 offset-md-1">
 
-                <img src={profile.image} className="user-img" />
+                <img
+                  src={profile.image || smiley}
+                  className="user-img"
+                  alt="user"
+                />
                 <h4>{profile.username}</h4>
                 <p>{profile.bio}</p>
 

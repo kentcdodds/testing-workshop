@@ -16,7 +16,13 @@ const DeleteButton = props => {
   if (props.show) {
     return (
       <span className="mod-options">
-        <i className="ion-trash-a" onClick={del} />
+        <i
+          className="ion-trash-a"
+          onClick={del}
+          tabIndex={0}
+          onKeyUp={del}
+          role="button"
+        />
       </span>
     )
   }

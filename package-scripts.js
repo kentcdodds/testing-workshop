@@ -13,6 +13,13 @@ const mongoDesc = [
 
 module.exports = {
   scripts: {
+    default: {
+      script: series([
+        startInNewWindow('npm start mongo'),
+        startInNewWindow('npm start server'),
+        startInNewWindow('npm start client'),
+      ]),
+    },
     mongo: {
       script: series([
         'mkdirp .mongo-db',
@@ -78,4 +85,16 @@ function concurrent(scripts) {
 
 function series(scripts) {
   return scripts.join(' && ')
+}
+
+function startInNewWindow(command) {
+  return isWindows ?
+    `start cmd.exe @cmd \\k "cd ${__dirname} && ${command}"` :
+    [
+      `osascript`,
+      `-e 'tell application "Terminal"'`,
+      `-e 'tell application "System Events" to keystroke "t" using {command down}'`, // eslint-disable-line max-len
+      `-e 'do script "cd ${__dirname} && ${command}" in front window'`,
+      `-e 'end tell'`,
+    ].join(' ')
 }

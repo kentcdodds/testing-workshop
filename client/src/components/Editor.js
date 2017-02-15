@@ -137,6 +137,9 @@ class Editor extends React.Component {
                             <i
                               className="ion-close-round"
                               onClick={this.removeTagHandler(tag)}
+                              onKeyUp={this.removeTagHandler(tag)}
+                              tabIndex={0}
+                              role="button"
                             />
                             {tag}
                           </span>

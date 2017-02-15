@@ -13,8 +13,9 @@ export default (state = {}, action) => {
     case 'ASYNC_START':
       if (action.subtype === 'LOGIN' || action.subtype === 'REGISTER') {
         return {...state, inProgress: true}
+      } else {
+        return state
       }
-      break
     case 'UPDATE_FIELD_AUTH':
       return {...state, [action.key]: action.value}
     default:

@@ -1,5 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router'
+import smiley from './smiley-cyrus.jpg'
 
 function LoggedOutView(props) {
   if (!props.currentUser) {
@@ -55,7 +56,11 @@ function LoggedInView(props) {
 
         <li className="nav-item">
           <Link to={`@${props.currentUser.username}`} className="nav-link">
-            <img src={props.currentUser.image} className="user-pic" />
+            <img
+              src={props.currentUser.image || smiley}
+              className="user-pic"
+              alt="you"
+            />
             {props.currentUser.username}
           </Link>
         </li>

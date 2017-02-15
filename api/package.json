@@ -4,7 +4,7 @@
   "description": "conduit on node",
   "main": "app.js",
   "scripts": {
-    "start": "node ./app.js",
+    "start": "babel-node ./app.js",
     "dev": "nodemon ./app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -31,5 +31,8 @@
     "slug": "0.9.1",
     "underscore": "1.8.3"
   },
-  "author": "Thinkster (https://github.com/gothinkster)"
+  "author": "Thinkster (https://github.com/gothinkster)",
+  "devDependencies": {
+    "babel-cli": "^6.23.0"
+  }
 }

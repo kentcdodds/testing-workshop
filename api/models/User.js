@@ -68,6 +68,7 @@ UserSchema.methods.toAuthJSON = function() {
     username: this.username,
     email: this.email,
     token: this.generateJWT(),
+    image: this.image,
   }
 }
 
@@ -75,9 +76,7 @@ UserSchema.methods.toProfileJSONFor = function(user) {
   return {
     username: this.username,
     bio: this.bio,
-    image: (
-      this.image || 'https://static.productionready.io/images/smiley-cyrus.jpg'
-    ),
+    image: this.image,
     following: user ? user.isFollowing(this._id) : false,
   }
 }

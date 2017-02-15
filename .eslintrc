@@ -3,6 +3,7 @@
     "kentcdodds",
     "kentcdodds/react",
     "kentcdodds/jest",
+    "kentcdodds/jsx-a11y",
   ],
   "rules": {
     "max-len": [

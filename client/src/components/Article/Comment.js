@@ -13,7 +13,11 @@ const Comment = props => {
       </div>
       <div className="card-footer">
         <Link to={`@${comment.author.username}`} className="comment-author">
-          <img src={comment.author.image} className="comment-author-img" />
+          <img
+            src={comment.author.image}
+            className="comment-author-img"
+            alt="comment author"
+          />
         </Link>
         &nbsp;
         <Link to={`@${comment.author.username}`} className="comment-author">

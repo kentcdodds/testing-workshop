@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
+    "cross-env": "^3.1.4",
     "react-scripts": "0.6.1"
   },
   "license": "MIT",
@@ -20,7 +21,7 @@
     "superagent-promise": "^1.1.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "cross-env PORT=8080 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
