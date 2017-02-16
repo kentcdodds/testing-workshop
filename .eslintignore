@@ -2,4 +2,4 @@
 scripts/install.js
 scripts/verify.js
 coverage
-client/cypress/examples/**
+cypress/examples/**

@@ -59,7 +59,7 @@ module.exports = {
       },
     },
     e2e: {
-      script: series(['cd client', 'cypress run']),
+      script: 'cross-env MOCHA_COLORS=true cypress run',
       description: 'run the E2E tests',
     },
     test: {
@@ -135,7 +135,6 @@ function startInNewWindow(command) {
       `-e 'end tell'`,
     ].join(' ')
 }
-
 // this is not transpiled
 /*
   eslint
