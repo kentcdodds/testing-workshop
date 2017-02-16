@@ -29,7 +29,7 @@
     "build": "react-scripts build",
     "test": "jest --coverage",
     "test:watch": "jest --watch",
-    "postinstall": "rimraf node_modules/eslint"
+    "postinstall": "echo \"removing client copy of eslint (will use root repo's version)\" && rimraf node_modules/eslint"
   },
   "author": "Thinkster (https://github.com/gothinkster)",
   "jest": {
