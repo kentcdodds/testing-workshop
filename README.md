@@ -61,7 +61,7 @@ commands to get set up:
 ```
 git clone https://github.com/kentcdodds/testing-workshop.git
 cd testing-workshop
-npm run setup
+npm run setup --silent
 ```
 
 This may take a few minutes. If you get any errors, please read the error output and see whether there's any
