@@ -18,7 +18,7 @@ const concurrentTests = {
   },
   'client-tests': {
     script: 'nps client.test',
-    color: 'bgYellow.bold.dim',
+    color: 'black.bgYellow.bold.dim',
   },
   'e2e-tests': {
     script: 'nps e2e',
