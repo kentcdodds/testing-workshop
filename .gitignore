@@ -7,3 +7,4 @@ build
 *.log
 npm-debug.log*
 .mongo-db
+client/cypress/videos

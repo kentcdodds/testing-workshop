@@ -6,6 +6,7 @@
     "babel-jest": "^18.0.0",
     "babel-preset-react-app": "^2.1.0",
     "cross-env": "^3.1.4",
+    "cypress-cli": "^0.13.1",
     "jest": "^18.1.0",
     "react-scripts": "0.6.1",
     "rimraf": "^2.5.4"

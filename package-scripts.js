@@ -20,6 +20,10 @@ const concurrentTests = {
     script: 'nps client.test',
     color: 'bgYellow.bold.dim',
   },
+  'e2e-tests': {
+    script: 'nps e2e',
+    color: 'bgGreen.bold.dim',
+  },
 }
 
 module.exports = {
@@ -53,6 +57,10 @@ module.exports = {
         script: series(['cd client', 'npm test']),
         description: 'run the client tests',
       },
+    },
+    e2e: {
+      script: series(['cd client', 'cypress run']),
+      description: 'run the E2E tests',
     },
     test: {
       description: 'run the tests in parallel',
