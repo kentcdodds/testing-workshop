@@ -12,8 +12,8 @@ const mongoDesc = [
 ].join('')
 
 const concurrentTests = {
-  'server-tests': {
-    script: 'nps server.test',
+  'api-tests': {
+    script: 'nps api.test',
     color: 'bgCyan.bold.dim',
   },
   'client-tests': {
@@ -31,7 +31,7 @@ module.exports = {
     default: {
       script: series([
         startInNewWindow('npm start mongo'),
-        startInNewWindow('npm start server'),
+        startInNewWindow('npm start api'),
         startInNewWindow('npm start client'),
       ]),
     },
@@ -42,12 +42,12 @@ module.exports = {
       ]),
       description: mongoDesc,
     },
-    server: {
+    api: {
       script: series(['cd api', 'npm start']),
       description: 'start the api server',
       test: {
         script: series(['cd api', 'npm test']),
-        description: 'run the server tests',
+        description: 'run the api tests',
       },
     },
     client: {
@@ -88,6 +88,14 @@ module.exports = {
         )
       ),
       description: 'validates that things are set up properly',
+    },
+    addContributor: {
+      description: 'Prompt to add a new contributor to the contributors table',
+      script: 'all-contributors add',
+    },
+    generateContributors: {
+      description: 'regenerates the contributors table',
+      script: 'all-contributors generate',
     },
   },
 }
