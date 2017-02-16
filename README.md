@@ -114,6 +114,8 @@ project's scripts does for you). Learn how to do this
 [on windows](https://www.howtogeek.com/118594/how-to-edit-your-system-path-for-easy-command-line-access/) or
 [on mac](http://stackoverflow.com/a/24322978/971592).
 
+> Note: you'll need to open a new terminal/command prompt window after you've done this.
+
 ### Structure
 
 This project has a bit of a unique setup. Normally you'll have just a single `package.json` at the root of your
