@@ -3,10 +3,17 @@
 
 var execSync = require('child_process').execSync
 
+var isWindows = (function() {
+  return process.platform === 'win32' ||
+  process.env.OSTYPE === 'cygwin' ||
+  process.env.OSTYPE === 'msys'
+})()
+
 var desiredVersions = {
   yarn: '0.20.3',
   node: '6.9.5',
   npm: '4.2.0',
+  mongod: '3.4.2',
 }
 
 var errors = {
@@ -39,6 +46,13 @@ var errors = {
     },
     isProblem: false,
   },
+  oldMongod: {
+    getMessage: function(desired, actual) {
+      return 'Your version of mongod (' + actual + ') is older than the recommended version of ' + desired + '. ' +
+        'Please install a more recent version: https://www.mongodb.com/download-center'
+    },
+    isProblem: false,
+  },
 }
 
 var nodeVersion = process.versions.node
@@ -54,6 +68,17 @@ try {
   var npmVersion = execSync('npm --version').toString().trim()
   errors.oldNpm.isProblem = !versionIsGreater(desiredVersions.npm, npmVersion)
   errors.oldNpm.message = errors.oldNpm.getMessage(desiredVersions.npm, npmVersion)
+}
+
+try {
+  var mongodBin = isWindows ? '"C:/Program Files/MongoDb/Server/3.2/bin/mongod.exe"' : 'mongod'
+  var mongoVersionOutput = execSync(mongodBin + ' --version').toString()
+  var dbVersion = /db version.*?(\d+\.\d+\.\d+)/.exec(mongoVersionOutput)[1]
+  errors.oldMongod.isProblem = !versionIsGreater(desiredVersions.mongod, dbVersion)
+  errors.oldMongod.message = errors.oldMongod.getMessage(desiredVersions.mongod, dbVersion)
+} catch (e) {
+  console.error('there was an error determining your mongo version')
+  console.error(e)
 }
 
 var systemErrors = Object.keys(errors)
@@ -117,4 +142,3 @@ function versionIsGreater(desiredVersion, actualVersion) {
   // by this point they should be equal
   return true
 }
-

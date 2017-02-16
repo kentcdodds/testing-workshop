@@ -1,5 +1,16 @@
+sudo: false
 language: node_js
 node_js: 6
+env:
+  global:
+    - MONGODB_VERSION=3.4.2
+services:
+  - docker
+  - mongodb
+before_install:
+  - wget http://fastdl.mongodb.org/linux/mongodb-linux-x86_64-$MONGODB_VERSION.tgz
+  - tar xfz mongodb-linux-x86_64-$MONGODB_VERSION.tgz
+  - export PATH=`pwd`/mongodb-linux-x86_64-$MONGODB_VERSION/bin:$PATH
 install:
   - curl -o- -L https://yarnpkg.com/install.sh | bash
   - export PATH="$HOME/.yarn/bin:$PATH"
