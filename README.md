@@ -56,6 +56,12 @@ This may take a few minutes. If you get any errors, please read the error output
 instructions to fix things and try again. If you're still getting errors or need any help at all, then please
 [file an issue][issue].
 
+**Note:** You might see this:
+
+<img src="other/cypress-network.png" alt="Cypress Network issue" title="Cypress Network issue" width="400" />
+
+I'm not sure how to prevent this from happening (suggestions appreciated!), but just hit `Allow`. Sorry about that :-/
+
 ### Running the app
 
 To get the app up and running (and really see if it worked), run:
@@ -83,6 +89,10 @@ npm start client
 
 With this, your browser should open up automatically to `http://localhost:8080` (if it doesn't, just open that yourself)
 and you should be able to start messing around with the app.
+
+Here's what you should be looking at:
+
+<img src="other/conduit-screenshot.png" alt="Conduit Screenshot" title="Conduit Screenshot" width="700" />
 
 If this fails at any point for you, please [report it][issue].
 
