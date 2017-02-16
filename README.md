@@ -60,7 +60,8 @@ instructions to fix things and try again. If you're still getting errors or need
 
 <img src="other/cypress-network.png" alt="Cypress Network issue" title="Cypress Network issue" width="400" />
 
-I'm not sure how to prevent this from happening (suggestions appreciated!), but just hit `Allow`. Sorry about that :-/
+I'm not sure how to prevent this from happening (suggestions appreciated!) but it happens every time you run the `e2e`
+tests. Just hit `Allow` (super annoying). Sorry about that 😞
 
 ### Running the app
 
