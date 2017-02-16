@@ -127,7 +127,7 @@ This project follows the [all-contributors](https://github.com/kentcdodds/all-co
 [node]: https://nodejs.org
 [git]: https://git-scm.com/
 [mongo]: https://www.mongodb.com/
-[slides]: http://kcd.im/testing-intro-slides
+[slides]: http://kcd.im/testing-workshop-slides
 [slides-badge]: https://cdn.rawgit.com/kentcdodds/custom-badges/2/badges/slides.svg
 [chat]: https://gitter.im/kentcdodds/testing-workshop
 [chat-badge]: https://img.shields.io/gitter/room/kentcdodds/testing-workshop.js.svg?style=flat-square
