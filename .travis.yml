@@ -1,5 +1,8 @@
 language: node_js
 node_js: 6
+install:
+  - curl -o- -L https://yarnpkg.com/install.sh | bash
+  - export PATH="$HOME/.yarn/bin:$PATH"
 script: yarn run setup
 cache:
   yarn: true
