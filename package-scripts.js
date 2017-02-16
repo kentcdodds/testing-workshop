@@ -1,7 +1,7 @@
 const path = require('path')
 const isWindows = require('is-windows')()
 const mongodBin = isWindows ?
-  `"C:/Program Files/MongoDb/Server/3.2/bin/mongod.exe"` :
+  `"C:/Program Files/MongoDb/Server/3.4.2/bin/mongod.exe"` :
   'mongod'
 const dbPath = path.join(__dirname, './.mongo-db')
 const mongoDesc = [

@@ -74,7 +74,7 @@ try {
 }
 
 try {
-  var mongodBin = isWindows ? '"C:/Program Files/MongoDb/Server/3.2/bin/mongod.exe"' : 'mongod'
+  var mongodBin = isWindows ? '"C:/Program Files/MongoDb/Server/3.4.2/bin/mongod.exe"' : 'mongod'
   var mongoVersionOutput = execSync(mongodBin + ' --version').toString()
   var dbVersion = /db version.*?(\d+\.\d+\.\d+)/.exec(mongoVersionOutput)[1]
   errors.oldMongod.isProblem = !versionIsGreater(desiredVersions.mongod, dbVersion)
