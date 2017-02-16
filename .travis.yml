@@ -1,0 +1,9 @@
+language: node_js
+node_js: 6
+script: yarn run setup
+cache:
+  yarn: true
+  directories:
+    - node_modules
+notifications:
+  email: false
