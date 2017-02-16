@@ -8,7 +8,7 @@ try {
   !!cp.execSync('yarn --version')
   // yay! No error! Yarn's available!
   installer = 'yarn'
-  args = []
+  args = ['--force'] // ignore the cache
 } catch (e) {
   // use npm instead :-(
   installer = 'npm'
