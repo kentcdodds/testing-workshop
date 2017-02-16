@@ -23,8 +23,23 @@
   "scripts": {
     "start": "cross-env PORT=8080 react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "cross-env CI=true react-scripts test --coverage",
+    "test:watch": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "author": "Thinkster (https://github.com/gothinkster)"
+  "author": "Thinkster (https://github.com/gothinkster)",
+  "jest": {
+    "testEnvironment": "jest-environment-jsdom",
+    "collectCoverageFrom": [
+      "src/**"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "statements": 0.5,
+        "branches": 3,
+        "functions": 1,
+        "lines": 0.5
+      }
+    }
+  }
 }

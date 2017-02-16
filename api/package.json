@@ -6,7 +6,8 @@
   "scripts": {
     "start": "babel-node ./app.js",
     "dev": "nodemon ./app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --coverage",
+    "test:watch": "jest --watch"
   },
   "license": "ISC",
   "repository": "git@github.com:kentcdodds/testing-workshop.git",
@@ -33,6 +34,27 @@
   },
   "author": "Thinkster (https://github.com/gothinkster)",
   "devDependencies": {
-    "babel-cli": "^6.23.0"
+    "babel-cli": "^6.23.0",
+    "babel-core": "^6.23.1",
+    "babel-jest": "^18.0.0",
+    "babel-preset-env": "^1.1.8",
+    "babel-preset-stage-2": "^6.22.0",
+    "jest": "^18.1.0"
+  },
+  "jest": {
+    "testEnvironment": "jest-environment-node",
+    "collectCoverageFrom": [
+      "config/**",
+      "models/**",
+      "routes/**"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "statements": 0.5,
+        "branches": 3,
+        "functions": 1,
+        "lines": 0.5
+      }
+    }
   }
 }

@@ -11,6 +11,17 @@ const mongoDesc = [
     '',
 ].join('')
 
+const concurrentTests = {
+  'server-tests': {
+    script: 'nps server.test',
+    color: 'bgGray.bold',
+  },
+  'client-tests': {
+    script: 'nps client.test',
+    color: 'bgOrange.bold',
+  },
+}
+
 module.exports = {
   scripts: {
     default: {
@@ -30,10 +41,22 @@ module.exports = {
     server: {
       script: series(['cd api', 'npm start']),
       description: 'start the api server',
+      test: {
+        script: series(['cd api', 'npm test']),
+        description: 'run the server tests',
+      },
     },
     client: {
       script: series(['cd client', 'cross-env PORT=8080 npm start']),
       description: 'start the client dev server',
+      test: {
+        script: series(['cd client', 'npm test']),
+        description: 'run the client tests',
+      },
+    },
+    test: {
+      description: 'run the tests in parallel',
+      script: concurrent(concurrentTests),
     },
     lint: {
       script: 'eslint .',
@@ -44,12 +67,18 @@ module.exports = {
       description: 'autoformat project files',
     },
     validate: {
-      script: concurrent({
-        lint: {
-          script: 'nps lint',
-          color: 'bgBlack.bold',
-        },
-      }),
+      script: concurrent(
+        Object.assign(
+          {},
+          {
+            lint: {
+              script: 'nps lint',
+              color: 'bgBlack.bold',
+            },
+          },
+          concurrentTests
+        )
+      ),
       description: 'validates that things are set up properly',
     },
   },
@@ -98,3 +127,16 @@ function startInNewWindow(command) {
       `-e 'end tell'`,
     ].join(' ')
 }
+
+// this is not transpiled
+/*
+  eslint
+  comma-dangle: [
+    2,
+    {
+      arrays: 'always-multiline',
+      objects: 'always-multiline',
+      functions: 'never'
+    }
+  ]
+ */

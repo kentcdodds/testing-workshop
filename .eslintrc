@@ -12,6 +12,7 @@
     ],
     "import/newline-after-import": "off",
     "import/no-unassigned-import": "off",
+    "import/prefer-default-export": "off",
     "no-console": "off",
     "func-names": "off",
     "complexity": ["error", 8],
