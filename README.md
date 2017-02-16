@@ -41,6 +41,18 @@ Big thanks to the [RealWorld](https://github.com/gothinkster/realworld) project 
 - [yarn][yarn] v0.20.3 or greater (or [npm][npm] v4.2.0 or greater)
 - [MongoDB][mongo] v3.4.2 or greater
 
+All of these must be available in your `PATH`. To verify things are set up properly, you can run this:
+
+```
+git --version
+node --version
+yarn --version
+mongod --version
+```
+
+If you have trouble with any of these, learn more about the PATH environment variable and how to fix it here for
+[windows][win-path] or [mac/linux][mac-path].
+
 ### Setup
 
 After you've made sure to have the correct things (and versions) installed, you should be able to just run a few
@@ -110,9 +122,7 @@ npm start client
 #### `verify.js` saying something's wrong with mongo
 
 The `mongod` binary needs to be available in your path for you to run `mongod` from the command line (which is what this
-project's scripts does for you). Learn how to do this
-[on windows](https://www.howtogeek.com/118594/how-to-edit-your-system-path-for-easy-command-line-access/) or
-[on mac](http://stackoverflow.com/a/24322978/971592).
+project's scripts does for you). Learn how to do this [on windows][win-path] or [on mac][mac-path].
 
 > Note: you'll need to open a new terminal/command prompt window after you've done this.
 
@@ -170,3 +180,5 @@ This project follows the [all-contributors](https://github.com/kentcdodds/all-co
 [twitter-badge]: https://img.shields.io/twitter/url/https/github.com/kentcdodds/testing-workshop.svg?style=social
 [emojis]: https://github.com/kentcdodds/all-contributors#emoji-key
 [all-contributors]: https://github.com/kentcdodds/all-contributors
+[win-path]: https://www.howtogeek.com/118594/how-to-edit-your-system-path-for-easy-command-line-access/
+[mac-path]: http://stackoverflow.com/a/24322978/971592
