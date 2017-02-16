@@ -53,6 +53,9 @@ var errors = {
     },
     isProblem: false,
   },
+  noMongod: {
+    isProblem: false,
+  },
 }
 
 var nodeVersion = process.versions.node
@@ -77,6 +80,7 @@ try {
   errors.oldMongod.isProblem = !versionIsGreater(desiredVersions.mongod, dbVersion)
   errors.oldMongod.message = errors.oldMongod.getMessage(desiredVersions.mongod, dbVersion)
 } catch (e) {
+  errors.noMongod.isProblem = true
   console.error('there was an error determining your mongo version')
   console.error(e)
 }
