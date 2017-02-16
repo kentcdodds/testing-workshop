@@ -14,11 +14,11 @@ const mongoDesc = [
 const concurrentTests = {
   'server-tests': {
     script: 'nps server.test',
-    color: 'bgGray.bold',
+    color: 'bgCyan.bold.dim',
   },
   'client-tests': {
     script: 'nps client.test',
-    color: 'bgOrange.bold',
+    color: 'bgYellow.bold.dim',
   },
 }
 

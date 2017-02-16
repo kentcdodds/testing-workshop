@@ -3,8 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
+    "babel-jest": "^18.0.0",
+    "babel-preset-react-app": "^2.1.0",
     "cross-env": "^3.1.4",
-    "react-scripts": "0.6.1"
+    "jest": "^18.1.0",
+    "react-scripts": "0.6.1",
+    "rimraf": "^2.5.4"
   },
   "license": "MIT",
   "repository": "git@github.com:kentcdodds/testing-workshop.git",
@@ -23,22 +27,30 @@
   "scripts": {
     "start": "cross-env PORT=8080 react-scripts start",
     "build": "react-scripts build",
-    "test": "cross-env CI=true react-scripts test --coverage",
-    "test:watch": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "test": "jest --coverage",
+    "test:watch": "jest --watch",
+    "postinstall": "rimraf node_modules/eslint"
   },
   "author": "Thinkster (https://github.com/gothinkster)",
   "jest": {
     "testEnvironment": "jest-environment-jsdom",
+    "transform": {
+      "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
+      "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
+      "^(?!.*\\.(js|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
+    },
+    "transformIgnorePatterns": [
+      "[/\\\\]node_modules[/\\\\].+\\.jsx$"
+    ],
     "collectCoverageFrom": [
       "src/**"
     ],
     "coverageThreshold": {
       "global": {
-        "statements": 0.5,
-        "branches": 3,
-        "functions": 1,
-        "lines": 0.5
+        "statements": 0,
+        "branches": 0,
+        "functions": 0,
+        "lines": 0
       }
     }
   }

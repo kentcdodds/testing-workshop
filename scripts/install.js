@@ -37,11 +37,6 @@ function spawnInstall(cwd) {
     if (finishedCount < 3) {
       return
     }
-    // now that we have installed deps, we can require rimraf here
-    // remove the eslint version from the client
-    // because it messes things up when we actually want to use
-    // the eslint version from the main package
-    require('rimraf').sync(path.resolve(__dirname, '../client/node_modules/eslint'))
     console.log('all dependencies have been installed')
   }
 }
