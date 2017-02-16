@@ -3,12 +3,6 @@
 
 var execSync = require('child_process').execSync
 
-var isWindows = (function() {
-  return process.platform === 'win32' ||
-  process.env.OSTYPE === 'cygwin' ||
-  process.env.OSTYPE === 'msys'
-})()
-
 var desiredVersions = {
   yarn: '0.20.3',
   node: '6.9.5',
@@ -74,15 +68,16 @@ try {
 }
 
 try {
-  var mongodBin = isWindows ? '"C:/Program Files/MongoDb/Server/3.4.2/bin/mongod.exe"' : 'mongod'
-  var mongoVersionOutput = execSync(mongodBin + ' --version').toString()
+  var mongoVersionOutput = execSync('mongod --version').toString()
   var dbVersion = /db version.*?(\d+\.\d+\.\d+)/.exec(mongoVersionOutput)[1]
   errors.oldMongod.isProblem = !versionIsGreater(desiredVersions.mongod, dbVersion)
   errors.oldMongod.message = errors.oldMongod.getMessage(desiredVersions.mongod, dbVersion)
 } catch (e) {
   errors.noMongod.isProblem = true
-  console.error('there was an error determining your mongo version')
   console.error(e)
+  console.error('** There was an error determining your mongo version **')
+  console.info('This could be because the `mongod` command isn\'t available in your PATH')
+  console.info('See the project README.md section on troubleshooting to fix this.')
 }
 
 var systemErrors = Object.keys(errors)

@@ -1,15 +1,5 @@
 const path = require('path')
 const isWindows = require('is-windows')()
-const mongodBin = isWindows ?
-  `"C:/Program Files/MongoDb/Server/3.4.2/bin/mongod.exe"` :
-  'mongod'
-const dbPath = path.join(__dirname, './.mongo-db')
-const mongoDesc = [
-  'Create the .mongo-db directory and start the mongod process.',
-  isWindows ?
-    ' If this fails, try updating mongodBin in package-scripts.js' :
-    '',
-].join('')
 
 const concurrentTests = {
   'api-tests': {
@@ -38,9 +28,9 @@ module.exports = {
     mongo: {
       script: series([
         'mkdirp .mongo-db',
-        `${mongodBin} --dbpath ${dbPath} --quiet`,
+        `mongod --dbpath ${path.join(__dirname, './.mongo-db')} --quiet`,
       ]),
-      description: mongoDesc,
+      description: 'Create the .mongo-db dir and start the mongod process',
     },
     api: {
       script: series(['cd api', 'npm start']),

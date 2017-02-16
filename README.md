@@ -74,7 +74,26 @@ npm start
 This _should_ start `mongod`, the `api` server, and the `client` server in individual terminal tabs/windows. **This is
 experimental** and if it doesn't work for you please [report it][issue].
 
-*If it doesn't work for you, you can start each of these individually yourself:*
+With this, your browser should open up automatically to `http://localhost:8080` (if it doesn't, just open that yourself)
+and you should be able to start messing around with the app.
+
+Here's what you should be looking at:
+
+<img src="other/conduit-screenshot.png" alt="Conduit Screenshot" title="Conduit Screenshot" width="700" />
+
+If this fails at any point for you, please first see [Troubleshooting](#troubleshooting) and if you still can't get it
+working, [make an issue][issue].
+
+**To stop all the servers**, go to each window and hit <kbd>Ctrl</kbd> + <kbd>C</kbd>.
+
+> Protip: we're using [`p-s`](https://github.com/kentcdodds/p-s) in this project. If you want to type less, then you can
+> Install `p-s` globally: `yarn global add p-s` (or `npm i -g p-s`) and then you can run `nps` instead of `npm start`
+
+### Troubleshooting
+
+#### `npm start` command not working
+
+If it doesn't work for you, you can start each of these individually yourself:
 
 ```
 npm start mongo
@@ -88,25 +107,12 @@ npm start api
 npm start client
 ```
 
-With this, your browser should open up automatically to `http://localhost:8080` (if it doesn't, just open that yourself)
-and you should be able to start messing around with the app.
+#### `verify.js` saying something's wrong with mongo
 
-Here's what you should be looking at:
-
-<img src="other/conduit-screenshot.png" alt="Conduit Screenshot" title="Conduit Screenshot" width="700" />
-
-If this fails at any point for you, please [report it][issue].
-
-**To stop all the servers**, go to each window and hit <kbd>Ctrl</kbd> + <kbd>C</kbd>.
-
-> Protip: we're using [`p-s`](https://github.com/kentcdodds/p-s) in this project. If you want to type less, then you can
-> Install `p-s` globally: `yarn global add p-s` (or `npm i -g p-s`) and then you can run `nps` instead of `npm start`
-
-### Windows
-
-If you're running on windows, you may have trouble with the `start` script and I'd love to know how to improve it.
-You may also have trouble with `npm start mongo`. If that's the case, open up `package-scripts.js` and make sure that
-`mongodBin` is set to the right value based on the path to your mongo installation.
+The `mongod` binary needs to be available in your path for you to run `mongod` from the command line (which is what this
+project's scripts does for you). Learn how to do this
+[on windows](https://www.howtogeek.com/118594/how-to-edit-your-system-path-for-easy-command-line-access/) or
+[on mac](http://stackoverflow.com/a/24322978/971592).
 
 ### Structure
 
