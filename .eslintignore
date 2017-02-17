@@ -4,3 +4,4 @@ scripts/verify.js
 coverage
 cypress/examples/**
 build
+dist

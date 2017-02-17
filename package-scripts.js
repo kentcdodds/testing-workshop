@@ -12,6 +12,17 @@ const concurrentTests = {
   },
 }
 
+const concurrentBuild = {
+  'api-build': {
+    script: 'nps build.api',
+    color: 'bgGreen.bold.dim',
+  },
+  'client-build': {
+    script: 'nps build.client',
+    color: 'bgRed.bold.dim',
+  },
+}
+
 module.exports = {
   scripts: {
     default: {
@@ -44,6 +55,11 @@ module.exports = {
         script: series(['cd client', 'npm test --silent']),
         description: 'run the client tests',
       },
+    },
+    build: {
+      default: concurrent(concurrentBuild),
+      api: series(['cd api', 'npm run build --silent']),
+      client: series(['cd client', 'npm run build --silent']),
     },
     dev: {
       script: series([
@@ -81,6 +97,7 @@ module.exports = {
               color: 'bgBlack.bold',
             },
           },
+          concurrentBuild,
           concurrentTests
         )
       ),
