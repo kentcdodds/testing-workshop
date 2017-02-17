@@ -31,6 +31,7 @@ module.exports = {
         `mongod --dbpath ${path.join(__dirname, './.mongo-db')} --quiet`,
       ]),
       description: 'Create the .mongo-db dir and start the mongod process',
+      stop: 'mongo admin --eval "db.shutdownServer()"',
     },
     api: {
       script: series(['cd api', 'npm start']),

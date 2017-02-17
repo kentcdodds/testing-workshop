@@ -45,7 +45,7 @@ connectPromise
       console.log(chalk.bgGreen.white.bold('operation successful'))
       console.log(
         chalk.green.bold(
-          `insertted ${users.length} users, ` +
+          `inserted ${users.length} users, ` +
             `${articles.length} articles, ` +
             `and ${comments.length} comments`,
         ),
