@@ -67,7 +67,6 @@ module.exports = {
     validate: {
       script: concurrent(
         Object.assign(
-          {},
           {
             lint: {
               script: 'nps lint',
