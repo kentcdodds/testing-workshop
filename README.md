@@ -5,7 +5,7 @@
 [![Build Status][build-badge]][build]
 [![Dependencies][dependencyci-badge]][dependencyci]
 [![MIT License][license-badge]][LICENSE]
-[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors)
 
 [![PRs Welcome][prs-badge]][prs]
 [![Donate][donate-badge]][donate]
@@ -145,8 +145,8 @@ licensed.
 Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-| [<img src="https://avatars.githubusercontent.com/u/8601733?v=3" width="100px;"/><br /><sub>Thinkster</sub>](https://thinkster.io)<br />[💻](https://github.com/kentcdodds/testing-workshop/commits?author=gothinkster) | [<img src="https://avatars.githubusercontent.com/u/1500684?v=3" width="100px;"/><br /><sub>Kent C. Dodds</sub>](https://kentcdodds.com)<br />[💻](https://github.com/kentcdodds/testing-workshop/commits?author=kentcdodds) [📖](https://github.com/kentcdodds/testing-workshop/commits?author=kentcdodds) 🚇 [⚠️](https://github.com/kentcdodds/testing-workshop/commits?author=kentcdodds) |
-| :---: | :---: |
+| [<img src="https://avatars.githubusercontent.com/u/8601733?v=3" width="100px;"/><br /><sub>Thinkster</sub>](https://thinkster.io)<br />[💻](https://github.com/kentcdodds/testing-workshop/commits?author=gothinkster) | [<img src="https://avatars.githubusercontent.com/u/1500684?v=3" width="100px;"/><br /><sub>Kent C. Dodds</sub>](https://kentcdodds.com)<br />[💻](https://github.com/kentcdodds/testing-workshop/commits?author=kentcdodds) [📖](https://github.com/kentcdodds/testing-workshop/commits?author=kentcdodds) 🚇 [⚠️](https://github.com/kentcdodds/testing-workshop/commits?author=kentcdodds) | [<img src="https://avatars.githubusercontent.com/u/3995499?v=3" width="100px;"/><br /><sub>Callum Mellor-Reed</sub>](http://callummr.com)<br />[💻](https://github.com/kentcdodds/testing-workshop/commits?author=callummr) |
+| :---: | :---: | :---: |
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification. Contributions of any kind welcome!

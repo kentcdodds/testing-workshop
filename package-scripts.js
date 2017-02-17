@@ -123,7 +123,7 @@ function series(scripts) {
 
 function startInNewWindow(command) {
   return isWindows ?
-    `start cmd.exe @cmd \\k "cd ${__dirname} && ${command}"` :
+    `start cmd /k "cd ${__dirname} && ${command}"` :
     [
       `osascript`,
       `-e 'tell application "Terminal"'`,

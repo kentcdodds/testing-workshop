@@ -27,6 +27,15 @@
         "infra",
         "test"
       ]
+    },
+    {
+      "login": "callummr",
+      "name": "Callum Mellor-Reed",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3995499?v=3",
+      "profile": "http://callummr.com",
+      "contributions": [
+        "code"
+      ]
     }
   ]
 }
