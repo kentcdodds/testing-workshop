@@ -80,7 +80,7 @@ tests. Just hit `Allow` (super annoying). Sorry about that 😞
 To get the app up and running (and really see if it worked), run:
 
 ```
-npm start
+npm start dev
 ```
 
 This _should_ start `mongod`, the `api` server, and the `client` server in individual terminal tabs/windows. **This is
@@ -103,20 +103,20 @@ working, [make an issue][issue].
 
 ### Troubleshooting
 
-#### `npm start` command not working
+#### `npm dev` command not working
 
 If it doesn't work for you, you can start each of these individually yourself:
 
 ```
-npm start mongo
+npm start dev.mongo
 ```
 
 ```
-npm start api
+npm start dev.api
 ```
 
 ```
-npm start client
+npm start dev.client
 ```
 
 #### `verify.js` saying something's wrong with mongo
