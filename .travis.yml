@@ -18,6 +18,7 @@ script: yarn run setup
 cache:
   yarn: true
   directories:
+    - /home/travis/.cypress/Cypress
     - node_modules
 notifications:
   email: false
