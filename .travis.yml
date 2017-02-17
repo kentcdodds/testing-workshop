@@ -22,3 +22,6 @@ cache:
     - node_modules
 notifications:
   email: false
+branches:
+  only:
+    - master
