@@ -11,7 +11,6 @@ let connectPromise
 if (process.env.MONGODB_URI) {
   connectPromise = mongoose.connect(process.env.MONGODB_URI)
 } else {
-  mongoose.set('debug', true)
   connectPromise = mongoose.connect('mongodb://localhost/conduit')
 }
 
