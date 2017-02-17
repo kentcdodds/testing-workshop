@@ -2,7 +2,7 @@ import faker from 'faker'
 import _ from 'lodash'
 import mongoose from 'mongoose'
 import {commonProps} from './utils'
-import '../../models/Article'
+import '../../src/models/Article'
 
 const Article = mongoose.model('Article')
 

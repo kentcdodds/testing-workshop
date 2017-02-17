@@ -2,7 +2,7 @@ import crypto from 'crypto'
 import faker from 'faker'
 import mongoose from 'mongoose'
 import {commonProps} from './utils'
-import '../../models/User'
+import '../../src/models/User'
 
 const User = mongoose.model('User')
 

@@ -7,6 +7,7 @@
     "babel-preset-react-app": "^2.1.0",
     "cross-env": "^3.1.4",
     "jest": "^18.1.0",
+    "pushstate-server": "^2.2.1",
     "react-scripts": "0.6.1",
     "rimraf": "^2.5.4"
   },
@@ -25,8 +26,9 @@
     "superagent-promise": "^1.1.0"
   },
   "scripts": {
-    "start": "cross-env PORT=8080 react-scripts start",
+    "dev": "cross-env PORT=8080 react-scripts start",
     "build": "react-scripts build",
+    "start": "pushstate-server build",
     "test": "jest --coverage",
     "test:watch": "jest --watch",
     "postinstall": "echo \"removing client copy of eslint (will use root repo's version)\" && rimraf node_modules/eslint"

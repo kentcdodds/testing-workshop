@@ -9,7 +9,7 @@
     "start": "nps",
     "test": "nps test",
     "precommit": "nps validate",
-    "setup": "node ./scripts/verify && node ./scripts/install && node ./scripts/load-database && npm start validate"
+    "setup": "node ./scripts/verify && node ./scripts/install && node ./scripts/load-database && npm start validate && npm start e2e"
   },
   "devDependencies": {
     "all-contributors-cli": "^4.0.0",
@@ -22,8 +22,10 @@
     "is-windows": "^1.0.0",
     "mkdirp": "^0.5.1",
     "p-s": "^3.1.0",
+    "p-series": "^1.0.0",
     "prettier-eslint-cli": "^1.1.1",
     "rimraf": "^2.5.4",
-    "spawn-command-with-kill": "^1.0.0"
+    "spawn-command-with-kill": "^1.0.0",
+    "stream-to-promise": "^2.2.0"
   }
 }

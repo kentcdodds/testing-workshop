@@ -10,19 +10,15 @@ const concurrentTests = {
     script: 'nps client.test',
     color: 'black.bgYellow.bold.dim',
   },
-  'e2e-tests': {
-    script: 'nps e2e',
-    color: 'bgGreen.bold.dim',
-  },
 }
 
 module.exports = {
   scripts: {
     default: {
       script: series([
-        startInNewWindow('npm start mongo'),
-        startInNewWindow('npm start api'),
-        startInNewWindow('npm start client'),
+        startInNewWindow('npm start mongo --silent'),
+        startInNewWindow('npm start api --silent'),
+        startInNewWindow('npm start client --silent'),
       ]),
     },
     mongo: {
@@ -34,24 +30,35 @@ module.exports = {
       stop: 'mongo admin --eval "db.shutdownServer()"',
     },
     api: {
-      script: series(['cd api', 'npm start']),
+      script: series(['cd api', 'npm start --silent']),
       description: 'start the api server',
       test: {
-        script: series(['cd api', 'npm test']),
+        script: series(['cd api', 'npm test --silent']),
         description: 'run the api tests',
       },
     },
     client: {
-      script: series(['cd client', 'cross-env PORT=8080 npm start']),
+      script: series(['cd client', 'npm start --silent -- 8080']),
       description: 'start the client dev server',
       test: {
-        script: series(['cd client', 'npm test']),
+        script: series(['cd client', 'npm test --silent']),
         description: 'run the client tests',
       },
     },
+    dev: {
+      script: series([
+        startInNewWindow('npm start dev.mongo --silent'),
+        startInNewWindow('npm start dev.client --silent'),
+        startInNewWindow('npm start dev.api --silent'),
+      ]),
+      description: 'starts everything in dev mode',
+       // dev is the same as live for mongo for now...
+      mongo: 'npm start mongo --silent',
+      client: series(['cd client', 'npm run dev --silent']),
+      api: series(['cd api', 'npm run dev --silent']),
+    },
     e2e: {
-      script: 'cross-env MOCHA_COLORS=true cypress run',
-      description: 'run the E2E tests',
+      script: 'node scripts/e2e.js',
     },
     test: {
       description: 'run the tests in parallel',
@@ -133,6 +140,7 @@ function startInNewWindow(command) {
       `-e 'end tell'`,
     ].join(' ')
 }
+
 // this is not transpiled
 /*
   eslint

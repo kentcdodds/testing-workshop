@@ -1,7 +1,7 @@
 import faker from 'faker'
 import mongoose from 'mongoose'
 import {commonProps} from './utils'
-import '../../models/Comment'
+import '../../src/models/Comment'
 
 const Comment = mongoose.model('Comment')
 
