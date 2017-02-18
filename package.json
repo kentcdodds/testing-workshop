@@ -21,7 +21,7 @@
     "husky": "^0.13.1",
     "is-windows": "^1.0.0",
     "mkdirp": "^0.5.1",
-    "p-s": "^3.1.0",
+    "nps": "^5.0.2",
     "p-series": "^1.0.0",
     "prettier-eslint-cli": "^1.1.1",
     "rimraf": "^2.5.4",
