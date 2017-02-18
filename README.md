@@ -1,5 +1,8 @@
 # Testing Workshop
 
+👋 hi there! My name is [Kent C. Dodds](https://kentcdodds.com)! This is a workshop repo to teach you about testing
+JavaScript applications.
+
 [![slides-badge][slides-badge]][slides]
 [![chat-badge][chat-badge]][chat]
 [![Build Status][build-badge]][build]
@@ -14,8 +17,16 @@
 [![Star on GitHub][github-star-badge]][github-star]
 [![Tweet][twitter-badge]][twitter]
 
-👋 hi there! My name is [Kent C. Dodds](https://kentcdodds.com)! This is a workshop repo to teach you about testing
-JavaScript applications. We'll cover:
+## Thank You
+
+Big thanks to the [RealWorld](https://github.com/gothinkster/realworld) project from
+[GoThinkster](https://github.com/gothinkster). This project is a copy of
+[the Node implementation](https://github.com/gothinkster/node-express-realworld-example-app) and
+[the React implementation](https://github.com/GoThinkster/react-redux-realworld-example-app) of the RealWorld project.
+
+Also thank you to all the [contributors](#contributors)
+
+## Topics covered
 
 1. Unit Testing with [Jest](http://facebook.github.io/jest)
 2. Integration Testing with [Jest](http://facebook.github.io/jest)
@@ -24,13 +35,6 @@ JavaScript applications. We'll cover:
 We'll mention other forms of testing, but these are the types we'll focus on and learn in this workshop. We'll learn
 about the benefits (and tradeoffs) of [TDD](https://en.wikipedia.org/wiki/Test-driven_development). We'll learn how to
 configure the tools and why, when, where, and what to test.
-
-## Thank You
-
-Big thanks to the [RealWorld](https://github.com/gothinkster/realworld) project from
-[GoThinkster](https://github.com/gothinkster). This project is a copy of
-[the Node implementation](https://github.com/gothinkster/node-express-realworld-example-app) and
-[the React implementation](https://github.com/GoThinkster/react-redux-realworld-example-app) of the RealWorld project.
 
 ## Project
 
