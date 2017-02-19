@@ -159,6 +159,7 @@ function Settings(props) {
             <button
               className="btn btn-outline-danger"
               onClick={props.onClickLogout}
+              data-e2e="logout"
             >
               Or click here to logout.
             </button>

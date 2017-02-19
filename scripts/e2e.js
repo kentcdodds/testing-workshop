@@ -25,7 +25,8 @@ if (devMode) {
 const apiUrl = `http://localhost:${apiPort}/api`
 const clientUrl = `http://localhost:${clientServerPort}`
 const cypressEnv = Object.assign({}, process.env, {
-  CYPRESS_APP_URL: `${clientUrl}?api-url=${encodeURIComponent(apiUrl)}`,
+  CYPRESS_CLIENT_URL: `${clientUrl}?api-url=${encodeURIComponent(apiUrl)}`,
+  CYPRESS_API_URL: apiUrl,
 })
 
 let cypressChild

@@ -20,5 +20,6 @@
     "consistent-return": "off",
     "func-style": "off",
     "react/prop-types": "off",
+    "react/jsx-max-props-per-line": "off",
   }
 }

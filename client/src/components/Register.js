@@ -66,6 +66,7 @@ class Register extends React.Component {
                       placeholder="Username"
                       value={this.props.username}
                       onChange={this.changeUsername}
+                      data-e2e="username"
                     />
                   </fieldset>
 
@@ -76,6 +77,7 @@ class Register extends React.Component {
                       placeholder="Email"
                       value={this.props.email}
                       onChange={this.changeEmail}
+                      data-e2e="email"
                     />
                   </fieldset>
 
@@ -86,6 +88,7 @@ class Register extends React.Component {
                       placeholder="Password"
                       value={this.props.password}
                       onChange={this.changePassword}
+                      data-e2e="password"
                     />
                   </fieldset>
 
