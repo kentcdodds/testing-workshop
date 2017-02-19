@@ -8,8 +8,8 @@
     "cross-env": "^3.1.4",
     "jest": "^18.1.0",
     "pushstate-server": "^2.2.1",
-    "react-scripts": "0.6.1",
-    "rimraf": "^2.5.4"
+    "react-scripts": "^0.9.0",
+    "rimraf": "^2.6.0"
   },
   "license": "MIT",
   "repository": "git@github.com:kentcdodds/testing-workshop.git",
@@ -27,7 +27,7 @@
     "superagent-promise": "^1.1.0"
   },
   "scripts": {
-    "dev": "cross-env PORT=8080 react-scripts start",
+    "dev": "react-scripts start",
     "build": "react-scripts build",
     "start": "pushstate-server build",
     "test": "jest --coverage",

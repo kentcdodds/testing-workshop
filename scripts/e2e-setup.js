@@ -1,11 +1,31 @@
 const path = require('path')
 const spawn = require('spawn-command-with-kill')
 const pSeries = require('p-series')
+const {stripIndent, oneLine} = require('common-tags')
 const {
   servicesReadyMessage,
   clientServerPort,
   apiPort,
 } = require('./e2e-shared')
+
+const devMode = Boolean(JSON.parse(process.env.E2E_DEV || 'false'))
+
+if (devMode) {
+  console.log(stripIndent`
+    E2E Setup: E2E dev mode enabled.
+    This means we'll do the following:
+      1. Start the client in dev mode
+      2. Start the api in dev mode
+    ${oneLine`
+      This means you can make changes to
+      the source files in both the api
+      and the client and you'll get auto-reload
+      for both! How cool is that!? 🎉
+    `}
+  `)
+}
+
+const serviceStartScriptName = devMode ? 'dev' : 'start'
 
 const cwd = path.join(__dirname, '..')
 const clientCwd = path.join(cwd, 'client')
@@ -20,6 +40,10 @@ const apiEnv = Object.assign({}, process.env, {
   MONGODB_URI: mongoUri,
   MONGOD_DEBUG: true,
   PORT: apiPort,
+})
+const clientEnv = Object.assign({}, process.env, {
+  PORT: clientServerPort,
+  BROWSER: 'none', // so react-scripts doesn't auto-open a browser window
 })
 
 // create mongo db folder
@@ -40,28 +64,28 @@ const loadDataCommand = {
   message: '⤵️  loading data into mongodb',
 }
 // build app server
-const buildApiCommand = {
+const buildApiCommand = devMode ? null : {
   script: `npm run build --silent`,
   message: '🔨  running api build',
 }
 // start app server
 const startApiCommand = {
-  script: `npm start --silent`,
+  script: `npm run ${serviceStartScriptName} --silent`,
   resolveEarly: true,
   resolveDelay: 500,
   message: '🔑  starting api server',
 }
 // build client
-const buildClientCommand = {
+const buildClientCommand = devMode ? null : {
   script: `npm run build --silent`,
   message: '🔨  running client build',
 }
 // start (built) client http-server
 const startClientCommand = {
-  script: `npm start --silent -- ${clientServerPort}`,
+  script: `npm run ${serviceStartScriptName} --silent`,
   resolveEarly: true,
   resolveDelay: 500,
-  message: '🔑  string client server',
+  message: '🔑  starting client server',
 }
 // cleanup: kill app server, client server, mongo
 
@@ -70,8 +94,8 @@ const mongoSequence = [
   startMongoCommand,
   loadDataCommand,
 ]
-const apiSequence = [buildApiCommand, startApiCommand]
-const clientSequence = [buildClientCommand, startClientCommand]
+const apiSequence = [buildApiCommand, startApiCommand].filter(Boolean)
+const clientSequence = [buildClientCommand, startClientCommand].filter(Boolean)
 
 // const stdio = 'inherit'
 const stdio = 'pipe'
@@ -82,12 +106,13 @@ const mongoPromise = runSequence(mongoSequence, {
 })
 const apiPromise = runSequence(apiSequence, {
   cwd: apiCwd,
-  stdio,
+  stdio: process.env.API_STDIO || stdio,
   env: apiEnv,
 })
 const clientPromise = runSequence(clientSequence, {
   cwd: clientCwd,
   stdio,
+  env: clientEnv,
 })
 
 Promise.all([mongoPromise, apiPromise, clientPromise]).then(results => {

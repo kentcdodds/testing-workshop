@@ -64,7 +64,7 @@ module.exports = {
     dev: {
       script: series([
         startInNewWindow('npm start dev.mongo --silent'),
-        startInNewWindow('npm start dev.client --silent'),
+        startInNewWindow('cross-env PORT=8080 npm start dev.client --silent'),
         startInNewWindow('npm start dev.api --silent'),
       ]),
       description: 'starts everything in dev mode',

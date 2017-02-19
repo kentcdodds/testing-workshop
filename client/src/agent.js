@@ -8,6 +8,7 @@ const superagent = superagentPromise(_superagent, global.Promise)
 const API_ROOT = queryString.parse(location.search)['api-url'] ||
   'http://localhost:3000/api'
 
+console.log('hello world')
 const encode = encodeURIComponent
 const responseBody = res => res.body
 

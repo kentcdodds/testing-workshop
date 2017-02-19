@@ -7,7 +7,9 @@ const {
   apiPort,
 } = require('./e2e-shared')
 const cwd = path.join(__dirname, '..')
+
 const devMode = Boolean(JSON.parse(process.env.E2E_DEV || 'false'))
+
 if (devMode) {
   console.log(stripIndent`
     E2E dev mode enabled.
@@ -20,7 +22,7 @@ if (devMode) {
   `)
 }
 
-const apiUrl = `http://localhost:${apiPort}`
+const apiUrl = `http://localhost:${apiPort}/api`
 const clientUrl = `http://localhost:${clientServerPort}`
 const cypressEnv = Object.assign({}, process.env, {
   CYPRESS_APP_URL: `${clientUrl}?api-url=${encodeURIComponent(apiUrl)}`,
