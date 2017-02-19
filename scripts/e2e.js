@@ -7,7 +7,7 @@ const {
   apiPort,
 } = require('./e2e-shared')
 const cwd = path.join(__dirname, '..')
-const devMode = Boolean(JSON.parse(process.env.E2E_DEV))
+const devMode = Boolean(JSON.parse(process.env.E2E_DEV || 'false'))
 if (devMode) {
   console.log(stripIndent`
     E2E dev mode enabled.
