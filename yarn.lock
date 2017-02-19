@@ -2370,9 +2370,9 @@ npmlog@^4.0.1:
     gauge "~2.7.1"
     set-blocking "~2.0.0"
 
-nps@^5.0.2:
-  version "5.0.2"
-  resolved "https://registry.yarnpkg.com/nps/-/nps-5.0.2.tgz#6a770247d3a618f14ea4ba9d36d4653140fb82a7"
+nps@^5.0.3:
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/nps/-/nps-5.0.3.tgz#1721fed493884951e1e09e9f06244bed721f7ea4"
   dependencies:
     arrify "^1.0.1"
     chalk "^1.1.3"
@@ -2382,7 +2382,6 @@ nps@^5.0.2:
     lodash "^4.17.4"
     manage-path "^2.0.0"
     prefix-matches "^0.0.9"
-    prettier-eslint-cli "^1.1.1"
     readline-sync "^1.4.6"
     spawn-command-with-kill "^1.0.0"
     type-detect "^4.0.0"
@@ -2641,12 +2640,14 @@ preserve@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/preserve/-/preserve-0.2.0.tgz#815ed1f6ebc65926f865b310c0713bcb3315ce4b"
 
-prettier-eslint-cli@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/prettier-eslint-cli/-/prettier-eslint-cli-1.1.1.tgz#c7957128bf34d52e2760ca80fff377411ed89ab9"
+prettier-eslint-cli@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/prettier-eslint-cli/-/prettier-eslint-cli-1.2.0.tgz#ff919f90b1c351d3770e1969741b0f8b58683082"
   dependencies:
+    arrify "^1.0.1"
     babel-runtime "^6.20.0"
     chalk "^1.1.3"
+    common-tags "^1.4.0"
     find-up "^2.1.0"
     get-stdin "^5.0.1"
     glob "^7.1.1"
@@ -2964,7 +2965,13 @@ right-align@^0.1.1:
   dependencies:
     align-text "^0.1.1"
 
-rimraf@2, rimraf@^2.2.8, rimraf@^2.5.4, rimraf@~2.5.1, rimraf@~2.5.4:
+rimraf@2, rimraf@^2.2.8, rimraf@^2.6.0:
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-2.6.0.tgz#89b8a0fe432b9ff9ec9a925a00b6cdb3a91bbada"
+  dependencies:
+    glob "^7.0.5"
+
+rimraf@~2.5.1, rimraf@~2.5.4:
   version "2.5.4"
   resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-2.5.4.tgz#96800093cbf1a0c86bd95b4625467535c29dfa04"
   dependencies:

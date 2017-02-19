@@ -102,8 +102,8 @@ working, [make an issue][issue].
 
 **To stop all the servers**, go to each window and hit <kbd>Ctrl</kbd> + <kbd>C</kbd>.
 
-> Protip: we're using [`p-s`](https://github.com/kentcdodds/p-s) in this project. If you want to type less, then you can
-> Install `p-s` globally: `yarn global add p-s` (or `npm i -g p-s`) and then you can run `nps` instead of `npm start`
+> Protip: we're using [`nps`](https://github.com/kentcdodds/nps) in this project. If you want to type less, then you can
+> Install `nps` globally: `yarn global add nps` (or `npm i -g nps`) and then you can run `nps` instead of `npm start`
 
 ### Troubleshooting
 

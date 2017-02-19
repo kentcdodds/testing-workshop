@@ -22,10 +22,10 @@
     "husky": "^0.13.1",
     "is-windows": "^1.0.0",
     "mkdirp": "^0.5.1",
-    "nps": "^5.0.2",
+    "nps": "^5.0.3",
     "p-series": "^1.0.0",
-    "prettier-eslint-cli": "^1.1.1",
-    "rimraf": "^2.5.4",
+    "prettier-eslint-cli": "^1.2.0",
+    "rimraf": "^2.6.0",
     "spawn-command-with-kill": "^1.0.0",
     "stream-to-promise": "^2.2.0"
   }
