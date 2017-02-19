@@ -75,6 +75,9 @@ module.exports = {
     },
     e2e: {
       script: 'node scripts/e2e.js',
+      dev: {
+        script: 'cross-env E2E_DEV=true node scripts/e2e.js',
+      },
     },
     test: {
       description: 'run the tests in parallel',
@@ -125,7 +128,7 @@ function concurrent(scripts) {
     names: [],
   })
   const flags = [
-    //   https://github.com/kimmobrunfeldt/concurrently/issues/91
+    // https://github.com/kimmobrunfeldt/concurrently/issues/91
     // '--kill-others',
     `--prefix-colors "${colors.join(',')}"`,
     '--prefix "[{name}]"',

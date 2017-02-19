@@ -13,6 +13,7 @@
   },
   "devDependencies": {
     "all-contributors-cli": "^4.0.0",
+    "common-tags": "^1.4.0",
     "concurrently": "^3.3.0",
     "cross-env": "^3.1.4",
     "cypress-cli": "^0.13.1",
