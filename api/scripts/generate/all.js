@@ -17,7 +17,7 @@ function generateDocumentObjects(firstUser) {
         user.following.push(followee._id)
       }
     })
-    
+
     const newArticles = _.times(_.random(0, 10), () => {
       const article = createArticle(user)
       const favoriters = getRandomUsers(users)
@@ -25,11 +25,11 @@ function generateDocumentObjects(firstUser) {
       article.favoritesCount = favoriters.length
       return article
     })
-    
+
     if (newArticles.length) {
       articles.push(...newArticles)
     }
-    
+
     newArticles.forEach(article => {
       const newComments = _.times(_.random(0, 10), () => {
         const comment = createComment(article, _.sample(users))
@@ -46,8 +46,8 @@ function generateDocumentObjects(firstUser) {
 
 function getRandomUsers(users) {
   return _.chain(users)
-  .shuffle()
-  .chunk(_.random(0, users.length))
-  .head()
-  .value() || []
+    .shuffle()
+    .chunk(_.random(0, users.length))
+    .head()
+    .value() || []
 }
