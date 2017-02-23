@@ -4,6 +4,7 @@ describe('Users', () => {
   it('should allow a new user to sign up and log out', () => {
     const {username, email, password} = getRandomUserData()
     visitApp()
+    cy
       .get(sel('sign-up-link'))
       .click()
       .get(`form ${sel('username')}`)
@@ -25,6 +26,7 @@ describe('Users', () => {
   it.skip('should allow an existing user to login', () => {
     createNewUser().then(({username, password}) => {
       visitApp()
+      cy
         .get(sel('sign-in-link'))
         .click()
         .get(`form ${sel('username')}`)

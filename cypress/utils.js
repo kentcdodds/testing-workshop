@@ -27,34 +27,8 @@ function createNewUser() {
   const {email, password, username} = getRandomUserData()
   const user = {email, password, username}
 
-  return new Promise((resolve, reject) => {
-    cy.request('POST', `${Cypress.env('API_URL')}/users`, {user}).then(
-      resp => {
-        Cypress.Log
-          .command({
-            name: 'create new user',
-            message: JSON.stringify(user),
-            consoleProps: function() {
-              return user
-            },
-          })
-          .snapshot()
-          .end()
-        resolve(Object.assign({}, user, resp))
-      },
-      error => {
-        Cypress.Log
-          .command({
-            name: 'ERROR: create new user',
-            message: JSON.stringify(user),
-            consoleProps: function() {
-              return {error, user}
-            },
-          })
-          .snapshot()
-          .end()
-        reject(error)
-      },
-    )
-  })
+  return cy
+    .log('create new user')
+    .request('POST', `${Cypress.env('API_URL')}/users`, {user})
+    .then(resp => Object.assign({}, resp, user))
 }
