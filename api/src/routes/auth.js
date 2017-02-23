@@ -1,6 +1,6 @@
+import jwt from 'express-jwt'
+import {secret} from '../config'
 import {getTokenFromHeader} from './utils'
-const jwt = require('express-jwt')
-const secret = require('../config').secret
 
 const auth = {
   required: jwt({
@@ -16,4 +16,4 @@ const auth = {
   }),
 }
 
-module.exports = auth
+export default auth

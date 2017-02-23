@@ -1,22 +1,31 @@
-const router = require('express').Router()
+import express from 'express'
+import getUsersRouter from './users'
+import getProfilesRouter from './profiles'
+import getArticlesRouter from './articles'
+import getTagsRouter from './tags'
 
-router.use('/', require('./users'))
-router.use('/profiles', require('./profiles'))
-router.use('/articles', require('./articles'))
-router.use('/tags', require('./tags'))
+export default getRouter
 
-router.use((err, req, res, next) => {
-  if (err.name === 'ValidationError') {
-    return res.status(422).json({
-      errors: Object.keys(err.errors).reduce((errors, key) => {
-        errors[key] = err.errors[key].message
+function getRouter() {
+  const router = express.Router()
 
-        return errors
-      }, {}),
-    })
-  }
+  router.use('/', getUsersRouter())
+  router.use('/profiles', getProfilesRouter())
+  router.use('/articles', getArticlesRouter())
+  router.use('/tags', getTagsRouter())
 
-  return next(err)
-})
+  router.use((err, req, res, next) => {
+    if (err.name === 'ValidationError') {
+      return res.status(422).json({
+        errors: Object.keys(err.errors).reduce((errors, key) => {
+          errors[key] = err.errors[key].message
 
-module.exports = router
+          return errors
+        }, {}),
+      })
+    }
+
+    return next(err)
+  })
+  return router
+}

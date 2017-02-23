@@ -1,10 +1,10 @@
 import faker from 'faker'
 import _ from 'lodash'
 import mongoose from 'mongoose'
+import getArticleSchema from '../../src/models/article'
 import {commonProps} from './utils'
-import '../../src/models/Article'
 
-const Article = mongoose.model('Article')
+const Article = mongoose.model('Article', getArticleSchema())
 
 export default createArticle
 

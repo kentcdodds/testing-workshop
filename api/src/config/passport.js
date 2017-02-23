@@ -1,26 +1,30 @@
-const passport = require('passport')
-const LocalStrategy = require('passport-local').Strategy
-const mongoose = require('mongoose')
-const User = mongoose.model('User')
+import passport from 'passport'
+import local from 'passport-local'
+import mongoose from 'mongoose'
 
-passport.use(
-  new LocalStrategy(
-    {
-      usernameField: 'user[email]',
-      passwordField: 'user[password]',
-    },
-    (email, password, done) => {
-      User.findOne({email})
-        .then(user => {
-          if (!user || !user.validPassword(password)) {
-            return done(null, false, {
-              errors: {'email or password': 'is invalid'},
-            })
-          }
+export default setupPassport
 
-          return done(null, user)
-        })
-        .catch(done)
-    },
-  ),
-)
+function setupPassport() {
+  const User = mongoose.model('User')
+  passport.use(
+    new local.Strategy(
+      {
+        usernameField: 'user[email]',
+        passwordField: 'user[password]',
+      },
+      (email, password, done) => {
+        User.findOne({email})
+          .then(user => {
+            if (!user || !user.validPassword(password)) {
+              return done(null, false, {
+                errors: {'email or password': 'is invalid'},
+              })
+            }
+
+            return done(null, user)
+          })
+          .catch(done)
+      },
+    ),
+  )
+}

@@ -1,9 +1,14 @@
-const express = require('express')
-const bodyParser = require('body-parser')
-const session = require('express-session')
-const cors = require('cors')
-const errorhandler = require('errorhandler')
-const mongoose = require('mongoose')
+import express from 'express'
+import bodyParser from 'body-parser'
+import session from 'express-session'
+import cors from 'cors'
+import errorhandler from 'errorhandler'
+import mongoose from 'mongoose'
+import morgan from 'morgan'
+import methodOverride from 'method-override'
+import setupModels from './models'
+import setupPassport from './config/passport'
+import getRouter from './routes'
 
 const isProduction = process.env.NODE_ENV === 'production'
 
@@ -13,11 +18,11 @@ const app = express()
 app.use(cors())
 
 // Normal express config defaults
-app.use(require('morgan')('dev'))
+app.use(morgan('dev'))
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 
-app.use(require('method-override')())
+app.use(methodOverride())
 app.use(express.static(`${__dirname}/public`))
 
 app.use(
@@ -42,12 +47,10 @@ if (process.env.MONGODB_URI) {
   mongoose.connect('mongodb://localhost/conduit')
 }
 
-require('./models/User')
-require('./models/Article')
-require('./models/Comment')
-require('./config/passport')
+setupModels()
+setupPassport()
 
-app.use(require('./routes'))
+app.use(getRouter())
 
 /// catch 404 and forward to error handler
 app.use((req, res, next) => {

@@ -1,9 +1,9 @@
 import faker from 'faker'
 import mongoose from 'mongoose'
+import getCommentSchema from '../../src/models/comment'
 import {commonProps} from './utils'
-import '../../src/models/Comment'
 
-const Comment = mongoose.model('Comment')
+const Comment = mongoose.model('Comment', getCommentSchema())
 
 export default createComment
 

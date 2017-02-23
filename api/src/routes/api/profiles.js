@@ -1,67 +1,73 @@
-const router = require('express').Router()
-const mongoose = require('mongoose')
-const User = mongoose.model('User')
-const auth = require('../auth')
+import express from 'express'
+import mongoose from 'mongoose'
+import auth from '../auth'
 
-// Preload article objects on routes with ':username'
-router.param('username', (req, res, next, username) => {
-  User.findOne({username})
-    .then(user => {
-      if (!user) {
-        return res.sendStatus(404)
-      }
+export default getProfilesRouter
 
-      req.profile = user
+function getProfilesRouter() {
+  const router = express.Router()
+  const User = mongoose.model('User')
 
-      return next()
-    })
-    .catch(next)
-})
+  // Preload article objects on routes with ':username'
+  router.param('username', (req, res, next, username) => {
+    User.findOne({username})
+      .then(user => {
+        if (!user) {
+          return res.sendStatus(404)
+        }
 
-router.get('/:username', auth.optional, (req, res) => {
-  if (req.payload) {
-    User.findById(req.payload.id).then(user => {
-      if (!user) {
-        return res.json({profile: req.profile.toProfileJSONFor(false)})
-      }
+        req.profile = user
 
-      return res.json({profile: req.profile.toProfileJSONFor(user)})
-    })
-  } else {
-    return res.json({profile: req.profile.toProfileJSONFor(false)})
-  }
-})
+        return next()
+      })
+      .catch(next)
+  })
 
-router.post('/:username/follow', auth.required, (req, res, next) => {
-  const profileId = req.profile._id
+  router.get('/:username', auth.optional, (req, res) => {
+    if (req.payload) {
+      User.findById(req.payload.id).then(user => {
+        if (!user) {
+          return res.json({profile: req.profile.toProfileJSONFor(false)})
+        }
 
-  User.findById(req.payload.id)
-    .then(user => {
-      if (!user) {
-        return res.sendStatus(401)
-      }
-
-      return user.follow(profileId).then(() => {
         return res.json({profile: req.profile.toProfileJSONFor(user)})
       })
-    })
-    .catch(next)
-})
+    } else {
+      return res.json({profile: req.profile.toProfileJSONFor(false)})
+    }
+  })
 
-router.delete('/:username/follow', auth.required, (req, res, next) => {
-  const profileId = req.profile._id
+  router.post('/:username/follow', auth.required, (req, res, next) => {
+    const profileId = req.profile._id
 
-  User.findById(req.payload.id)
-    .then(user => {
-      if (!user) {
-        return res.sendStatus(401)
-      }
+    User.findById(req.payload.id)
+      .then(user => {
+        if (!user) {
+          return res.sendStatus(401)
+        }
 
-      return user.unfollow(profileId).then(() => {
-        return res.json({profile: req.profile.toProfileJSONFor(user)})
+        return user.follow(profileId).then(() => {
+          return res.json({profile: req.profile.toProfileJSONFor(user)})
+        })
       })
-    })
-    .catch(next)
-})
+      .catch(next)
+  })
 
-module.exports = router
+  router.delete('/:username/follow', auth.required, (req, res, next) => {
+    const profileId = req.profile._id
+
+    User.findById(req.payload.id)
+      .then(user => {
+        if (!user) {
+          return res.sendStatus(401)
+        }
+
+        return user.unfollow(profileId).then(() => {
+          return res.json({profile: req.profile.toProfileJSONFor(user)})
+        })
+      })
+      .catch(next)
+  })
+
+  return router
+}

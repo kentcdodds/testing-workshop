@@ -1,16 +1,21 @@
-const mongoose = require('mongoose')
-const router = require('express').Router() // eslint-disable-line babel/new-cap
+import mongoose from 'mongoose'
+import express from 'express'
 
-const Article = mongoose.model('Article')
+export default getTagsRouter
 
-// return a list of tags
-router.get('/', (req, res, next) => {
-  Article.find()
-    .distinct('tagList')
-    .then(tags => {
-      return res.json({tags})
-    })
-    .catch(next)
-})
+function getTagsRouter() {
+  const router = express.Router()
+  const Article = mongoose.model('Article')
 
-module.exports = router
+  // return a list of tags
+  router.get('/', (req, res, next) => {
+    Article.find()
+      .distinct('tagList')
+      .then(tags => {
+        return res.json({tags})
+      })
+      .catch(next)
+  })
+
+  return router
+}

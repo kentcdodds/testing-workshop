@@ -1,10 +1,10 @@
 import crypto from 'crypto'
 import faker from 'faker'
 import mongoose from 'mongoose'
+import getUserSchema from '../../src/models/user'
 import {commonProps} from './utils'
-import '../../src/models/User'
 
-const User = mongoose.model('User')
+const User = mongoose.model('User', getUserSchema())
 
 export default createUser
 

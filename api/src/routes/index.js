@@ -1,5 +1,10 @@
-const router = require('express').Router()
+import express from 'express'
+import getApiRouter from './api'
 
-router.use('/api', require('./api'))
+export default getRouter
 
-module.exports = router
+function getRouter() {
+  const router = express.Router()
+  router.use('/api', getApiRouter())
+  return router
+}
