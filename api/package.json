@@ -52,11 +52,14 @@
   },
   "jest": {
     "testEnvironment": "jest-environment-node",
-    "setupTestFrameworkScriptFile": "./other/jest/expect-extensions.js",
+    "setupTestFrameworkScriptFile": "./other/jest/setup.js",
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/helpers/",
+      "/fixtures/"
+    ],
     "collectCoverageFrom": [
-      "**/config/**",
-      "**/models/**",
-      "**/routes/**"
+      "src/**"
     ],
     "coverageThreshold": {
       "global": {

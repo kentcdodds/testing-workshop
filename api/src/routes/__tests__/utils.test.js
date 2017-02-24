@@ -1,4 +1,4 @@
-import {getTokenFromHeader} from './utils'
+import {getTokenFromHeader} from '../utils'
 
 test('returns null if there is no token', () => {
   const result = getTokenFromHeader({headers: {}})

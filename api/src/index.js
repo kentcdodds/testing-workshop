@@ -12,6 +12,9 @@ import getRouter from './routes'
 
 const isProduction = process.env.NODE_ENV === 'production'
 
+// use native promises
+mongoose.Promise = Promise
+
 // Create global app object
 const app = express()
 

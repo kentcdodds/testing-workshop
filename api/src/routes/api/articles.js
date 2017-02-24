@@ -91,9 +91,7 @@ function getArticlesRouter() {
           ])
           .then(([articles, articlesCount, user]) => {
             return res.json({
-              articles: articles.map(article => {
-                return article.toJSONFor(user)
-              }),
+              articles: articles.map(article => article.toJSONFor(user)),
               articlesCount,
             })
           })

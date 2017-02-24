@@ -1,9 +1,9 @@
 import crypto from 'crypto'
 import faker from 'faker'
 
-export default generateUser
+export default generateUserData
 
-function generateUser(overrides = {}) {
+function generateUserData(overrides = {}) {
   const {
     username,
     email,

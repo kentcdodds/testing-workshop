@@ -32,12 +32,10 @@ function getArticleSchema(User) {
   }
 
   ArticleSchema.methods.updateFavoriteCount = function() {
-    const article = this
+    return User.count({favorites: {$in: [this._id]}}).then(count => {
+      this.favoritesCount = count
 
-    return User.count({favorites: {$in: [article._id]}}).then(count => {
-      article.favoritesCount = count
-
-      return article.save()
+      return this.save()
     })
   }
 
