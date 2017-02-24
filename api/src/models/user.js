@@ -104,7 +104,7 @@ function getUserSchema() {
   }
 
   UserSchema.methods.follow = function(id) {
-    if (this.favorites.indexOf(id) === -1) {
+    if (this.following.indexOf(id) === -1) {
       this.following.push(id)
     }
 
