@@ -2,28 +2,6 @@ const path = require('path')
 const {oneLine} = require('common-tags')
 const {concurrent, series, runInNewWindow} = require('nps-utils')
 
-const concurrentTests = {
-  'api-tests': {
-    script: 'nps api.test',
-    color: 'bgCyan.bold.dim',
-  },
-  'client-tests': {
-    script: 'nps client.test',
-    color: 'black.bgYellow.bold.dim',
-  },
-}
-
-const concurrentBuild = {
-  'api-build': {
-    script: 'nps build.api',
-    color: 'bgGreen.bold.dim',
-  },
-  'client-build': {
-    script: 'nps build.client',
-    color: 'bgRed.bold.dim',
-  },
-}
-
 module.exports = {
   scripts: {
     default: {
@@ -58,7 +36,7 @@ module.exports = {
       },
     },
     build: {
-      default: concurrent(concurrentBuild),
+      default: concurrent.nps('build.api', 'build.client'),
       api: series('cd api', 'npm run build --silent'),
       client: series('cd client', 'npm run build --silent'),
     },
@@ -87,7 +65,7 @@ module.exports = {
     },
     test: {
       description: 'run the tests in parallel',
-      script: concurrent(concurrentTests),
+      script: concurrent.nps('api.tests', 'client.tests'),
     },
     lint: {
       script: 'eslint .',
@@ -98,17 +76,12 @@ module.exports = {
       description: 'autoformat project files',
     },
     validate: {
-      script: concurrent(
-        Object.assign(
-          {
-            lint: {
-              script: 'nps lint',
-              color: 'bgBlack.bold',
-            },
-          },
-          concurrentBuild,
-          concurrentTests
-        )
+      script: concurrent.nps(
+        'build.api',
+        'build.client',
+        'lint',
+        'api.test',
+        'client.test'
       ),
       description: 'validates that things are set up properly',
     },
