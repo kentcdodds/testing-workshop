@@ -42,7 +42,7 @@ test(
   },
 )
 
-test.skip('can get JSON for a specific user', async () => {
+test.skip('can get JSON for a specific user', () => {
   const {article} = generateArticle()
   const {user: loggedInUser} = generateUser()
   // the next line fails because the article.author is not populated
