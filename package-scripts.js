@@ -1,6 +1,5 @@
 const path = require('path')
-const {oneLine} = require('common-tags')
-const {concurrent, series, runInNewWindow} = require('nps-utils')
+const {concurrent, series, runInNewWindow, crossEnv} = require('nps-utils')
 
 module.exports = {
   scripts: {
@@ -43,12 +42,7 @@ module.exports = {
     dev: {
       script: series(
         runInNewWindow.nps('dev.mongo --silent'),
-        runInNewWindow(
-          oneLine`
-            ./node_modules/.bin/cross-env PORT=8080
-            npm start dev.client --silent
-          `
-        ),
+        runInNewWindow(crossEnv('PORT=8080 npm start dev.client --silent')),
         runInNewWindow.nps('dev.api --silent')
       ),
       description: 'starts everything in dev mode',
@@ -58,10 +52,8 @@ module.exports = {
       api: series('cd api', 'npm start dev --silent'),
     },
     e2e: {
-      script: 'node scripts/e2e.js',
-      dev: {
-        script: 'cross-env E2E_DEV=true node scripts/e2e.js',
-      },
+      default: 'node scripts/e2e.js',
+      dev: crossEnv('E2E_DEV=true node scripts/e2e.js'),
     },
     test: {
       description: 'run the tests in parallel',
@@ -81,7 +73,8 @@ module.exports = {
         'build.client',
         'lint',
         'api.test',
-        'client.test'
+        'client.test',
+        'e2e'
       ),
       description: 'validates that things are set up properly',
     },
