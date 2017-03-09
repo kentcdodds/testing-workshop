@@ -1,0 +1,29 @@
+{
+  "testRegex": "src/.*__tests__/.*.js$",
+  "testPathIgnorePatterns": [
+    "/node_modules/",
+    "__mocks__",
+    "helpers"
+  ],
+  "testEnvironment": "jest-environment-jsdom",
+  "transform": {
+    "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
+    "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
+    "^(?!.*\\.(js|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
+  },
+  "transformIgnorePatterns": [
+    "[/\\\\]node_modules[/\\\\].+\\.js$"
+  ],
+  "collectCoverageFrom": [
+    "src/**"
+  ],
+  "coverageThreshold": {
+    "global": {
+      "statements": 2,
+      "branches": 0.5,
+      "functions": 1,
+      "lines": 2
+    }
+  },
+  "coverageDirectory": "coverage/unit"
+}

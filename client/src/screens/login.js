@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {PropTypes} from 'react'
 import {Link} from 'react-router'
 import {connect} from 'react-redux'
 import agent from '../shared/agent'
@@ -7,24 +7,23 @@ import ListErrors from '../shared/components/list-errors'
 const mapStateToProps = state => ({...state.auth})
 
 const mapDispatchToProps = dispatch => ({
-  onChangeEmail: value =>
-    dispatch({type: 'UPDATE_FIELD_AUTH', key: 'email', value}),
-  onChangePassword: value =>
-    dispatch({type: 'UPDATE_FIELD_AUTH', key: 'password', value}),
   onSubmit: (email, password) =>
     dispatch({type: 'LOGIN', payload: agent.Auth.login(email, password)}),
   onUnload: () => dispatch({type: 'LOGIN_PAGE_UNLOADED'}),
 })
 
 class Login extends React.Component {
-  constructor() {
-    super()
-    this.changeEmail = ev => this.props.onChangeEmail(ev.target.value)
-    this.changePassword = ev => this.props.onChangePassword(ev.target.value)
-    this.submitForm = (email, password) => ev => {
-      ev.preventDefault()
-      this.props.onSubmit(email, password)
-    }
+  static propTypes = {
+    onSubmit: PropTypes.func.isRequired,
+    onUnload: PropTypes.func.isRequired,
+    inProgress: PropTypes.bool.isRequired,
+
+    // forwarding these props
+    errors: PropTypes.any,
+  }
+  submitForm = ev => {
+    ev.preventDefault()
+    this.props.onSubmit(this._email.value, this._password.value)
   }
 
   componentWillUnmount() {
@@ -32,8 +31,6 @@ class Login extends React.Component {
   }
 
   render() {
-    const email = this.props.email
-    const password = this.props.password
     return (
       <div className="auth-page">
         <div className="container page">
@@ -49,7 +46,7 @@ class Login extends React.Component {
 
               <ListErrors errors={this.props.errors} />
 
-              <form onSubmit={this.submitForm(email, password)}>
+              <form onSubmit={this.submitForm}>
                 <fieldset>
 
                   <fieldset className="form-group">
@@ -57,8 +54,7 @@ class Login extends React.Component {
                       className="form-control form-control-lg"
                       type="email"
                       placeholder="Email"
-                      value={email}
-                      onChange={this.changeEmail}
+                      ref={node => this._email = node}
                     />
                   </fieldset>
 
@@ -67,8 +63,7 @@ class Login extends React.Component {
                       className="form-control form-control-lg"
                       type="password"
                       placeholder="Password"
-                      value={password}
-                      onChange={this.changePassword}
+                      ref={node => this._password = node}
                     />
                   </fieldset>
 
@@ -91,4 +86,5 @@ class Login extends React.Component {
   }
 }
 
+export {Login as Component}
 export default connect(mapStateToProps, mapDispatchToProps)(Login)

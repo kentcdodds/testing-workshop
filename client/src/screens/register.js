@@ -7,12 +7,6 @@ import ListErrors from '../shared/components/list-errors'
 const mapStateToProps = state => ({...state.auth})
 
 const mapDispatchToProps = dispatch => ({
-  onChangeEmail: value =>
-    dispatch({type: 'UPDATE_FIELD_AUTH', key: 'email', value}),
-  onChangePassword: value =>
-    dispatch({type: 'UPDATE_FIELD_AUTH', key: 'password', value}),
-  onChangeUsername: value =>
-    dispatch({type: 'UPDATE_FIELD_AUTH', key: 'username', value}),
   onSubmit: (username, email, password) => {
     const payload = agent.Auth.register(username, email, password)
     dispatch({type: 'REGISTER', payload})
@@ -21,15 +15,13 @@ const mapDispatchToProps = dispatch => ({
 })
 
 class Register extends React.Component {
-  constructor() {
-    super()
-    this.changeEmail = ev => this.props.onChangeEmail(ev.target.value)
-    this.changePassword = ev => this.props.onChangePassword(ev.target.value)
-    this.changeUsername = ev => this.props.onChangeUsername(ev.target.value)
-    this.submitForm = (username, email, password) => ev => {
-      ev.preventDefault()
-      this.props.onSubmit(username, email, password)
-    }
+  submitForm = ev => {
+    ev.preventDefault()
+    this.props.onSubmit(
+      this._username.value,
+      this._email.value,
+      this._password.value,
+    )
   }
 
   componentWillUnmount() {
@@ -37,10 +29,6 @@ class Register extends React.Component {
   }
 
   render() {
-    const email = this.props.email
-    const password = this.props.password
-    const username = this.props.username
-
     return (
       <div className="auth-page">
         <div className="container page">
@@ -56,7 +44,7 @@ class Register extends React.Component {
 
               <ListErrors errors={this.props.errors} />
 
-              <form onSubmit={this.submitForm(username, email, password)}>
+              <form onSubmit={this.submitForm}>
                 <fieldset>
 
                   <fieldset className="form-group">
@@ -64,8 +52,7 @@ class Register extends React.Component {
                       className="form-control form-control-lg"
                       type="text"
                       placeholder="Username"
-                      value={this.props.username}
-                      onChange={this.changeUsername}
+                      ref={node => this._username = node}
                       data-e2e="username"
                     />
                   </fieldset>
@@ -75,8 +62,7 @@ class Register extends React.Component {
                       className="form-control form-control-lg"
                       type="email"
                       placeholder="Email"
-                      value={this.props.email}
-                      onChange={this.changeEmail}
+                      ref={node => this._email = node}
                       data-e2e="email"
                     />
                   </fieldset>
@@ -86,8 +72,7 @@ class Register extends React.Component {
                       className="form-control form-control-lg"
                       type="password"
                       placeholder="Password"
-                      value={this.props.password}
-                      onChange={this.changePassword}
+                      ref={node => this._password = node}
                       data-e2e="password"
                     />
                   </fieldset>

@@ -4,7 +4,9 @@ import {promiseMiddleware, localStorageMiddleware} from './middleware'
 import reducer from './reducer'
 
 const getMiddleware = () => {
-  if (process.env.NODE_ENV === 'production') {
+  const isProd = process.env.NODE_ENV === 'production'
+  const isTest = process.env.NODE_ENV === 'test'
+  if (isProd || isTest) {
     return applyMiddleware(promiseMiddleware, localStorageMiddleware)
   } else {
     // Enable additional logging in non-production environments.
@@ -16,6 +18,8 @@ const getMiddleware = () => {
   }
 }
 
-const store = createStore(reducer, getMiddleware())
+export default createStoreWithState
 
-export default store
+function createStoreWithState(state = {}) {
+  return createStore(reducer, state, getMiddleware())
+}

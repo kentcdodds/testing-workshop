@@ -9,7 +9,7 @@ import {
   hashHistory,
 } from 'react-router'
 
-import store from './store'
+import createStore from './store'
 import App from './screens/app'
 import Article from './screens/article'
 import Editor from './screens/editor'
@@ -21,7 +21,7 @@ import Register from './screens/register'
 import Settings from './screens/settings'
 
 ReactDOM.render(
-  <Provider store={store}>
+  <Provider store={createStore()}>
     <Router
       history={
         process.env.NODE_ENV === 'production' ? browserHistory : hashHistory

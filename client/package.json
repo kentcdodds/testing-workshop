@@ -6,10 +6,12 @@
     "babel-jest": "^18.0.0",
     "babel-preset-react-app": "^2.1.0",
     "cross-env": "^3.1.4",
+    "enzyme": "^2.7.1",
     "jest": "^18.1.0",
     "nps": "^5.0.4",
     "nps-utils": "^1.2.0",
     "pushstate-server": "^2.2.1",
+    "react-addons-test-utils": "^15.4.2",
     "react-scripts": "^0.9.4"
   },
   "license": "MIT",
@@ -31,27 +33,5 @@
     "test": "nps test",
     "postinstall": "nps postinstall"
   },
-  "author": "Thinkster (https://github.com/gothinkster)",
-  "jest": {
-    "testEnvironment": "jest-environment-jsdom",
-    "transform": {
-      "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
-      "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
-      "^(?!.*\\.(js|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
-    },
-    "transformIgnorePatterns": [
-      "[/\\\\]node_modules[/\\\\].+\\.jsx$"
-    ],
-    "collectCoverageFrom": [
-      "src/**"
-    ],
-    "coverageThreshold": {
-      "global": {
-        "statements": 0,
-        "branches": 0,
-        "functions": 0,
-        "lines": 0
-      }
-    }
-  }
+  "author": "Thinkster (https://github.com/gothinkster)"
 }

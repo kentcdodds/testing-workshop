@@ -1,4 +1,4 @@
-export default (state = {}, action) => {
+export default (state = {inProgress: false, errors: null}, action) => {
   switch (action.type) {
     case 'LOGIN':
     case 'REGISTER':
@@ -16,8 +16,6 @@ export default (state = {}, action) => {
       } else {
         return state
       }
-    case 'UPDATE_FIELD_AUTH':
-      return {...state, [action.key]: action.value}
     default:
       return state
   }

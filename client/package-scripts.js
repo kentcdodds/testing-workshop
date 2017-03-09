@@ -1,12 +1,25 @@
-const {series, rimraf, commonTags, crossEnv} = require('nps-utils')
+const {series, rimraf, commonTags, crossEnv, concurrent} = require('nps-utils')
 module.exports = {
   scripts: {
     dev: crossEnv('PORT=8080 react-scripts start'),
     build: 'react-scripts build',
     default: 'pushstate-server build',
     test: {
-      default: 'jest --coverage',
-      watch: 'jest --watch',
+      default: concurrent.nps('test.unit', 'test.integration'),
+      unit: {
+        default: testEnv(
+          'jest --config=tests/jest.config.unit.json --coverage'
+        ),
+        watch: testEnv('jest --config=tests/jest.config.unit.json --watch'),
+      },
+      integration: {
+        default: testEnv(
+          'jest --config=tests/jest.config.integration.json --coverage'
+        ),
+        watch: testEnv(
+          'jest --config=tests/jest.config.integration.json --watch'
+        ),
+      },
     },
     postinstall: {
       description: commonTags.oneLine`
@@ -20,6 +33,10 @@ module.exports = {
       ),
     },
   },
+}
+
+function testEnv(script) {
+  return crossEnv(`NODE_ENV=test ${script}`)
 }
 
 // this is not transpiled
