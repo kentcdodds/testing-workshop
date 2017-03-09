@@ -766,17 +766,19 @@ create-hmac@^1.1.0, create-hmac@^1.1.2:
     create-hash "^1.1.0"
     inherits "^2.0.1"
 
-cross-env@^3.1.4:
-  version "3.1.4"
-  resolved "https://registry.yarnpkg.com/cross-env/-/cross-env-3.1.4.tgz#56e8bca96f17908a6eb1bc2012ca126f92842130"
+cross-env@^3.1.4, cross-env@^3.2.3:
+  version "3.2.3"
+  resolved "https://registry.yarnpkg.com/cross-env/-/cross-env-3.2.3.tgz#a43a0799b8ec422d0279b829ce8d7cf2da6b17ac"
   dependencies:
-    cross-spawn "^3.0.1"
+    cross-spawn "^5.1.0"
+    is-windows "^1.0.0"
 
-cross-spawn@^3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-3.0.1.tgz#1256037ecb9f0c5f79e3d6ef135e30770184b982"
+cross-spawn@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-5.1.0.tgz#e8bd0efee58fcff6f8f94510a0a554bbfa235449"
   dependencies:
     lru-cache "^4.0.1"
+    shebang-command "^1.2.0"
     which "^1.2.9"
 
 cryptiles@2.x.x:
@@ -1095,24 +1097,24 @@ escope@^3.6.0:
     esrecurse "^4.1.0"
     estraverse "^4.1.1"
 
-eslint-config-kentcdodds@^12.0.0:
-  version "12.0.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-kentcdodds/-/eslint-config-kentcdodds-12.0.0.tgz#009a42cf33a09ce7abad6895eb9fb71ae2eef3a9"
+eslint-config-kentcdodds@^12.1.1:
+  version "12.1.1"
+  resolved "https://registry.yarnpkg.com/eslint-config-kentcdodds/-/eslint-config-kentcdodds-12.1.1.tgz#177a2582480ca0726009c9e8beabba8a02f6976f"
   dependencies:
     babel-eslint "^7.1.1"
     babel-plugin-module-resolver "^2.5.0"
     eslint-import-resolver-babel-module "^3.0.0"
     eslint-import-resolver-webpack "^0.8.1"
-    eslint-plugin-babel "^4.1.0"
+    eslint-plugin-babel "^4.1.1"
     eslint-plugin-import "^2.2.0"
     eslint-plugin-jest "^19.0.1"
     eslint-plugin-jsx-a11y "^4.0.0"
     eslint-plugin-react "^6.10.0"
     webpack "^2.2.1"
 
-eslint-config-react-app@^0.5.2:
-  version "0.5.2"
-  resolved "https://registry.yarnpkg.com/eslint-config-react-app/-/eslint-config-react-app-0.5.2.tgz#15c558d1365323e0a23ed2dda7fbd4c9ef65706c"
+eslint-config-react-app@^0.6.1:
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/eslint-config-react-app/-/eslint-config-react-app-0.6.1.tgz#3898e56c8a1a51f21364780243c80d1c796e305e"
 
 eslint-import-resolver-babel-module@^3.0.0:
   version "3.0.0"
@@ -1152,13 +1154,13 @@ eslint-module-utils@^2.0.0:
     debug "2.2.0"
     pkg-dir "^1.0.0"
 
-eslint-plugin-babel@^4.1.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-babel/-/eslint-plugin-babel-4.1.0.tgz#837a74c092ad4d74f9fc74aed43f750906adc827"
+eslint-plugin-babel@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-babel/-/eslint-plugin-babel-4.1.1.tgz#ef285c87039b67beb3bbd227f5b0eed4fb376b87"
 
-eslint-plugin-flowtype@^2.30.0:
-  version "2.30.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-flowtype/-/eslint-plugin-flowtype-2.30.0.tgz#3054a265f9c8afe3046c3d41b72d32a736f9b4ae"
+eslint-plugin-flowtype@^2.30.3:
+  version "2.30.3"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-flowtype/-/eslint-plugin-flowtype-2.30.3.tgz#57835d2c0ed388da7a2725803ec32af2f437c301"
   dependencies:
     lodash "^4.15.0"
 
@@ -1202,9 +1204,9 @@ eslint-plugin-react@^6.10.0:
     jsx-ast-utils "^1.3.4"
     object.assign "^4.0.4"
 
-eslint@^3.13.1, eslint@^3.16.1:
-  version "3.16.1"
-  resolved "https://registry.yarnpkg.com/eslint/-/eslint-3.16.1.tgz#9bc31fc7341692cf772e80607508f67d711c5609"
+eslint@^3.13.1, eslint@^3.17.1:
+  version "3.17.1"
+  resolved "https://registry.yarnpkg.com/eslint/-/eslint-3.17.1.tgz#b80ae12d9c406d858406fccda627afce33ea10ea"
   dependencies:
     babel-code-frame "^6.16.0"
     chalk "^1.1.3"
@@ -1745,9 +1747,9 @@ human-interval@^0.1.5:
   version "0.1.6"
   resolved "https://registry.yarnpkg.com/human-interval/-/human-interval-0.1.6.tgz#0057973454764c3abcbeb2aed612fc9644e68488"
 
-husky@^0.13.1:
-  version "0.13.1"
-  resolved "https://registry.yarnpkg.com/husky/-/husky-0.13.1.tgz#11efc6fc10e0ec4e789776f6582be37d71ba4ccf"
+husky@^0.13.2:
+  version "0.13.2"
+  resolved "https://registry.yarnpkg.com/husky/-/husky-0.13.2.tgz#9dcf212f88e61dba36f17be1a202ed61ff6c0661"
   dependencies:
     chalk "^1.1.3"
     find-parent-dir "^0.3.0"
@@ -2568,9 +2570,9 @@ npmlog@^4.0.1:
     gauge "~2.7.1"
     set-blocking "~2.0.0"
 
-nps-utils@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/nps-utils/-/nps-utils-1.1.1.tgz#651dfd3f7323844d673dc1669f505a80b1ec9616"
+nps-utils@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/nps-utils/-/nps-utils-1.1.2.tgz#b21b0007f9db6412fb77e9b212147998bc7453b6"
   dependencies:
     any-shell-escape "^0.1.1"
     common-tags "^1.4.0"
@@ -2582,9 +2584,9 @@ nps-utils@^1.1.1:
     opn-cli "^3.1.0"
     rimraf "^2.6.1"
 
-nps@^5.0.3:
-  version "5.0.3"
-  resolved "https://registry.yarnpkg.com/nps/-/nps-5.0.3.tgz#1721fed493884951e1e09e9f06244bed721f7ea4"
+nps@^5.0.4:
+  version "5.0.4"
+  resolved "https://registry.yarnpkg.com/nps/-/nps-5.0.4.tgz#40336e7c689b17ba82a03d75c5293c165a1368ec"
   dependencies:
     arrify "^1.0.1"
     chalk "^1.1.3"
@@ -3277,6 +3279,16 @@ sha.js@^2.3.6:
   resolved "https://registry.yarnpkg.com/sha.js/-/sha.js-2.4.8.tgz#37068c2c476b6baf402d14a49c67f597921f634f"
   dependencies:
     inherits "^2.0.1"
+
+shebang-command@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/shebang-command/-/shebang-command-1.2.0.tgz#44aac65b695b03398968c39f363fee5deafdf1ea"
+  dependencies:
+    shebang-regex "^1.0.0"
+
+shebang-regex@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/shebang-regex/-/shebang-regex-1.0.0.tgz#da42f49740c0b42db2ca9728571cb190c98efea3"
 
 shelljs@^0.7.5:
   version "0.7.6"

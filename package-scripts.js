@@ -37,8 +37,8 @@ module.exports = {
     },
     build: {
       default: concurrent.nps('build.api', 'build.client'),
-      api: series('cd api', 'npm run build --silent'),
-      client: series('cd client', 'npm run build --silent'),
+      api: series('cd api', 'npm start build --silent'),
+      client: series('cd client', 'npm start build --silent'),
     },
     dev: {
       script: series(
@@ -54,8 +54,8 @@ module.exports = {
       description: 'starts everything in dev mode',
       // dev is the same as live for mongo for now...
       mongo: 'npm start mongo --silent',
-      client: series('cd client', 'npm run dev --silent'),
-      api: series('cd api', 'npm run dev --silent'),
+      client: series('cd client', 'npm start dev --silent'),
+      api: series('cd api', 'npm start dev --silent'),
     },
     e2e: {
       script: 'node scripts/e2e.js',

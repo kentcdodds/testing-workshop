@@ -6,10 +6,11 @@
     "babel-jest": "^19.0.0",
     "babel-preset-react-app": "^2.1.0",
     "cross-env": "^3.1.4",
-    "jest": "^19.0.2",
+    "jest": "^18.0.0",
+    "nps": "^5.0.4",
+    "nps-utils": "^1.2.0",
     "pushstate-server": "^2.2.1",
-    "react-scripts": "^0.9.0",
-    "rimraf": "^2.6.1"
+    "react-scripts": "^0.9.0"
   },
   "license": "MIT",
   "repository": "git@github.com:kentcdodds/testing-workshop.git",
@@ -27,12 +28,9 @@
     "superagent-promise": "^1.1.0"
   },
   "scripts": {
-    "dev": "react-scripts start",
-    "build": "react-scripts build",
-    "start": "pushstate-server build",
-    "test": "jest --coverage",
-    "test:watch": "jest --watch",
-    "postinstall": "echo \"removing client copy of eslint (will use root repo's version)\" && rimraf node_modules/eslint"
+    "start": "nps",
+    "test": "nps test",
+    "postinstall": "nps postinstall"
   },
   "author": "Thinkster (https://github.com/gothinkster)",
   "jest": {

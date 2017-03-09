@@ -4,12 +4,9 @@
     "kentcdodds/react",
     "kentcdodds/jest",
     "kentcdodds/jsx-a11y",
+    "kentcdodds/prettier",
   ],
   "rules": {
-    "max-len": [
-      2,
-      80
-    ],
     "import/newline-after-import": "off",
     "import/no-unassigned-import": "off",
     "import/prefer-default-export": "off",
