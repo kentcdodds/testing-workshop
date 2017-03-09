@@ -25,7 +25,7 @@ if (devMode) {
   `)
 }
 
-const serviceStartScriptName = devMode ? 'dev' : 'start'
+const serviceStartScriptName = devMode ? 'dev' : ''
 
 const cwd = path.join(__dirname, '..')
 const clientCwd = path.join(cwd, 'client')
@@ -60,29 +60,29 @@ const startMongoCommand = {
 }
 // load e2e mongo with data
 const loadDataCommand = {
-  script: `cd api && npm run generateData --silent`,
+  script: `cd api && npm start generateData --silent`,
   message: '⤵️  loading data into mongodb',
 }
 // build app server
 const buildApiCommand = devMode ? null : {
-  script: `npm run build --silent`,
+  script: `npm start build --silent`,
   message: '🔨  running api build',
 }
 // start app server
 const startApiCommand = {
-  script: `npm run ${serviceStartScriptName} --silent`,
+  script: `npm start ${serviceStartScriptName} --silent`,
   resolveEarly: true,
   resolveDelay: 500,
   message: '🔑  starting api server',
 }
 // build client
 const buildClientCommand = devMode ? null : {
-  script: `npm run build --silent`,
+  script: `npm start build --silent`,
   message: '🔨  running client build',
 }
 // start (built) client http-server
 const startClientCommand = {
-  script: `npm run ${serviceStartScriptName} --silent`,
+  script: `npm start ${serviceStartScriptName} --silent`,
   resolveEarly: true,
   resolveDelay: 500,
   message: '🔑  starting client server',
