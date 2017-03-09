@@ -1,6 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router'
-import smiley from './smiley-cyrus.jpg'
+import smiley from '../../shared/smiley-cyrus.jpg'
 
 function LoggedOutView(props) {
   if (!props.currentUser) {
@@ -37,7 +37,7 @@ function LoggedInView(props) {
       <ul className="nav navbar-nav pull-xs-right">
 
         <li className="nav-item">
-          <Link to="" className="nav-link">
+          <Link to="/" className="nav-link">
             Home
           </Link>
         </li>

@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import agent from '../agent'
-import ListErrors from './ListErrors'
+import agent from '../shared/agent'
+import ListErrors from '../shared/components/list-errors'
 
 class SettingsForm extends React.Component {
   constructor() {

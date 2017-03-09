@@ -1,9 +1,9 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import agent from '../../agent'
-import Banner from './Banner'
-import MainView from './MainView'
-import Tags from './Tags'
+import agent from '../../shared/agent'
+import Banner from './banner'
+import MainView from './main-view'
+import Tags from './tags'
 
 const Promise = global.Promise
 

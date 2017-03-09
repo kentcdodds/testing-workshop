@@ -1,22 +1,32 @@
 import ReactDOM from 'react-dom'
 import {Provider} from 'react-redux'
 import React from 'react'
-import {Router, Route, IndexRoute, browserHistory} from 'react-router'
-import store from './store'
+import {
+  Router,
+  Route,
+  IndexRoute,
+  browserHistory,
+  hashHistory,
+} from 'react-router'
 
-import App from './components/App'
-import Article from './components/Article'
-import Editor from './components/Editor'
-import Home from './components/Home'
-import Login from './components/Login'
-import ConnectedProfile from './components/Profile'
-import ProfileFavorites from './components/ProfileFavorites'
-import Register from './components/Register'
-import Settings from './components/Settings'
+import store from './store'
+import App from './screens/app'
+import Article from './screens/article'
+import Editor from './screens/editor'
+import Home from './screens/home'
+import Login from './screens/login'
+import ConnectedProfile from './screens/profile'
+import ProfileFavorites from './screens/profile-favorites'
+import Register from './screens/register'
+import Settings from './screens/settings'
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router history={browserHistory}>
+    <Router
+      history={
+        process.env.NODE_ENV === 'production' ? browserHistory : hashHistory
+      }
+    >
       <Route path="/" component={App}>
         <IndexRoute component={Home} />
         <Route path="login" component={Login} />

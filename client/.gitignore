@@ -1,0 +1,12 @@
+.DS_Store
+node_modules
+coverage
+build
+.DS_Store
+.env
+*.log
+npm-debug.log*
+.mongo-db
+.e2e
+cypress/videos
+dist

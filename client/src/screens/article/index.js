@@ -1,9 +1,9 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import marked from 'marked'
-import agent from '../../agent'
-import ArticleMeta from './ArticleMeta'
-import CommentContainer from './CommentContainer'
+import agent from '../../shared/agent'
+import ArticleMeta from './article-meta'
+import CommentContainer from './comment-container'
 
 const mapStateToProps = state => ({
   ...state.article,

@@ -1,7 +1,7 @@
-const {series, rimraf, commonTags} = require('nps-utils')
+const {series, rimraf, commonTags, crossEnv} = require('nps-utils')
 module.exports = {
   scripts: {
-    dev: 'react-scripts start',
+    dev: crossEnv('PORT=8080 react-scripts start'),
     build: 'react-scripts build',
     default: 'pushstate-server build',
     test: {

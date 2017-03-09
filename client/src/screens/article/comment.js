@@ -1,6 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router'
-import DeleteButton from './DeleteButton'
+import DeleteButton from './delete-button'
 
 const Comment = props => {
   const comment = props.comment

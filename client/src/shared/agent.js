@@ -1,9 +1,13 @@
 import axios from 'axios'
 import queryString from 'query-string'
 
-// const API_ROOT = 'https://conduit.productionready.io/api';
-const API_ROOT = queryString.parse(location.search)['api-url'] ||
-  'http://localhost:3000/api'
+const productionUrl = 'https://conduit.productionready.io/api'
+const developmentUrl = 'http://localhost:3000/api'
+const urlToUse = process.env.NODE_ENV === 'production' ?
+  productionUrl :
+  developmentUrl
+
+const API_ROOT = queryString.parse(location.search)['api-url'] || urlToUse
 
 const api = axios.create({
   baseURL: API_ROOT,

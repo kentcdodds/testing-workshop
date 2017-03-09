@@ -10,7 +10,7 @@
     "nps": "^5.0.4",
     "nps-utils": "^1.2.0",
     "pushstate-server": "^2.2.1",
-    "react-scripts": "^0.9.0"
+    "react-scripts": "^0.9.4"
   },
   "license": "MIT",
   "repository": "git@github.com:kentcdodds/testing-workshop.git",

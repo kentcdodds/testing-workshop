@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import agent from '../agent'
-import Header from './Header'
+import agent from '../shared/agent'
+import Header from '../shared/components/header'
 
 const mapStateToProps = state => ({
   appLoaded: state.common.appLoaded,

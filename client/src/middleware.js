@@ -1,4 +1,4 @@
-import agent from './agent'
+import agent from './shared/agent'
 
 const promiseMiddleware = store => next => action => {
   if (isPromise(action.payload)) {
