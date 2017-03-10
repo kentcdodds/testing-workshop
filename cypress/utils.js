@@ -5,18 +5,22 @@ export {visitApp, sel, getRandomUserData, createNewUser}
 function getRandomUserData() {
   const {
     username: cardUsername,
-    email,
+    email: cardEmail,
     avatar: image,
   } = faker.helpers.contextualCard()
 
   const username = cardUsername.toLowerCase().replace(/[ |.|_|-]/g, '')
+  const email = cardEmail.toLowerCase()
   const password = faker.internet.password()
   const bio = faker.hacker.phrase()
   return {username, password, bio, email, image}
 }
 
-function visitApp() {
-  return cy.visit(Cypress.env('CLIENT_URL'))
+function visitApp(route = '/') {
+  const fullUrl = Cypress.env('CLIENT_URL') + route
+  console.log('***************************', fullUrl)
+  // TODO: fix this
+  return cy.visit(fullUrl)
 }
 
 function sel(id) {

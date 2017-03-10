@@ -23,19 +23,28 @@ describe('Users', () => {
     cy.get(sel('profile-link')).should('not.exist')
   })
 
-  it.skip('should allow an existing user to login', () => {
-    createNewUser().then(({username, password}) => {
+  it('should allow an existing user to login', () => {
+    createNewUser().then(({email, username, password}) => {
       visitApp()
       cy
         .get(sel('sign-in-link'))
         .click()
-        .get(`form ${sel('username')}`)
-        .type(username)
+        .get(`form ${sel('email')}`)
+        .type(email)
         .get(`form ${sel('password')}`)
         .type(password)
         .get('form')
         .submit()
       verifyLoggedIn(username)
+    })
+  })
+
+  it.skip('should allow an existing user to update their settings', () => {
+    /* eslint-disable */
+    createNewUser().then(({email, username, password}) => {
+      // route needs to be set properly
+      visitApp('settings')
+      
     })
   })
 })

@@ -55,6 +55,7 @@ class Login extends React.Component {
                       type="email"
                       placeholder="Email"
                       ref={node => this._email = node}
+                      data-e2e="email"
                     />
                   </fieldset>
 
@@ -64,6 +65,7 @@ class Login extends React.Component {
                       type="password"
                       placeholder="Password"
                       ref={node => this._password = node}
+                      data-e2e="password"
                     />
                   </fieldset>
 
