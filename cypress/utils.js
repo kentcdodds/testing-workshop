@@ -1,6 +1,6 @@
 import faker from 'faker'
 
-export {visitApp, sel, getRandomUserData, createNewUser}
+export {visitApp, sel, getRandomUserData, createNewUser, loginAsNewUser}
 
 function getRandomUserData() {
   const {
@@ -17,9 +17,9 @@ function getRandomUserData() {
 }
 
 function visitApp(route = '/') {
-  const fullUrl = Cypress.env('CLIENT_URL') + route
-  console.log('***************************', fullUrl)
-  // TODO: fix this
+  const clientUrl = Cypress.env('CLIENT_URL')
+  const apiUrl = Cypress.env('API_URL')
+  const fullUrl = `${clientUrl}/#${route}?api-url=${encodeURIComponent(apiUrl)}`
   return cy.visit(fullUrl)
 }
 
@@ -34,5 +34,12 @@ function createNewUser() {
   return cy
     .log('create new user')
     .request('POST', `${Cypress.env('API_URL')}/users`, {user})
-    .then(resp => Object.assign({}, resp, user))
+    .then(({body}) => Object.assign({}, body.user, user))
+}
+
+function loginAsNewUser() {
+  return createNewUser().then(user => {
+    window.localStorage.setItem('jwt', user.token)
+    return user
+  })
 }

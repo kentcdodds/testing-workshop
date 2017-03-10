@@ -1,4 +1,10 @@
-import {visitApp, sel, getRandomUserData, createNewUser} from '../utils'
+import {
+  visitApp,
+  sel,
+  getRandomUserData,
+  createNewUser,
+  loginAsNewUser,
+} from '../utils'
 
 describe('Users', () => {
   it('should allow a new user to sign up and log out', () => {
@@ -29,9 +35,9 @@ describe('Users', () => {
       cy
         .get(sel('sign-in-link'))
         .click()
-        .get(`form ${sel('email')}`)
+        .get(sel('email'))
         .type(email)
-        .get(`form ${sel('password')}`)
+        .get(sel('password'))
         .type(password)
         .get('form')
         .submit()
@@ -39,12 +45,39 @@ describe('Users', () => {
     })
   })
 
-  it.skip('should allow an existing user to update their settings', () => {
-    /* eslint-disable */
-    createNewUser().then(({email, username, password}) => {
+  it('should allow an existing user to update their settings', () => {
+    loginAsNewUser().then(user => {
       // route needs to be set properly
-      visitApp('settings')
-      
+      visitApp('/settings')
+      const newUsername = `${user.username}55`
+      const photoUrl = 'https://randomuser.me/api/portraits/lego/7.jpg'
+      const newBio = 'a new bio'
+      const newEmail = `${user.username}_55@example.com`
+      cy
+        .get(sel('profile-url'))
+        .type(photoUrl)
+        .get(sel('username'))
+        .clear()
+        .type(newUsername)
+        .get(sel('bio'))
+        .type(newBio)
+        .get(sel('email'))
+        .clear()
+        .type(newEmail)
+        .get(sel('password'))
+        .type('5uper-5ecure')
+        .get('form')
+        .submit()
+
+      cy.wait(500)
+
+      visitApp('/settings')
+
+      cy.get(sel('profile-url')).should('have.value', photoUrl)
+      cy.get(sel('username')).should('have.value', newUsername)
+      // TODO: this is a bug. It's not saving the bio!
+      // cy.get(sel('bio')).should('have.value', newBio)
+      cy.get(sel('email')).should('have.value', newEmail)
     })
   })
 })

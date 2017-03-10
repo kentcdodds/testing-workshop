@@ -1,5 +1,13 @@
 const path = require('path')
-const {concurrent, series, runInNewWindow, crossEnv} = require('nps-utils')
+const {
+  concurrent,
+  series,
+  runInNewWindow,
+  crossEnv,
+  commonTags,
+} = require('nps-utils')
+
+const {oneLine} = commonTags
 
 module.exports = {
   scripts: {
@@ -51,10 +59,7 @@ module.exports = {
       client: series('cd client', 'npm start dev --silent'),
       api: series('cd api', 'npm start dev --silent'),
     },
-    e2e: {
-      default: 'node scripts/e2e.js',
-      dev: crossEnv('E2E_DEV=true node scripts/e2e.js'),
-    },
+    e2e: getE2EScripts(),
     test: {
       description: 'run the tests in parallel',
       script: concurrent.nps('api.tests', 'client.tests'),
@@ -87,6 +92,66 @@ module.exports = {
       script: 'all-contributors generate',
     },
   },
+}
+
+function getE2EScripts() {
+  const allScripts = ['client', 'cypress', 'mongo', 'api']
+  const cypresslessStarts = allScripts.filter(x => x !== 'cypress')
+
+  const {start, dev} = allScripts.reduce(
+    (startDev, scriptName) => {
+      const script = `node ./scripts/e2e-${scriptName}`
+      startDev.start[scriptName] = script
+      startDev.dev[scriptName] = crossEnv(`E2E_DEV=true ${script}`)
+      return startDev
+    },
+    {start: {}, dev: {}}
+  )
+  const defaultScript = getDefaultScript(
+    allScripts,
+    'start',
+    '--kill-others --success first'
+  )
+
+  const loadDatabase = crossEnv(
+    oneLine`
+      MONGO_PORT=27018
+      MONGO_PATH=./.e2e/mongo-db
+      MONGODB_URI="mongodb://localhost:27018/conduit"
+      node ./scripts/load-database.js
+    `
+  )
+
+  Object.assign(dev, {
+    default: getDefaultScript(allScripts, 'dev'),
+    services: {
+      description: oneLine`
+        starts all the services.
+        Use if you already have cypress running
+      `,
+      script: getDefaultScript(cypresslessStarts, 'dev'),
+    },
+  })
+
+  return {script: defaultScript, loadDatabase, start, dev}
+
+  function getDefaultScript(scripts, prefix, flags = '') {
+    const npsScripts = scripts.map(s => `"nps e2e.${prefix}.${s}"`)
+
+    const prepare = concurrent.nps('e2e.loadDatabase', 'build')
+
+    return series(
+      prepare,
+      oneLine`
+        concurrently
+        ${flags}
+        --prefix-colors "bgGreen.bold,bgBlue.bold,bgMagenta.bold,bgCyan.bold"
+        --prefix "[{name}]"
+        --names "${scripts.join(',')}"
+        ${npsScripts.join(' ')}
+      `
+    )
+  }
 }
 
 // this is not transpiled

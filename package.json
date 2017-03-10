@@ -15,6 +15,7 @@
     "all-contributors-cli": "^4.0.1",
     "babel-eslint": "^7.1.1",
     "common-tags": "^1.4.0",
+    "concurrently": "^3.4.0",
     "cypress-cli": "^0.13.1",
     "eslint": "^3.17.1",
     "eslint-config-kentcdodds": "^12.1.1",

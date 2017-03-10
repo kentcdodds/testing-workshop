@@ -1,16 +1,8 @@
 import axios from 'axios'
 import queryString from 'query-string'
 
-const productionUrl = 'https://conduit.productionready.io/api'
-const developmentUrl = 'http://localhost:3000/api'
-const urlToUse = process.env.NODE_ENV === 'production' ?
-  productionUrl :
-  developmentUrl
-
-const API_ROOT = queryString.parse(location.search)['api-url'] || urlToUse
-
 const api = axios.create({
-  baseURL: API_ROOT,
+  baseURL: getAPIUrl(),
 })
 const encode = encodeURIComponent
 const responseData = res => res.data
@@ -82,4 +74,16 @@ export default {
       delete api.defaults.headers.common.authorization
     }
   },
+}
+
+function getAPIUrl() {
+  const productionUrl = 'https://conduit.productionready.io/api'
+  const developmentUrl = 'http://localhost:3000/api'
+  const isProduction = process.env.NODE_ENV === 'production'
+  if (isProduction) {
+    return queryString.parse(location.search)['api-url'] || productionUrl
+  } else {
+    const search = location.hash.slice(location.hash.indexOf('?'))
+    return queryString.parse(search)['api-url'] || developmentUrl
+  }
 }

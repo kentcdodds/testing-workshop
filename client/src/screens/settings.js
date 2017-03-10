@@ -69,6 +69,7 @@ class SettingsForm extends React.Component {
               placeholder="URL of profile picture"
               value={this.state.image}
               onChange={this.updateState('image')}
+              data-e2e="profile-url"
             />
           </fieldset>
 
@@ -79,6 +80,7 @@ class SettingsForm extends React.Component {
               placeholder="Username"
               value={this.state.username}
               onChange={this.updateState('username')}
+              data-e2e="username"
             />
           </fieldset>
 
@@ -89,6 +91,7 @@ class SettingsForm extends React.Component {
               placeholder="Short bio about you"
               value={this.state.bio}
               onChange={this.updateState('bio')}
+              data-e2e="bio"
             />
           </fieldset>
 
@@ -99,6 +102,7 @@ class SettingsForm extends React.Component {
               placeholder="Email"
               value={this.state.email}
               onChange={this.updateState('email')}
+              data-e2e="email"
             />
           </fieldset>
 
@@ -109,6 +113,7 @@ class SettingsForm extends React.Component {
               placeholder="New Password"
               value={this.state.password}
               onChange={this.updateState('password')}
+              data-e2e="password"
             />
           </fieldset>
 
@@ -116,6 +121,7 @@ class SettingsForm extends React.Component {
             className="btn btn-lg btn-primary pull-xs-right"
             type="submit"
             disabled={this.state.inProgress}
+            data-e2e="update"
           >
             Update Settings
           </button>
