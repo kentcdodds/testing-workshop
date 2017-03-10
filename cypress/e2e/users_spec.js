@@ -83,9 +83,10 @@ describe('Users', () => {
 })
 
 function verifyLoggedIn(username) {
+  const hash = Cypress.env('E2E_DEV') ? '#/' : ''
   cy.window().its('localStorage').invoke('getItem', 'jwt').should('exist')
   return cy
     .get(sel('profile-link'))
     .should('contain.text', username)
-    .and('have.attr', 'href', `#/@${username}`)
+    .and('have.attr', 'href', `${hash}@${username}`)
 }

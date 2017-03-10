@@ -17,9 +17,11 @@ function getRandomUserData() {
 }
 
 function visitApp(route = '/') {
+  const hash = Cypress.env('E2E_DEV') ? '#' : ''
   const clientUrl = Cypress.env('CLIENT_URL')
   const apiUrl = Cypress.env('API_URL')
-  const fullUrl = `${clientUrl}/#${route}?api-url=${encodeURIComponent(apiUrl)}`
+  const query = `api-url=${encodeURIComponent(apiUrl)}`
+  const fullUrl = `${clientUrl}/${hash}${route}?${query}`
   return cy.visit(fullUrl)
 }
 

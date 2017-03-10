@@ -12,6 +12,7 @@ const clientUrl = `http://localhost:${clientServerPort}`
 const cypressEnv = Object.assign({}, process.env, {
   CYPRESS_CLIENT_URL: clientUrl,
   CYPRESS_API_URL: apiUrl,
+  CYPRESS_E2E_DEV: devMode,
 })
 
 const arg = devMode ? 'open' : 'run'
