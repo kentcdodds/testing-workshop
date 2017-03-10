@@ -9,4 +9,5 @@ npm-debug.log*
 .mongo-db
 .e2e
 cypress/videos
+cypress/screenshots
 dist
