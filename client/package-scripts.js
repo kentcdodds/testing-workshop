@@ -1,7 +1,7 @@
 const {series, rimraf, commonTags, crossEnv, concurrent} = require('nps-utils')
 module.exports = {
   scripts: {
-    dev: crossEnv('PORT=8080 react-scripts start'),
+    dev: crossEnv(`PORT=${process.env.PORT || '8080'} react-scripts start`),
     build: 'react-scripts build',
     default: 'pushstate-server build',
     test: {

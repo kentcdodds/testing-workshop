@@ -45,5 +45,5 @@ function verifyLoggedIn(username) {
   return cy
     .get(sel('profile-link'))
     .should('contain.text', username)
-    .and('have.attr', 'href', `@${username}`)
+    .and('have.attr', 'href', `#/@${username}`)
 }

@@ -14,7 +14,9 @@ const promiseMiddleware = store => next => action => {
           return
         }
         action.payload = res || {}
-        store.dispatch({type: 'ASYNC_END', promise: action.payload})
+        if (!action.skipTracking) {
+          store.dispatch({type: 'ASYNC_END', promise: action.payload})
+        }
         store.dispatch(action)
       },
       error => {
@@ -23,7 +25,7 @@ const promiseMiddleware = store => next => action => {
           return
         }
         action.error = true
-        action.payload = error.response.body
+        action.payload = error.response.data
         if (!action.skipTracking) {
           store.dispatch({type: 'ASYNC_END', promise: action.payload})
         }
@@ -39,7 +41,10 @@ const promiseMiddleware = store => next => action => {
 
 const localStorageMiddleware = () => next => action => {
   if (action.type === 'REGISTER' || action.type === 'LOGIN') {
-    if (!action.error) {
+    if (action.error) {
+      window.localStorage.removeItem('jwt')
+      agent.setToken(null)
+    } else {
       window.localStorage.setItem('jwt', action.payload.user.token)
       agent.setToken(action.payload.user.token)
     }

@@ -1,4 +1,5 @@
-export default (state = {inProgress: false, errors: null}, action) => {
+const defaultState = {inProgress: false, errors: null}
+export default (state = defaultState, action) => {
   switch (action.type) {
     case 'LOGIN':
     case 'REGISTER':
@@ -9,7 +10,7 @@ export default (state = {inProgress: false, errors: null}, action) => {
       }
     case 'LOGIN_PAGE_UNLOADED':
     case 'REGISTER_PAGE_UNLOADED':
-      return {}
+      return {...defaultState}
     case 'ASYNC_START':
       if (action.subtype === 'LOGIN' || action.subtype === 'REGISTER') {
         return {...state, inProgress: true}

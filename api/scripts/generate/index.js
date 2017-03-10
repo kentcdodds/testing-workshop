@@ -1,11 +1,18 @@
 /* eslint no-process-exit:0 */
 import mongoose from 'mongoose'
 import chalk from 'chalk'
+import getUserSchema from '../../src/models/user'
+import getArticleSchema from '../../src/models/article'
+import getCommentSchema from '../../src/models/comment'
 import generateDocumentObjects from './all'
 
-const User = mongoose.model('User')
-const Article = mongoose.model('Article')
-const Comment = mongoose.model('Comment')
+// use native promises
+mongoose.Promise = Promise
+
+const User = mongoose.model('User', getUserSchema())
+const Article = mongoose.model('Article', getArticleSchema())
+const Comment = mongoose.model('Comment', getCommentSchema())
+
 
 let connectPromise
 if (process.env.MONGODB_URI) {

@@ -64,10 +64,7 @@ function getArticlesRouter() {
           User.findOne({username: req.query.favorited}) :
           null,
       ])
-      .then(results => {
-        const author = results[0]
-        const favoriter = results[1]
-
+      .then(([author, favoriter]) => {
         if (author) {
           query.author = author._id
         }

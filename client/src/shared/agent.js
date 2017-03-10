@@ -76,6 +76,10 @@ export default {
   Profile,
   Tags,
   setToken: token => {
-    api.defaults.headers.common.authorization = `Token ${token}`
+    if (token) {
+      api.defaults.headers.common.authorization = `Token ${token}`
+    } else {
+      delete api.defaults.headers.common.authorization
+    }
   },
 }

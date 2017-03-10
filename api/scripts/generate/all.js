@@ -13,7 +13,6 @@ function generateDocumentObjects(firstUser) {
     const followees = getRandomUsers(users)
     followees.forEach(followee => {
       if (followee !== user) {
-        // console.log(JSON.stringify(followee))
         user.following.push(followee._id)
       }
     })

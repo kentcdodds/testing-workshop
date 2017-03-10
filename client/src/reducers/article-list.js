@@ -31,15 +31,23 @@ export default (state = {}, action) => {
         tag: action.tag,
         currentPage: 0,
       }
-    case 'HOME_PAGE_LOADED':
+    case 'HOME_PAGE_LOADED': {
+      if (action.error) {
+        return {}
+      }
+      const [
+        {tags},
+        {articles, articlesCount},
+      ] = action.payload
       return {
         ...state,
-        tags: action.payload[0].tags,
-        articles: action.payload[1].articles,
-        articlesCount: action.payload[1].articlesCount,
+        tags,
+        articles,
+        articlesCount,
         currentPage: 0,
         tab: action.tab,
       }
+    }
     case 'HOME_PAGE_UNLOADED':
       return {}
     case 'CHANGE_TAB':
@@ -52,13 +60,15 @@ export default (state = {}, action) => {
         tag: null,
       }
     case 'PROFILE_PAGE_LOADED':
-    case 'PROFILE_FAVORITES_PAGE_LOADED':
+    case 'PROFILE_FAVORITES_PAGE_LOADED': {
+      const [, {articles, articlesCount} = {}] = action.payload || []
       return {
         ...state,
-        articles: action.payload[1].articles,
-        articlesCount: action.payload[1].articlesCount,
+        articles,
+        articlesCount,
         currentPage: 0,
       }
+    }
     case 'PROFILE_PAGE_UNLOADED':
     case 'PROFILE_FAVORITES_PAGE_UNLOADED':
       return {}
