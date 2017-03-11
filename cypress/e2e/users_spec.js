@@ -1,5 +1,4 @@
 import {
-  visitApp,
   sel,
   getRandomUserData,
   createNewUser,
@@ -9,8 +8,8 @@ import {
 describe('Users', () => {
   it('should allow a new user to sign up and log out', () => {
     const {username, email, password} = getRandomUserData()
-    visitApp()
     cy
+      .visitApp()
       .get(sel('sign-up-link'))
       .click()
       .get(`form ${sel('username')}`)
@@ -35,8 +34,8 @@ describe('Users', () => {
 
   it('should allow an existing user to login', () => {
     createNewUser().then(({email, username, password}) => {
-      visitApp()
       cy
+        .visitApp()
         .get(sel('sign-in-link'))
         .click()
         .get(sel('email'))
@@ -52,7 +51,6 @@ describe('Users', () => {
   it('should allow an existing user to update their settings', () => {
     loginAsNewUser().then(user => {
       // route needs to be set properly
-      visitApp('/settings')
       const newUsername = `${user.username}55`
       const photoUrl = 'https://randomuser.me/api/portraits/lego/7.jpg'
       const newBio = 'a new bio'
@@ -60,6 +58,7 @@ describe('Users', () => {
       cy
         .server()
         .route('PUT', `${Cypress.env('API_URL')}/user`).as('putUser')
+        .visitApp('/settings')
         .get(sel('profile-url'))
         .type(photoUrl)
         .get(sel('username'))
@@ -77,7 +76,7 @@ describe('Users', () => {
 
       cy.wait('@putUser')
 
-      visitApp('/settings')
+      .visitApp('/settings')
 
       cy.get(sel('profile-url')).should('have.value', photoUrl)
       cy.get(sel('username')).should('have.value', newUsername)
