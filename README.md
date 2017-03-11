@@ -87,23 +87,25 @@ To get the app up and running (and really see if it worked), run:
 npm start dev
 ```
 
-This _should_ start `mongod`, the `api` server, and the `client` server in individual terminal tabs/windows. **This is
-experimental** and if it doesn't work for you please [report it][issue].
-
-With this, your browser should open up automatically to `http://localhost:8080` (if it doesn't, just open that yourself)
-and you should be able to start messing around with the app.
+This _should_ start `mongod`, the `api` server, and the `client` server all at
+the same time. Your browser should open up automatically to
+`http://localhost:8080` (if it doesn't, just open that yourself) and you should
+be able to start messing around with the app.
 
 Here's what you should be looking at:
 
 <img src="other/conduit-screenshot.png" alt="Conduit Screenshot" title="Conduit Screenshot" width="700" />
 
-If this fails at any point for you, please first see [Troubleshooting](#troubleshooting) and if you still can't get it
-working, [make an issue][issue].
+If this fails at any point for you, please first see
+[Troubleshooting](#troubleshooting) and if you still can't get it working,
+[make an issue][issue].
 
-**To stop all the servers**, go to each window and hit <kbd>Ctrl</kbd> + <kbd>C</kbd>.
+**To stop all the servers**, hit <kbd>Ctrl</kbd> + <kbd>C</kbd>.
 
-> Protip: we're using [`nps`](https://github.com/kentcdodds/nps) in this project. If you want to type less, then you can
-> Install `nps` globally: `yarn global add nps` (or `npm i -g nps`) and then you can run `nps` instead of `npm start`
+> Protip: we're using [`nps`](https://github.com/kentcdodds/nps) in this
+> project. If you want to type less, then you can install `nps` globally:
+> `yarn global add nps` (or `npm i -g nps`) and then you can run `nps`
+> instead of `npm start`
 
 ### Troubleshooting
 

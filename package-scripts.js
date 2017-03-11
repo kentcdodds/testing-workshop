@@ -11,13 +11,12 @@ const {oneLine} = commonTags
 
 module.exports = {
   scripts: {
-    default: {
-      script: series(
-        runInNewWindow('npm start mongo --silent'),
-        runInNewWindow('npm start api --silent'),
-        runInNewWindow('npm start client --silent')
-      ),
-    },
+    default: concurrent.nps('mongo', 'api', 'client'),
+    separateStart: series(
+      runInNewWindow.nps('mongo'),
+      runInNewWindow.nps('api'),
+      runInNewWindow.nps('client')
+    ),
     mongo: {
       script: series(
         'mkdirp .mongo-db',
@@ -35,8 +34,8 @@ module.exports = {
       },
     },
     client: {
-      script: series('cd client', 'npm start --silent -- 8080'),
-      description: 'start the client dev server',
+      script: series('cd client', 'npm start --silent -- "default 8080"'),
+      description: 'start the client server',
       test: {
         script: series('cd client', 'npm test --silent'),
         description: 'run the client tests',
@@ -48,9 +47,10 @@ module.exports = {
       client: series('cd client', 'npm start build --silent'),
     },
     dev: {
-      script: series(
+      script: concurrent.nps('dev.mongo', 'dev.client', 'dev.api'),
+      separate: series(
         runInNewWindow.nps('dev.mongo --silent'),
-        runInNewWindow(crossEnv('PORT=8080 npm start dev.client --silent')),
+        runInNewWindow.nps('npm start dev.client --silent'),
         runInNewWindow.nps('dev.api --silent')
       ),
       description: 'starts everything in dev mode',
