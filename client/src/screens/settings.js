@@ -15,11 +15,12 @@ class SettingsForm extends React.Component {
       password: '',
     }
 
-    this.updateState = field => ev => {
-      const state = this.state
-      const newState = Object.assign({}, state, {[field]: ev.target.value})
-      this.setState(newState)
-    }
+    this.updateState = field =>
+      ev => {
+        const state = this.state
+        const newState = Object.assign({}, state, {[field]: ev.target.value})
+        this.setState(newState)
+      }
 
     this.submitForm = ev => {
       ev.preventDefault()

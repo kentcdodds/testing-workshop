@@ -176,14 +176,16 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    onFollow: username => dispatch({
-      type: 'FOLLOW_USER',
-      payload: agent.Profile.follow(username),
-    }),
-    onUnfollow: username => dispatch({
-      type: 'UNFOLLOW_USER',
-      payload: agent.Profile.unfollow(username),
-    }),
+    onFollow: username =>
+      dispatch({
+        type: 'FOLLOW_USER',
+        payload: agent.Profile.follow(username),
+      }),
+    onUnfollow: username =>
+      dispatch({
+        type: 'UNFOLLOW_USER',
+        payload: agent.Profile.unfollow(username),
+      }),
   }
 }
 

@@ -35,10 +35,7 @@ export default (state = {}, action) => {
       if (action.error) {
         return {}
       }
-      const [
-        {tags},
-        {articles, articlesCount},
-      ] = action.payload
+      const [{tags}, {articles, articlesCount}] = action.payload
       return {
         ...state,
         tags,

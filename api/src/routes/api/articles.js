@@ -57,13 +57,12 @@ function getArticlesRouter() {
       query.tagList = {$in: [req.query.tag]}
     }
 
-    Promise
-      .all([
-        req.query.author ? User.findOne({username: req.query.author}) : null,
-        req.query.favorited ?
-          User.findOne({username: req.query.favorited}) :
-          null,
-      ])
+    Promise.all([
+      req.query.author ? User.findOne({username: req.query.author}) : null,
+      req.query.favorited ?
+        User.findOne({username: req.query.favorited}) :
+        null,
+    ])
       .then(([author, favoriter]) => {
         if (author) {
           query.author = author._id
@@ -75,23 +74,21 @@ function getArticlesRouter() {
           query._id = {$in: []}
         }
 
-        return Promise
-          .all([
-            Article.find(query)
-              .limit(Number(limit))
-              .skip(Number(offset))
-              .sort({createdAt: 'desc'})
-              .populate('author')
-              .exec(),
-            Article.count(query).exec(),
-            req.payload ? User.findById(req.payload.id) : null,
-          ])
-          .then(([articles, articlesCount, user]) => {
-            return res.json({
-              articles: articles.map(article => article.toJSONFor(user)),
-              articlesCount,
-            })
+        return Promise.all([
+          Article.find(query)
+            .limit(Number(limit))
+            .skip(Number(offset))
+            .sort({createdAt: 'desc'})
+            .populate('author')
+            .exec(),
+          Article.count(query).exec(),
+          req.payload ? User.findById(req.payload.id) : null,
+        ]).then(([articles, articlesCount, user]) => {
+          return res.json({
+            articles: articles.map(article => article.toJSONFor(user)),
+            articlesCount,
           })
+        })
       })
       .catch(next)
   })
@@ -113,15 +110,14 @@ function getArticlesRouter() {
         return res.sendStatus(401)
       }
 
-      return Promise
-        .all([
-          Article.find({author: {$in: user.following}})
-            .limit(Number(limit))
-            .skip(Number(offset))
-            .populate('author')
-            .exec(),
-          Article.count({author: {$in: user.following}}),
-        ])
+      return Promise.all([
+        Article.find({author: {$in: user.following}})
+          .limit(Number(limit))
+          .skip(Number(offset))
+          .populate('author')
+          .exec(),
+        Article.count({author: {$in: user.following}}),
+      ])
         .then(results => {
           const articles = results[0]
           const articlesCount = results[1]
@@ -158,11 +154,10 @@ function getArticlesRouter() {
 
   // return a article
   router.get('/:article', auth.optional, (req, res, next) => {
-    Promise
-      .all([
-        req.payload ? User.findById(req.payload.id) : null,
-        req.article.populate('author').execPopulate(),
-      ])
+    Promise.all([
+      req.payload ? User.findById(req.payload.id) : null,
+      req.article.populate('author').execPopulate(),
+    ])
       .then(results => {
         const user = results[0]
 

@@ -13,7 +13,6 @@ const User = mongoose.model('User', getUserSchema())
 const Article = mongoose.model('Article', getArticleSchema())
 const Comment = mongoose.model('Comment', getCommentSchema())
 
-
 let connectPromise
 if (process.env.MONGODB_URI) {
   connectPromise = mongoose.connect(process.env.MONGODB_URI)

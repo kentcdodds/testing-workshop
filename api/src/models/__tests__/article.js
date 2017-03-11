@@ -26,21 +26,18 @@ test('generates a slug when validated', () => {
   )
 })
 
-test(
-  'updates the favorite count via Users who have it in favorites',
-  async () => {
-    const {article, MockUserModel} = generateArticle()
-    await article.updateFavoriteCount()
-    expect(article.save).toHaveBeenCalledTimes(1)
-    expect(MockUserModel.count).toHaveBeenCalledTimes(1)
-    expect(MockUserModel.count).toHaveBeenCalledWith({
-      favorites: {
-        $in: [article._id],
-      },
-    })
-    expect(article.favoritesCount).toBe(MockUserModel._mockData.count)
-  },
-)
+test('updates the favorite count via favoriters', async () => {
+  const {article, MockUserModel} = generateArticle()
+  await article.updateFavoriteCount()
+  expect(article.save).toHaveBeenCalledTimes(1)
+  expect(MockUserModel.count).toHaveBeenCalledTimes(1)
+  expect(MockUserModel.count).toHaveBeenCalledWith({
+    favorites: {
+      $in: [article._id],
+    },
+  })
+  expect(article.favoritesCount).toBe(MockUserModel._mockData.count)
+})
 
 test.skip('can get JSON for a specific user', () => {
   const {article} = generateArticle()

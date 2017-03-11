@@ -46,6 +46,7 @@ function getSubmitButton(wrapper) {
 }
 
 function getErrors(wrapper) {
-  return Array.from(wrapper.find('.error-messages li').getNodes())
-    .map(n => n.textContent)
+  return Array.from(wrapper.find('.error-messages li').getNodes()).map(
+    n => n.textContent,
+  )
 }
