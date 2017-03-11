@@ -25,12 +25,11 @@ describe('Users', () => {
     verifyLoggedIn(username)
 
     cy.get(sel('settings')).click().get(sel('logout')).click()
-    // TODO: make this assertion work
-    // cy
-    //   .window()
-    //   .its('localStorage')
-    //   .invoke('getItem', 'jwt')
-    //   .should('be.empty')
+    cy
+      .window()
+      .its('localStorage')
+      .invoke('getItem', 'jwt')
+      .should('be.null')
     cy.get(sel('profile-link')).should('not.exist')
   })
 
@@ -89,12 +88,11 @@ describe('Users', () => {
 
 function verifyLoggedIn(username) {
   const hash = Cypress.env('E2E_DEV') ? '#/' : ''
-  // TODO: make this assertion work
-  // cy
-  //   .window()
-  //   .its('localStorage')
-  //   .invoke('getItem', 'jwt')
-  //   .should('not.be.empty')
+  cy
+    .window()
+    .its('localStorage')
+    .invoke('getItem', 'jwt')
+    .should('not.be.null')
   return cy
     .get(sel('profile-link'))
     .should('contain.text', username)
