@@ -117,25 +117,50 @@ function getE2EScripts() {
 
   Object.assign(dev, {
     default: getDefaultScript(allScripts, 'dev'),
+    noBuild: getBuildessScript(allScripts, 'dev'),
     services: {
       description: oneLine`
         starts all the services.
         Use if you already have cypress running
       `,
       script: getDefaultScript(cypresslessStarts, 'dev'),
+      noBuild: getBuildessScript(cypresslessStarts, 'dev'),
     },
   })
 
-  const noBuild = series(
-    'nps e2e.loadDatabase',
-    getConcurrentScript(allScripts, 'start', '--kill-others --success first')
+  const noBuild = getBuildessScript(
+    allScripts,
+    'start',
+    '--kill-others --success first'
   )
 
-  return {script: defaultScript, loadDatabase, start, dev, noBuild}
+  return {
+    script: defaultScript,
+    description: oneLine`
+      Runs everything you need for a full E2E test run.
+      Note that there are various combinations of these
+      scripts which you can run. See the child scripts
+      of e2e. Also note that if you specify the
+      environment variable of \`STDIO=inherit\`, you will
+      be able to see the output of services which could
+      bet quite handy.
+    `,
+    loadDatabase,
+    start,
+    dev,
+    noBuild,
+  }
 
   function getDefaultScript(scripts, prefix, flags = '') {
     const prepare = concurrent.nps('e2e.loadDatabase', 'build')
     return series(prepare, getConcurrentScript(scripts, prefix, flags))
+  }
+
+  function getBuildessScript(scripts, prefix, flags) {
+    return series(
+      'nps e2e.loadDatabase',
+      getConcurrentScript(scripts, prefix, flags)
+    )
   }
 
   function getConcurrentScript(scripts, prefix, flags = '') {
