@@ -22,7 +22,7 @@ This project follows the [all contributors][all-contributors] specification. To 
 contributors on the README.md, please use the automated script as part of your PR:
 
 ```console
-yarn run add-contributor
+yarn start add-contributor
 ```
 
 Follow the prompt. If you've already added yourself to the list and are making a new type of contribution, you can run

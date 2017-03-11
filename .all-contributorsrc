@@ -47,6 +47,16 @@
         "bug",
         "code"
       ]
+    },
+    {
+      "login": "paulfalgout",
+      "name": "Paul Falgout",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/2028470?v=3",
+      "profile": "http://otterball.com",
+      "contributions": [
+        "code",
+        "doc"
+      ]
     }
   ]
 }
