@@ -1,19 +1,12 @@
 import faker from 'faker'
+import generateUserData from '../other/generate/user'
 
 export {visitApp, sel, getRandomUserData, createNewUser, loginAsNewUser}
 
 function getRandomUserData() {
-  const {
-    username: cardUsername,
-    email: cardEmail,
-    avatar: image,
-  } = faker.helpers.contextualCard()
-
-  const username = cardUsername.toLowerCase().replace(/[ |.|_|-]/g, '')
-  const email = cardEmail.toLowerCase()
   const password = faker.internet.password()
-  const bio = faker.hacker.phrase()
-  return {username, password, bio, email, image}
+  const user = generateUserData(password)
+  return Object.assign(user, {password})
 }
 
 function visitApp(route = '/') {

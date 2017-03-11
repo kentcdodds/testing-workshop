@@ -14,6 +14,8 @@
   "devDependencies": {
     "all-contributors-cli": "^4.0.1",
     "babel-eslint": "^7.1.1",
+    "babel-preset-env": "^1.2.1",
+    "babel-preset-stage-2": "^6.22.0",
     "common-tags": "^1.4.0",
     "concurrently": "^3.4.0",
     "cypress-cli": "^0.13.1",
@@ -26,6 +28,7 @@
     "eslint-plugin-react": "^6.10.0",
     "faker": "^4.1.0",
     "husky": "^0.13.2",
+    "lodash": "^4.17.4",
     "mkdirp": "^0.5.1",
     "nps": "^5.0.4",
     "nps-utils": "^1.2.0",

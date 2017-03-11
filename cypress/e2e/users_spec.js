@@ -24,11 +24,7 @@ describe('Users', () => {
     verifyLoggedIn(username)
 
     cy.get(sel('settings')).click().get(sel('logout')).click()
-    cy
-      .window()
-      .its('localStorage')
-      .invoke('getItem', 'jwt')
-      .should('be.null')
+    cy.window().its('localStorage').invoke('getItem', 'jwt').should('be.null')
     cy.get(sel('profile-link')).should('not.exist')
   })
 
@@ -80,8 +76,7 @@ describe('Users', () => {
 
       cy.get(sel('profile-url')).should('have.value', photoUrl)
       cy.get(sel('username')).should('have.value', newUsername)
-      // TODO: this is a bug. It's not saving the bio!
-      // cy.get(sel('bio')).should('have.value', newBio)
+      cy.get(sel('bio')).should('have.value', newBio)
       cy.get(sel('email')).should('have.value', newEmail)
     })
   })

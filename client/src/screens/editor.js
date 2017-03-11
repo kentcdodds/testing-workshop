@@ -27,34 +27,38 @@ class Editor extends React.Component {
     this.changeDescription = updateFieldEvent('description')
     this.changeBody = updateFieldEvent('body')
     this.changeTagInput = updateFieldEvent('tagInput')
-
-    this.watchForEnter = ev => {
-      if (ev.keyCode === 13) {
-        ev.preventDefault()
-        this.props.onAddTag()
-      }
-    }
-
-    this.removeTagHandler = tag => () => {
-      this.props.onRemoveTag(tag)
-    }
-
-    this.submitForm = ev => {
+  }
+  watchForEnter = ev => {
+    if (ev.keyCode === 13) {
       ev.preventDefault()
-      const article = {
-        title: this.props.title,
-        description: this.props.description,
-        body: this.props.body,
-        tagList: this.props.tagList,
-      }
-
-      const slug = {slug: this.props.articleSlug}
-      const promise = this.props.articleSlug ?
-        agent.Articles.update(Object.assign(article, slug)) :
-        agent.Articles.create(article)
-
-      this.props.onSubmit(promise)
+      this.props.onAddTag()
     }
+  }
+
+  removeTagHandler = tag =>
+    ev => {
+      if (ev.type === 'click' || ev.keyCode === 13) {
+        this.props.onRemoveTag(tag)
+      }
+    }
+  submitForm = ev => {
+    ev.preventDefault()
+    if (document.activeElement === this._tags) {
+      return
+    }
+    const article = {
+      title: this.props.title,
+      description: this.props.description,
+      body: this.props.body,
+      tagList: this.props.tagList,
+    }
+
+    const slug = {slug: this.props.articleSlug}
+    const promise = this.props.articleSlug ?
+      agent.Articles.update(Object.assign(article, slug)) :
+      agent.Articles.create(article)
+
+    this.props.onSubmit(promise)
   }
 
   componentWillReceiveProps(nextProps) {
@@ -87,7 +91,7 @@ class Editor extends React.Component {
 
               <ListErrors errors={this.props.errors} />
 
-              <form>
+              <form onSubmit={this.submitForm}>
                 <fieldset>
 
                   <fieldset className="form-group">
@@ -97,6 +101,7 @@ class Editor extends React.Component {
                       placeholder="Article Title"
                       value={this.props.title}
                       onChange={this.changeTitle}
+                      data-e2e="title"
                     />
                   </fieldset>
 
@@ -107,6 +112,7 @@ class Editor extends React.Component {
                       placeholder="What's this article about?"
                       value={this.props.description}
                       onChange={this.changeDescription}
+                      data-e2e="description"
                     />
                   </fieldset>
 
@@ -117,6 +123,7 @@ class Editor extends React.Component {
                       placeholder="Write your article (in markdown)"
                       value={this.props.body}
                       onChange={this.changeBody}
+                      data-e2e="body"
                     />
                   </fieldset>
 
@@ -128,6 +135,8 @@ class Editor extends React.Component {
                       value={this.props.tagInput}
                       onChange={this.changeTagInput}
                       onKeyUp={this.watchForEnter}
+                      ref={node => this._tags = node}
+                      data-e2e="tags"
                     />
 
                     <div className="tag-list">
@@ -150,9 +159,9 @@ class Editor extends React.Component {
 
                   <button
                     className="btn btn-lg pull-xs-right btn-primary"
-                    type="button"
+                    type="submit"
                     disabled={this.props.inProgress}
-                    onClick={this.submitForm}
+                    data-e2e="submit"
                   >
                     Publish Article
                   </button>

@@ -89,20 +89,22 @@ module.exports = {
 
 function getE2EScripts() {
   const allScripts = ['client', 'cypress', 'mongo', 'api']
-  const cypresslessStarts = allScripts.filter(x => x !== 'cypress')
+  const cypresslessScripts = allScripts.filter(x => x !== 'cypress')
+  const devMap = s => `"${crossEnv(`STDIO=inherit nps e2e.dev.${s}`)}"`
+  const runMap = s => `"nps e2e.run.${s}"`
 
-  const {start, dev} = allScripts.reduce(
-    (startDev, scriptName) => {
+  const {run, dev} = allScripts.reduce(
+    (runDev, scriptName) => {
       const script = `node ./scripts/e2e-${scriptName}`
-      startDev.start[scriptName] = script
-      startDev.dev[scriptName] = crossEnv(`E2E_DEV=true ${script}`)
-      return startDev
+      runDev.run[scriptName] = script
+      runDev.dev[scriptName] = crossEnv(`E2E_DEV=true ${script}`)
+      return runDev
     },
-    {start: {}, dev: {}}
+    {run: {}, dev: {}}
   )
   const defaultScript = getDefaultScript(
     allScripts,
-    'start',
+    runMap,
     '--kill-others --success first'
   )
 
@@ -116,21 +118,19 @@ function getE2EScripts() {
   )
 
   Object.assign(dev, {
-    default: getDefaultScript(allScripts, 'dev'),
-    noBuild: getBuildessScript(allScripts, 'dev'),
+    default: getConcurrentScript(allScripts, devMap),
     services: {
       description: oneLine`
         starts all the services.
         Use if you already have cypress running
       `,
-      script: getDefaultScript(cypresslessStarts, 'dev'),
-      noBuild: getBuildessScript(cypresslessStarts, 'dev'),
+      script: getConcurrentScript(cypresslessScripts, devMap),
     },
   })
 
   const noBuild = getBuildessScript(
     allScripts,
-    'start',
+    runMap,
     '--kill-others --success first'
   )
 
@@ -146,7 +146,7 @@ function getE2EScripts() {
       bet quite handy.
     `,
     loadDatabase,
-    start,
+    run,
     dev,
     noBuild,
   }
@@ -163,8 +163,8 @@ function getE2EScripts() {
     )
   }
 
-  function getConcurrentScript(scripts, prefix, flags = '') {
-    const npsScripts = scripts.map(s => `"nps e2e.${prefix}.${s}"`)
+  function getConcurrentScript(scripts, map, flags = '') {
+    const npsScripts = scripts.map(map)
 
     return oneLine`
       concurrently

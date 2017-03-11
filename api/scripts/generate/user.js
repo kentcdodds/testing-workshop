@@ -1,5 +1,5 @@
 import mongoose from 'mongoose'
-import generateUserData from '../../src/models/__tests__/helpers/generate/user'
+import generateUserData from '../../../other/generate/user'
 import {commonProps} from './utils'
 
 export default createUser

@@ -26,6 +26,7 @@ test('can generate auth JSON', () => {
   const expected = {
     username: user.username,
     email: user.email,
+    bio: user.bio,
     image: user.image,
     token: expect.stringMatching(/.*\..*\..*/),
   }

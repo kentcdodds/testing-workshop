@@ -70,6 +70,7 @@ function getUserSchema() {
     return {
       username: this.username,
       email: this.email,
+      bio: this.bio,
       token: this.generateJWT(),
       image: this.image,
     }

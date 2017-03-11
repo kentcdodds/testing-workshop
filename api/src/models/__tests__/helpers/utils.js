@@ -2,8 +2,8 @@ import mongoose from 'mongoose'
 import _ from 'lodash'
 import getArticleSchema from '../../article'
 import getUserSchema from '../../user'
-import generateUserData from './generate/user'
-import generateArticleData from './generate/article'
+import generateUserData from '../../../../../other/generate/user'
+import generateArticleData from '../../../../../other/generate/article'
 
 export {
   generateUser,
