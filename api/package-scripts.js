@@ -7,7 +7,7 @@ module.exports = {
     generateData: 'babel-node scripts/generate',
     build: series(
       rimraf('dist'),
-      'babel --copy-files --out-dir dist --ignore *.test.js,__mocks__ src'
+      'babel --copy-files --out-dir dist --ignore __tests__,__mocks__ src'
     ),
     test: {
       default: 'jest --coverage',

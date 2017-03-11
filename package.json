@@ -9,7 +9,7 @@
     "start": "nps",
     "test": "nps test",
     "precommit": "nps validate",
-    "setup": "node ./scripts/verify && node ./scripts/install && node ./scripts/load-database && npm start validate && npm start e2e"
+    "setup": "node ./scripts/verify && node ./scripts/install && node ./scripts/load-database && npm start validate"
   },
   "devDependencies": {
     "all-contributors-cli": "^4.0.1",

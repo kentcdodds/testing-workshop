@@ -73,14 +73,7 @@ module.exports = {
       description: 'autoformat project files',
     },
     validate: {
-      script: concurrent.nps(
-        'build.api',
-        'build.client',
-        'lint',
-        'api.test',
-        'client.test',
-        'e2e'
-      ),
+      script: concurrent.nps('lint', 'api.test', 'client.test', 'e2e'),
       description: 'validates that things are set up properly',
     },
     addContributor: {
@@ -133,24 +126,29 @@ function getE2EScripts() {
     },
   })
 
-  return {script: defaultScript, loadDatabase, start, dev}
+  const noBuild = series(
+    'nps e2e.loadDatabase',
+    getConcurrentScript(allScripts, 'start', '--kill-others --success first')
+  )
+
+  return {script: defaultScript, loadDatabase, start, dev, noBuild}
 
   function getDefaultScript(scripts, prefix, flags = '') {
+    const prepare = concurrent.nps('e2e.loadDatabase', 'build')
+    return series(prepare, getConcurrentScript(scripts, prefix, flags))
+  }
+
+  function getConcurrentScript(scripts, prefix, flags = '') {
     const npsScripts = scripts.map(s => `"nps e2e.${prefix}.${s}"`)
 
-    const prepare = concurrent.nps('e2e.loadDatabase', 'build')
-
-    return series(
-      prepare,
-      oneLine`
-        concurrently
-        ${flags}
-        --prefix-colors "bgGreen.bold,bgBlue.bold,bgMagenta.bold,bgCyan.bold"
-        --prefix "[{name}]"
-        --names "${scripts.join(',')}"
-        ${npsScripts.join(' ')}
-      `
-    )
+    return oneLine`
+      concurrently
+      ${flags}
+      --prefix-colors "bgGreen.bold,bgBlue.bold,bgMagenta.bold,bgCyan.bold"
+      --prefix "[{name}]"
+      --names "${scripts.join(',')}"
+      ${npsScripts.join(' ')}
+    `
   }
 }
 
