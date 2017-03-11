@@ -58,6 +58,8 @@ describe('Users', () => {
       const newBio = 'a new bio'
       const newEmail = `${user.username}_55@example.com`
       cy
+        .server()
+        .route('PUT', `${Cypress.env('API_URL')}/user`).as('putUser')
         .get(sel('profile-url'))
         .type(photoUrl)
         .get(sel('username'))
@@ -73,7 +75,7 @@ describe('Users', () => {
         .get('form')
         .submit()
 
-      cy.wait(500)
+      cy.wait('@putUser')
 
       visitApp('/settings')
 
