@@ -43,7 +43,7 @@ class Article extends React.Component {
         <div className="banner">
           <div className="container">
 
-            <h1>{this.props.article.title}</h1>
+            <h1 data-e2e="title">{this.props.article.title}</h1>
             <ArticleMeta article={this.props.article} canModify={canModify} />
 
           </div>
@@ -54,9 +54,9 @@ class Article extends React.Component {
           <div className="row article-content">
             <div className="col-xs-12">
 
-              <div dangerouslySetInnerHTML={markup} />
+              <div dangerouslySetInnerHTML={markup} data-e2e="body" />
 
-              <ul className="tag-list">
+              <ul className="tag-list" data-e2e="tags">
                 {this.props.article.tagList.map(tag => {
                   return (
                     <li className="tag-default tag-pill tag-outline" key={tag}>

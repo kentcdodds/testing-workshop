@@ -139,7 +139,7 @@ class Editor extends React.Component {
                       data-e2e="tags"
                     />
 
-                    <div className="tag-list">
+                    <div className="tag-list" data-e2e="tag-pills">
                       {(this.props.tagList || []).map(tag => {
                         return (
                           <span className="tag-default tag-pill" key={tag}>
