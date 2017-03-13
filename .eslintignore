@@ -5,3 +5,4 @@ coverage
 cypress/examples/**
 build
 dist
+scripts/workshop-setup.js
