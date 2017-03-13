@@ -168,28 +168,27 @@ function getArticlesRouter() {
 
   // update article
   router.put('/:article', auth.required, (req, res, next) => {
-    if (req.article._id.toString() === req.payload.id.toString()) {
-      if (typeof req.body.article.title !== 'undefined') {
-        req.article.title = req.body.article.title
-      }
-
-      if (typeof req.body.article.description !== 'undefined') {
-        req.article.description = req.body.article.description
-      }
-
-      if (typeof req.body.article.body !== 'undefined') {
-        req.article.body = req.body.article.body
-      }
-
-      return req.article
-        .save()
-        .then(article => {
-          return res.json({article: article.toJSONFor(article)})
-        })
-        .catch(next)
-    } else {
+    if (req.article.author._id.toString() !== req.payload.id.toString()) {
       return res.send(403)
     }
+
+    if (typeof req.body.article.title !== 'undefined') {
+      req.article.title = req.body.article.title
+    }
+
+    if (typeof req.body.article.description !== 'undefined') {
+      req.article.description = req.body.article.description
+    }
+
+    if (typeof req.body.article.body !== 'undefined') {
+      req.article.body = req.body.article.body
+    }
+
+    return Promise.all([req.article.save(), User.findById(req.payload.id)])
+      .then(([article, user]) => {
+        return res.json({article: article.toJSONFor(user)})
+      })
+      .catch(next)
   })
 
   // delete article

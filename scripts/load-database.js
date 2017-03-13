@@ -8,7 +8,7 @@ const mongoPath = process.env.MONGO_PATH || path.resolve('../.mongo-db')
 
 const stopMongo = `mongo admin --eval "db.shutdownServer()" --port ${mongoPort}`
 console.log(`stopping mongod with \`${stopMongo}\` (in case it is running)`)
-const stopMongoChild = spawn(stopMongo, {stdio: 'ignore'})
+const stopMongoChild = spawn(stopMongo, {stdio: 'inherit'})
 
 stopMongoChild.on('exit', () => {
   mkdirp(mongoPath, err => {
@@ -22,14 +22,14 @@ stopMongoChild.on('exit', () => {
       --quiet
     `
     console.log(`starting mongod with \`${startMongo}\``)
-    spawn(startMongo, {stdio: 'ignore'})
+    spawn(startMongo, {stdio: 'inherit'})
     let stopped = false
 
     process.on('exit', cleanUp)
     process.on('SIGINT', cleanUp)
     process.on('uncaughtException', cleanUp)
 
-    setTimeout(spawnGenerate, 3000)
+    setTimeout(spawnGenerate, 5000)
 
     function spawnGenerate() {
       const babelNode = './node_modules/.bin/babel-node'

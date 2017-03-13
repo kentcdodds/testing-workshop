@@ -21,13 +21,12 @@ describe('Posts', () => {
         title: `${title}_`,
         description: `${description}_`,
         body: `${shortBody}_`,
+        // TODO handle changing tags
       }
       fillInPostDetails(newDetails)
-      // TODO handle tags
-      // TODO: fix the bug that prevents submit from being enabled
-      // cy.get(sel('submit')).click()
-      //
-      // validatePostDetails(Object.assign({}, newDetails, {tagList}))
+      cy.get(sel('submit')).click()
+
+      validatePostDetails(Object.assign({}, newDetails, {tagList}))
     })
   })
 })

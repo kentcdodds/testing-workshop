@@ -8,50 +8,53 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  onAddTag: () => dispatch({type: 'ADD_TAG'}),
   onLoad: payload => dispatch({type: 'EDITOR_PAGE_LOADED', payload}),
-  onRemoveTag: tag => dispatch({type: 'REMOVE_TAG', tag}),
   onSubmit: payload => dispatch({type: 'ARTICLE_SUBMITTED', payload}),
   onUnload: () => dispatch({type: 'EDITOR_PAGE_UNLOADED'}),
-  onUpdateField: (key, value) =>
-    dispatch({type: 'UPDATE_FIELD_EDITOR', key, value}),
 })
 
-class Editor extends React.Component {
-  constructor() {
-    super()
+const isEnter = ({keyCode}) => keyCode === 13
 
-    const updateFieldEvent = key =>
-      ev => this.props.onUpdateField(key, ev.target.value)
-    this.changeTitle = updateFieldEvent('title')
-    this.changeDescription = updateFieldEvent('description')
-    this.changeBody = updateFieldEvent('body')
-    this.changeTagInput = updateFieldEvent('tagInput')
+class Editor extends React.Component {
+  constructor(props, ...args) {
+    super(props, ...args)
+    this.state = {
+      ...this.getStateFromProps(props),
+      tagInput: '',
+    }
   }
   watchForEnter = ev => {
-    if (ev.keyCode === 13) {
+    if (isEnter(ev)) {
       ev.preventDefault()
-      this.props.onAddTag()
+      const {target: {value}} = ev
+      if (!this.state.tagList.includes(value)) {
+        this.setState(state => ({
+          tagInput: '',
+          tagList: state.tagList.concat(value),
+        }))
+      }
     }
   }
 
-  removeTagHandler = tag =>
-    ev => {
-      if (ev.type === 'click' || ev.keyCode === 13) {
-        this.props.onRemoveTag(tag)
-      }
+  removeTagHandler = ev => {
+    if (ev.type === 'click' || isEnter(ev)) {
+      const {
+        target: {
+          dataset: {tag},
+        },
+      } = ev
+      this.setState(state => ({
+        tagList: state.tagList.filter(t => t !== tag),
+      }))
     }
+  }
   submitForm = ev => {
     ev.preventDefault()
     if (document.activeElement === this._tags) {
       return
     }
-    const article = {
-      title: this.props.title,
-      description: this.props.description,
-      body: this.props.body,
-      tagList: this.props.tagList,
-    }
+    const {title, description, body, tagList} = this.state
+    const article = {title, description, body, tagList}
 
     const slug = {slug: this.props.articleSlug}
     const promise = this.props.articleSlug ?
@@ -61,13 +64,23 @@ class Editor extends React.Component {
     this.props.onSubmit(promise)
   }
 
+  updateInputState = ({target: {dataset, value}}) => {
+    this.setState({[dataset.stateKey]: value})
+  }
+
+  getStateFromProps(props = this.props) {
+    const {title, description, body, tagList} = props
+    return {title, description, body, tagList}
+  }
+
   componentWillReceiveProps(nextProps) {
-    if (this.props.params.slug !== nextProps.params.slug) {
-      if (nextProps.params.slug) {
-        this.props.onUnload()
-        return this.props.onLoad(agent.Articles.get(this.props.params.slug))
-      }
-      this.props.onLoad(null)
+    if (this.props.params.slug === nextProps.params.slug) {
+      this.setState(this.getStateFromProps(nextProps))
+    } else if (nextProps.params.slug) {
+      this.props.onUnload()
+      this.props.onLoad(agent.Articles.get(nextProps.params.slug))
+    } else {
+      this.setState(this.getStateFromProps({}))
     }
   }
 
@@ -83,13 +96,15 @@ class Editor extends React.Component {
   }
 
   render() {
+    const {errors, inProgress} = this.props
+    const {title, description, body, tagInput, tagList} = this.state
     return (
       <div className="editor-page">
         <div className="container page">
           <div className="row">
             <div className="col-md-10 offset-md-1 col-xs-12">
 
-              <ListErrors errors={this.props.errors} />
+              <ListErrors errors={errors} />
 
               <form onSubmit={this.submitForm}>
                 <fieldset>
@@ -99,8 +114,9 @@ class Editor extends React.Component {
                       className="form-control form-control-lg"
                       type="text"
                       placeholder="Article Title"
-                      value={this.props.title}
-                      onChange={this.changeTitle}
+                      value={title}
+                      onChange={this.updateInputState}
+                      data-state-key="title"
                       data-e2e="title"
                     />
                   </fieldset>
@@ -110,8 +126,9 @@ class Editor extends React.Component {
                       className="form-control"
                       type="text"
                       placeholder="What's this article about?"
-                      value={this.props.description}
-                      onChange={this.changeDescription}
+                      value={description}
+                      onChange={this.updateInputState}
+                      data-state-key="description"
                       data-e2e="description"
                     />
                   </fieldset>
@@ -121,8 +138,9 @@ class Editor extends React.Component {
                       className="form-control"
                       rows="8"
                       placeholder="Write your article (in markdown)"
-                      value={this.props.body}
-                      onChange={this.changeBody}
+                      value={body}
+                      onChange={this.updateInputState}
+                      data-state-key="body"
                       data-e2e="body"
                     />
                   </fieldset>
@@ -132,22 +150,23 @@ class Editor extends React.Component {
                       className="form-control"
                       type="text"
                       placeholder="Enter tags"
-                      value={this.props.tagInput}
-                      onChange={this.changeTagInput}
+                      value={tagInput}
+                      onChange={e => this.setState({tagInput: e.target.value})}
                       onKeyUp={this.watchForEnter}
                       ref={node => this._tags = node}
                       data-e2e="tags"
                     />
 
                     <div className="tag-list" data-e2e="tag-pills">
-                      {(this.props.tagList || []).map(tag => {
+                      {(tagList || []).map(tag => {
                         return (
                           <span className="tag-default tag-pill" key={tag}>
                             <i
                               className="ion-close-round"
-                              onClick={this.removeTagHandler(tag)}
-                              onKeyUp={this.removeTagHandler(tag)}
+                              onClick={this.removeTagHandler}
+                              onKeyUp={this.removeTagHandler}
                               tabIndex={0}
+                              data-tag={tag}
                               role="button"
                             />
                             {tag}
@@ -160,7 +179,7 @@ class Editor extends React.Component {
                   <button
                     className="btn btn-lg pull-xs-right btn-primary"
                     type="submit"
-                    disabled={this.props.inProgress}
+                    disabled={inProgress}
                     data-e2e="submit"
                   >
                     Publish Article

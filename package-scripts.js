@@ -135,16 +135,18 @@ function getE2EScripts() {
   )
 
   return {
-    script: defaultScript,
-    description: oneLine`
-      Runs everything you need for a full E2E test run.
-      Note that there are various combinations of these
-      scripts which you can run. See the child scripts
-      of e2e. Also note that if you specify the
-      environment variable of \`STDIO=inherit\`, you will
-      be able to see the output of services which could
-      bet quite handy.
-    `,
+    default: {
+      script: defaultScript,
+      description: oneLine`
+        Runs everything you need for a full E2E test run.
+        Note that there are various combinations of these
+        scripts which you can run. See the child scripts
+        of e2e. Also note that if you specify the
+        environment variable of \`STDIO=inherit\`, you will
+        be able to see the output of services which could
+        bet quite handy.
+      `,
+    },
     loadDatabase,
     run,
     dev,

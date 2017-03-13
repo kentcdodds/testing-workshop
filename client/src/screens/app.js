@@ -19,7 +19,7 @@ const mapDispatchToProps = dispatch => ({
 class App extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.redirectTo) {
-      this.context.router.replace(nextProps.redirectTo)
+      this.context.router.push(nextProps.redirectTo)
       this.props.onRedirect()
     }
   }
