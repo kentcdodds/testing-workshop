@@ -76,13 +76,28 @@ module.exports = {
       script: concurrent.nps('lint', 'api.test', 'client.test', 'e2e'),
       description: 'validates that things are set up properly',
     },
-    addContributor: {
-      description: 'Prompt to add a new contributor to the contributors table',
-      script: 'all-contributors add',
+    split: {
+      default: concurrent.nps('split.api'),
+      api: oneLine`
+        split-guide generate
+        --no-clean
+        --templates-dir api/workshop-templates/
+        --exercises-dir api/src/
+        --exercises-final-dir api/src-final
+      `,
     },
-    generateContributors: {
-      description: 'regenerates the contributors table',
-      script: 'all-contributors generate',
+    contributors: {
+      add: {
+        description: oneLine`
+          Prompt to add a new contributor
+          to the contributors table
+        `,
+        script: 'all-contributors add',
+      },
+      generate: {
+        description: 'regenerates the contributors table',
+        script: 'all-contributors generate',
+      },
     },
   },
 }

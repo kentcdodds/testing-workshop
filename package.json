@@ -35,6 +35,7 @@
     "p-series": "^1.0.0",
     "prettier-eslint-cli": "^3.1.2",
     "spawn-command-with-kill": "^1.0.0",
+    "split-guide": "^3.0.0",
     "stream-to-promise": "^2.2.0"
   }
 }

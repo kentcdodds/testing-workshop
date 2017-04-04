@@ -52,7 +52,9 @@
     "testPathIgnorePatterns": [
       "/node_modules/",
       "/helpers/",
-      "/fixtures/"
+      "/fixtures/",
+      "/workshop-templates/",
+      "/src-final/"
     ],
     "collectCoverageFrom": [
       "src/**"

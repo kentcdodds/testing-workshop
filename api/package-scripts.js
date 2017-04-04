@@ -13,6 +13,12 @@ module.exports = {
       default: 'jest --coverage',
       watch: 'jest --watch',
     },
+    demo: {
+      test: {
+        default: 'jest --config=demo/jest-config.json',
+        watch: 'jest --config=demo/jest-config.json --watch',
+      },
+    },
   },
 }
 
