@@ -5,9 +5,13 @@ const {
   runInNewWindow,
   crossEnv,
   commonTags,
+  ifWindows,
 } = require('nps-utils')
 
 const {oneLine} = commonTags
+
+const delay = s => ifWindows(`timeout ${s}`, `sleep ${s}`)
+const ignoreOutput = ifWindows('> NUL', '&>/dev/null')
 
 module.exports = {
   scripts: {
@@ -29,8 +33,18 @@ module.exports = {
       script: series('cd api', 'npm start --silent'),
       description: 'start the api server',
       test: {
-        script: series('cd api', 'npm test --silent'),
+        script: concurrent.nps('api.test.unit', 'api.test.integration'),
         description: 'run the api tests',
+        unit: series('cd api', 'npm start test.unit --silent'),
+        integration: oneLine`
+          concurrently
+          --kill-others
+          --success first
+          --prefix "[{name}]"
+          --names dev.mongo,dev.api,api.test.integration
+          "echo \\"starting mongo\\" && nps dev.mongo ${ignoreOutput}"
+          "${delay(2)} && cd api && npm start --silent test.integration"
+        `,
       },
     },
     client: {
@@ -62,7 +76,7 @@ module.exports = {
     e2e: getE2EScripts(),
     test: {
       description: 'run the tests in parallel',
-      script: concurrent.nps('api.tests', 'client.tests'),
+      script: concurrent.nps('api.test', 'client.test'),
     },
     lint: {
       script: 'eslint .',

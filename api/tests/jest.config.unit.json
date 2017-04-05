@@ -1,0 +1,23 @@
+{
+  "testEnvironment": "jest-environment-node",
+  "roots": [
+    "src"
+  ],
+  "setupTestFrameworkScriptFile": "./other/jest/setup.js",
+  "testPathIgnorePatterns": [
+    "/helpers/",
+    "/fixtures/"
+  ],
+  "collectCoverageFrom": [
+    "src/**"
+  ],
+  "coverageDirectory": "coverage/integration",
+  "coverageThreshold": {
+    "global": {
+      "statements": 0.5,
+      "branches": 0.5,
+      "functions": 0.5,
+      "lines": 0.5
+    }
+  }
+}
