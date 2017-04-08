@@ -145,7 +145,6 @@ function getArticlesRouter() {
         article.author = user
 
         return article.save().then(() => {
-          console.log(article.author)
           return res.json({article: article.toJSONFor(user)})
         })
       })

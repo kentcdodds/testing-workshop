@@ -6,6 +6,7 @@ import errorhandler from 'errorhandler'
 import mongoose from 'mongoose'
 import morgan from 'morgan'
 import methodOverride from 'method-override'
+import logger from 'loglevel'
 import setupModels from './models'
 import setupPassport from './config/passport'
 import getRouter from './routes'
@@ -71,7 +72,7 @@ function start() {
   // will print stacktrace
   if (!isProduction) {
     app.use((err, req, res) => {
-      console.log(err.stack)
+      logger.error(err.stack)
 
       res.status(err.status || 500)
 
@@ -87,7 +88,10 @@ function start() {
   // production error handler
   // no stacktraces leaked to user
   app.use((err, req, res) => {
+    logger.error(err.stack)
+
     res.status(err.status || 500)
+
     res.json({
       errors: {
         message: err.message,
@@ -99,7 +103,7 @@ function start() {
   // finally, let's start our server...
   return new Promise(resolve => {
     const server = app.listen(process.env.PORT || 3000, () => {
-      console.log(`Listening on port ${server.address().port}`)
+      logger.info(`Listening on port ${server.address().port}`)
       server.on('close', () => {
         mongoose.connection.close()
       })
