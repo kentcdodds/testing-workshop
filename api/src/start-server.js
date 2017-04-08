@@ -25,7 +25,9 @@ function start() {
   app.use(cors())
 
   // Normal express config defaults
-  app.use(morgan('dev'))
+  if (logger.getLevel() < 3) {
+    app.use(morgan('dev'))
+  }
   app.use(bodyParser.urlencoded({extended: false}))
   app.use(bodyParser.json())
 

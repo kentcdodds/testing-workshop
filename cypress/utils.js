@@ -5,7 +5,7 @@ export {visitApp, sel, getRandomUserData, createNewUser, loginAsNewUser}
 
 function getRandomUserData() {
   const password = faker.internet.password()
-  const user = generateUserData(password)
+  const user = generateUserData({password})
   return Object.assign(user, {password})
 }
 
