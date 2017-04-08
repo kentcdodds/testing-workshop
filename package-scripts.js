@@ -11,7 +11,8 @@ const {
 const {oneLine} = commonTags
 
 const delay = s => ifWindows(`timeout ${s}`, `sleep ${s}`)
-const ignoreOutput = ifWindows('> NUL', '&>/dev/null')
+const ignoreOutput = s =>
+  `echo ${s} && ${s} ${ifWindows('> NUL', '&>/dev/null')}`
 
 module.exports = {
   scripts: {
@@ -22,10 +23,8 @@ module.exports = {
       runInNewWindow.nps('client')
     ),
     mongo: {
-      script: series(
-        'mkdirp .mongo-db',
-        `mongod --dbpath ${path.join(__dirname, './.mongo-db')} --quiet`
-      ),
+      script: series('mkdirp .mongo-db', ignoreOutput('nps mongo.start')),
+      start: `mongod --dbpath ${path.join(__dirname, './.mongo-db')}`,
       description: 'Create the .mongo-db dir and start the mongod process',
       stop: 'mongo admin --eval "db.shutdownServer()"',
     },
@@ -42,7 +41,7 @@ module.exports = {
           --success first
           --prefix "[{name}]"
           --names dev.mongo,dev.api,api.test.integration
-          "echo \\"starting mongo\\" && nps dev.mongo ${ignoreOutput}"
+          "nps dev.mongo"
           "${delay(2)} && cd api && npm start --silent test.integration"
         `,
       },

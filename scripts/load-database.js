@@ -2,11 +2,18 @@ const path = require('path')
 const mkdirp = require('mkdirp')
 const spawn = require('spawn-command-with-kill')
 const {oneLine} = require('common-tags')
+const isWindows = require('is-windows')
 
+const ignoreOutput = isWindows() ? '> NUL' : '&>/dev/null'
 const mongoPort = process.env.MONGO_PORT || '27017'
 const mongoPath = process.env.MONGO_PATH || path.resolve('../.mongo-db')
 
-const stopMongo = `mongo admin --eval "db.shutdownServer()" --port ${mongoPort}`
+const stopMongo = oneLine`
+  mongo admin
+  --eval "db.shutdownServer()"
+  --port ${mongoPort}
+  ${ignoreOutput}
+`
 console.log(`stopping mongod with \`${stopMongo}\` (in case it is running)`)
 const stopMongoChild = spawn(stopMongo, {stdio: 'inherit'})
 
@@ -15,11 +22,12 @@ stopMongoChild.on('exit', () => {
     if (err) {
       throw err
     }
+
     const startMongo = oneLine`
       mongod
       --dbpath ${mongoPath}
       --port ${mongoPort}
-      --quiet
+      ${ignoreOutput}
     `
     console.log(`starting mongod with \`${startMongo}\``)
     spawn(startMongo, {stdio: 'inherit'})

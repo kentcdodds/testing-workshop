@@ -28,6 +28,7 @@
     "eslint-plugin-react": "^6.10.0",
     "faker": "^4.1.0",
     "husky": "^0.13.2",
+    "is-windows": "^1.0.0",
     "lodash": "^4.17.4",
     "mkdirp": "^0.5.1",
     "nps": "^5.0.4",
