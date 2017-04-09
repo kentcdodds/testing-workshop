@@ -56,9 +56,10 @@ describe('authorized', () => {
     expect(result.updatedAt).not.toBe(updatedAt)
   })
 
-  test.skip('delete an article', async () => {
-    const {slug} = await article.create()
-    const result = await article.delete({slug})
-    expect(result).toBe(false) // TODO
+  test('delete an article', async () => {
+    const articleData = await article.create()
+    await article.delete(articleData)
+    const error = await article.get(articleData).catch(e => e)
+    expect(error.response.status).toBe(404)
   })
 })

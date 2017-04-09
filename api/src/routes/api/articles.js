@@ -193,7 +193,7 @@ function getArticlesRouter() {
   // delete article
   router.delete('/:article', auth.required, (req, res) => {
     User.findById(req.payload.id).then(() => {
-      if (req.article.author.toString() === req.payload.id.toString()) {
+      if (req.article.author._id.toString() === req.payload.id.toString()) {
         return req.article.remove().then(() => {
           return res.sendStatus(204)
         })
@@ -293,6 +293,7 @@ function getArticlesRouter() {
   })
 
   router.delete('/:article/comments/:comment', auth.required, (req, res) => {
+    console.log(req.comment.author, req.comment.author.toString())
     if (req.comment.author.toString() === req.payload.id.toString()) {
       req.article.comments.remove(req.comment._id)
       req.article

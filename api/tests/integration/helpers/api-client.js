@@ -35,11 +35,16 @@ function getUserAPI() {
 }
 
 function getArticleAPI() {
-  return {create, update, delete: del}
+  return {create, get, update, delete: del}
 
   async function create(overrides) {
     const newArticle = generateArticleForClient(overrides)
     const result = await api.post('articles', {article: newArticle})
+    return result.data.article
+  }
+
+  async function get(articleData) {
+    const result = await api.get(`/articles/${articleData.slug}`)
     return result.data.article
   }
 
@@ -52,6 +57,6 @@ function getArticleAPI() {
 
   async function del(articleData) {
     const result = await api.delete(`articles/${articleData.slug}`)
-    return result
+    return result.data
   }
 }
