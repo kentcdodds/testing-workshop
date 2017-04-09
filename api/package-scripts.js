@@ -1,4 +1,4 @@
-const {series, rimraf} = require('nps-utils')
+const {series, concurrent, rimraf} = require('nps-utils')
 
 module.exports = {
   scripts: {
@@ -10,12 +10,13 @@ module.exports = {
       'babel --copy-files --out-dir dist --ignore __tests__,__mocks__ src'
     ),
     test: {
+      default: concurrent.nps('test.unit', 'test.integration'),
       unit: {
-        script: 'jest --config=tests/jest.config.unit.json --coverage',
+        default: 'jest --config=tests/jest.config.unit.json --coverage',
         watch: 'jest --config=tests/jest.config.unit.json --watch',
       },
       integration: {
-        script: 'jest --config=tests/jest.config.integration.json --coverage',
+        default: 'jest --config=tests/jest.config.integration.json --coverage',
         watch: 'jest --config=tests/jest.config.integration.json --watch',
       },
     },

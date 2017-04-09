@@ -1,7 +1,0 @@
-// FINAL_START
-{
-  "rules": {
-    "import/no-unresolved": "off"
-  }
-}
-// FINAL_END

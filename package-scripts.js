@@ -4,6 +4,7 @@ const {
   series,
   runInNewWindow,
   crossEnv,
+  rimraf,
   commonTags,
   ifWindows,
 } = require('nps-utils')
@@ -86,18 +87,43 @@ module.exports = {
       description: 'autoformat project files',
     },
     validate: {
-      script: concurrent.nps('lint', 'api.test', 'client.test', 'e2e'),
+      script: concurrent.nps('lint', 'split.api.verify', 'client.test', 'e2e'),
       description: 'validates that things are set up properly',
     },
     split: {
       default: concurrent.nps('split.api'),
-      api: oneLine`
-        split-guide generate
-        --no-clean
-        --templates-dir api/workshop-templates/
-        --exercises-dir api/src/
-        --exercises-final-dir api/src-final
-      `,
+      api: {
+        default: series(
+          rimraf('api-final'),
+          oneLine`
+            split-guide generate
+            --no-clean
+            --templates-dir templates/api
+            --exercises-dir api
+            --exercises-final-dir api-final
+          `
+        ),
+        verify: {
+          description: oneLine`
+            This verifies that the final version actually passes the tests.
+            To do this, we first use split-guide and place the final version
+            in the place of the exercises, then we run the tests, then
+            we re-run the split to have the exercises where they should be.
+          `,
+          script: series(
+            rimraf('api-final', 'node_modules/.tmp/api'),
+            oneLine`
+              split-guide generate
+              --no-clean
+              --templates-dir templates/api
+              --exercises-dir node_modules/.tmp/api
+              --exercises-final-dir api
+            `,
+            'nps api.test',
+            'nps split.api'
+          ),
+        },
+      },
     },
     contributors: {
       add: {
