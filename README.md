@@ -79,6 +79,18 @@ instructions to fix things and try again. If you're still getting errors or need
 I'm not sure how to prevent this from happening (suggestions appreciated!) but it happens every time you run the `e2e`
 tests. Just hit `Allow` (super annoying). Sorry about that 😞
 
+#### Windows users!!
+
+Unfortunately, the [cypress](https://www.cypress.io/) application does not yet support the Windows platform.
+You should still be able to run cypress in "headless" mode, but you will be unable to open the application
+for development.
+
+To get around this issue, you'll have to run the E2E portion of the workshop on Linux or Mac. I recommend either
+installing and booting your machine in Linux, or running a Linux Virtual Machine on your Windows computer.
+
+Alternatively, you could just forego the application bit and mostly observe that portion of the workshop. If you're
+doing this with a group, perhaps you could pair with someone who has a Mac or Linux machine.
+
 ### Running the app
 
 To get the app up and running (and really see if it worked), run:
