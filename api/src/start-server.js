@@ -49,11 +49,12 @@ function start() {
 
   if (process.env.MONGODB_URI) {
     mongoose.connect(process.env.MONGODB_URI)
-    if ('MONGODB_DEBUG' in process.env) {
-      mongoose.set('debug', true)
-    }
   } else {
     mongoose.connect('mongodb://localhost/conduit')
+  }
+
+  if ('MONGODB_DEBUG' in process.env) {
+    mongoose.set('debug', true)
   }
 
   setupModels()
