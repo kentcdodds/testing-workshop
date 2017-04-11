@@ -53,7 +53,7 @@ class Register extends React.Component {
                       type="text"
                       placeholder="Username"
                       ref={node => this._username = node}
-                      data-e2e="username"
+                      data-test="username"
                     />
                   </fieldset>
 
@@ -63,7 +63,7 @@ class Register extends React.Component {
                       type="email"
                       placeholder="Email"
                       ref={node => this._email = node}
-                      data-e2e="email"
+                      data-test="email"
                     />
                   </fieldset>
 
@@ -73,7 +73,7 @@ class Register extends React.Component {
                       type="password"
                       placeholder="Password"
                       ref={node => this._password = node}
-                      data-e2e="password"
+                      data-test="password"
                     />
                   </fieldset>
 

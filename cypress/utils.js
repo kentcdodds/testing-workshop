@@ -19,7 +19,7 @@ function visitApp(route = '/') {
 }
 
 function sel(id) {
-  return `[data-e2e="${id}"]`
+  return `[data-test="${id}"]`
 }
 
 function createNewUser() {

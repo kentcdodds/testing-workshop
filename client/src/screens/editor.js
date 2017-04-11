@@ -117,7 +117,7 @@ class Editor extends React.Component {
                       value={title}
                       onChange={this.updateInputState}
                       data-state-key="title"
-                      data-e2e="title"
+                      data-test="title"
                     />
                   </fieldset>
 
@@ -129,7 +129,7 @@ class Editor extends React.Component {
                       value={description}
                       onChange={this.updateInputState}
                       data-state-key="description"
-                      data-e2e="description"
+                      data-test="description"
                     />
                   </fieldset>
 
@@ -141,7 +141,7 @@ class Editor extends React.Component {
                       value={body}
                       onChange={this.updateInputState}
                       data-state-key="body"
-                      data-e2e="body"
+                      data-test="body"
                     />
                   </fieldset>
 
@@ -154,10 +154,10 @@ class Editor extends React.Component {
                       onChange={e => this.setState({tagInput: e.target.value})}
                       onKeyUp={this.watchForEnter}
                       ref={node => this._tags = node}
-                      data-e2e="tags"
+                      data-test="tags"
                     />
 
-                    <div className="tag-list" data-e2e="tag-pills">
+                    <div className="tag-list" data-test="tag-pills">
                       {(tagList || []).map(tag => {
                         return (
                           <span className="tag-default tag-pill" key={tag}>
@@ -180,7 +180,7 @@ class Editor extends React.Component {
                     className="btn btn-lg pull-xs-right btn-primary"
                     type="submit"
                     disabled={inProgress}
-                    data-e2e="submit"
+                    data-test="submit"
                   >
                     Publish Article
                   </button>

@@ -14,13 +14,13 @@ function LoggedOutView(props) {
         </li>
 
         <li className="nav-item">
-          <Link to="login" className="nav-link" data-e2e="sign-in-link">
+          <Link to="login" className="nav-link" data-test="sign-in-link">
             Sign in
           </Link>
         </li>
 
         <li className="nav-item">
-          <Link to="register" className="nav-link" data-e2e="sign-up-link">
+          <Link to="register" className="nav-link" data-test="sign-up-link">
             Sign up
           </Link>
         </li>
@@ -49,7 +49,7 @@ function LoggedInView(props) {
         </li>
 
         <li className="nav-item">
-          <Link to="settings" className="nav-link" data-e2e="settings">
+          <Link to="settings" className="nav-link" data-test="settings">
             <i className="ion-gear-a" />&nbsp;Settings
           </Link>
         </li>
@@ -58,7 +58,7 @@ function LoggedInView(props) {
           <Link
             to={`@${props.currentUser.username}`}
             className="nav-link"
-            data-e2e="profile-link"
+            data-test="profile-link"
           >
             <img
               src={props.currentUser.image || smiley}

@@ -70,7 +70,7 @@ class SettingsForm extends React.Component {
               placeholder="URL of profile picture"
               value={this.state.image}
               onChange={this.updateState('image')}
-              data-e2e="profile-url"
+              data-test="profile-url"
             />
           </fieldset>
 
@@ -81,7 +81,7 @@ class SettingsForm extends React.Component {
               placeholder="Username"
               value={this.state.username}
               onChange={this.updateState('username')}
-              data-e2e="username"
+              data-test="username"
             />
           </fieldset>
 
@@ -92,7 +92,7 @@ class SettingsForm extends React.Component {
               placeholder="Short bio about you"
               value={this.state.bio}
               onChange={this.updateState('bio')}
-              data-e2e="bio"
+              data-test="bio"
             />
           </fieldset>
 
@@ -103,7 +103,7 @@ class SettingsForm extends React.Component {
               placeholder="Email"
               value={this.state.email}
               onChange={this.updateState('email')}
-              data-e2e="email"
+              data-test="email"
             />
           </fieldset>
 
@@ -114,7 +114,7 @@ class SettingsForm extends React.Component {
               placeholder="New Password"
               value={this.state.password}
               onChange={this.updateState('password')}
-              data-e2e="password"
+              data-test="password"
             />
           </fieldset>
 
@@ -122,7 +122,7 @@ class SettingsForm extends React.Component {
             className="btn btn-lg btn-primary pull-xs-right"
             type="submit"
             disabled={this.state.inProgress}
-            data-e2e="update"
+            data-test="update"
           >
             Update Settings
           </button>
@@ -166,7 +166,7 @@ function Settings(props) {
             <button
               className="btn btn-outline-danger"
               onClick={props.onClickLogout}
-              data-e2e="logout"
+              data-test="logout"
             >
               Or click here to logout.
             </button>
