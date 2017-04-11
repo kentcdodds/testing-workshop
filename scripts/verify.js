@@ -5,9 +5,9 @@ if (Number(process.versions.node.slice(0, 1)) < 6) {
 var verifySystem = require('./workshop-setup').verifySystem
 
 verifySystem([
-  verifySystem.validators.node('^6.9.5'),
-  verifySystem.validators.mongo('^3.4.2'),
-  verifySystem.validators.yarnNpm('>=0.21.3', '^4.2.0'),
+  verifySystem.validators.node('>=6.9.5'),
+  verifySystem.validators.mongo('>=3.4.2'),
+  verifySystem.validators.yarnNpm('>=0.21.3', '>=4.2.0'),
 ]).then(function() {
   console.log('🎉  Congrats! Your system is setup properly')
   console.log('You should be good to install and run things.')
