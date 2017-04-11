@@ -42,6 +42,7 @@
     "faker": "^4.1.0",
     "jest": "^19.0.2",
     "jest-matchers": "^19.0.0",
+    "json-server": "^0.9.6",
     "lodash": "^4.17.4",
     "loglevel": "^1.4.1",
     "nodemon": "^1.11.0",

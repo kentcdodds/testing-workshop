@@ -25,6 +25,10 @@ module.exports = {
         default: 'jest --config=demo/unit/jest-config.json',
         watch: 'jest --config=demo/unit/jest-config.json --watch',
       },
+      integration: {
+        default: 'jest --config=demo/integration/jest-config.json',
+        watch: 'jest --config=demo/integration/jest-config.json --watch',
+      },
     },
   },
 }
