@@ -15,6 +15,13 @@ const delay = s => ifWindows(`timeout ${s}`, `sleep ${s}`)
 const ignoreOutput = s =>
   `echo ${s} && ${s} ${ifWindows('> NUL', '&>/dev/null')}`
 
+const splitVerifyDescription = oneLine`
+  This verifies that the final version actually passes the tests.
+  To do this, we first use split-guide and place the final version
+  in the place of the exercises, then we run the tests, then
+  we re-run the split to have the exercises where they should be.
+`
+
 module.exports = {
   scripts: {
     default: concurrent.nps('mongo', 'api', 'client'),
@@ -87,11 +94,43 @@ module.exports = {
       description: 'autoformat project files',
     },
     validate: {
-      script: concurrent.nps('lint', 'split.api.verify', 'client.test', 'e2e'),
+      script: concurrent.nps(
+        'lint',
+        'split.api.verify',
+        'split.client.verify',
+        'e2e'
+      ),
       description: 'validates that things are set up properly',
     },
     split: {
-      default: concurrent.nps('split.api'),
+      default: concurrent.nps('split.api', 'split.client'),
+      client: {
+        default: series(
+          rimraf('client-final'),
+          oneLine`
+            split-guide generate
+            --no-clean
+            --templates-dir templates/client
+            --exercises-dir client
+            --exercises-final-dir client-final
+          `
+        ),
+        verify: {
+          description: splitVerifyDescription,
+          script: series(
+            rimraf('client-final', 'node_modules/.tmp/client'),
+            oneLine`
+              split-guide generate
+              --no-clean
+              --templates-dir templates/client
+              --exercises-dir node_modules/.tmp/client
+              --exercises-final-dir client
+            `,
+            'nps client.test',
+            'nps split.client'
+          ),
+        },
+      },
       api: {
         default: series(
           rimraf('api-final'),
@@ -104,12 +143,7 @@ module.exports = {
           `
         ),
         verify: {
-          description: oneLine`
-            This verifies that the final version actually passes the tests.
-            To do this, we first use split-guide and place the final version
-            in the place of the exercises, then we run the tests, then
-            we re-run the split to have the exercises where they should be.
-          `,
+          description: splitVerifyDescription,
           script: series(
             rimraf('api-final', 'node_modules/.tmp/api'),
             oneLine`

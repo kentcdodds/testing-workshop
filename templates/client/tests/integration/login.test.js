@@ -1,3 +1,4 @@
+// WORKSHOP_START
 // Let's make sure that users can login to the app!
 //
 // Here's a high level overview of what to do...
@@ -24,9 +25,41 @@
 //
 // Remember that there are some helpers you can
 // get to render the <Login /> with predefined state.
+// WORKSHOP_END
+// FINAL_START
+import React from 'react'
+import axiosMock from 'axios'
+// FINAL_END
+// WORKSHOP_START
 // eslint-disable-next-line no-unused-vars
+// WORKSHOP_END
 import Login from '../../src/screens/login'
+// FINAL_START
+import {renderWithState, sel, flushAllPromises} from './helpers/utils'
+
+// FINAL_END
+// WORKSHOP_START
 // Note that this test function is set to be async
 // Just a little tip ;-)
+// WORKSHOP_END
 test('logs in when the form is submitted', async () => {
+  // FINAL_START
+  const token = 'Luke, I am your father'
+  const user = {password: 'my-password', email: 'me@example.com'}
+  axiosMock.__mock.instance.post.mockImplementation(() => {
+    return Promise.resolve({data: {user: {token}}})
+  })
+
+  const {wrapper} = renderWithState({}, <Login />)
+  wrapper.find(sel('email')).node.value = user.email
+  wrapper.find(sel('password')).node.value = user.password
+  wrapper.find('form').simulate('submit')
+  await flushAllPromises()
+  expect(axiosMock.__mock.instance.post).toHaveBeenCalledTimes(1)
+  expect(axiosMock.__mock.instance.post).toHaveBeenCalledWith('/users/login', {
+    user,
+  })
+  expect(window.localStorage.setItem).toHaveBeenCalledTimes(1)
+  expect(window.localStorage.setItem).toHaveBeenCalledWith('jwt', token)
+  // FINAL_END
 })
