@@ -21,9 +21,9 @@ module.exports = {
       },
     },
     demo: {
-      test: {
-        default: 'jest --config=demo/jest-config.json',
-        watch: 'jest --config=demo/jest-config.json --watch',
+      unit: {
+        default: 'jest --config=demo/unit/jest-config.json',
+        watch: 'jest --config=demo/unit/jest-config.json --watch',
       },
     },
   },
