@@ -32,7 +32,7 @@ module.exports = {
     ),
     mongo: {
       script: series('mkdirp .mongo-db', ignoreOutput('nps mongo.start')),
-      start: `mongod --dbpath ${path.join(__dirname, './.mongo-db')}`,
+      start: `mongod --dbpath "${path.join(__dirname, './.mongo-db')}"`,
       description: 'Create the .mongo-db dir and start the mongod process',
       stop: 'mongo admin --eval "db.shutdownServer()"',
     },
