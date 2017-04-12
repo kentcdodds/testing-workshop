@@ -1,4 +1,5 @@
-import React, {PropTypes} from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 
 export default Button
 
@@ -15,5 +16,5 @@ Button.propTypes = {
 }
 
 Button.contextTypes = {
-  color: React.PropTypes.string,
+  color: PropTypes.string,
 }
