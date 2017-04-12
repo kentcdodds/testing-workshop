@@ -104,6 +104,7 @@ module.exports = {
     },
     split: {
       default: concurrent.nps('split.api', 'split.client'),
+      verify: concurrent.nps('split.api.verify', 'split.client.verify'),
       client: {
         default: series(
           rimraf('client-final'),
@@ -127,6 +128,7 @@ module.exports = {
               --exercises-final-dir client
             `,
             'nps client.test',
+            series('cd client', 'npm start demo', 'cd ..'),
             'nps split.client'
           ),
         },
@@ -154,6 +156,7 @@ module.exports = {
               --exercises-final-dir api
             `,
             'nps api.test',
+            series('cd api', 'npm start demo', 'cd ..'),
             'nps split.api'
           ),
         },

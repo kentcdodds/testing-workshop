@@ -21,6 +21,14 @@ module.exports = {
         ),
       },
     },
+    validate: concurrent.nps('test', 'demo'),
+    demo: {
+      default: concurrent.nps('demo.unit'),
+      unit: {
+        default: 'jest --config=demo/unit/jest.config.json',
+        watch: 'jest --config=demo/unit/jest.config.json --watch',
+      },
+    },
     postinstall: {
       description: commonTags.oneLine`
         Happens after you run install,

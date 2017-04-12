@@ -1,0 +1,9 @@
+{
+  "testEnvironment": "jest-environment-jsdom",
+  "testPathDirs": [
+    "demo/unit"
+  ],
+  "testPathIgnorePatterns": [
+    "/helpers/"
+  ]
+}

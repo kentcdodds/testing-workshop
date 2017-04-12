@@ -1,3 +1,4 @@
+/* eslint no-unused-vars: 0, import/no-unresolved: 0 */
 // WORKSHOP_START
 // Let's make sure that users can login to the app!
 //
@@ -30,9 +31,6 @@
 import React from 'react'
 import axiosMock from 'axios'
 // FINAL_END
-// WORKSHOP_START
-// eslint-disable-next-line no-unused-vars
-// WORKSHOP_END
 import Login from '../../src/screens/login'
 // FINAL_START
 import {renderWithState, sel, flushAllPromises} from './helpers/utils'

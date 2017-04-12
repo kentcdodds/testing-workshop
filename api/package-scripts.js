@@ -20,14 +20,16 @@ module.exports = {
         watch: 'jest --config=tests/jest.config.integration.json --watch',
       },
     },
+    validate: concurrent.nps('test', 'demo'),
     demo: {
+      default: concurrent.nps('demo.unit', 'demo.integration'),
       unit: {
-        default: 'jest --config=demo/unit/jest-config.json',
-        watch: 'jest --config=demo/unit/jest-config.json --watch',
+        default: 'jest --config=demo/unit/jest.config.json',
+        watch: 'jest --config=demo/unit/jest.config.json --watch',
       },
       integration: {
-        default: 'jest --config=demo/integration/jest-config.json',
-        watch: 'jest --config=demo/integration/jest-config.json --watch',
+        default: 'jest --config=demo/integration/jest.config.json',
+        watch: 'jest --config=demo/integration/jest.config.json --watch',
       },
     },
   },

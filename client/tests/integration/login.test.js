@@ -1,3 +1,4 @@
+/* eslint no-unused-vars: 0, import/no-unresolved: 0 */
 // Let's make sure that users can login to the app!
 //
 // Here's a high level overview of what to do...
@@ -24,7 +25,6 @@
 //
 // Remember that there are some helpers you can
 // get to render the <Login /> with predefined state.
-// eslint-disable-next-line no-unused-vars
 import Login from '../../src/screens/login'
 // Note that this test function is set to be async
 // Just a little tip ;-)
