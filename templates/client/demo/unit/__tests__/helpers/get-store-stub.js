@@ -27,3 +27,6 @@ function getStoreStub(customers = []) {
   }
 }
 // FINAL_END
+// WORKSHOP_START
+// todo...
+// WORKSHOP_END
