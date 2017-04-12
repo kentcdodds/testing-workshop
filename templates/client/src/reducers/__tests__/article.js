@@ -2,6 +2,9 @@
 import article from '../article'
 
 test('ARTICLE_PAGE_LOADED', () => {
+  // WORKSHOP_START
+  // TODO
+  // WORKSHOP_END
   // FINAL_START
   const initialState = {}
   const articleData = {title: 'Mighty Mouse'}
@@ -19,6 +22,9 @@ test('ARTICLE_PAGE_LOADED', () => {
 })
 
 test('ARTICLE_PAGE_UNLOADED', () => {
+  // WORKSHOP_START
+  // TODO
+  // WORKSHOP_END
   // FINAL_START
   const initialState = {}
   const action = {type: 'ARTICLE_PAGE_UNLOADED'}
@@ -28,6 +34,9 @@ test('ARTICLE_PAGE_UNLOADED', () => {
 })
 
 test('ADD_COMMENT', () => {
+  // WORKSHOP_START
+  // TODO
+  // WORKSHOP_END
   // FINAL_START
   const initialState = {comments: [1, 2, 3]}
   const action = {type: 'ADD_COMMENT', payload: {comment: 4}}
@@ -40,6 +49,9 @@ test('ADD_COMMENT', () => {
 })
 
 test('non-matching type', () => {
+  // WORKSHOP_START
+  // TODO
+  // WORKSHOP_END
   // FINAL_START
   const initialState = {randomThing: 'blah'}
   const action = {type: 'random_action'}

@@ -29,4 +29,5 @@ import Login from '../../src/screens/login'
 // Note that this test function is set to be async
 // Just a little tip ;-)
 test('logs in when the form is submitted', async () => {
+  // TODO
 })

@@ -3,7 +3,9 @@
 import {getTokenFromHeader} from '../utils'
 
 test('returns null if there is no token', () => {
+  // TODO
 })
 
 test('returns the token from the headers', () => {
+  // TODO
 })

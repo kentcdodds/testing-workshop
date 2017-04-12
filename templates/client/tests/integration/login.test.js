@@ -41,6 +41,9 @@ import {renderWithState, sel, flushAllPromises} from './helpers/utils'
 // Just a little tip ;-)
 // WORKSHOP_END
 test('logs in when the form is submitted', async () => {
+  // WORKSHOP_START
+  // TODO
+  // WORKSHOP_END
   // FINAL_START
   const token = 'Luke, I am your father'
   const user = {password: 'my-password', email: 'me@example.com'}

@@ -5,6 +5,9 @@
 import {getTokenFromHeader} from '../utils'
 
 test('returns null if there is no token', () => {
+  // WORKSHOP_START
+  // TODO
+  // WORKSHOP_END
   // FINAL_START
   const result = getTokenFromHeader({headers: {}})
   expect(result).toBe(null)
@@ -12,6 +15,9 @@ test('returns null if there is no token', () => {
 })
 
 test('returns the token from the headers', () => {
+  // WORKSHOP_START
+  // TODO
+  // WORKSHOP_END
   // FINAL_START
   const token = 'hi.mom!'
   const authHeader = `Token ${token}`

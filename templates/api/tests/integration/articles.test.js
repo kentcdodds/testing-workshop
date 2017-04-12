@@ -34,10 +34,13 @@ beforeAll(async () => {
 afterAll(done => {
   server.close(done)
 })
-// FINAL_END
 
+// FINAL_END
 describe('unauthorized', () => {
   test('get with limit', async () => {
+    // WORKSHOP_START
+    // TODO
+    // WORKSHOP_END
     // FINAL_START
     const limit = 10
     const {data: {articles}} = await api.get(
@@ -48,6 +51,9 @@ describe('unauthorized', () => {
   })
 
   test('get with offset', async () => {
+    // WORKSHOP_START
+    // TODO
+    // WORKSHOP_END
     // FINAL_START
     const {data: {articles: articles1}} = await api.get(
       `articles?limit=2&offset=0`,
@@ -62,6 +68,7 @@ describe('unauthorized', () => {
 
 describe('authorized', () => {
   // WORKSHOP_START
+  // // TODO
   // tip: you're going to need to create a new user
   //   for these tests and set up the API client to
   //   use that user's token. You can look at the
@@ -80,6 +87,9 @@ describe('authorized', () => {
   // FINAL_END
 
   test('post a new article', async () => {
+    // WORKSHOP_START
+    // TODO
+    // WORKSHOP_END
     // FINAL_START
     const newArticle = generateArticleForClient()
     const result = await article.create(newArticle)
@@ -88,6 +98,9 @@ describe('authorized', () => {
   })
 
   test('update an article', async () => {
+    // WORKSHOP_START
+    // TODO
+    // WORKSHOP_END
     // FINAL_START
     const {slug, updatedAt, title} = await article.create()
     const newTitle = title + Math.random()
@@ -98,6 +111,9 @@ describe('authorized', () => {
   })
 
   test('delete an article', async () => {
+    // WORKSHOP_START
+    // TODO
+    // WORKSHOP_END
     // FINAL_START
     const articleData = await article.create()
     await article.delete(articleData)

@@ -16,16 +16,18 @@ import {generateArticleForClient} from '../../../other/generate/article'
 //   (because you'll need to perform basic CRUD and it's
 //   nice to avoid that cruft in your tests)
 
-
 describe('unauthorized', () => {
   test('get with limit', async () => {
+    // TODO
   })
 
   test('get with offset', async () => {
+    // TODO
   })
 })
 
 describe('authorized', () => {
+  // // TODO
   // tip: you're going to need to create a new user
   //   for these tests and set up the API client to
   //   use that user's token. You can look at the
@@ -33,11 +35,14 @@ describe('authorized', () => {
   //   how this is done: client/src/shared/agent.js
 
   test('post a new article', async () => {
+    // TODO
   })
 
   test('update an article', async () => {
+    // TODO
   })
 
   test('delete an article', async () => {
+    // TODO
   })
 })
