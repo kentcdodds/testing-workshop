@@ -112,6 +112,13 @@ If this fails at any point for you, please first see
 [Troubleshooting](#troubleshooting) and if you still can't get it working,
 [make an issue][issue].
 
+#### Login
+
+If you want to login, there's a user you can use:
+
+- **Email**: `joe@example.com`
+- **Password**: `joe`
+
 **To stop all the servers**, hit <kbd>Ctrl</kbd> + <kbd>C</kbd>.
 
 > Protip: we're using [`nps`](https://github.com/kentcdodds/nps) in this

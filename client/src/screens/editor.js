@@ -84,7 +84,7 @@ class Editor extends React.Component {
     }
   }
 
-  componentWillMount() {
+  componentDidMount() {
     if (this.props.params.slug) {
       return this.props.onLoad(agent.Articles.get(this.props.params.slug))
     }
@@ -196,4 +196,5 @@ class Editor extends React.Component {
   }
 }
 
+export {Editor as Component}
 export default connect(mapStateToProps, mapDispatchToProps)(Editor)
