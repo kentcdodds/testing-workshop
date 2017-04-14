@@ -2,13 +2,21 @@
 
 Here's some info about how the workshop should go...
 
-## Order of things...
+## General Order of things...
 
 1. Demos
 2. Exercises
 3. Elaboration and Feedback Form
 4. ? Help others
 5. ? Make pull requests
+
+## Order of topics
+
+1. API Unit Tests
+2. API Integration Tests
+3. Client Unit Tests
+4. Client Integration Tests
+5. End to End Tests
 
 ## Communication
 
