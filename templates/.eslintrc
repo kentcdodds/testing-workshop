@@ -3,6 +3,7 @@
   "rules": {
     "import/no-unresolved": "off",
     "import/no-extraneous-dependencies": "off",
+    "jest/no-identical-title": "off",
   }
 }
 // FINAL_END

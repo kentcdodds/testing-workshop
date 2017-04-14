@@ -25,11 +25,14 @@ const splitVerifyDescription = oneLine`
 module.exports = {
   scripts: {
     default: concurrent.nps('mongo', 'api', 'client'),
-    separateStart: series(
-      runInNewWindow.nps('mongo'),
-      runInNewWindow.nps('api'),
-      runInNewWindow.nps('client')
-    ),
+    separateStart: {
+      description: 'Runs all the start scripts in individual terminals',
+      script: series(
+        runInNewWindow.nps('mongo'),
+        runInNewWindow.nps('api'),
+        runInNewWindow.nps('client')
+      ),
+    },
     mongo: {
       script: series('mkdirp .mongo-db', ignoreOutput('nps mongo.start')),
       start: `mongod --dbpath "${path.join(__dirname, './.mongo-db')}"`,
@@ -68,13 +71,16 @@ module.exports = {
       client: series('cd client', 'npm start build --silent'),
     },
     dev: {
-      script: concurrent.nps('dev.mongo', 'dev.client', 'dev.api'),
-      separate: series(
-        runInNewWindow.nps('dev.mongo --silent'),
-        runInNewWindow.nps('npm start dev.client --silent'),
-        runInNewWindow.nps('dev.api --silent')
-      ),
       description: 'starts everything in dev mode',
+      script: concurrent.nps('dev.mongo', 'dev.client', 'dev.api'),
+      separate: {
+        description: 'Runs all of the dev scripts in individual terminals',
+        script: series(
+          runInNewWindow.nps('dev.mongo --silent'),
+          runInNewWindow.nps('npm start dev.client --silent'),
+          runInNewWindow.nps('dev.api --silent')
+        ),
+      },
       // dev is the same as live for mongo for now...
       mongo: 'npm start mongo --silent',
       client: series('cd client', 'npm start dev --silent'),
