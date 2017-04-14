@@ -1,22 +1,38 @@
+// FINAL_START
 import React from 'react'
 import {mount} from 'enzyme'
+// FINAL_END
 import {Component as Editor} from '../editor'
 
 // default case
 test('renders editor form by default', () => {
+  // WORKSHOP_START
+  // TODO
+  // WORKSHOP_END
+  // FINAL_START
   const wrapper = render()
   expect(wrapper).toMatchSnapshot()
+  // FINAL_END
 })
 
 // testing props
 test('renders the given title', () => {
+  // WORKSHOP_START
+  // TODO
+  // WORKSHOP_END
+  // FINAL_START
   const title = 'The day I dualed Lord Voldemort'
   const wrapper = render({title})
   expect(wrapper.find(sel('title')).node.value).toBe(title)
+  // FINAL_END
 })
 
 // testing user input
 test('adds tag when the user hits enter', () => {
+  // WORKSHOP_START
+  // TODO
+  // WORKSHOP_END
+  // FINAL_START
   const newTag = 'interwebs'
   const tagList = ['internet', 'web', 'network']
   const wrapper = render({tagList})
@@ -26,6 +42,7 @@ test('adds tag when the user hits enter', () => {
   const tagPills = wrapper.find(sel('tag-pills'))
   expect(tagPills.children()).toHaveLength(4)
   expect(tagPills.find(`[data-tag="${newTag}"]`)).toHaveLength(1)
+  // FINAL_END
 })
 
 // This component doesn't make any subscriptions to test
@@ -34,6 +51,7 @@ test('adds tag when the user hits enter', () => {
 // often need to) but those are the only two other things
 // you need to test with React!
 
+// FINAL_START
 function render(props = {}) {
   const propsToUse = {
     onLoad() {},
@@ -62,6 +80,7 @@ function keyUpInput(input, keyCode) {
 function sel(id) {
   return `[data-test="${id}"]`
 }
+// FINAL_END
 
 // WORKSHOP_START
 //////// Elaboration & Feedback /////////

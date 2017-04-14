@@ -1,4 +1,3 @@
-/* eslint no-unused-vars: 0, import/no-unresolved: 0 */
 import article from '../article'
 
 test('ARTICLE_PAGE_LOADED', () => {

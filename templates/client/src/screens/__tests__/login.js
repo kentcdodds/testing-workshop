@@ -1,18 +1,34 @@
+// FINAL_START
 import React from 'react'
 import {mount} from 'enzyme'
+// FINAL_END
 import {Component as Login} from '../login'
 
 test('renders login form by default', () => {
+  // WORKSHOP_START
+  // TODO
+  // WORKSHOP_END
+  // FINAL_START
   const wrapper = render()
   expect(isSubmitButtonDisabled(wrapper)).toBe(false)
+  // FINAL_END
 })
 
 test('disabled button when inProgress', () => {
+  // WORKSHOP_START
+  // TODO
+  // WORKSHOP_END
+  // FINAL_START
   const wrapper = render({inProgress: true})
   expect(isSubmitButtonDisabled(wrapper)).toBe(true)
+  // FINAL_END
 })
 
 test('shows list of errors when there are errors', () => {
+  // WORKSHOP_START
+  // TODO
+  // WORKSHOP_END
+  // FINAL_START
   const wrapper = render({
     errors: {
       'some-error': 'there was some error',
@@ -23,8 +39,10 @@ test('shows list of errors when there are errors', () => {
     'some-error there was some error',
     'some-other-error there was some other error',
   ])
+  // FINAL_END
 })
 
+// FINAL_START
 function render(props = {}) {
   const propsToUse = {
     onSubmit() {},
@@ -50,6 +68,7 @@ function getErrors(wrapper) {
     n => n.textContent,
   )
 }
+// FINAL_END
 
 // WORKSHOP_START
 //////// Elaboration & Feedback /////////
