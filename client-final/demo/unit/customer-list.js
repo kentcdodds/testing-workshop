@@ -6,18 +6,20 @@ class CustomerList extends Component {
   constructor(...args) {
     super(...args)
     this.state = {
-      customers: store.getCustomers(),
+      customers: this.props.store.getCustomers(),
     }
   }
   componentDidMount() {
-    this.unsubscribe = store.subscribe(this.updateStateWithCustomers)
+    this.unsubscribe = this.props.store.subscribe(
+      this.updateStateWithCustomers,
+    )
   }
   componentWillUnmount() {
     this.unsubscribe()
   }
 
   updateStateWithCustomers = () => {
-    const customers = store.getCustomers()
+    const customers = this.props.store.getCustomers()
     this.setState({customers})
   }
 
@@ -29,6 +31,14 @@ class CustomerList extends Component {
       return <ListOfCustomers customers={customers} />
     }
   }
+}
+CustomerList.defaultProps = {store}
+
+CustomerList.propTypes = {
+  store: PropTypes.shape({
+    getCustomers: PropTypes.func,
+    subscribe: PropTypes.func,
+  }),
 }
 
 function ListOfCustomers({customers}) {
