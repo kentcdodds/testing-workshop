@@ -1,5 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import smiley from '../../shared/smiley-cyrus.jpg'
 import agent from '../../shared/agent'
 
 const mapDispatchToProps = dispatch => ({
@@ -41,7 +42,7 @@ class CommentInput extends React.Component {
         </div>
         <div className="card-footer">
           <img
-            src={this.props.currentUser.image}
+            src={this.props.currentUser.image || smiley}
             className="comment-author-img"
             alt="you"
           />

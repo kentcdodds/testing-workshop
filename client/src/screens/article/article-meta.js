@@ -1,5 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router'
+import smiley from '../../shared/smiley-cyrus.jpg'
 import ArticleActions from './article-actions'
 
 const ArticleMeta = props => {
@@ -7,7 +8,7 @@ const ArticleMeta = props => {
   return (
     <div className="article-meta">
       <Link to={`@${article.author.username}`}>
-        <img src={article.author.image} alt="author" />
+        <img src={article.author.image || smiley} alt="author" />
       </Link>
 
       <div className="info">

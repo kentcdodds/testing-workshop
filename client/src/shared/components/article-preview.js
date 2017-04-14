@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router'
 import agent from '../agent'
+import smiley from '../../shared/smiley-cyrus.jpg'
 
 const FAVORITED_CLASS = 'btn btn-sm btn-primary'
 const NOT_FAVORITED_CLASS = 'btn btn-sm btn-outline-primary'
@@ -38,7 +39,7 @@ const ArticlePreview = props => {
     <div className="article-preview">
       <div className="article-meta">
         <Link to={`@${article.author.username}`}>
-          <img src={article.author.image} alt="author" />
+          <img src={article.author.image || smiley} alt="author" />
         </Link>
 
         <div className="info">
