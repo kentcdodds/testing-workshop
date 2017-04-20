@@ -10,9 +10,11 @@ test('returns the token from the headers', () => {
   // TODO
 })
 
+// implement arrayify tests
+
 //////// Elaboration & Feedback /////////
 /*
-http://ws.kcd.im/?ws=ASTs&e=API%20Unit&em=
+http://ws.kcd.im/?ws=Testing&e=API%20Unit&em=
 */
 test('I submitted my elaboration and feedback', () => {
   const submitted = false // change this when you've submitted!

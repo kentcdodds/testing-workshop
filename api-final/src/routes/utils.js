@@ -1,4 +1,4 @@
-export {getTokenFromHeader}
+export {getTokenFromHeader, arrayify}
 
 function getTokenFromHeader(req) {
   if (
@@ -10,3 +10,6 @@ function getTokenFromHeader(req) {
   return null
 }
 
+function arrayify(thing) {
+  return Array.isArray(thing) ? thing : [thing]
+}

@@ -1,8 +1,17 @@
+// COMMENT_START
+/*
+// COMMENT_END
 // WORKSHOP_START
 // Your task: Write these unit tests :)
 // eslint-disable-next-line no-unused-vars
-// WORKSHOP_END
 import {getTokenFromHeader} from '../utils'
+// WORKSHOP_END
+// COMMENT_START
+*/
+// COMMENT_END
+// FINAL_START
+import {getTokenFromHeader, arrayify} from '../utils'
+// FINAL_END
 
 test('returns null if there is no token', () => {
   // WORKSHOP_START
@@ -33,9 +42,16 @@ test('returns the token from the headers', () => {
 })
 
 // WORKSHOP_START
+// implement arrayify tests
+// WORKSHOP_END
+// FINAL_START
+// TODO!
+// FINAL_END
+
+// WORKSHOP_START
 //////// Elaboration & Feedback /////////
 /*
-http://ws.kcd.im/?ws=ASTs&e=API%20Unit&em=
+http://ws.kcd.im/?ws=Testing&e=API%20Unit&em=
 */
 test('I submitted my elaboration and feedback', () => {
   const submitted = false // change this when you've submitted!

@@ -1,4 +1,4 @@
-import {getTokenFromHeader} from '../utils'
+import {getTokenFromHeader, arrayify} from '../utils'
 
 test('returns null if there is no token', () => {
   const result = getTokenFromHeader({headers: {}})
@@ -17,6 +17,8 @@ test('returns the token from the headers', () => {
   const result = getTokenFromHeader(req)
   expect(result).toBe(token)
 })
+
+// TODO!
 
 test('I submitted my elaboration and feedback', () => {
   const submitted = true
