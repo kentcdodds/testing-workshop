@@ -1,8 +1,7 @@
-// WORKSHOP_START
-// eslint-disable-next-line no-unused-vars
-// WORKSHOP_END
+// FINAL_START
 import {sel, getRandomUserData, createNewUser, loginAsNewUser} from '../utils'
 
+// FINAL_END
 describe('Users', () => {
   // WORKSHOP_START
   // what kinds of things does a user do that we want to make sure

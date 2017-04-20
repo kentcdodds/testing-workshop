@@ -1,6 +1,3 @@
-// eslint-disable-next-line no-unused-vars
-import {sel, getRandomUserData, createNewUser, loginAsNewUser} from '../utils'
-
 describe('Users', () => {
   // what kinds of things does a user do that we want to make sure
   // doesn't break?
