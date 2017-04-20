@@ -80,6 +80,9 @@ function getUserSchema() {
     return {
       username: this.username,
       bio: this.bio,
+      // FINAL_START
+      image: this.image,
+      // FINAL_END
       following: user ? user.isFollowing(this._id) : false,
     }
   }

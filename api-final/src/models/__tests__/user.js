@@ -33,6 +33,17 @@ test('can generate auth JSON', () => {
   expect(authJSON).toEqual(expected)
 })
 
+test('can generate profile JSON', () => {
+  const {user} = generateUser()
+  const profileJSON = user.toProfileJSONFor()
+  const expected = {
+    username: user.username,
+    bio: user.bio,
+    image: user.image,
+    following: false,
+  }
+  expect(profileJSON).toEqual(expected)
+})
 
 test('shows the user as following based on the given user', () => {
   const {user} = generateUser()
