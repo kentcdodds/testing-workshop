@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import {sel, getRandomUserData, createNewUser, loginAsNewUser} from '../utils'
 
 describe('Users', () => {
@@ -5,6 +6,8 @@ describe('Users', () => {
   // doesn't break?
 })
 
+// I'll just give you this function :)
+// eslint-disable-next-line no-unused-vars
 function verifyLoggedIn(username) {
   const hash = Cypress.env('E2E_DEV') ? '#/' : ''
   cy
