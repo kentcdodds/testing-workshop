@@ -79,7 +79,14 @@ instructions to fix things and try again. If you're still getting errors or need
 I'm not sure how to prevent this from happening (suggestions appreciated!) but it happens every time you run the `e2e`
 tests. Just hit `Allow` (super annoying). Sorry about that 😞
 
-#### Windows users!!
+#### Cypress
+
+> If you're a windows user, please see the next section...
+
+For everyone else, you'll want to come with Cypress.io downloaded, installed and have an account ready to go.
+Please follow [these instructions](https://docs.cypress.io/docs/installing-and-running) to do this!
+
+##### Windows users!!
 
 Unfortunately, the [cypress](https://www.cypress.io/) application does not yet support the Windows platform.
 You should still be able to run cypress in "headless" mode, but you will be unable to open the application
