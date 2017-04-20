@@ -156,16 +156,20 @@ module.exports = {
         'lint',
         'split.api.verify',
         'split.client.verify',
-        'e2e'
+        'split.e2e.verify'
       ),
     },
     split: {
       default: {
-        script: concurrent.nps('split.api', 'split.client'),
+        script: concurrent.nps('split.api', 'split.client', 'split.e2e'),
         hiddenFromHelp,
       },
       verify: {
-        script: concurrent.nps('split.api.verify', 'split.client.verify'),
+        script: concurrent.nps(
+          'split.api.verify',
+          'split.client.verify',
+          'split.e2e.verify'
+        ),
         hiddenFromHelp,
       },
       client: {
@@ -229,6 +233,37 @@ module.exports = {
             'nps api.test',
             series('cd api', 'npm start demo', 'cd ..'),
             'nps split.api'
+          ),
+        },
+      },
+      e2e: {
+        default: {
+          script: series(
+            rimraf('cypress-final'),
+            oneLine`
+              split-guide generate
+              --no-clean
+              --templates-dir templates/cypress
+              --exercises-dir cypress
+              --exercises-final-dir cypress-final
+            `
+          ),
+          hiddenFromHelp,
+        },
+        verify: {
+          hiddenFromHelp,
+          description: splitVerifyDescription,
+          script: series(
+            rimraf('cypress-final', 'node_modules/.tmp/cypress'),
+            oneLine`
+              split-guide generate
+              --no-clean
+              --templates-dir templates/cypress
+              --exercises-dir node_modules/.tmp/cypress
+              --exercises-final-dir cypress
+            `,
+            'nps e2e',
+            'nps split.e2e'
           ),
         },
       },

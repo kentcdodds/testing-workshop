@@ -1,5 +1,9 @@
 // FINAL_START
 {
+  "globals": {
+    "cy": false,
+    "Cypress": false,
+  },
   "rules": {
     "import/no-unresolved": "off",
     "import/no-extraneous-dependencies": "off",
