@@ -80,6 +80,11 @@ function getUserSchema() {
     return {
       username: this.username,
       bio: this.bio,
+      // WORKSHOP_START
+      // this is where the bug is...
+      // we're not adding this.image
+      // to the object!
+      // WORKSHOP_END
       // FINAL_START
       image: this.image,
       // FINAL_END

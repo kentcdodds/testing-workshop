@@ -19,7 +19,7 @@ function generateUser(overrides) {
     save: jest.fn(),
   }
   Object.assign(user, generateUserData(overrides), mockOverrides)
-  return {user}
+  return user
 }
 
 function getUserConstructor() {

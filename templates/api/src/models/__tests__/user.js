@@ -1,6 +1,55 @@
 import mongoose from 'mongoose'
 import {getUserConstructor, generateUser} from './helpers/utils'
 
+// WORKSHOP_START
+// Go ahead and add your test here at the bottom
+// You can create a user with an image like:
+// const user = generateUser({
+//   image: 'http://example.com/avatar.png'
+// })
+// and then call user.toProfileJSONFor() and verify
+// the result has an `image` property and that it's
+// the right one!
+// NOTE: If the user doesn't have an image, that's
+// totally fine (the client will handle the default)
+// so don't worry about checking that case.
+
+//////// Elaboration & Feedback /////////
+/*
+http://ws.kcd.im/?ws=Testing&e=&em=
+*/
+test('I submitted my elaboration and feedback', () => {
+  const submitted = false // change this when you've submitted!
+  expect(true).toBe(submitted)
+})
+////////////////////////////////
+// WORKSHOP_END
+// FINAL_START
+test('can generate profile JSON', () => {
+  const user = generateUser()
+  const profileJSON = user.toProfileJSONFor()
+  const expected = {
+    username: user.username,
+    bio: user.bio,
+    image: user.image,
+    following: false,
+  }
+  expect(profileJSON).toEqual(expected)
+})
+
+test('I submitted my elaboration and feedback', () => {
+  const submitted = true
+  expect(true).toBe(submitted)
+})
+// FINAL_END
+
+//////// EXTRA CREDIT ////////
+
+// If you get this far, try adding a few more tests,
+// then file a pull request to add them as extra credit!
+// Learn more here: http://kcd.im/testing-workshop-contributing
+
+// Here are a bunch of other tests you can look at if you want :)
 test('can create a new empty user', () => {
   const User = getUserConstructor()
   const user = new User()
@@ -14,14 +63,14 @@ test('can create a new empty user', () => {
 test('can validate passwords', () => {
   const password = 'help me Obi-Wan Kenobi'
   const badPassword = 'help me Qui-Gon Jinn'
-  const {user} = generateUser()
+  const user = generateUser()
   user.setPassword(password)
   expect(user.validPassword(password)).toBe(true)
   expect(user.validPassword(badPassword)).toBe(false)
 })
 
 test('can generate auth JSON', () => {
-  const {user} = generateUser()
+  const user = generateUser()
   const authJSON = user.toAuthJSON()
   const expected = {
     username: user.username,
@@ -33,23 +82,9 @@ test('can generate auth JSON', () => {
   expect(authJSON).toEqual(expected)
 })
 
-// FINAL_START
-test('can generate profile JSON', () => {
-  const {user} = generateUser()
-  const profileJSON = user.toProfileJSONFor()
-  const expected = {
-    username: user.username,
-    bio: user.bio,
-    image: user.image,
-    following: false,
-  }
-  expect(profileJSON).toEqual(expected)
-})
-// FINAL_END
-
 test('shows the user as following based on the given user', () => {
-  const {user} = generateUser()
-  const {user: followingUser} = generateUser({
+  const user = generateUser()
+  const followingUser = generateUser({
     following: [user._id],
   })
   const profileJSON = user.toProfileJSONFor(followingUser)
@@ -57,7 +92,7 @@ test('shows the user as following based on the given user', () => {
 })
 
 test('can favorite an article', () => {
-  const {user} = generateUser()
+  const user = generateUser()
   const articleId = mongoose.Types.ObjectId()
   user.favorite(articleId)
   expect(user.save).toHaveBeenCalledTimes(1)
@@ -65,7 +100,7 @@ test('can favorite an article', () => {
 })
 
 test('does not double favorite an article', () => {
-  const {user} = generateUser({favorites: []})
+  const user = generateUser({favorites: []})
   const articleId = mongoose.Types.ObjectId()
   user.favorite(articleId)
   user.favorite(articleId)
@@ -75,7 +110,7 @@ test('does not double favorite an article', () => {
 
 test('can unfavorite an article', () => {
   const articleId = mongoose.Types.ObjectId()
-  const {user} = generateUser({
+  const user = generateUser({
     favorites: [articleId],
   })
   user.unfavorite(articleId)
@@ -86,7 +121,7 @@ test('can unfavorite an article', () => {
 test('can verify whether an article is favorited', () => {
   const favorite = mongoose.Types.ObjectId()
   const notFavorite = mongoose.Types.ObjectId()
-  const {user} = generateUser({
+  const user = generateUser({
     favorites: [favorite],
   })
   expect(user.isFavorite(favorite)).toBe(true)
@@ -94,7 +129,7 @@ test('can verify whether an article is favorited', () => {
 })
 
 test('can follow a user', () => {
-  const {user} = generateUser()
+  const user = generateUser()
   const userId = mongoose.Types.ObjectId()
   user.follow(userId)
   expect(user.save).toHaveBeenCalledTimes(1)
@@ -103,7 +138,7 @@ test('can follow a user', () => {
 
 test('can unfollow a user', () => {
   const userId = mongoose.Types.ObjectId()
-  const {user} = generateUser({
+  const user = generateUser({
     following: [userId],
   })
   user.unfollow(userId)
@@ -112,7 +147,7 @@ test('can unfollow a user', () => {
 })
 
 test('does not double follow a user', () => {
-  const {user} = generateUser({following: []})
+  const user = generateUser({following: []})
   const userId = mongoose.Types.ObjectId()
   user.follow(userId)
   user.follow(userId)
@@ -123,7 +158,7 @@ test('does not double follow a user', () => {
 test('can verify whether a user is following another', () => {
   const following = mongoose.Types.ObjectId()
   const notFollowing = mongoose.Types.ObjectId()
-  const {user} = generateUser({
+  const user = generateUser({
     following: [following],
   })
   expect(user.isFollowing(following)).toBe(true)
