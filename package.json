@@ -8,7 +8,7 @@
   "scripts": {
     "start": "nps",
     "test": "nps test",
-    "precommit": "nps validate",
+    "precommit": "opt --in precommit --exec \"nps validate\"",
     "setup": "node ./scripts/verify && node ./scripts/install && node ./scripts/load-database && npm start validate"
   },
   "devDependencies": {

@@ -40,7 +40,7 @@ exports[`test renders editor form by default 1`] = `
                   data-state-key="description"
                   data-test="description"
                   onChange={[Function]}
-                  placeholder="What\'s this article about?"
+                  placeholder="What's this article about?"
                   type="text"
                   value="" />
               </fieldset>

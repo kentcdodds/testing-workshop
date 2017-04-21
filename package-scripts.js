@@ -13,6 +13,9 @@ const {oneLine} = commonTags
 
 const hiddenFromHelp = true
 
+const inApi = (...scripts) => series('cd api', ...scripts, 'cd ..')
+const inClient = (...scripts) => series('cd client', ...scripts, 'cd ..')
+
 const delay = s => ifWindows(`timeout ${s}`, `sleep ${s}`)
 const ignoreOutput = s =>
   `echo ${s} && ${s} ${ifWindows('> NUL', '&>/dev/null')}`
@@ -58,39 +61,16 @@ module.exports = {
         script: 'mongo admin --eval "db.shutdownServer()"',
       },
     },
-    api: {
-      description: 'start the api server in production mode',
-      script: series('cd api', 'npm start --silent'),
-      test: {
-        hiddenFromHelp,
-        description: 'run the api unit and integration tests',
-        script: concurrent.nps('api.test.unit', 'api.test.integration'),
-        unit: {
-          hiddenFromHelp,
-          script: series('cd api', 'npm start test.unit --silent'),
-        },
-        integration: {
-          hiddenFromHelp,
-          script: oneLine`
-            concurrently
-            --kill-others
-            --success first
-            --prefix "[{name}]"
-            --names dev.mongo,dev.api,api.test.integration
-            "nps dev.mongo"
-            "${delay(2)} && cd api && npm start --silent test.integration"
-          `,
-        },
-      },
-    },
+    api: getApiScripts(),
     client: {
-      description: 'start the production client server',
-      script: series('cd client', 'npm start --silent -- "default 8080"'),
-      test: {
-        hiddenFromHelp,
-        description: 'run the client tests',
-        script: series('cd client', 'npm test --silent'),
+      default: {
+        description: 'start the production client server',
+        script: inClient('npm start --silent -- "default 8080"'),
       },
+      test: getTestScripts('client'),
+      demo: getDemoScripts('client'),
+      unit: 'nps client.test.unit.watch',
+      integration: 'nps client.test.integration.watch',
     },
     build: {
       default: {
@@ -198,8 +178,7 @@ module.exports = {
               --exercises-dir node_modules/.tmp/client
               --exercises-final-dir client
             `,
-            'nps client.test',
-            series('cd client', 'npm start demo', 'cd ..'),
+            concurrent.nps('client.test', 'client.demo'),
             'nps split.client'
           ),
         },
@@ -230,8 +209,7 @@ module.exports = {
               --exercises-dir node_modules/.tmp/api
               --exercises-final-dir api
             `,
-            'nps api.test',
-            series('cd api', 'npm start demo', 'cd ..'),
+            concurrent.nps('api.test', 'api.demo'),
             'nps split.api'
           ),
         },
@@ -389,6 +367,99 @@ function getE2EScripts() {
       --names "${scripts.join(',')}"
       ${npsScripts.join(' ')}
     `
+  }
+}
+
+function getTestScripts(dir) {
+  const inDir = (...scripts) => series(`cd ${dir}`, ...scripts, 'cd ..')
+  return {
+    default: {
+      description: `run all the ${dir} tests`,
+      script: concurrent.nps(`${dir}.test.unit`, `${dir}.test.integration`),
+    },
+    unit: {
+      default: {
+        description: `run the ${dir} unit tests`,
+        script: inDir('npm start test.unit --silent'),
+      },
+      watch: {
+        description: `run the ${dir} unit tests in watch mode`,
+        script: inDir('npm start test.unit.watch --silent'),
+      },
+    },
+    integration: {
+      default: {
+        description: `run the ${dir} integration tests`,
+        script: inDir('npm start test.integration --silent'),
+      },
+      watch: {
+        description: `run the ${dir} integration tests in watch mode`,
+        script: inDir('npm start test.integration.watch --silent'),
+      },
+    },
+  }
+}
+
+function getDemoScripts(dir) {
+  const inDir = (...scripts) => series(`cd ${dir}`, ...scripts, 'cd ..')
+  return {
+    default: {
+      description: `run all the ${dir} demo tests`,
+      script: concurrent.nps(`${dir}.demo.unit`, `${dir}.demo.integration`),
+    },
+    unit: {
+      default: {
+        description: `run the ${dir} unit demo tests`,
+        script: inDir('npm start demo.unit --silent'),
+      },
+      watch: {
+        description: `run the ${dir} demo unit tests in watch mode`,
+        script: inDir('npm start demo.unit.watch --silent'),
+      },
+    },
+    integration: {
+      default: {
+        description: `run the ${dir} integration demo tests`,
+        script: inDir('npm start demo.integration --silent'),
+      },
+      watch: {
+        description: `run the ${dir} demo integration tests in watch mode`,
+        script: inDir('npm start demo.integration.watch --silent'),
+      },
+    },
+  }
+}
+
+function getApiScripts() {
+  const testScripts = getTestScripts('api')
+  return {
+    default: {
+      description: 'start the api server in production mode',
+      script: inApi('npm start --silent'),
+    },
+    test: Object.assign(testScripts, {
+      integration: {
+        default: {
+          description: 'Starts mongo, then starts the integration tests',
+          script: oneLine`
+            concurrently
+            --kill-others
+            --success first
+            --prefix "[{name}]"
+            --names dev.mongo,dev.api,api.test.integration
+            "nps dev.mongo"
+            "
+              ${delay(2)} &&
+              ${inApi('npm start test.integration --silent')}
+            "
+          `,
+        },
+        watch: testScripts.integration.watch,
+      },
+    }),
+    demo: getDemoScripts('api'),
+    unit: 'nps api.test.unit.watch',
+    integration: 'nps api.test.integration.watch',
   }
 }
 

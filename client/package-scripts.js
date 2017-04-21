@@ -69,6 +69,16 @@ module.exports = {
           script: 'jest --config=demo/unit/jest.config.json --watch',
         },
       },
+      integration: {
+        default: {
+          hiddenFromHelp,
+          script: 'echo "no integration demo"',
+        },
+        watch: {
+          hiddenFromHelp,
+          script: 'echo "no integration demo"',
+        },
+      },
     },
     postinstall: {
       hiddenFromHelp,
