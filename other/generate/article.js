@@ -16,7 +16,7 @@ function generateArticleData(author, overrides = {}) {
         body: faker.lorem.paragraphs(),
         favoritesCount: 0,
         comments: [],
-        tagList: _.times(_.random(0, 5), faker.company.bsNoun) || [],
+        tagList: _.uniq(_.times(_.random(0, 5), faker.company.bsNoun) || []),
         author,
       },
       overrides,
@@ -47,13 +47,10 @@ function generateArticleForClient(overrides = {}) {
  * @return {Object} the clean object
  */
 function cleanObject(obj) {
-  return Object.keys(obj).reduce(
-    (res, prop) => {
-      if (obj[prop] !== undefined) {
-        res[prop] = obj[prop]
-      }
-      return res
-    },
-    {},
-  )
+  return Object.keys(obj).reduce((res, prop) => {
+    if (obj[prop] !== undefined) {
+      res[prop] = obj[prop]
+    }
+    return res
+  }, {})
 }
