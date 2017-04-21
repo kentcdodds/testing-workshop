@@ -102,9 +102,13 @@ doing this with a group, perhaps you could pair with someone who has a Mac or Li
 
 To get the app up and running (and really see if it worked), run:
 
-```
+```shell
 npm start dev
+
+# if using yarn
+yarn run dev
 ```
+
 
 This _should_ start `mongod`, the `api` server, and the `client` server all at
 the same time. Your browser should open up automatically to
