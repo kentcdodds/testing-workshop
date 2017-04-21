@@ -132,11 +132,13 @@ module.exports = {
     },
     validate: {
       description: 'validates that things are set up properly',
-      script: concurrent.nps(
-        'lint',
-        'split.api.verify',
-        'split.client.verify',
-        'split.e2e.verify'
+      script: series(
+        'nps lint',
+        concurrent.nps(
+          'split.api.verify',
+          'split.client.verify',
+          'split.e2e.verify'
+        )
       ),
     },
     split: {

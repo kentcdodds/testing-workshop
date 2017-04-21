@@ -1,3 +1,4 @@
+import {sel} from '../utils'
 describe('Users', () => {
   // what kinds of things does a user do that we want to make sure
   // doesn't break?

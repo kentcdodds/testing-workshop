@@ -33,6 +33,7 @@
     "mkdirp": "^0.5.1",
     "nps": "^5.0.5",
     "nps-utils": "^1.2.0",
+    "opt-cli": "^1.5.1",
     "p-series": "^1.0.0",
     "prettier-eslint-cli": "^3.3.0",
     "replace-in-file": "^2.5.0",

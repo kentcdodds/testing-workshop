@@ -1,3 +1,12 @@
+// COMMENT_START
+/*
+// COMMENT_END
+// WORKSHOP_START
+import {sel} from '../utils'
+// WORKSHOP_END
+// COMMENT_START
+*/
+// COMMENT_END
 // FINAL_START
 import {sel, getRandomUserData, createNewUser, loginAsNewUser} from '../utils'
 
