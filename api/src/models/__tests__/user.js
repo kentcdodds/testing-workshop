@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
 import {getUserConstructor, generateUser} from './helpers/utils'
 
-// Go ahead and add your test here at the bottom
+// Go ahead and add your test here at the top.
 // You can create a user with an image like:
 // const user = generateUser({
 //   image: 'http://example.com/avatar.png'
@@ -13,21 +13,21 @@ import {getUserConstructor, generateUser} from './helpers/utils'
 // totally fine (the client will handle the default)
 // so don't worry about checking that case.
 
+
 //////// Elaboration & Feedback /////////
+// When you've finished with the exercises:
+// 1. Copy the URL below into your browser and fill out the form
+// 2. remove the `.skip` from the test below
+// 3. Change submitted from `false` to `true`
+// 4. And you're all done!
 /*
-http://ws.kcd.im/?ws=Testing&e=&em=
+http://ws.kcd.im/?ws=Testing&e=Fix%20Bugs&em=
 */
-test('I submitted my elaboration and feedback', () => {
+test.skip('I submitted my elaboration and feedback', () => {
   const submitted = false // change this when you've submitted!
   expect(true).toBe(submitted)
 })
 ////////////////////////////////
-
-//////// EXTRA CREDIT ////////
-
-// If you get this far, try adding a few more tests,
-// then file a pull request to add them as extra credit!
-// Learn more here: http://kcd.im/testing-workshop-contributing
 
 // Here are a bunch of other tests you can look at if you want :)
 test('can create a new empty user', () => {

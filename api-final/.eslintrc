@@ -4,7 +4,7 @@
     "import/no-extraneous-dependencies": "off",
     "import/no-unresolved": "off",
     "no-unused-vars": "off",
-    
+    "no-redeclare": "off",
   }
 }
 // FINAL_END

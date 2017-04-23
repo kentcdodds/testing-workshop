@@ -407,24 +407,27 @@ function getDemoScripts(dir) {
   return {
     default: {
       description: `run all the ${dir} demo tests`,
-      script: concurrent.nps(`${dir}.demo.unit`, `${dir}.demo.integration`),
+      script: concurrent.nps(
+        `${dir}.demo.unit.single`,
+        `${dir}.demo.integration.single`
+      ),
     },
     unit: {
-      default: {
+      single: {
         description: `run the ${dir} unit demo tests`,
         script: inDir('npm start demo.unit --silent'),
       },
-      watch: {
+      default: {
         description: `run the ${dir} demo unit tests in watch mode`,
         script: inDir('npm start demo.unit.watch --silent'),
       },
     },
     integration: {
-      default: {
+      single: {
         description: `run the ${dir} integration demo tests`,
         script: inDir('npm start demo.integration --silent'),
       },
-      watch: {
+      default: {
         description: `run the ${dir} demo integration tests in watch mode`,
         script: inDir('npm start demo.integration.watch --silent'),
       },

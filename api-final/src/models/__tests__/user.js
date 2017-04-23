@@ -1,6 +1,7 @@
 import mongoose from 'mongoose'
 import {getUserConstructor, generateUser} from './helpers/utils'
 
+
 test('can generate profile JSON', () => {
   const user = generateUser()
   const profileJSON = user.toProfileJSONFor()
@@ -17,12 +18,6 @@ test('I submitted my elaboration and feedback', () => {
   const submitted = true
   expect(true).toBe(submitted)
 })
-
-//////// EXTRA CREDIT ////////
-
-// If you get this far, try adding a few more tests,
-// then file a pull request to add them as extra credit!
-// Learn more here: http://kcd.im/testing-workshop-contributing
 
 // Here are a bunch of other tests you can look at if you want :)
 test('can create a new empty user', () => {

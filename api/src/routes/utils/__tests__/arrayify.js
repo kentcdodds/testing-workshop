@@ -1,3 +1,11 @@
+// Things to know:
+// - The `toEqual` assertion does a "deep" equality check.
+//   This means you can verify that two objects are effectively
+//   the same because they have the same primative values.
+//   For example:
+//     `expect({a: 'b'}).toEqual({a: 'b'})`
+//   Learn more: https://facebook.github.io/jest/docs/expect.html#toequalvalue
+//
 // You're going to develop a new utility function called `arrayify`
 // using Test Driven Development!
 // You'll write this function in `api/src/routes/utils/arrayify.js`

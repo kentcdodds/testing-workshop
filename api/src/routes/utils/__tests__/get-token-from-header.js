@@ -1,3 +1,13 @@
+// Things to know:
+// - `test` is a global function from Jest:
+//   `test(messageString, testerFunction)`
+//   Learn more here: https://facebook.github.io/jest/docs/api.html#testname-fn
+// - `expect` is a global function from Jest
+//   which allows you to make assertsions. For
+//   example:
+//     `expect(1).toBe(1)`
+//   Learn more here: https://facebook.github.io/jest/docs/expect.html
+//
 // Write unit tests for getTokenFromHeader.
 // See `api/src/routes/utils/get-token-from-header.js`
 // to see how this function has been implemented and
