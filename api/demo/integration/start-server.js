@@ -72,7 +72,7 @@ function startServer() {
   })
 
   const apiRouter = express.Router()
-  apiRouter.use('/user', userRouter)
+  apiRouter.use('/users', userRouter)
   apiRouter.use('/auth', authRouter)
 
   app.use('/api', apiRouter)

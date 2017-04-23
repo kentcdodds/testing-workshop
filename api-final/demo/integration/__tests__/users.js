@@ -18,22 +18,22 @@ afterAll(done => {
 
 describe('unauthorized', () => {
   test('can limit the users', async () => {
-    const users = await api.get('user?limit=10').then(r => r.data.users)
+    const users = await api.get('users?limit=10').then(r => r.data.users)
     expect(users).toHaveLength(10)
   })
 
   test('can get users with an offset', async () => {
     const [, user1] = await api
-      .get('user?offset=0&limit=2')
+      .get('users?offset=0&limit=2')
       .then(r => r.data.users)
     const [user2] = await api
-      .get('user?offset=1&limit=1')
+      .get('users?offset=1&limit=1')
       .then(r => r.data.users)
     expect(user1).toEqual(user2)
   })
 
   test('cannot add a user', async () => {
-    const response = await api.post('user', {}).catch(error => error.response)
+    const response = await api.post('users', {}).catch(error => error.response)
     expect(response.status).toBe(401)
   })
 })
@@ -55,21 +55,21 @@ describe('authorized', () => {
 
   test('can add a user', async () => {
     const user = generateRandomUserData()
-    const result = await api.post('user', {user}).then(r => r.data.user)
+    const result = await api.post('users', {user}).then(r => r.data.user)
     expect(result).toEqual(user)
     const getResult = await api
-      .get(`user/${user.username}`)
+      .get(`users/${user.username}`)
       .then(r => r.data.user)
     expect(getResult).toEqual(user)
   })
 
   test('can delete a user', async () => {
     const user = generateRandomUserData()
-    await api.post('user', {user})
-    await api.delete(`user/${user.username}`)
+    await api.post('users', {user})
+    await api.delete(`users/${user.username}`)
 
     const result = await api
-      .get(`user/${user.username}`)
+      .get(`users/${user.username}`)
       .catch(error => error.response)
     expect(result.status).toBe(404)
   })
