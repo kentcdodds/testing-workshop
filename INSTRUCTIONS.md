@@ -15,14 +15,6 @@
 
 Setup is the same as above!
 
-> Remember to write a simple test to cover a simple use case. Then write code
-> to make that test pass. Then refactor your code to clean it up if needed. Then
-> continue the cycle until you cover all use cases.
-
-Requirements: A function called `arrayify` that accepts a single argument
-and returns an array of that argument. If the given argument is
-already an array, just return the argument. If it's given nothing, return an empty array.
-
 ### Fix the bug
 
 - Run `npm start api.unit` to run the tests in watch mode

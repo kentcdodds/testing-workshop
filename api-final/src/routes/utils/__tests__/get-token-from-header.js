@@ -1,11 +1,11 @@
-import {getTokenFromHeader, arrayify} from '../utils'
+import getTokenFromHeader from '../get-token-from-header'
 
-test('returns null if there is no token', () => {
+test('getTokenFromHeader returns null if there is no token', () => {
   const result = getTokenFromHeader({headers: {}})
   expect(result).toBe(null)
 })
 
-test('returns the token from the headers', () => {
+test('getTokenFromHeader returns the token from the headers', () => {
   const token = 'hi.mom!'
   const authHeader = `Token ${token}`
   const req = {
@@ -18,15 +18,7 @@ test('returns the token from the headers', () => {
   expect(result).toBe(token)
 })
 
-// TODO!
-
 test('I submitted my elaboration and feedback', () => {
   const submitted = true
   expect(true).toBe(submitted)
 })
-
-//////// EXTRA CREDIT ////////
-
-// If you get this far, try adding a few more tests,
-// then file a pull request to add them to the extra credit!
-// Learn more here: http://kcd.im/asts-workshop-contributing

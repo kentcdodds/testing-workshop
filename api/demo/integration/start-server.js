@@ -2,7 +2,7 @@ import _ from 'lodash'
 import faker from 'faker'
 import express from 'express'
 import bodyParser from 'body-parser'
-import {getTokenFromHeader} from '../../src/routes/utils'
+import getTokenFromHeader from '../../src/routes/utils/get-token-from-header'
 
 export default startServer
 

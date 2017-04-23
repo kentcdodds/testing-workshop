@@ -1,6 +1,6 @@
 import jwt from 'express-jwt'
 import {secret} from '../config'
-import {getTokenFromHeader} from './utils'
+import getTokenFromHeader from './utils/get-token-from-header'
 
 const auth = {
   required: jwt({
