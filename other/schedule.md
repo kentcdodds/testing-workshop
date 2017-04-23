@@ -7,6 +7,22 @@ Just something to help me make sure that I cover everything I want to in the rig
 - Introductions
   - Setup expectations
   - Go over `workshop-info.md`
+
+### The most basic test
+
+> This is just a hook because people are going to go for a while without touching
+> the keyboard and that can be frustrating, so we'll start out with something
+> pretty simple.
+
+- Open `other/start.html` in the browser.
+
+**Takeaways**:
+
+- Tests are simply code that runs other code and performs "assertions"
+- Testing frameworks abstract this away for us to be more productive in writing tests.
+
+### Further Introduction
+
 - Why test?
 - Introduce Application
 

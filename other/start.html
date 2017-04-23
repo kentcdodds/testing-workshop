@@ -1,0 +1,42 @@
+<html>
+  <body>
+    <h1>Calculator Machine</h1>
+    <div>Enter two numbers and see their result!</div>
+    <form>
+      <input /> + <input />
+      <br />
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+  <script>
+// adds two input values together
+function addInputValues(a, b) {
+  return a + b
+}
+
+const form = document.body.querySelector('form')
+const inputs = form.querySelectorAll('input')
+const input1 = inputs[0]
+const input2 = inputs[1]
+
+form.addEventListener('submit', e => {
+  e.preventDefault()
+  alert(addInputValues(input1.value, input2.value))
+})
+
+// Write some test code right here!
+// call addInputValues with numbers as strings
+// (because input1.value and input2.value will always be stirngs)
+// For example:
+// const result = addInputValues('3', '4')
+// If the result is not the sum of those numbers (ie 7),
+// then throw an error!
+
+// Once you've finished your test, check your browser's console
+// and be sure the error is thrown.
+// Congratulations, you've written a test!
+// Now fix the bug (tip: use the Number constructor: `Number(string)`)
+// and refresh the browser to make sure the error's not thrown.
+// Congratulations, you've fixed the bug!
+</script>
+</html>
