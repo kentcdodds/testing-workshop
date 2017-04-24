@@ -35,11 +35,15 @@ test('should respond to store updates', () => {
 
 test('unsubscribe when unmounted (to avoid memory leaks)', () => {
   const unsubscribeMock = jest.fn()
-  const cleanupSpy = spyOn(store, 'subscribe', () => unsubscribeMock)
+  const subscribeMock = jestv19.spyOn(
+    store,
+    'subscribe',
+    () => unsubscribeMock,
+  )
   const wrapper = mountCustomerList()
   wrapper.unmount()
   expect(unsubscribeMock).toHaveBeenCalledTimes(1)
-  cleanupSpy()
+  subscribeMock.mockRestore() // cleanup
 })
 
 /**
@@ -65,14 +69,6 @@ function initializeStore(customers = []) {
   store.setCustomers(customers)
   return function cleanup() {
     store.setCustomers(initialCustomers)
-  }
-}
-
-function spyOn(obj, key, impl) {
-  const original = obj[key]
-  obj[key] = jest.fn(impl)
-  return function cleanup() {
-    obj[key] = original
   }
 }
 // FINAL_END

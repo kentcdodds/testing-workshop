@@ -3,7 +3,7 @@
 // Let's make sure that users can login to the app!
 //
 // Here's a high level overview of what to do...
-// 1. Create a mock user object
+// 1. Create a fake user object with an email and password
 // 2. Bring in axios (which will actually be our mock)
 //    and mock the post implementation with
 //    mockImplementation on the instance
@@ -28,30 +28,21 @@
 // get to render the <Login /> with predefined state.
 // WORKSHOP_END
 // FINAL_START
-import React from 'react'
 import axiosMock from 'axios'
 // FINAL_END
 import Login from '../../src/screens/login'
 // FINAL_START
 import {renderWithState, sel, flushAllPromises} from './helpers/utils'
 
-// FINAL_END
-// WORKSHOP_START
-// Note that this test function is set to be async
-// Just a little tip ;-)
-// WORKSHOP_END
 test('logs in when the form is submitted', async () => {
-  // WORKSHOP_START
-  // TODO
-  // WORKSHOP_END
-  // FINAL_START
+  const setItemMock = jestv19.spyOn(window.localStorage, 'setItem')
   const token = 'Luke, I am your father'
   const user = {password: 'my-password', email: 'me@example.com'}
   axiosMock.__mock.instance.post.mockImplementation(() => {
     return Promise.resolve({data: {user: {token}}})
   })
 
-  const {wrapper} = renderWithState({}, <Login />)
+  const {wrapper} = renderWithState(Login)
   wrapper.find(sel('email')).node.value = user.email
   wrapper.find(sel('password')).node.value = user.password
   wrapper.find('form').simulate('submit')
@@ -60,17 +51,23 @@ test('logs in when the form is submitted', async () => {
   expect(axiosMock.__mock.instance.post).toHaveBeenCalledWith('/users/login', {
     user,
   })
-  expect(window.localStorage.setItem).toHaveBeenCalledTimes(1)
-  expect(window.localStorage.setItem).toHaveBeenCalledWith('jwt', token)
-  // FINAL_END
+  expect(setItemMock).toHaveBeenCalledTimes(1)
+  expect(setItemMock).toHaveBeenCalledWith('jwt', token)
+  setItemMock.mockRestore()
 })
+// FINAL_END
 
 // WORKSHOP_START
 //////// Elaboration & Feedback /////////
+// When you've finished with the exercises:
+// 1. Copy the URL below into your browser and fill out the form
+// 2. remove the `.skip` from the test below
+// 3. Change submitted from `false` to `true`
+// 4. And you're all done!
 /*
 http://ws.kcd.im/?ws=Testing&e=Client%20Integration&em=
 */
-test('I submitted my elaboration and feedback', () => {
+test.skip('I submitted my elaboration and feedback', () => {
   const submitted = false // change this when you've submitted!
   expect(true).toBe(submitted)
 })
@@ -82,9 +79,3 @@ test('I submitted my elaboration and feedback', () => {
   expect(true).toBe(submitted)
 })
 // FINAL_END
-
-//////// EXTRA CREDIT ////////
-
-// If you get this far, try adding a few more tests,
-// then file a pull request to add them as extra credit!
-// Learn more here: http://kcd.im/testing-workshop-contributing

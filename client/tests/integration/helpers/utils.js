@@ -5,11 +5,11 @@ import createStore from '../../../src/store'
 
 export {renderWithState, sel, flushAllPromises}
 
-function renderWithState(state, children) {
+function renderWithState(Component, state = {}) {
   const store = createStore(state)
   const wrapper = mount(
     <Provider store={store}>
-      {children}
+      <Component />
     </Provider>,
   )
   return {store, wrapper}
@@ -18,6 +18,7 @@ function renderWithState(state, children) {
 function sel(id) {
   return `[data-test="${id}"]`
 }
+
 function flushAllPromises() {
   return new Promise(resolve => setImmediate(resolve))
 }

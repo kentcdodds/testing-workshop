@@ -1,4 +1,7 @@
 {
+  "setupFiles": [
+    "<rootDir>/config/jest/setup-tests.js"
+  ],
   "testEnvironment": "jest-environment-jsdom",
   "testPathDirs": [
     "demo/unit"

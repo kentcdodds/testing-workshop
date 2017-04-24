@@ -1,6 +1,6 @@
 {
   "setupFiles": [
-    "./tests/setup-integration.js"
+    "<rootDir>/config/jest/setup-tests.js"
   ],
   "testRegex": "tests/integration/.*.js$",
   "testPathIgnorePatterns": [
@@ -22,10 +22,10 @@
   ],
   "coverageThreshold": {
     "global": {
-      "statements": 10,
-      "branches": 10,
-      "functions": 10,
-      "lines": 10
+      "statements": 2,
+      "branches": 2,
+      "functions": 2,
+      "lines": 2
     }
   },
   "coverageDirectory": "coverage/integration"

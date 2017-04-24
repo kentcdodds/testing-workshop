@@ -1,4 +1,7 @@
 {
+  "setupFiles": [
+    "<rootDir>/config/jest/setup-tests.js"
+  ],
   "testRegex": "src/.*__tests__/.*.js$",
   "testPathIgnorePatterns": [
     "/node_modules/",
