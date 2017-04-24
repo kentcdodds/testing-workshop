@@ -166,7 +166,7 @@ module.exports = {
             oneLine`
               split-guide generate
               --no-clean
-              --templates-dir templates/client
+              --templates-dir other/templates/client
               --exercises-dir client
               --exercises-final-dir client-final
             `
@@ -181,7 +181,7 @@ module.exports = {
             oneLine`
               split-guide generate
               --no-clean
-              --templates-dir templates/client
+              --templates-dir other/templates/client
               --exercises-dir node_modules/.tmp/client
               --exercises-final-dir client
             `,
@@ -197,7 +197,7 @@ module.exports = {
             oneLine`
               split-guide generate
               --no-clean
-              --templates-dir templates/api
+              --templates-dir other/templates/api
               --exercises-dir api
               --exercises-final-dir api-final
             `
@@ -212,7 +212,7 @@ module.exports = {
             oneLine`
               split-guide generate
               --no-clean
-              --templates-dir templates/api
+              --templates-dir other/templates/api
               --exercises-dir node_modules/.tmp/api
               --exercises-final-dir api
             `,
@@ -228,7 +228,7 @@ module.exports = {
             oneLine`
               split-guide generate
               --no-clean
-              --templates-dir templates/cypress
+              --templates-dir other/templates/cypress
               --exercises-dir cypress
               --exercises-final-dir cypress-final
             `
@@ -243,7 +243,7 @@ module.exports = {
             oneLine`
               split-guide generate
               --no-clean
-              --templates-dir templates/cypress
+              --templates-dir other/templates/cypress
               --exercises-dir node_modules/.tmp/cypress
               --exercises-final-dir cypress
             `,
