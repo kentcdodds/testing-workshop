@@ -1,0 +1,86 @@
+exports[`test renders editor form by default 1`] = `
+<Editor
+  articleSlug=""
+  body=""
+  description=""
+  inProgress={false}
+  onLoad={[Function]}
+  onSubmit={[Function]}
+  onUnload={[Function]}
+  params={Object {}}
+  tagList={Array []}
+  title="">
+  <div
+    className="editor-page">
+    <div
+      className="container page">
+      <div
+        className="row">
+        <div
+          className="col-md-10 offset-md-1 col-xs-12">
+          <ListErrors />
+          <form
+            onSubmit={[Function]}>
+            <fieldset>
+              <fieldset
+                className="form-group">
+                <input
+                  className="form-control form-control-lg"
+                  data-state-key="title"
+                  data-test="title"
+                  onChange={[Function]}
+                  placeholder="Article Title"
+                  type="text"
+                  value="" />
+              </fieldset>
+              <fieldset
+                className="form-group">
+                <input
+                  className="form-control"
+                  data-state-key="description"
+                  data-test="description"
+                  onChange={[Function]}
+                  placeholder="What\'s this article about?"
+                  type="text"
+                  value="" />
+              </fieldset>
+              <fieldset
+                className="form-group">
+                <textarea
+                  className="form-control"
+                  data-state-key="body"
+                  data-test="body"
+                  onChange={[Function]}
+                  placeholder="Write your article (in markdown)"
+                  rows="8"
+                  value="" />
+              </fieldset>
+              <fieldset
+                className="form-group">
+                <input
+                  className="form-control"
+                  data-test="tags"
+                  onChange={[Function]}
+                  onKeyUp={[Function]}
+                  placeholder="Enter tags"
+                  type="text"
+                  value="" />
+                <div
+                  className="tag-list"
+                  data-test="tag-pills" />
+              </fieldset>
+              <button
+                className="btn btn-lg pull-xs-right btn-primary"
+                data-test="submit"
+                disabled={false}
+                type="submit">
+                Publish Article
+              </button>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</Editor>
+`;
