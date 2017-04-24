@@ -142,3 +142,7 @@ Run the application with: `npm start dev`
 
 **Make sure they know**:
 - Start the mongo server with `npm start mongo`
+
+## Client Unit Testing
+
+###
