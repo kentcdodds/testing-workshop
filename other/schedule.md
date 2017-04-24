@@ -128,14 +128,15 @@ Run the application with: `npm start dev`
 - Run `npm start api.demo.integration`
 
 **Takeaways**:
-- Establish the needed application state before you start the tests, and make
-  sure to clean up after yourself when you're done.
+- The shape of a test:
+  Setup State -> Perform Action -> Assert on Resulting State -> Cleanup State
 - `before/afterAll/Each` are appropriate for common setup/teardown, but avoid
-  using it for creating test data (use a Test DSL).
+  using it for creating test data (use a Test DSL). Try to encapsulate cleanup
+  in the same place you make the mess in the first place.
 - Just like with Unit tests, you interact with the API just like you would if
   you were consuming it in normal code, then assert on the resulting state.
 - Occasionally, the only way to assert on the resulting state is to re-query the
-  API to find the resulting state.
+  API to find the resulting state. Could also check the database directly...
 
 ### `articles` Exercise
 
