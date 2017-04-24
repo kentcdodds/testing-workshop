@@ -3,48 +3,52 @@ import React from 'react'
 import {render, mount} from 'enzyme'
 import {renderToJson, mountToJson} from 'enzyme-to-json'
 import CustomerList from '../customer-list'
-import getStoreStub from './helpers/get-store-stub'
+import store from '../customers'
+
+let storeCleanup
+beforeAll(() => {
+  storeCleanup = initializeStore()
+})
+
+afterAll(() => {
+  storeCleanup()
+})
 
 test('should render no customers', () => {
   snapshotCustomerList()
 })
 
 test('should render customers', () => {
-  const {store} = getStoreStub([{name: 'Bob'}, {name: 'Joanna'}])
-  snapshotCustomerList({store})
+  const cleanup = initializeStore([{name: 'Bob'}, {name: 'Joanna'}])
+  snapshotCustomerList()
+  cleanup()
 })
 
 test('should respond to store updates', () => {
-  const {store, updateCustomers} = getStoreStub()
-  const wrapper = mountCustomerList({store})
-  expect(mountToJson(wrapper)).toMatchSnapshot()
-  updateCustomers([{name: 'Jill'}, {name: 'Fred'}])
-  expect(mountToJson(wrapper)).toMatchSnapshot()
+  const cleanup = initializeStore()
+  const wrapper = mountCustomerList()
+  expect(mountToJson(wrapper)).toMatchSnapshot('1. before customers are added')
+  store.setCustomers([{name: 'Jill'}, {name: 'Fred'}])
+  expect(mountToJson(wrapper)).toMatchSnapshot('2. after customers are added')
+  cleanup()
 })
 
-test('unsubscribe when unmounted', () => {
-  const {unsubscribe, store} = getStoreStub()
-  const wrapper = mountCustomerList({store})
+test('unsubscribe when unmounted (to avoid memory leaks)', () => {
+  const unsubscribeMock = jest.fn()
+  const cleanupSpy = spyOn(store, 'subscribe', () => unsubscribeMock)
+  const wrapper = mountCustomerList()
   wrapper.unmount()
-  expect(unsubscribe).toHaveBeenCalledTimes(1)
+  expect(unsubscribeMock).toHaveBeenCalledTimes(1)
+  cleanupSpy()
 })
 
 /**
  * Render the <CustomerList /> and snapshot it
  * @param {Object} props - the props to render with
  */
-function snapshotCustomerList(props = {}) {
-  const wrapper = renderCustomerList(props)
+function snapshotCustomerList() {
+  const wrapper = render(<CustomerList />)
   expect(renderToJson(wrapper)).toMatchSnapshot()
-}
-
-/**
- * Renders <CustomerList /> with the given props
- * @param {Object} props - the props to render with
- * @return {Object} the rendered component
- */
-function renderCustomerList({store = getStoreStub().store}) {
-  return render(<CustomerList store={store} />)
 }
 
 /**
@@ -52,8 +56,24 @@ function renderCustomerList({store = getStoreStub().store}) {
  * @param {Object} props - the props to mount with
  * @return {Object} the rendered component
  */
-function mountCustomerList({store = getStoreStub().store}) {
-  return mount(<CustomerList store={store} />)
+function mountCustomerList() {
+  return mount(<CustomerList />)
+}
+
+function initializeStore(customers = []) {
+  const initialCustomers = store.getCustomers()
+  store.setCustomers(customers)
+  return function cleanup() {
+    store.setCustomers(initialCustomers)
+  }
+}
+
+function spyOn(obj, key, impl) {
+  const original = obj[key]
+  obj[key] = jest.fn(impl)
+  return function cleanup() {
+    obj[key] = original
+  }
 }
 // FINAL_END
 // WORKSHOP_START
