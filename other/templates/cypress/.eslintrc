@@ -8,7 +8,6 @@
     "import/no-extraneous-dependencies": "off",
     "import/no-unresolved": "off",
     "no-unused-vars": "off",
-    
   }
   // FINAL_END
 }

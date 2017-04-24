@@ -5,40 +5,26 @@ export default generateArticleData
 export {generateArticleForClient}
 
 function generateArticleData(author, overrides = {}) {
-  const {hacker: h} = faker
-  const title = `${h.ingverb()} the ${h.adjective()} ${h.noun()} like it's ${h.abbreviation()}` // eslint-disable-line max-len
+  const baseArticle = generateArticleForClient(overrides)
   return cleanObject(
-    Object.assign(
-      {
-        title,
-        slug: faker.helpers.slugify(title).toLowerCase(),
-        description: faker.lorem.sentence(),
-        body: faker.lorem.paragraphs(),
-        favoritesCount: 0,
-        comments: [],
-        tagList: _.uniq(_.times(_.random(0, 5), faker.company.bsNoun) || []),
-        author,
-      },
-      overrides,
-    ),
+    Object.assign({author, comments: []}, baseArticle, overrides),
   )
 }
 
 function generateArticleForClient(overrides = {}) {
-  const {
-    title,
-    description,
-    body,
-    tagList,
-    author: articleAuthor,
-  } = generateArticleData(undefined, overrides)
-  return cleanObject({
-    title,
-    description,
-    body,
-    tagList,
-    author: articleAuthor,
-  })
+  const {hacker: h} = faker
+  const title = `${h.ingverb()} the ${h.adjective()} ${h.noun()} like it's ${h.abbreviation()}` // eslint-disable-line max-len
+  return Object.assign(
+    {
+      title,
+      slug: faker.helpers.slugify(title).toLowerCase(),
+      description: faker.lorem.sentence(),
+      body: faker.lorem.paragraphs(),
+      favoritesCount: 0,
+      tagList: _.uniq(_.times(_.random(0, 5), faker.company.bsNoun) || []),
+    },
+    overrides,
+  )
 }
 
 /**

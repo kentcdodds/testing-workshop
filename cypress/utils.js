@@ -1,11 +1,11 @@
 import faker from 'faker'
-import generateUserData from '../other/generate/user'
+import {generateUserForClient} from '../other/generate/user'
 
 export {visitApp, sel, getRandomUserData, createNewUser, loginAsNewUser}
 
 function getRandomUserData() {
   const password = faker.internet.password()
-  const user = generateUserData({password})
+  const user = generateUserForClient({password})
   return Object.assign(user, {password})
 }
 

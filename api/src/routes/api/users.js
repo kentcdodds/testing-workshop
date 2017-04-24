@@ -24,7 +24,6 @@ function getUsersRouter() {
   router.get('/user', auth.required, (req, res, next) => {
     User.findById(req.payload.id)
       .then(user => {
-        console.log({user})
         if (!user) {
           return res.sendStatus(401)
         }

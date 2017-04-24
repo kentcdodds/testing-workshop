@@ -3,22 +3,19 @@ import bodyParser from 'body-parser'
 import session from 'express-session'
 import cors from 'cors'
 import errorhandler from 'errorhandler'
-import mongoose from 'mongoose'
 import morgan from 'morgan'
 import methodOverride from 'method-override'
 import logger from 'loglevel'
+import setupMongoose from './config/setup-mongoose'
+import setupPassport from './config/setup-passport'
 import setupModels from './models'
-import setupPassport from './config/passport'
 import getRouter from './routes'
 
 const isProduction = process.env.NODE_ENV === 'production'
 
-// use native promises
-mongoose.Promise = Promise
-
 export default start
 
-function start() {
+async function start() {
   // Create global app object
   const app = express()
 
@@ -47,16 +44,7 @@ function start() {
     app.use(errorhandler())
   }
 
-  if (process.env.MONGODB_URI) {
-    mongoose.connect(process.env.MONGODB_URI)
-  } else {
-    mongoose.connect('mongodb://localhost/conduit')
-  }
-
-  if ('MONGODB_DEBUG' in process.env) {
-    mongoose.set('debug', true)
-  }
-
+  const cleanupMongoose = await setupMongoose()
   setupModels()
   setupPassport()
 
@@ -108,7 +96,7 @@ function start() {
     const server = app.listen(process.env.PORT || 3000, () => {
       logger.info(`Listening on port ${server.address().port}`)
       server.on('close', () => {
-        mongoose.connection.close()
+        cleanupMongoose()
       })
       resolve(server)
     })

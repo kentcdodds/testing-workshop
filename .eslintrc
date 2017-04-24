@@ -20,5 +20,6 @@
     "react/jsx-max-props-per-line": "off",
     "jsx-a11y/no-marquee": "off",
     "no-return-assign": "off",
+    "jest/no-disabled-tests": "off",
   }
 }
