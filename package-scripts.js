@@ -31,7 +31,7 @@ module.exports = {
   scripts: {
     default: {
       description: 'starts mongo, the API, and the client in production mode',
-      script: concurrent.nps('mongo', 'api', 'client'),
+      script: concurrent.nps('mongo.silent', 'api', 'client'),
     },
     separateStart: {
       hiddenFromHelp,
@@ -48,7 +48,11 @@ module.exports = {
         This also ignores all the output. If you want to see
         the output, then run: "npm start mongo.start" instead.
       `,
-      script: series('mkdirp .mongo-db', ignoreOutput('nps mongo.start')),
+      script: series('mkdirp .mongo-db', 'nps mongo.start'),
+      silent: {
+        description: 'Starts the mongo server and ignores the output',
+        script: ignoreOutput('nps mongo'),
+      },
       start: {
         description: oneLine`
           starts the mongodb server with the
@@ -104,7 +108,8 @@ module.exports = {
           starts the dev-mode mongo server
           (same as production mode for now)
         `,
-        script: 'npm start mongo --silent',
+        script: 'nps mongo',
+        silent: 'nps mongo.silent',
       },
       client: {
         description: 'starts the client server in dev mode',
@@ -451,8 +456,8 @@ function getApiScripts() {
             --kill-others
             --success first
             --prefix "[{name}]"
-            --names dev.mongo,dev.api,api.test.integration
-            "nps dev.mongo"
+            --names dev.mongo.silent,dev.api,api.test.integration
+            "nps dev.mongo.silent"
             "
               ${delay(2)} &&
               ${inApi('npm start test.integration --silent')}

@@ -36,8 +36,14 @@ test('getTokenFromHeader returns the token from the headers', () => {
   expect(result).toBe(token)
 })
 // FINAL_END
-
 // WORKSHOP_START
+test('this is the title of your test', () => {
+  // this is where you put your test code. Write code that will
+  // throw an error if getTokenFromHeader has a bug. The `expect`
+  // global is a utility that makes writting such assertions easier,
+  // but you can do it however you like.
+})
+
 //////// Elaboration & Feedback /////////
 // When you've finished with the exercises:
 // 1. Copy the URL below into your browser and fill out the form
