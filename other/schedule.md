@@ -128,7 +128,8 @@ Run the application with: `npm start dev`
 - Run `npm start api.demo.integration`
 
 **Takeaways**:
-- Make sure to clean up after yourself!
+- Establish the needed application state before you start the tests, and make
+  sure to clean up after yourself when you're done.
 - `before/afterAll/Each` are appropriate for common setup/teardown, but avoid
   using it for creating test data (use a Test DSL).
 - Just like with Unit tests, you interact with the API just like you would if

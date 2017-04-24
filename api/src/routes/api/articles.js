@@ -294,7 +294,6 @@ function getArticlesRouter() {
   })
 
   router.delete('/:article/comments/:comment', auth.required, (req, res) => {
-    console.log(req.comment.author, req.comment.author.toString())
     if (req.comment.author.toString() === req.payload.id.toString()) {
       req.article.comments.remove(req.comment._id)
       req.article

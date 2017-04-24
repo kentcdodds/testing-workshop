@@ -9,9 +9,22 @@ function getUsersRouter() {
   const router = express.Router()
   const User = mongoose.model('User')
 
+  // Preload user objects on routes with ':username'
+  router.param('username', async (req, res, next, username) => {
+    const user = await User.findOne({username}).catch(() => {
+      res.sendStatus(500) // TODO make this more helpful
+    })
+    if (!user) {
+      return res.sendStatus(404)
+    }
+    req.user = user
+    next()
+  })
+
   router.get('/user', auth.required, (req, res, next) => {
     User.findById(req.payload.id)
       .then(user => {
+        console.log({user})
         if (!user) {
           return res.sendStatus(401)
         }
@@ -88,6 +101,18 @@ function getUsersRouter() {
         return res.json({user: user.toAuthJSON()})
       })
       .catch(next)
+  })
+
+  // delete user
+  router.delete('/users/:username', auth.required, async (req, res) => {
+    await User.findById(req.payload.id)
+
+    if (req.user._id.toString() === req.payload.id.toString()) {
+      await req.user.remove()
+      return res.sendStatus(204)
+    } else {
+      return res.sendStatus(403)
+    }
   })
 
   return router

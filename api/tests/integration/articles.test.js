@@ -44,11 +44,19 @@ const getUser = res => res.data.user
 // domain-specific and isn't super pertinent to learning testing :)
 // Just know that utilities like this are pretty darn useful and you
 // should probably have things like this in your tests :)
-function createNewUser(overrides) {
+async function createNewUser(overrides) {
   const password = faker.internet.password()
   const userData = generateUserData(overrides)
   const {email, username} = userData
-  return api.post('users', {user: {email, password, username}}).then(getUser)
+  const user = await api
+    .post('users', {user: {email, password, username}})
+    .then(getUser)
+  return {
+    user,
+    cleanup() {
+      return api.delete(`users/${user.username}`)
+    },
+  }
 }
 
 

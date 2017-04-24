@@ -82,36 +82,44 @@ describe('unauthenticated', () => {
 })
 
 describe('authenticated', () => {
+  let cleanupUser
   beforeAll(async () => {
-    const currentUser = await createNewUser()
-    api.defaults.headers.common.authorization = `Token ${currentUser.token}`
+    const results = await createNewUser()
+    cleanupUser = results.cleanup
+    api.defaults.headers.common.authorization = `Token ${results.user.token}`
   })
 
-  afterAll(() => {
+  afterAll(async () => {
+    await cleanupUser()
     api.defaults.headers.common.authorization = ''
-    // TODO: create a delete method to delete the user after the tests are done.
   })
 
   test('post a new article', async () => {
     const newArticle = generateArticleForClient()
-    const result = await createNewArticle(newArticle)
-    expect(result).toMatchObject(newArticle)
+    const {article, cleanup} = await createNewArticle(newArticle)
+    expect(article).toMatchObject(newArticle)
+    cleanup()
   })
 
   test('update an article', async () => {
-    const {slug, updatedAt, title} = await createNewArticle()
-    const newTitle = title + Math.random()
-    const result = await api
+    const {
+      article: {slug, updatedAt, body},
+      cleanup,
+    } = await createNewArticle()
+    // doesn't matter what it is, just that it's different
+    const newBody = `__${body}__`
+    const updatedArticle = await api
       .put(`articles/${slug}`, {
-        article: {title: newTitle},
+        article: {body: newBody},
       })
       .then(getArticle)
-    expect(result.title).toEqual(newTitle)
-    expect(result.updatedAt).not.toBe(updatedAt)
+    expect(updatedArticle.body).toEqual(newBody)
+    expect(updatedArticle.updatedAt).not.toBe(updatedAt)
+    await cleanup()
   })
 
   test('delete an article', async () => {
-    const {slug} = await createNewArticle()
+    const {article: {slug}} = await createNewArticle()
     await api.delete(`articles/${slug}`)
     const error = await api.get(`/articles/${slug}`).catch(e => e)
     expect(error.response.status).toBe(404)
@@ -125,17 +133,33 @@ describe('authenticated', () => {
 // Just know that utilities like this are pretty darn useful and you
 // should probably have things like this in your tests :)
 // WORKSHOP_END
-function createNewUser(overrides) {
+async function createNewUser(overrides) {
   const password = faker.internet.password()
   const userData = generateUserData(overrides)
   const {email, username} = userData
-  return api.post('users', {user: {email, password, username}}).then(getUser)
+  const user = await api
+    .post('users', {user: {email, password, username}})
+    .then(getUser)
+  return {
+    user,
+    cleanup() {
+      return api.delete(`users/${user.username}`)
+    },
+  }
 }
 
 // FINAL_START
-function createNewArticle(overrides) {
+async function createNewArticle(overrides) {
   const newArticle = generateArticleForClient(overrides)
-  return api.post('articles', {article: newArticle}).then(getArticle)
+  const article = await api
+    .post('articles', {article: newArticle})
+    .then(getArticle)
+  return {
+    article,
+    cleanup() {
+      return api.delete(`articles/${article.slug}`)
+    },
+  }
 }
 // FINAL_END
 
