@@ -19,6 +19,7 @@ exports[`has toggle--off class applied by default 1`] = `
 
 <button
   class="css-vp4bp7"
+  data-test="button"
 >
   Toggle Me
 </button>
@@ -43,6 +44,7 @@ exports[`has toggle--on class applied when initialToggledOn: true 1`] = `
 
 <button
   class="css-15i754"
+  data-test="button"
 >
   Toggle Me
 </button>

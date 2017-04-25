@@ -16,7 +16,7 @@ import {Component as Editor} from '../editor'
 // I'm going to go ahead and give these utils to you
 // because I think you get the idea :)
 // And this is a little domain-specific anyway.
-function render(props = {}) {
+function mountEditor(props = {}) {
   const propsToUse = {
     onLoad() {},
     onSubmit() {},

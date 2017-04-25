@@ -44,8 +44,16 @@ function renderToggle(props = {}) {
  * @param {Object} wrapper - the enzyme wrapper
  */
 function clickButton(wrapper) {
-  wrapper.find('button').first().simulate('click')
+  wrapper.find(sel('button')).simulate('click')
 }
+
+// this helper will make it easier for you to find
+// labeled elements in the wrapper:
+// const tagInput = wrapper.find(sel('tags'))
+function sel(id) {
+  return `[data-test="${id}"]`
+}
+
 // FINAL_END
 // WORKSHOP_START
 test('todo', () => {})

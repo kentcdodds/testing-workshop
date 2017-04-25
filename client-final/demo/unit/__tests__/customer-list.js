@@ -14,21 +14,23 @@ afterAll(() => {
 })
 
 test('should render no customers', () => {
-  snapshotCustomerList()
+  const wrapper = render(<CustomerList />)
+  expect(wrapper).toMatchSnapshot()
 })
 
 test('should render customers', () => {
   const cleanup = initializeStore([{name: 'Bob'}, {name: 'Joanna'}])
-  snapshotCustomerList()
+  const wrapper = render(<CustomerList />)
+  expect(wrapper).toMatchSnapshot()
   cleanup()
 })
 
 test('should respond to store updates', () => {
   const cleanup = initializeStore()
   const wrapper = mountCustomerList()
-  expect(mountToJson(wrapper)).toMatchSnapshot('1. before customers are added')
+  expect(wrapper).toMatchSnapshot('1. before customers are added')
   store.setCustomers([{name: 'Jill'}, {name: 'Fred'}])
-  expect(mountToJson(wrapper)).toMatchSnapshot('2. after customers are added')
+  expect(wrapper).toMatchSnapshot('2. after customers are added')
   cleanup()
 })
 
@@ -41,15 +43,6 @@ test('unsubscribe when unmounted (to avoid memory leaks)', () => {
   expect(unsubscribeMock).toHaveBeenCalledTimes(1)
   subscribeMock.mockRestore() // cleanup
 })
-
-/**
- * Render the <CustomerList /> and snapshot it
- * @param {Object} props - the props to render with
- */
-function snapshotCustomerList() {
-  const wrapper = render(<CustomerList />)
-  expect(renderToJson(wrapper)).toMatchSnapshot()
-}
 
 /**
  * Mounts <CustomerList /> with the given props

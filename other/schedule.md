@@ -7,6 +7,7 @@ Just something to help me make sure that I cover everything I want to in the rig
 - Introductions
   - Setup expectations
   - Go over `workshop-info.md`
+  - MAKE SURE TO THANK THE CONTRIBUTORS!
 
 ### The most basic test
 
@@ -128,6 +129,8 @@ Run the application with: `npm start dev`
 - Run `npm start api.demo.integration`
 
 **Takeaways**:
+- Just like with unit testing, it really helps if you write your code in a way
+  that makes it easier to test (export functions).
 - The shape of a test:
   Setup State -> Perform Action -> Assert on Resulting State -> Cleanup State
 - `before/afterAll/Each` are appropriate for common setup/teardown, but avoid
@@ -150,3 +153,45 @@ Run the application with: `npm start dev`
 ### `toggle` Demo
 
 - Run `npm start client.demo.unit`
+
+**Takeaways**:
+- As cool as it is to traverse the DOM to try to guess what's going on, it's not
+  very cool to have tests break all the time due to refactors and redesigns.
+  Also, we have no insight into what CSS applies to what elements without
+  actually running the app.
+- Snapshot testing can solve this problem.
+- Enzyme can help us simulate user interaction
+- Make Test DSLs for the default props and pass overrides as needed.
+
+### `editor` Exercise
+
+- Run `npm start client.unit`
+
+**Make sure they know**:
+- How the tag input works
+- About `data-test` attributes and the `sel` helper
+- How to get the node out of a wrapper (`wrapper.find(sel('title')).node`)
+
+## TAKE A BREAK!
+
+## Client Integration Testing
+
+### `register` Demo
+
+- Run `npm start client.integration` **this is different than normal demos**
+
+**Takeaways**:
+- Just like the other examples, it's much easier if you write your code in a way
+  that's easier to test (export functions). Rending the full app from the
+  routes is pretty amazing
+- `data-test` attributes are _amazing_
+- `jest.mock` and the `__mocks__` directory. Mocks should generally be avoided
+  and their overuse is an indication of a flaw in your program.
+- Don't forget to clean up after yourself!
+
+### `login` Exercise
+
+- Run `npm start client.integration`
+
+**Make sure they know**:
+- This is basically just like the one we just did :)

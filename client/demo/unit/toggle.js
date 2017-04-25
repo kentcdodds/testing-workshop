@@ -56,7 +56,11 @@ class Toggle extends Component {
     const {children} = this.props
     const {toggledOn} = this.state
     return (
-      <ToggleButton on={toggledOn} onClick={this.handleToggleClick}>
+      <ToggleButton
+        on={toggledOn}
+        onClick={this.handleToggleClick}
+        data-test="button"
+      >
         {children}
       </ToggleButton>
     )

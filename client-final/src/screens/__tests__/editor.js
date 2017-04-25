@@ -3,20 +3,20 @@ import {mount} from 'enzyme'
 import {Component as Editor} from '../editor'
 
 test('renders editor form by default', () => {
-  const wrapper = render()
+  const wrapper = mountEditor()
   expect(wrapper).toMatchSnapshot()
 })
 
 test('renders the given title', () => {
   const title = 'The day I dualed Lord Voldemort'
-  const wrapper = render({title})
+  const wrapper = mountEditor({title})
   expect(wrapper.find(sel('title')).node.value).toBe(title)
 })
 
 test('adds tag when the user hits enter', () => {
   const newTag = 'interwebs'
   const tagList = ['internet', 'web', 'network']
-  const wrapper = render({tagList})
+  const wrapper = mountEditor({tagList})
   const tagInput = wrapper.find(sel('tags'))
   changeInputValue(tagInput, newTag)
   keyUpInput(tagInput, 13)
@@ -25,7 +25,7 @@ test('adds tag when the user hits enter', () => {
   expect(tagPills.find(sel(`tag-3-${newTag}`))).toHaveLength(1)
 })
 
-function render(props = {}) {
+function mountEditor(props = {}) {
   const propsToUse = {
     onLoad() {},
     onSubmit() {},
