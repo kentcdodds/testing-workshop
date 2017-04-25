@@ -24,7 +24,7 @@ describe('Users', () => {
   })
 
   it('should allow an existing user to login', () => {
-    createNewUser().then(({email, username, password}) => {
+    createNewUser().then(({user: {email, username, password}}) => {
       cy
         .visitApp()
         .get(sel('sign-in-link'))
@@ -40,7 +40,7 @@ describe('Users', () => {
   })
 
   it('should allow an existing user to update their settings', () => {
-    loginAsNewUser().then(user => {
+    loginAsNewUser().then(({user}) => {
       // route needs to be set properly
       const newUsername = `${user.username}55`
       const photoUrl = 'https://randomuser.me/api/portraits/lego/7.jpg'
