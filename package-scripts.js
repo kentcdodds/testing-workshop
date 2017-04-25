@@ -19,6 +19,7 @@ const inClient = (...scripts) => series('cd client', ...scripts, 'cd ..')
 const delay = s => ifWindows(`timeout ${s}`, `sleep ${s}`)
 const ignoreOutput = s =>
   `echo ${s} && ${s} ${ifWindows('> NUL', '&>/dev/null')}`
+const ignoreError = s => `${s} || exit 0`
 
 const splitVerifyDescription = oneLine`
   This verifies that the final version actually passes the tests.
@@ -451,18 +452,22 @@ function getApiScripts() {
       integration: {
         default: {
           description: 'Starts mongo, then starts the integration tests',
-          script: oneLine`
-            concurrently
-            --kill-others
-            --success first
-            --prefix "[{name}]"
-            --names dev.mongo.silent,dev.api,api.test.integration
-            "nps dev.mongo.silent"
-            "
-              ${delay(2)} &&
-              ${inApi('npm start test.integration --silent')}
-            "
-          `,
+          script: series(
+            // make sure that it's not running before we start it
+            ignoreError('nps mongo.stop'),
+            oneLine`
+              concurrently
+              --kill-others
+              --success first
+              --prefix "[{name}]"
+              --names dev.mongo.silent,dev.api,api.test.integration
+              "nps dev.mongo.silent"
+              "
+                ${delay(2)} &&
+                ${inApi('npm start test.integration --silent')}
+              "
+            `
+          ),
         },
         watch: testScripts.integration.watch,
       },
