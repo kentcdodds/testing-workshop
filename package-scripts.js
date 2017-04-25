@@ -127,7 +127,7 @@ module.exports = {
     },
     lint: {
       hiddenFromHelp,
-      script: 'eslint .',
+      script: 'eslint . --cache',
       description: 'lint project files',
     },
     format: {

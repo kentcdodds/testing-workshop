@@ -3,6 +3,9 @@
     "cy": false,
     "Cypress": false,
   },
+  "env": {
+    "mocha": true,
+  },
   // FINAL_START
   "rules": {
     "import/no-extraneous-dependencies": "off",
