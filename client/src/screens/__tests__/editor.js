@@ -33,14 +33,25 @@ function render(props = {}) {
   return mount(<Editor {...propsToUse} />)
 }
 
+// This helper will make it easier to change the value
+// in an input element. For example:
+// changeInputValue(tagInput, 'hello')
+// will change the input's value to 'hello'
 function changeInputValue(input, value) {
   input.simulate('change', {target: {value}})
 }
 
+// this helper will make it easier to fire the keyUp event
+// on elements. For example:
+// keyUpInput(tagInput, 13)
+// will fire the "enter" key on that input
 function keyUpInput(input, keyCode) {
   input.simulate('keyup', {keyCode})
 }
 
+// this helper will make it easier for you to find
+// labeled elements in the wrapper:
+// const tagInput = wrapper.find(sel('tags'))
 function sel(id) {
   return `[data-test="${id}"]`
 }
