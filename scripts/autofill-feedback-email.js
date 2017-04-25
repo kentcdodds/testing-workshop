@@ -19,7 +19,7 @@ const apiGlob = [
 
 const options = {
   files: clientGlob.concat(apiGlob),
-  from: /&em=/,
+  from: /&em=\n/,
   to: `&em=${email}`,
 }
 

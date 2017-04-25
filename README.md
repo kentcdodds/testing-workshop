@@ -66,9 +66,14 @@ commands to get set up:
 git clone https://github.com/kentcdodds/testing-workshop.git
 cd testing-workshop
 npm run setup --silent
+node ./scripts/autofill-feedback-email.js YOUR@EMAIL.com
 ```
 
-This may take a few minutes. If you get any errors, please read the error output and see whether there's any
+> Change `YOUR@EMAIL.com` to your actual email address
+
+This may take a few minutes. If you get any errors, run `git reset --hard` to make sure
+you have a clean project again,
+then please read the error output and see whether there's any
 instructions to fix things and try again. If you're still getting errors or need any help at all, then please
 [file an issue][issue].
 
