@@ -146,7 +146,7 @@ If you want to login, there's a user you can use:
 
 ### Troubleshooting
 
-#### `npm dev` command not working
+#### `npm start dev` command not working
 
 If it doesn't work for you, you can start each of these individually yourself:
 
