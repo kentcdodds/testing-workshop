@@ -454,7 +454,7 @@ function getApiScripts() {
           description: 'Starts mongo, then starts the integration tests',
           script: series(
             // make sure that it's not running before we start it
-            ignoreError('nps mongo.stop'),
+            ignoreError(ignoreOutput('nps mongo.stop')),
             oneLine`
               concurrently
               --kill-others
