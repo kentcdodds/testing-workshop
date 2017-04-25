@@ -67,11 +67,12 @@ git clone https://github.com/kentcdodds/testing-workshop.git
 cd testing-workshop
 npm run setup --silent
 node ./scripts/autofill-feedback-email.js YOUR@EMAIL.com
+git commit -am "ready to go"
 ```
 
 > Change `YOUR@EMAIL.com` to your actual email address
 
-This may take a few minutes. If you get any errors, run `git reset --hard` to make sure
+This may take a few minutes. If you get any errors, run `git reset origin/master --hard` to make sure
 you have a clean project again,
 then please read the error output and see whether there's any
 instructions to fix things and try again. If you're still getting errors or need any help at all, then please
