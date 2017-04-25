@@ -71,7 +71,7 @@ Run the application with: `npm start dev`
 - Pure functions === easiest to test: compose your application of these as much
   as possible
 - Test for use cases rather than for code coverage
-- "Object Mother" or "Test DSLs" are really handy (when kept simple).
+- "Object Mother" or "Test Object Factories" are really handy (when kept simple)
 - Using variables to be explicit about relationships is useful (when kept simple).
 
 #### `get-token-from-header` Exercise
@@ -161,7 +161,7 @@ Run the application with: `npm start dev`
   actually running the app.
 - Snapshot testing can solve this problem.
 - Enzyme can help us simulate user interaction
-- Make Test DSLs for the default props and pass overrides as needed.
+- Make Test Object Factories for the default props and pass overrides as needed.
 
 ### `editor` Exercise
 
@@ -195,3 +195,12 @@ Run the application with: `npm start dev`
 
 **Make sure they know**:
 - This is basically just like the one we just did :)
+
+## End to End Testing
+
+### `smoke` and `post`
+
+- Run `npm start e2e.dev`
+
+**Takeaways**:
+- Pretty much cypress is amazing.
