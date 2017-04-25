@@ -7,8 +7,8 @@ class ProfilePage extends React.Component {
   componentWillMount() {
     this.props.onLoad(
       Promise.all([
-        agent.Profile.get(this.props.params.username),
-        agent.Articles.byAuthor(this.props.params.username),
+        agent.Profile.get(this.props.match.params.username),
+        agent.Articles.byAuthor(this.props.match.params.username),
       ]),
     )
   }

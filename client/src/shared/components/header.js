@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link} from 'react-router'
+import {Link} from 'react-router-dom'
 import smiley from '../../shared/smiley-cyrus.jpg'
 
 function LoggedOutView(props) {
@@ -14,13 +14,13 @@ function LoggedOutView(props) {
         </li>
 
         <li className="nav-item">
-          <Link to="login" className="nav-link" data-test="sign-in-link">
+          <Link to="/login" className="nav-link" data-test="sign-in-link">
             Sign in
           </Link>
         </li>
 
         <li className="nav-item">
-          <Link to="register" className="nav-link" data-test="sign-up-link">
+          <Link to="/register" className="nav-link" data-test="sign-up-link">
             Sign up
           </Link>
         </li>
@@ -43,20 +43,20 @@ function LoggedInView(props) {
         </li>
 
         <li className="nav-item">
-          <Link to="editor" className="nav-link">
+          <Link to="/editor" className="nav-link">
             <i className="ion-compose" />&nbsp;New Post
           </Link>
         </li>
 
         <li className="nav-item">
-          <Link to="settings" className="nav-link" data-test="settings">
+          <Link to="/settings" className="nav-link" data-test="settings">
             <i className="ion-gear-a" />&nbsp;Settings
           </Link>
         </li>
 
         <li className="nav-item">
           <Link
-            to={`@${props.currentUser.username}`}
+            to={`/@${props.currentUser.username}`}
             className="nav-link"
             data-test="profile-link"
           >

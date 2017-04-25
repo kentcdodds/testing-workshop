@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link} from 'react-router'
+import {Link} from 'react-router-dom'
 import smiley from '../../shared/smiley-cyrus.jpg'
 import DeleteButton from './delete-button'
 
@@ -13,7 +13,7 @@ const Comment = props => {
         <p className="card-text">{comment.body}</p>
       </div>
       <div className="card-footer">
-        <Link to={`@${comment.author.username}`} className="comment-author">
+        <Link to={`/@${comment.author.username}`} className="comment-author">
           <img
             src={comment.author.image || smiley}
             className="comment-author-img"
@@ -21,7 +21,7 @@ const Comment = props => {
           />
         </Link>
         &nbsp;
-        <Link to={`@${comment.author.username}`} className="comment-author">
+        <Link to={`/@${comment.author.username}`} className="comment-author">
           {comment.author.username}
         </Link>
         <span className="date-posted">

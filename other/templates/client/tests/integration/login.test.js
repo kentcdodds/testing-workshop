@@ -32,7 +32,7 @@ import axiosMock from 'axios'
 // FINAL_END
 import Login from '../../src/screens/login'
 // FINAL_START
-import {renderWithState, sel, flushAllPromises} from './helpers/utils'
+import {renderApp, sel, flushAllPromises} from './helpers/utils'
 
 test('logs in when the form is submitted', async () => {
   const setItemMock = jest.spyOn(window.localStorage, 'setItem')
@@ -42,7 +42,7 @@ test('logs in when the form is submitted', async () => {
     return Promise.resolve({data: {user: {token}}})
   })
 
-  const {wrapper} = renderWithState(Login)
+  const {history, wrapper} = renderApp({route: '/login'})
   wrapper.find(sel('email')).node.value = user.email
   wrapper.find(sel('password')).node.value = user.password
   wrapper.find('form').simulate('submit')
@@ -51,6 +51,7 @@ test('logs in when the form is submitted', async () => {
   expect(axiosMock.__mock.instance.post).toHaveBeenCalledWith('/users/login', {
     user,
   })
+  expect(history.location.pathname).toBe('/')
   expect(setItemMock).toHaveBeenCalledTimes(1)
   expect(setItemMock).toHaveBeenCalledWith('jwt', token)
   setItemMock.mockRestore()

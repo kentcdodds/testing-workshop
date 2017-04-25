@@ -1,23 +1,21 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import {Link} from 'react-router'
+import {Link} from 'react-router-dom'
 import smiley from '../smiley-cyrus.jpg'
 import agent from '../agent'
 import ArticleList from '../components/article-list'
 
-function Profile(
-  {
-    profile,
-    onFollow,
-    onUnfollow,
-    currentUser,
-    articles,
-    articlesCount,
-    currentPage,
-    activeTab,
-  },
-) {
+function Profile({
+  profile,
+  onFollow,
+  onUnfollow,
+  currentUser,
+  articles,
+  articlesCount,
+  currentPage,
+  activeTab,
+}) {
   if (!profile || !profile.username) {
     return null
   }
@@ -96,7 +94,7 @@ function Tabs({username, activeTab}) {
   return (
     <ul className="nav nav-pills outline-active">
       <li className="nav-item">
-        <Link className={mineClasses.join(' ')} to={`@${username}`}>
+        <Link className={mineClasses.join(' ')} to={`/@${username}`}>
           My Articles
         </Link>
       </li>
@@ -104,7 +102,7 @@ function Tabs({username, activeTab}) {
       <li className="nav-item">
         <Link
           className={favoritesClasses.join(' ')}
-          to={`@${username}/favorites`}
+          to={`/@${username}/favorites`}
         >
           Favorited Articles
         </Link>
@@ -122,7 +120,10 @@ function EditProfileSettings({isUser}) {
     return null
   }
   return (
-    <Link to="settings" className="btn btn-sm btn-outline-secondary action-btn">
+    <Link
+      to="/settings"
+      className="btn btn-sm btn-outline-secondary action-btn"
+    >
       <i className="ion-gear-a" /> Edit Profile Settings
     </Link>
   )

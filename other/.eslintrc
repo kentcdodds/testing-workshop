@@ -1,5 +1,6 @@
 {
   "rules": {
     "jest/no-identical-title": "off",
+    "import/max-dependencies": "off",
   }
 }

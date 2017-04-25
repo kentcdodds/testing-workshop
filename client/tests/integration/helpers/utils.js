@@ -1,20 +1,28 @@
 import React from 'react'
 import {Provider} from 'react-redux'
+import {Router} from 'react-router'
+import {createMemoryHistory} from 'history'
 import {mount} from 'enzyme'
+import App from '../../../src/app'
 import createStore from '../../../src/store'
 
-export {renderWithState, sel, flushAllPromises}
+export {renderApp, sel, flushAllPromises}
 
 // this renders the given component with a react-redux Provider
 // which is how we render it in our application.
-function renderWithState(Component, state = {}) {
+// Also renders with a react-router-dom MemoryRouder
+// which is how we render to a specific URL.
+function renderApp({route = '/', state = {}}) {
   const store = createStore(state)
+  const history = createMemoryHistory({initialEntries: [route]})
   const wrapper = mount(
     <Provider store={store}>
-      <Component />
+      <Router history={history}>
+        <App />
+      </Router>
     </Provider>,
   )
-  return {store, wrapper}
+  return {history, store, wrapper}
 }
 
 function sel(id) {

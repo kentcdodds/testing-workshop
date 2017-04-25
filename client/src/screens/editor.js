@@ -71,19 +71,22 @@ class Editor extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.params.slug === nextProps.params.slug) {
+    const oldSlug = getSlug(this.props)
+    const newSlug = getSlug(nextProps)
+    if (oldSlug === newSlug) {
       this.setState(this.getStateFromProps(nextProps))
-    } else if (nextProps.params.slug) {
+    } else if (newSlug) {
       this.props.onUnload()
-      this.props.onLoad(agent.Articles.get(nextProps.params.slug))
+      this.props.onLoad(agent.Articles.get(newSlug))
     } else {
       this.setState(this.getStateFromProps({}))
     }
   }
 
   componentDidMount() {
-    if (this.props.params.slug) {
-      return this.props.onLoad(agent.Articles.get(this.props.params.slug))
+    const slug = getSlug(this.props)
+    if (slug) {
+      return this.props.onLoad(agent.Articles.get(slug))
     }
     this.props.onLoad(null)
   }
@@ -195,6 +198,11 @@ class Editor extends React.Component {
       </div>
     )
   }
+}
+
+function getSlug(props) {
+  const {match: {params: {slug} = {}} = {}} = props
+  return slug
 }
 
 export {Editor as Component}
