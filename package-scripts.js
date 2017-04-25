@@ -19,7 +19,7 @@ const inClient = (...scripts) => series('cd client', ...scripts, 'cd ..')
 const delay = s => ifWindows(`timeout ${s}`, `sleep ${s}`)
 const ignoreOutput = s =>
   `echo ${s} && ${s} ${ifWindows('> NUL', '&>/dev/null')}`
-const ignoreError = s => `${s} || exit 0`
+const ignoreError = s => `${s} || true`
 
 const splitVerifyDescription = oneLine`
   This verifies that the final version actually passes the tests.
