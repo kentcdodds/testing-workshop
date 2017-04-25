@@ -85,6 +85,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "framini",
+      "name": "Francisco Ramini",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/840935?v=3",
+      "profile": "https://github.com/framini",
+      "contributions": [
+        "doc"
+      ]
     }
   ]
 }
