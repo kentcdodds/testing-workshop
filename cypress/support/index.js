@@ -12,7 +12,7 @@
 // You can read more here:
 // https://on.cypress.io/guides/configuration#section-global
 // ***********************************************************
-
+import 'babel-polyfill'
 import {visitApp} from '../utils'
 
 Cypress.addParentCommand({visitApp})

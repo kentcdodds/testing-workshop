@@ -27,14 +27,35 @@ function createNewUser() {
   const user = {email, password, username}
 
   return cy
-    .log('create new user')
+    .log('create a test new user')
     .request('POST', `${Cypress.env('API_URL')}/users`, {user})
-    .then(({body}) => Object.assign({}, body.user, user))
+    .then(({body}) => {
+      const fullUser = Object.assign({}, body.user, user)
+      return {
+        user: fullUser,
+        cleanup() {
+          return cy
+            .log('delete the test user')
+            .request({
+              method: 'DELETE',
+              url: `${Cypress.env('API_URL')}/users/${username}`,
+              headers: {
+                authorization: `Token ${fullUser.token}`,
+              },
+            })
+            .then(logout, logout)
+        },
+      }
+    })
 }
 
 function loginAsNewUser() {
-  return createNewUser().then(user => {
-    window.localStorage.setItem('jwt', user.token)
-    return user
+  return createNewUser().then(result => {
+    window.localStorage.setItem('jwt', result.user.token)
+    return result
   })
+}
+
+function logout() {
+  window.localStorage.removeItem('jwt')
 }
