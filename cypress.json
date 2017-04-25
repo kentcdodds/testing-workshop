@@ -1,3 +1,4 @@
 {
-  "integrationFolder": "cypress/e2e"
+  "integrationFolder": "cypress/e2e",
+  "baseUrl": "http://localhost:9001"
 }
