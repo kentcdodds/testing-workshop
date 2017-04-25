@@ -89,7 +89,7 @@ Please follow [these instructions](https://docs.cypress.io/docs/installing-and-r
 ##### Windows users!!
 
 Unfortunately, the [cypress](https://www.cypress.io/) application does not yet support the Windows platform.
-(Bug them about it [here](https://github.com/cypress-io/cypress/issues/74))
+(Bug them about it [here](https://github.com/cypress-io/cypress/issues/74)).
 You should still be able to run cypress in "headless" mode, but you will be unable to open the application
 for development.
 

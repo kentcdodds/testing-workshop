@@ -4,31 +4,18 @@ import {mount} from 'enzyme'
 // FINAL_END
 import {Component as Login} from '../login'
 
+// FINAL_START
 test('renders login form by default', () => {
-  // WORKSHOP_START
-  // TODO
-  // WORKSHOP_END
-  // FINAL_START
   const wrapper = render()
   expect(isSubmitButtonDisabled(wrapper)).toBe(false)
-  // FINAL_END
 })
 
 test('disabled button when inProgress', () => {
-  // WORKSHOP_START
-  // TODO
-  // WORKSHOP_END
-  // FINAL_START
   const wrapper = render({inProgress: true})
   expect(isSubmitButtonDisabled(wrapper)).toBe(true)
-  // FINAL_END
 })
 
 test('shows list of errors when there are errors', () => {
-  // WORKSHOP_START
-  // TODO
-  // WORKSHOP_END
-  // FINAL_START
   const wrapper = render({
     errors: {
       'some-error': 'there was some error',
@@ -39,10 +26,8 @@ test('shows list of errors when there are errors', () => {
     'some-error there was some error',
     'some-other-error there was some other error',
   ])
-  // FINAL_END
 })
 
-// FINAL_START
 function render(props = {}) {
   const propsToUse = {
     onSubmit() {},
@@ -72,10 +57,15 @@ function getErrors(wrapper) {
 
 // WORKSHOP_START
 //////// Elaboration & Feedback /////////
+// When you've finished with the exercises:
+// 1. Copy the URL below into your browser and fill out the form
+// 2. remove the `.skip` from the test below
+// 3. Change submitted from `false` to `true`
+// 4. And you're all done!
 /*
-http://ws.kcd.im/?ws=Testing&e=Client%20Unit%20React&em=
+http://ws.kcd.im/?ws=Testing&e=Client%20Unit%20Login&em=
 */
-test('I submitted my elaboration and feedback', () => {
+test.skip('I submitted my elaboration and feedback', () => {
   const submitted = false // change this when you've submitted!
   expect(true).toBe(submitted)
 })

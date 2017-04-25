@@ -38,14 +38,11 @@ class Editor extends React.Component {
 
   removeTagHandler = ev => {
     if (ev.type === 'click' || isEnter(ev)) {
-      const {
-        target: {
-          dataset: {tag},
-        },
-      } = ev
+      const {target: {dataset: {tag}}} = ev
       this.setState(state => ({
         tagList: state.tagList.filter(t => t !== tag),
       }))
+      this._tags.focus()
     }
   }
   submitForm = ev => {
@@ -158,9 +155,13 @@ class Editor extends React.Component {
                     />
 
                     <div className="tag-list" data-test="tag-pills">
-                      {(tagList || []).map(tag => {
+                      {(tagList || []).map((tag, index) => {
                         return (
-                          <span className="tag-default tag-pill" key={tag}>
+                          <span
+                            className="tag-default tag-pill"
+                            key={tag}
+                            data-test={`tag-${index}-${tag}`}
+                          >
                             <i
                               className="ion-close-round"
                               onClick={this.removeTagHandler}

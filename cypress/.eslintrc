@@ -6,4 +6,9 @@
   "env": {
     "mocha": true,
   },
+  "rules": {
+    "import/no-extraneous-dependencies": "off",
+    "import/no-unresolved": "off",
+    "no-unused-vars": "off",
+  }
 }
