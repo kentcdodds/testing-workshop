@@ -34,11 +34,8 @@ test('should respond to store updates', () => {
 
 test('unsubscribe when unmounted (to avoid memory leaks)', () => {
   const unsubscribeMock = jest.fn()
-  const subscribeMock = jestv19.spyOn(
-    store,
-    'subscribe',
-    () => unsubscribeMock,
-  )
+  const subscribeMock = jest.spyOn(store, 'subscribe')
+  subscribeMock.mockImplementation(() => unsubscribeMock)
   const wrapper = mountCustomerList()
   wrapper.unmount()
   expect(unsubscribeMock).toHaveBeenCalledTimes(1)

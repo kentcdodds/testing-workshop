@@ -2,6 +2,7 @@
   "setupFiles": [
     "<rootDir>/config/jest/setup-tests.js"
   ],
+  "setupTestFrameworkScriptFile": "<rootDir>/config/jest/setup-framework.js",
   "testRegex": "src/.*__tests__/.*.js$",
   "testPathIgnorePatterns": [
     "/node_modules/",

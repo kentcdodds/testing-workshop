@@ -2,11 +2,15 @@
   "setupFiles": [
     "<rootDir>/config/jest/setup-tests.js"
   ],
+  "setupTestFrameworkScriptFile": "<rootDir>/config/jest/setup-framework.js",
   "testEnvironment": "jest-environment-jsdom",
-  "testPathDirs": [
+  "roots": [
     "demo/unit"
   ],
   "testPathIgnorePatterns": [
     "/helpers/"
+  ],
+  "snapshotSerializers": [
+    "enzyme-to-json/serializer"
   ]
 }

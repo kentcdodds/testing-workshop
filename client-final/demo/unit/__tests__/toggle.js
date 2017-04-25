@@ -4,12 +4,12 @@ import Toggle from '../toggle'
 
 test('has toggle--off class applied by default', () => {
   const wrapper = renderToggle()
-  expect(rootHasClass(wrapper, 'toggle--off')).toBe(true)
+  expect(wrapper).toMatchSnapshotWithGlamor()
 })
 
 test('has toggle--on class applied when initialToggledOn: true', () => {
   const wrapper = renderToggle({initialToggledOn: true})
-  expect(rootHasClass(wrapper, 'toggle--on')).toBe(true)
+  expect(wrapper).toMatchSnapshotWithGlamor()
 })
 
 test('invokes the onToggle prop when clicked', () => {
@@ -44,14 +44,4 @@ function renderToggle(props = {}) {
  */
 function clickButton(wrapper) {
   wrapper.find('button').first().simulate('click')
-}
-
-/**
- * Returns whether the root of the given wrapper has the given className
- * @param {Object} wrapper - the wrapper to get the root element from
- * @param {String} className - the class to check for
- * @return {Boolean} whether the root element has the given class
- */
-function rootHasClass(wrapper, className) {
-  return wrapper.children().first().hasClass(className)
 }

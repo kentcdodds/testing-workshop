@@ -147,4 +147,6 @@ Run the application with: `npm start dev`
 
 ## Client Unit Testing
 
-### 
+### `toggle` Demo
+
+- Run `npm start client.demo.unit`

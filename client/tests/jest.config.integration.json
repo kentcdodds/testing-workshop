@@ -2,6 +2,7 @@
   "setupFiles": [
     "<rootDir>/config/jest/setup-tests.js"
   ],
+  "setupTestFrameworkScriptFile": "<rootDir>/config/jest/setup-framework.js",
   "testRegex": "tests/integration/.*.js$",
   "testPathIgnorePatterns": [
     "/node_modules/",
@@ -28,5 +29,8 @@
       "lines": 2
     }
   },
-  "coverageDirectory": "coverage/integration"
+  "coverageDirectory": "coverage/integration",
+  "snapshotSerializers": [
+    "enzyme-to-json/serializer"
+  ]
 }

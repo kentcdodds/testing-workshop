@@ -3,7 +3,7 @@ import Register from '../../src/screens/register'
 import {renderWithState, sel, flushAllPromises} from './helpers/utils'
 
 test('logs in when the form is submitted', async () => {
-  const setItemMock = jestv19.spyOn(window.localStorage, 'setItem')
+  const setItemMock = jest.spyOn(window.localStorage, 'setItem')
   const token = 'Luke, I am your father'
   const user = {
     password: 'my-password',
