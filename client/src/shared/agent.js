@@ -4,6 +4,7 @@ import queryString from 'query-string'
 const api = axios.create({
   baseURL: getAPIUrl(),
 })
+
 const encode = encodeURIComponent
 const responseData = res => res.data
 
@@ -15,7 +16,16 @@ const requests = {
 }
 
 const Auth = {
-  current: () => requests.get('/user'),
+  current: () =>
+    requests.get('/user').catch(error => {
+      if (error.response.status === 401) {
+        window.localStorage.removeItem('jwt')
+        setToken(null)
+        window.location.assign('/')
+        return
+      }
+      return Promise.reject(error)
+    }),
   login: (email, password) =>
     requests.post('/users/login', {user: {email, password}}),
   register: (username, email, password) =>
@@ -67,13 +77,15 @@ export default {
   Comments,
   Profile,
   Tags,
-  setToken: token => {
-    if (token) {
-      api.defaults.headers.common.authorization = `Token ${token}`
-    } else {
-      delete api.defaults.headers.common.authorization
-    }
-  },
+  setToken,
+}
+
+function setToken(token) {
+  if (token) {
+    api.defaults.headers.common.authorization = `Token ${token}`
+  } else {
+    delete api.defaults.headers.common.authorization
+  }
 }
 
 function getAPIUrl() {
