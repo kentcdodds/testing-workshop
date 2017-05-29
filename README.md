@@ -38,6 +38,14 @@ configure the tools and why, when, where, and what to test.
 
 ## Project
 
+## Branches
+
+This project has been used to teach about testing in various settings. You may want to
+switch to the appropriate branch for this workshop. Otherwise the code you're looking
+at may not be exactly the same as the code used in the setting you're working with.
+
+- Frontend Masters [`fem`](https://github.com/kentcdodds/testing-workshop/tree/fem)
+
 ### System Requirements
 
 - [git][git] v2.10.2 or greater
