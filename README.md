@@ -158,6 +158,11 @@ If you want to login, there's a user you can use:
 
 <summary>"npm run setup" command not working</summary>
 
+Commonly, when this is a problem, it's because the package `slug` (which we use in the `api`) depends
+on a very old version of `unicode` which attempts to download a file during installation. If that
+download fails then you'll see this problem. To fix this, you should be able to just `cd api && yarn`
+and things should be fixed up.
+
 Here's what the setup script does. If it fails, try doing each of these things individually yourself:
 
 ```

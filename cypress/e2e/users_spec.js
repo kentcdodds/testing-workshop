@@ -7,7 +7,7 @@ describe('Users', () => {
 // I'll just give you this function :)
 // eslint-disable-next-line no-unused-vars
 function verifyLoggedIn(username) {
-  const hash = Cypress.env('E2E_DEV') ? '#/' : ''
+  const hash = Cypress.env('E2E_DEV') ? '#/' : '/'
   cy
     .window()
     .its('localStorage')

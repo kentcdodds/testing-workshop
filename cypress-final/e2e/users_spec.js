@@ -77,7 +77,7 @@ describe('Users', () => {
 })
 
 function verifyLoggedIn(username) {
-  const hash = Cypress.env('E2E_DEV') ? '#/' : ''
+  const hash = Cypress.env('E2E_DEV') ? '#/' : '/'
   cy
     .window()
     .its('localStorage')
