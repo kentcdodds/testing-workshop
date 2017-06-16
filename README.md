@@ -154,7 +154,39 @@ If you want to login, there's a user you can use:
 
 ### Troubleshooting
 
-#### `npm start dev` command not working
+<details>
+
+<summary>"npm run setup" command not working</summary>
+
+Here's what the setup script does. If it fails, try doing each of these things individually yourself:
+
+```
+node ./scripts/verify
+node ./scripts/install
+node ./scripts/load-database
+npm start lint
+npm start split.api.verify
+npm start split.client.verify
+npm start split.e2e.verify
+```
+
+If any of those scripts fail, feel free to file an issue with the output from that script.
+I will try to help if I can.
+
+In addition, during some of these steps, some files get temporarily changed and if they fail,
+then you may have changed but not cleaned up. So when everything's finished. Run:
+
+```
+git reset --hard HEAD
+```
+
+Just to make sure nothing's left over.
+
+</details>
+
+<details>
+
+<summary>"npm start dev" command not working</summary>
 
 If it doesn't work for you, you can start each of these individually yourself:
 
@@ -170,12 +202,18 @@ npm start dev.api
 npm start dev.client
 ```
 
-#### `verify.js` saying something's wrong with mongo
+</details>
+
+<details>
+
+<summary>"verify.js" is saying something's wrong with mongo</summary>
 
 The `mongod` binary needs to be available in your path for you to run `mongod` from the command line (which is what this
 project's scripts does for you). Learn how to do this [on windows][win-path] or [on mac][mac-path].
 
 > Note: you'll need to open a new terminal/command prompt window after you've done this.
+
+</details>
 
 ### Structure
 
