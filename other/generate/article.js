@@ -1,5 +1,6 @@
 import faker from 'faker'
 import _ from 'lodash'
+import slugify from 'slugify'
 
 export default generateArticleData
 export {generateArticleForClient}
@@ -17,7 +18,7 @@ function generateArticleForClient(overrides = {}) {
   return Object.assign(
     {
       title,
-      slug: faker.helpers.slugify(title).toLowerCase(),
+      slug: slugify(title).toLowerCase(),
       description: faker.lorem.sentence(),
       body: faker.lorem.paragraphs(),
       favoritesCount: 0,

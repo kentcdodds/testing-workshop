@@ -22,7 +22,7 @@ test('generates a slug when validated', () => {
   })
   article.validate()
   expect(article.slug).toBe(
-    'i-tested-my-codebase-you-wont-believe-what-happened-next',
+    'i-tested-my-codebase-you-wont-believe-what-happened-next...',
   )
 })
 

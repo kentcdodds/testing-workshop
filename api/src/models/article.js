@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 import uniqueValidator from 'mongoose-unique-validator'
-import slug from 'slug'
+import slug from 'slugify'
 
 export default getArticleSchema
 
