@@ -161,9 +161,27 @@ If you want to login, there's a user you can use:
 Here's what the setup script does. If it fails, try doing each of these things individually yourself:
 
 ```
+# verify your environment will work with the project
 node ./scripts/verify
-node ./scripts/install
+
+# install dependencies in the root of the repo
+yarn
+
+# install dependencies in the api directory
+cd api
+yarn
+
+# install dependencies in the client directory
+cd ../client
+yarn
+
+# get back to the root of the repo
+cd ..
+
+# load the database with fake data
 node ./scripts/load-database
+
+# verify the project is ready to run
 npm start lint
 npm start split.api.verify
 npm start split.client.verify
