@@ -10,7 +10,7 @@ export {renderApp, sel, flushAllPromises}
 
 // this renders the given component with a react-redux Provider
 // which is how we render it in our application.
-// Also renders with a react-router-dom MemoryRouder
+// Also renders with a react-router-dom MemoryRouter
 // which is how we render to a specific URL.
 function renderApp({route = '/', state = {}}) {
   const store = createStore(state)
