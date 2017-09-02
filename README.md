@@ -17,6 +17,8 @@ JavaScript applications.
 [![Star on GitHub][github-star-badge]][github-star]
 [![Tweet][twitter-badge]][twitter]
 
+<a href="https://app.codesponsor.io/link/PKGFLnhDiFvsUA5P4kAXfiPs/kentcdodds/testing-workshop" rel="nofollow"><img src="https://app.codesponsor.io/embed/PKGFLnhDiFvsUA5P4kAXfiPs/kentcdodds/testing-workshop.svg" style="width: 888px; height: 68px;" alt="Sponsor" /></a>
+
 ## Thank You
 
 Big thanks to the [RealWorld](https://github.com/gothinkster/realworld) project from
