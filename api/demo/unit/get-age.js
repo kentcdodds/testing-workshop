@@ -6,3 +6,4 @@ function getAge(person) {
   }
   return null
 }
+

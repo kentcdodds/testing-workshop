@@ -1,6 +1,7 @@
 import mongoose from 'mongoose'
 import {getUserConstructor, generateUser} from './helpers/utils'
 
+
 test('can generate profile JSON', () => {
   const user = generateUser()
   const profileJSON = user.toProfileJSONFor()
