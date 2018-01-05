@@ -9,8 +9,7 @@
     "start": "nps",
     "test": "nps test",
     "precommit": "opt --in precommit --exec \"nps validate\"",
-    "setup":
-      "node ./scripts/verify && node ./scripts/install && node ./scripts/load-database && npm start validate"
+    "setup": "node ./scripts/verify && node ./scripts/install && node ./scripts/load-database && npm start validate"
   },
   "devDependencies": {
     "all-contributors-cli": "^4.10.1",
@@ -20,7 +19,7 @@
     "babel-preset-stage-2": "^6.24.1",
     "common-tags": "^1.6.0",
     "concurrently": "^3.5.1",
-    "cypress-cli": "^0.14.0",
+    "cypress": "^1.4.1",
     "eslint": "^4.14.0",
     "eslint-config-kentcdodds": "^13.0.1",
     "eslint-config-react-app": "^2.0.1",
