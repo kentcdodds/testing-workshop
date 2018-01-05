@@ -12,4 +12,3 @@ test(`can get a person's age`, () => {
   const result = getAge(person)
   expect(result).toBe(age)
 })
-

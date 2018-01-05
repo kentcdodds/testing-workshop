@@ -8,14 +8,17 @@ verifySystem([
   verifySystem.validators.node('>=6.9.5'),
   verifySystem.validators.mongo('>=3.4.2'),
   verifySystem.validators.yarnNpm('>=0.21.3', '>=4.2.0'),
-]).then(function() {
-  console.log('🎉  Congrats! Your system is setup properly')
-  console.log('You should be good to install and run things.')
-}, function(error) {
-  console.error(error)
-  console.info(
-    '\nIf you don\'t care about these warnings, go ' +
-    'ahead and install dependencies with `node ./scripts/install`'
-  )
-  process.exitCode = 1
-})
+]).then(
+  function() {
+    console.log('🎉  Congrats! Your system is setup properly')
+    console.log('You should be good to install and run things.')
+  },
+  function(error) {
+    console.error(error)
+    console.info(
+      "\nIf you don't care about these warnings, go " +
+        'ahead and install dependencies with `node ./scripts/install`',
+    )
+    process.exitCode = 1
+  },
+)

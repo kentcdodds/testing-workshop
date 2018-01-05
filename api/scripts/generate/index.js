@@ -56,12 +56,9 @@ connectPromise
             `and ${comments.length} comments`,
         ),
       )
-      setTimeout(
-        () => {
-          process.exit(0)
-        },
-        5000,
-      )
+      setTimeout(() => {
+        process.exit(0)
+      }, 5000)
     },
     error => {
       console.error('there was an error inserting things!')

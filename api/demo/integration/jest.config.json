@@ -1,10 +1,6 @@
 {
   "testEnvironment": "jest-environment-node",
   "setupTestFrameworkScriptFile": "./other/jest/setup.js",
-  "roots": [
-    "demo/integration"
-  ],
-  "testPathIgnorePatterns": [
-    "/helpers/"
-  ]
+  "roots": ["demo/integration"],
+  "testPathIgnorePatterns": ["/helpers/"]
 }

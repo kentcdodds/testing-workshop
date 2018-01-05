@@ -18,8 +18,16 @@ describe('Users', () => {
 
     verifyLoggedIn(username)
 
-    cy.get(sel('settings')).click().get(sel('logout')).click()
-    cy.window().its('localStorage').invoke('getItem', 'jwt').should('be.null')
+    cy
+      .get(sel('settings'))
+      .click()
+      .get(sel('logout'))
+      .click()
+    cy
+      .window()
+      .its('localStorage')
+      .invoke('getItem', 'jwt')
+      .should('be.null')
     cy.get(sel('profile-link')).should('not.exist')
   })
 

@@ -7,7 +7,7 @@ JavaScript applications.
 [![chat-badge][chat-badge]][chat]
 [![Build Status][build-badge]][build]
 [![Dependencies][dependencyci-badge]][dependencyci]
-[![MIT License][license-badge]][LICENSE]
+[![MIT License][license-badge]][license]
 [![All Contributors](https://img.shields.io/badge/all_contributors-10-orange.svg?style=flat-square)](#contributors)
 
 [![PRs Welcome][prs-badge]][prs]
@@ -46,14 +46,14 @@ This project has been used to teach about testing in various settings. You may w
 switch to the appropriate branch for this workshop. Otherwise the code you're looking
 at may not be exactly the same as the code used in the setting you're working with.
 
-- Frontend Masters [`fem`](https://github.com/kentcdodds/testing-workshop/tree/fem)
+* Frontend Masters [`fem`](https://github.com/kentcdodds/testing-workshop/tree/fem)
 
 ### System Requirements
 
-- [git][git] v2.10.2 or greater
-- [NodeJS][node] v6.9.5 or greater
-- [yarn][yarn] v0.20.3 or greater (or [npm][npm] v4.2.0 or greater)
-- [MongoDB][mongo] v3.4.2 or greater
+* [git][git] v2.10.2 or greater
+* [NodeJS][node] v6.9.5 or greater
+* [yarn][yarn] v0.20.3 or greater (or [npm][npm] v4.2.0 or greater)
+* [MongoDB][mongo] v3.4.2 or greater
 
 All of these must be available in your `PATH`. To verify things are set up properly, you can run this:
 
@@ -126,7 +126,6 @@ npm start dev
 yarn start dev
 ```
 
-
 This _should_ start `mongod`, the `api` server, and the `client` server all at
 the same time. Your browser should open up automatically to
 `http://localhost:8080` (if it doesn't, just open that yourself) and you should
@@ -144,8 +143,8 @@ If this fails at any point for you, please first see
 
 If you want to login, there's a user you can use:
 
-- **Email**: `joe@example.com`
-- **Password**: `joe`
+* **Email**: `joe@example.com`
+* **Password**: `joe`
 
 **To stop all the servers**, hit <kbd>Ctrl</kbd> + <kbd>C</kbd>.
 
@@ -254,9 +253,11 @@ licensed.
 Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-| [<img src="https://avatars.githubusercontent.com/u/8601733?v=3" width="100px;"/><br /><sub>Thinkster</sub>](https://thinkster.io)<br />[💻](https://github.com/kentcdodds/testing-workshop/commits?author=gothinkster "Code") | [<img src="https://avatars.githubusercontent.com/u/1500684?v=3" width="100px;"/><br /><sub>Kent C. Dodds</sub>](https://kentcdodds.com)<br />[💻](https://github.com/kentcdodds/testing-workshop/commits?author=kentcdodds "Code") [📖](https://github.com/kentcdodds/testing-workshop/commits?author=kentcdodds "Documentation") [🚇](#infra-kentcdodds "Infrastructure (Hosting, Build-Tools, etc)") [⚠️](https://github.com/kentcdodds/testing-workshop/commits?author=kentcdodds "Tests") | [<img src="https://avatars.githubusercontent.com/u/3995499?v=3" width="100px;"/><br /><sub>Callum Mellor-Reed</sub>](http://callummr.com)<br />[🐛](https://github.com/kentcdodds/testing-workshop/issues?q=author%3Acallummr "Bug reports") [💻](https://github.com/kentcdodds/testing-workshop/commits?author=callummr "Code") | [<img src="https://avatars.githubusercontent.com/u/622118?v=3" width="100px;"/><br /><sub>Eric McCormick</sub>](https://ericmccormick.io)<br />[🐛](https://github.com/kentcdodds/testing-workshop/issues?q=author%3Aedm00se "Bug reports") [💻](https://github.com/kentcdodds/testing-workshop/commits?author=edm00se "Code") | [<img src="https://avatars1.githubusercontent.com/u/2028470?v=3" width="100px;"/><br /><sub>Paul Falgout</sub>](http://otterball.com)<br />[💻](https://github.com/kentcdodds/testing-workshop/commits?author=paulfalgout "Code") [📖](https://github.com/kentcdodds/testing-workshop/commits?author=paulfalgout "Documentation") | [<img src="https://avatars1.githubusercontent.com/u/13877279?v=3" width="100px;"/><br /><sub>Brett Caudill</sub>](https://github.com/asBrettisay)<br />[💻](https://github.com/kentcdodds/testing-workshop/commits?author=asBrettisay "Code") [📖](https://github.com/kentcdodds/testing-workshop/commits?author=asBrettisay "Documentation") | [<img src="https://avatars2.githubusercontent.com/u/1271364?v=3" width="100px;"/><br /><sub>Jennifer Mann</sub>](http://jennifermann.ghost.io)<br />[🐛](https://github.com/kentcdodds/testing-workshop/issues?q=author%3Ajennifer-mann "Bug reports") |
-| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| [<img src="https://avatars1.githubusercontent.com/u/1268976?v=3" width="100px;"/><br /><sub>Brian Mann</sub>](https://cypress.io)<br />[🐛](https://github.com/kentcdodds/testing-workshop/issues?q=author%3Abrian-mann "Bug reports") | [<img src="https://avatars1.githubusercontent.com/u/840935?v=3" width="100px;"/><br /><sub>Francisco Ramini</sub>](https://github.com/framini)<br />[📖](https://github.com/kentcdodds/testing-workshop/commits?author=framini "Documentation") | [<img src="https://avatars0.githubusercontent.com/u/7076981?v=4" width="100px;"/><br /><sub>Romario</sub>](https://github.com/romarioraffington)<br />[📖](https://github.com/kentcdodds/testing-workshop/commits?author=romarioraffington "Documentation") |
+
+|     [<img src="https://avatars.githubusercontent.com/u/8601733?v=3" width="100px;"/><br /><sub>Thinkster</sub>](https://thinkster.io)<br />[💻](https://github.com/kentcdodds/testing-workshop/commits?author=gothinkster "Code")      | [<img src="https://avatars.githubusercontent.com/u/1500684?v=3" width="100px;"/><br /><sub>Kent C. Dodds</sub>](https://kentcdodds.com)<br />[💻](https://github.com/kentcdodds/testing-workshop/commits?author=kentcdodds "Code") [📖](https://github.com/kentcdodds/testing-workshop/commits?author=kentcdodds "Documentation") [🚇](#infra-kentcdodds "Infrastructure (Hosting, Build-Tools, etc)") [⚠️](https://github.com/kentcdodds/testing-workshop/commits?author=kentcdodds "Tests") | [<img src="https://avatars.githubusercontent.com/u/3995499?v=3" width="100px;"/><br /><sub>Callum Mellor-Reed</sub>](http://callummr.com)<br />[🐛](https://github.com/kentcdodds/testing-workshop/issues?q=author%3Acallummr "Bug reports") [💻](https://github.com/kentcdodds/testing-workshop/commits?author=callummr "Code") | [<img src="https://avatars.githubusercontent.com/u/622118?v=3" width="100px;"/><br /><sub>Eric McCormick</sub>](https://ericmccormick.io)<br />[🐛](https://github.com/kentcdodds/testing-workshop/issues?q=author%3Aedm00se "Bug reports") [💻](https://github.com/kentcdodds/testing-workshop/commits?author=edm00se "Code") | [<img src="https://avatars1.githubusercontent.com/u/2028470?v=3" width="100px;"/><br /><sub>Paul Falgout</sub>](http://otterball.com)<br />[💻](https://github.com/kentcdodds/testing-workshop/commits?author=paulfalgout "Code") [📖](https://github.com/kentcdodds/testing-workshop/commits?author=paulfalgout "Documentation") | [<img src="https://avatars1.githubusercontent.com/u/13877279?v=3" width="100px;"/><br /><sub>Brett Caudill</sub>](https://github.com/asBrettisay)<br />[💻](https://github.com/kentcdodds/testing-workshop/commits?author=asBrettisay "Code") [📖](https://github.com/kentcdodds/testing-workshop/commits?author=asBrettisay "Documentation") | [<img src="https://avatars2.githubusercontent.com/u/1271364?v=3" width="100px;"/><br /><sub>Jennifer Mann</sub>](http://jennifermann.ghost.io)<br />[🐛](https://github.com/kentcdodds/testing-workshop/issues?q=author%3Ajennifer-mann "Bug reports") |
+| :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+| [<img src="https://avatars1.githubusercontent.com/u/1268976?v=3" width="100px;"/><br /><sub>Brian Mann</sub>](https://cypress.io)<br />[🐛](https://github.com/kentcdodds/testing-workshop/issues?q=author%3Abrian-mann "Bug reports") |                                                                                                                        [<img src="https://avatars1.githubusercontent.com/u/840935?v=3" width="100px;"/><br /><sub>Francisco Ramini</sub>](https://github.com/framini)<br />[📖](https://github.com/kentcdodds/testing-workshop/commits?author=framini "Documentation")                                                                                                                        |                                   [<img src="https://avatars0.githubusercontent.com/u/7076981?v=4" width="100px;"/><br /><sub>Romario</sub>](https://github.com/romarioraffington)<br />[📖](https://github.com/kentcdodds/testing-workshop/commits?author=romarioraffington "Documentation")                                    |
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification. Contributions of any kind welcome!

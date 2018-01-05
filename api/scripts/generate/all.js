@@ -44,9 +44,11 @@ function generateDocumentObjects(firstUser) {
 }
 
 function getRandomUsers(users) {
-  return _.chain(users)
-    .shuffle()
-    .chunk(_.random(0, users.length))
-    .head()
-    .value() || []
+  return (
+    _.chain(users)
+      .shuffle()
+      .chunk(_.random(0, users.length))
+      .head()
+      .value() || []
+  )
 }

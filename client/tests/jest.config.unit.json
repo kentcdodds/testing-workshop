@@ -1,26 +1,16 @@
 {
-  "setupFiles": [
-    "<rootDir>/config/jest/setup-tests.js"
-  ],
+  "setupFiles": ["<rootDir>/config/jest/setup-tests.js"],
   "setupTestFrameworkScriptFile": "<rootDir>/config/jest/setup-framework.js",
   "testRegex": "src/.*__tests__/.*.js$",
-  "testPathIgnorePatterns": [
-    "/node_modules/",
-    "__mocks__",
-    "helpers"
-  ],
+  "testPathIgnorePatterns": ["/node_modules/", "__mocks__", "helpers"],
   "testEnvironment": "jest-environment-jsdom",
   "transform": {
     "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
     "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
     "^(?!.*\\.(js|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
   },
-  "transformIgnorePatterns": [
-    "[/\\\\]node_modules[/\\\\].+\\.js$"
-  ],
-  "collectCoverageFrom": [
-    "src/**"
-  ],
+  "transformIgnorePatterns": ["[/\\\\]node_modules[/\\\\].+\\.js$"],
+  "collectCoverageFrom": ["src/**"],
   "coverageThreshold": {
     "global": {
       "statements": 2,

@@ -11,7 +11,7 @@ module.exports = {
     dev: {
       description: 'run the dev server',
       script: crossEnv(
-        `PORT=${process.env.PORT || '8080'} react-scripts start`
+        `PORT=${process.env.PORT || '8080'} react-scripts start`,
       ),
     },
     build: {
@@ -27,7 +27,7 @@ module.exports = {
         default: {
           description: 'run the unit tests and collect code coverage',
           script: testEnv(
-            'jest --config=tests/jest.config.unit.json --coverage'
+            'jest --config=tests/jest.config.unit.json --coverage',
           ),
         },
         watch: {
@@ -39,13 +39,13 @@ module.exports = {
         default: {
           description: 'run the integration tests and collect coverage',
           script: testEnv(
-            'jest --config=tests/jest.config.integration.json --coverage'
+            'jest --config=tests/jest.config.integration.json --coverage',
           ),
         },
         watch: {
           description: 'run the integration tests in watch mode',
           script: testEnv(
-            'jest --config=tests/jest.config.integration.json --watch'
+            'jest --config=tests/jest.config.integration.json --watch',
           ),
         },
       },
@@ -89,7 +89,7 @@ module.exports = {
       `,
       script: series(
         `echo "removing client copy of eslint (will use root repo's version)"`,
-        rimraf('node_modules/eslint')
+        rimraf('node_modules/eslint'),
       ),
     },
   },

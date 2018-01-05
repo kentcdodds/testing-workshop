@@ -40,7 +40,7 @@ module.exports = {
       script: series(
         runInNewWindow.nps('mongo'),
         runInNewWindow.nps('api'),
-        runInNewWindow.nps('client')
+        runInNewWindow.nps('client'),
       ),
     },
     mongo: {
@@ -100,7 +100,7 @@ module.exports = {
         script: series(
           runInNewWindow.nps('dev.mongo --silent'),
           runInNewWindow.nps('npm start dev.client --silent'),
-          runInNewWindow.nps('dev.api --silent')
+          runInNewWindow.nps('dev.api --silent'),
         ),
       },
       // dev is the same as live for mongo for now...
@@ -133,7 +133,7 @@ module.exports = {
     },
     format: {
       hiddenFromHelp,
-      script: 'prettier-eslint --write "api/**/*.js" "client/**/*.js"',
+      script: 'prettier --write "**/*.+(js|json|less|css|ts|md)"',
       description: 'autoformat project files',
     },
     validate: {
@@ -143,8 +143,8 @@ module.exports = {
         concurrent.nps(
           'split.api.verify',
           'split.client.verify',
-          'split.e2e.verify'
-        )
+          'split.e2e.verify',
+        ),
       ),
     },
     split: {
@@ -156,7 +156,7 @@ module.exports = {
         script: concurrent.nps(
           'split.api.verify',
           'split.client.verify',
-          'split.e2e.verify'
+          'split.e2e.verify',
         ),
         hiddenFromHelp,
       },
@@ -170,7 +170,7 @@ module.exports = {
               --templates-dir other/templates/client
               --exercises-dir client
               --exercises-final-dir client-final
-            `
+            `,
           ),
           hiddenFromHelp,
         },
@@ -187,7 +187,7 @@ module.exports = {
               --exercises-final-dir client
             `,
             concurrent.nps('client.test', 'client.demo'),
-            'nps split.client'
+            'nps split.client',
           ),
         },
       },
@@ -201,7 +201,7 @@ module.exports = {
               --templates-dir other/templates/api
               --exercises-dir api
               --exercises-final-dir api-final
-            `
+            `,
           ),
           hiddenFromHelp,
         },
@@ -218,7 +218,7 @@ module.exports = {
               --exercises-final-dir api
             `,
             concurrent.nps('api.test', 'api.demo'),
-            'nps split.api'
+            'nps split.api',
           ),
         },
       },
@@ -232,7 +232,7 @@ module.exports = {
               --templates-dir other/templates/cypress
               --exercises-dir cypress
               --exercises-final-dir cypress-final
-            `
+            `,
           ),
           hiddenFromHelp,
         },
@@ -249,7 +249,7 @@ module.exports = {
               --exercises-final-dir cypress
             `,
             'nps e2e',
-            'nps split.e2e'
+            'nps split.e2e',
           ),
         },
       },
@@ -289,12 +289,12 @@ function getE2EScripts() {
       }
       return runDev
     },
-    {run: {}, dev: {}}
+    {run: {}, dev: {}},
   )
   const defaultScript = getDefaultScript(
     allScripts,
     runMap,
-    '--kill-others --success first'
+    '--kill-others --success first',
   )
 
   const loadDatabase = {
@@ -304,7 +304,7 @@ function getE2EScripts() {
         MONGO_PATH=./.e2e/mongo-db
         MONGODB_URI="mongodb://localhost:27018/conduit"
         node ./scripts/load-database.js
-      `
+      `,
     ),
     hiddenFromHelp,
   }
@@ -328,7 +328,7 @@ function getE2EScripts() {
     script: getBuildessScript(
       allScripts,
       runMap,
-      '--kill-others --success first'
+      '--kill-others --success first',
     ),
     hiddenFromHelp,
   }
@@ -360,7 +360,7 @@ function getE2EScripts() {
   function getBuildessScript(scripts, prefix, flags) {
     return series(
       'nps e2e.loadDatabase',
-      getConcurrentScript(scripts, prefix, flags)
+      getConcurrentScript(scripts, prefix, flags),
     )
   }
 
@@ -415,7 +415,7 @@ function getDemoScripts(dir) {
       description: `run all the ${dir} demo tests`,
       script: concurrent.nps(
         `${dir}.demo.unit.single`,
-        `${dir}.demo.integration.single`
+        `${dir}.demo.integration.single`,
       ),
     },
     unit: {
@@ -466,7 +466,7 @@ function getApiScripts() {
                 ${delay(2)} &&
                 ${inApi('npm start test.integration --silent')}
               "
-            `
+            `,
           ),
         },
         watch: testScripts.integration.watch,

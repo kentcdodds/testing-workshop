@@ -3,8 +3,6 @@
     "kentcdodds",
     "kentcdodds/react",
     "kentcdodds/jest",
-    "kentcdodds/jsx-a11y",
-    "kentcdodds/prettier",
   ],
   "rules": {
     "import/newline-after-import": "off",

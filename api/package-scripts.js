@@ -1,9 +1,4 @@
-const {
-  series,
-  concurrent,
-  rimraf,
-  commonTags: {oneLine},
-} = require('nps-utils')
+const {series, concurrent, rimraf, commonTags: {oneLine}} = require('nps-utils')
 
 const hiddenFromHelp = true
 
@@ -26,7 +21,7 @@ module.exports = {
       description: 'Transpile the source files to the `dist` directory',
       script: series(
         rimraf('dist'),
-        'babel --copy-files --out-dir dist --ignore __tests__,__mocks__ src'
+        'babel --copy-files --out-dir dist --ignore __tests__,__mocks__ src',
       ),
     },
     test: {

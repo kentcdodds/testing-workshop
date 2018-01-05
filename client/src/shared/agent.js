@@ -99,3 +99,5 @@ function getAPIUrl() {
     return queryString.parse(search)['api-url'] || developmentUrl
   }
 }
+
+/* eslint no-restricted-globals:0 */

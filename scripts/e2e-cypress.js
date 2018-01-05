@@ -1,9 +1,6 @@
 const path = require('path')
 const spawn = require('spawn-command-with-kill')
-const {
-  clientServerPort,
-  apiPort,
-} = require('./e2e-shared')
+const {clientServerPort, apiPort} = require('./e2e-shared')
 const cwd = path.join(__dirname, '..')
 
 const devMode = Boolean(JSON.parse(process.env.E2E_DEV || 'false'))

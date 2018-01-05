@@ -21,7 +21,6 @@ const ListPagination = props => {
   return (
     <nav>
       <ul className="pagination">
-
         {range.map(v => {
           const isCurrent = v === props.currentPage
           const onClick = ev => {
@@ -37,13 +36,12 @@ const ListPagination = props => {
               tabIndex={0}
               role="button"
             >
-
-              <a className="page-link" href="">{v + 1}</a>
-
+              <a className="page-link" href="">
+                {v + 1}
+              </a>
             </li>
           )
         })}
-
       </ul>
     </nav>
   )

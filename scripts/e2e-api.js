@@ -1,8 +1,5 @@
 const path = require('path')
-const {
-  apiPort,
-  spawnPromise,
-} = require('./e2e-shared')
+const {apiPort, spawnPromise} = require('./e2e-shared')
 
 const devMode = Boolean(JSON.parse(process.env.E2E_DEV || 'false'))
 
@@ -29,12 +26,15 @@ spawnPromise(startApiCommand, {
     MONGOD_DEBUG: true,
     PORT: apiPort,
   }),
-}).promise.then(() => {
-  console.log('🏁  api finished')
-}, error => {
-  console.error('🚨  api failed')
-  console.error(error.stack)
-})
+}).promise.then(
+  () => {
+    console.log('🏁  api finished')
+  },
+  error => {
+    console.error('🚨  api failed')
+    console.error(error.stack)
+  },
+)
 
 // this is not transpiled
 /*

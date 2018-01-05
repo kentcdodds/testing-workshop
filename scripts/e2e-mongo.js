@@ -25,7 +25,7 @@ spawnPromise(startMongoCommand, {
   error => {
     console.error('🚨  mongo failed')
     console.error(error.stack)
-  }
+  },
 )
 
 process.on('exit', () => {

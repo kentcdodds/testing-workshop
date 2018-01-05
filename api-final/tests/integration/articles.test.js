@@ -67,10 +67,7 @@ describe('authenticated', () => {
   })
 
   test('update an article', async () => {
-    const {
-      article: {slug, updatedAt, body},
-      cleanup,
-    } = await createNewArticle()
+    const {article: {slug, updatedAt, body}, cleanup} = await createNewArticle()
     // doesn't matter what it is, just that it's different
     const newBody = `__${body}__`
     const updatedArticle = await api

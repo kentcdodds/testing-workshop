@@ -15,7 +15,6 @@ const ArticleActions = props => {
   if (props.canModify) {
     return (
       <span>
-
         <Link
           to={`/editor/${article.slug}`}
           className="btn btn-outline-secondary btn-sm"
@@ -27,7 +26,6 @@ const ArticleActions = props => {
         <button className="btn btn-outline-danger btn-sm" onClick={del}>
           <i className="ion-trash-a" /> Delete Article
         </button>
-
       </span>
     )
   }

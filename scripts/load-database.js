@@ -6,8 +6,7 @@ const isWindows = require('is-windows')
 
 const ignoreOutput = isWindows() ? '> NUL' : '&>/dev/null'
 const mongoPort = process.env.MONGO_PORT || '27017'
-const mongoPath = process.env.MONGO_PATH ||
-  path.join(__dirname, '../.mongo-db')
+const mongoPath = process.env.MONGO_PATH || path.join(__dirname, '../.mongo-db')
 
 const stopMongo = oneLine`
   mongo admin

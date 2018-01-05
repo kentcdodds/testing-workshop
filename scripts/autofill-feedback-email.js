@@ -30,7 +30,7 @@ replace(options).then(
   error => {
     console.error('Failed to update files')
     console.error(error.stack)
-  }
+  },
 )
 
 // this is not transpiled

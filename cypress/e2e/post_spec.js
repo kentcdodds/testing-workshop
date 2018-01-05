@@ -41,12 +41,24 @@ describe('Posts', () => {
 })
 
 function fillInPostDetails({title, description, body, tagList = []}) {
-  cy.get(sel('title')).clear().type(title)
-  cy.get(sel('description')).clear().type(description)
-  cy.get(sel('body')).clear().type(body)
+  cy
+    .get(sel('title'))
+    .clear()
+    .type(title)
+  cy
+    .get(sel('description'))
+    .clear()
+    .type(description)
+  cy
+    .get(sel('body'))
+    .clear()
+    .type(body)
 
   tagList.forEach(tag => {
-    cy.get(sel('tags')).type(tag).type('{enter}')
+    cy
+      .get(sel('tags'))
+      .type(tag)
+      .type('{enter}')
   })
 }
 

@@ -36,26 +36,22 @@ class Login extends React.Component {
       <div className="auth-page">
         <div className="container page">
           <div className="row">
-
             <div className="col-md-6 offset-md-3 col-xs-12">
               <h1 className="text-xs-center">Sign In</h1>
               <p className="text-xs-center">
-                <Link to="/register">
-                  Need an account?
-                </Link>
+                <Link to="/register">Need an account?</Link>
               </p>
 
               <ListErrors errors={this.props.errors} />
 
               <form onSubmit={this.submitForm}>
                 <fieldset>
-
                   <fieldset className="form-group">
                     <input
                       className="form-control form-control-lg"
                       type="email"
                       placeholder="Email"
-                      ref={node => this._email = node}
+                      ref={node => (this._email = node)}
                       data-test="email"
                     />
                   </fieldset>
@@ -65,7 +61,7 @@ class Login extends React.Component {
                       className="form-control form-control-lg"
                       type="password"
                       placeholder="Password"
-                      ref={node => this._password = node}
+                      ref={node => (this._password = node)}
                       data-test="password"
                     />
                   </fieldset>
@@ -77,11 +73,9 @@ class Login extends React.Component {
                   >
                     Sign in
                   </button>
-
                 </fieldset>
               </form>
             </div>
-
           </div>
         </div>
       </div>

@@ -8,11 +8,7 @@ const ArticleList = props => {
   }
 
   if (props.articles.length === 0) {
-    return (
-      <div className="article-preview">
-        No articles are here... yet.
-      </div>
-    )
+    return <div className="article-preview">No articles are here... yet.</div>
   }
 
   return (

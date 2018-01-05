@@ -59,7 +59,6 @@ function Profile({
               state={currentPage}
             />
           </div>
-
         </div>
       </div>
     </div>

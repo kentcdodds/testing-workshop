@@ -10,10 +10,10 @@ Check this free short video tutorial to learn how: http://kcd.im/pull-request
 
 Environment info:
 
-- `mongo` version (`mongod --version`):
-- `node` version (`node --version`):
-- `npm` version (`npm --version`):
-- `yarn` version (`yarn --version`):
+* `mongo` version (`mongod --version`):
+* `node` version (`node --version`):
+* `npm` version (`npm --version`):
+* `yarn` version (`yarn --version`):
 
 Problem description:
 

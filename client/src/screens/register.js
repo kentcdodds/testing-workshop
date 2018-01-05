@@ -33,26 +33,22 @@ class Register extends React.Component {
       <div className="auth-page">
         <div className="container page">
           <div className="row">
-
             <div className="col-md-6 offset-md-3 col-xs-12">
               <h1 className="text-xs-center">Sign Up</h1>
               <p className="text-xs-center">
-                <Link to="/login">
-                  Have an account?
-                </Link>
+                <Link to="/login">Have an account?</Link>
               </p>
 
               <ListErrors errors={this.props.errors} />
 
               <form onSubmit={this.submitForm}>
                 <fieldset>
-
                   <fieldset className="form-group">
                     <input
                       className="form-control form-control-lg"
                       type="text"
                       placeholder="Username"
-                      ref={node => this._username = node}
+                      ref={node => (this._username = node)}
                       data-test="username"
                     />
                   </fieldset>
@@ -62,7 +58,7 @@ class Register extends React.Component {
                       className="form-control form-control-lg"
                       type="email"
                       placeholder="Email"
-                      ref={node => this._email = node}
+                      ref={node => (this._email = node)}
                       data-test="email"
                     />
                   </fieldset>
@@ -72,7 +68,7 @@ class Register extends React.Component {
                       className="form-control form-control-lg"
                       type="password"
                       placeholder="Password"
-                      ref={node => this._password = node}
+                      ref={node => (this._password = node)}
                       data-test="password"
                     />
                   </fieldset>
@@ -84,11 +80,9 @@ class Register extends React.Component {
                   >
                     Sign in
                   </button>
-
                 </fieldset>
               </form>
             </div>
-
           </div>
         </div>
       </div>

@@ -5,9 +5,8 @@ import {BrowserRouter, HashRouter} from 'react-router-dom'
 import createStore from './store'
 import AppRoutes from './app'
 
-const Router = process.env.NODE_ENV === 'production' ?
-  BrowserRouter :
-  HashRouter
+const Router =
+  process.env.NODE_ENV === 'production' ? BrowserRouter : HashRouter
 
 ReactDOM.render(
   <Provider store={createStore()}>

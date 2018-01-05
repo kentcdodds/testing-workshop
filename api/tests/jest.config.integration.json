@@ -1,16 +1,9 @@
 {
   "testEnvironment": "jest-environment-node",
-  "roots": [
-    "tests/integration"
-  ],
+  "roots": ["tests/integration"],
   "setupTestFrameworkScriptFile": "./other/jest/setup.js",
-  "testPathIgnorePatterns": [
-    "/helpers/",
-    "/fixtures/"
-  ],
-  "collectCoverageFrom": [
-    "src/**"
-  ],
+  "testPathIgnorePatterns": ["/helpers/", "/fixtures/"],
+  "collectCoverageFrom": ["src/**"],
   "coverageDirectory": "coverage/integration",
   "coverageThreshold": {
     "global": {

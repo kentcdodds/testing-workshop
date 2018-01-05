@@ -22,9 +22,9 @@ const mapDispatchToProps = dispatch => ({
 
 const ArticlePreview = props => {
   const article = props.article
-  const favoriteButtonClass = article.favorited ?
-    FAVORITED_CLASS :
-    NOT_FAVORITED_CLASS
+  const favoriteButtonClass = article.favorited
+    ? FAVORITED_CLASS
+    : NOT_FAVORITED_CLASS
 
   const handleClick = ev => {
     ev.preventDefault()

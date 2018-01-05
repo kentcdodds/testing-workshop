@@ -24,4 +24,3 @@ test('returns the sandwich if there is a sandwich query', () => {
 function getReq(sandwich) {
   return {query: {sandwich}}
 }
-

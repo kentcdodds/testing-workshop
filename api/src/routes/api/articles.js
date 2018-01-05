@@ -60,9 +60,9 @@ function getArticlesRouter() {
 
     Promise.all([
       req.query.author ? User.findOne({username: req.query.author}) : null,
-      req.query.favorited ?
-        User.findOne({username: req.query.favorited}) :
-        null,
+      req.query.favorited
+        ? User.findOne({username: req.query.favorited})
+        : null,
     ])
       .then(([author, favoriter]) => {
         if (author) {
@@ -298,7 +298,11 @@ function getArticlesRouter() {
       req.article.comments.remove(req.comment._id)
       req.article
         .save()
-        .then(Comment.find({_id: req.comment._id}).remove().exec())
+        .then(
+          Comment.find({_id: req.comment._id})
+            .remove()
+            .exec(),
+        )
         .then(() => {
           res.sendStatus(204)
         })

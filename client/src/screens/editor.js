@@ -54,9 +54,9 @@ class Editor extends React.Component {
     const article = {title, description, body, tagList}
 
     const slug = {slug: this.props.articleSlug}
-    const promise = this.props.articleSlug ?
-      agent.Articles.update(Object.assign(article, slug)) :
-      agent.Articles.create(article)
+    const promise = this.props.articleSlug
+      ? agent.Articles.update(Object.assign(article, slug))
+      : agent.Articles.create(article)
 
     this.props.onSubmit(promise)
   }
@@ -103,12 +103,10 @@ class Editor extends React.Component {
         <div className="container page">
           <div className="row">
             <div className="col-md-10 offset-md-1 col-xs-12">
-
               <ListErrors errors={errors} />
 
               <form onSubmit={this.submitForm}>
                 <fieldset>
-
                   <fieldset className="form-group">
                     <input
                       className="form-control form-control-lg"
@@ -153,7 +151,7 @@ class Editor extends React.Component {
                       value={tagInput}
                       onChange={e => this.setState({tagInput: e.target.value})}
                       onKeyUp={this.watchForEnter}
-                      ref={node => this._tags = node}
+                      ref={node => (this._tags = node)}
                       data-test="tags"
                     />
 
@@ -188,10 +186,8 @@ class Editor extends React.Component {
                   >
                     Publish Article
                   </button>
-
                 </fieldset>
               </form>
-
             </div>
           </div>
         </div>

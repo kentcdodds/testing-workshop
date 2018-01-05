@@ -34,26 +34,24 @@ class Article extends React.Component {
       return null
     }
 
-    const markup = {__html: marked(this.props.article.body, {sanitize: true})}
-    const canModify = this.props.currentUser &&
+    const markup = {
+      __html: marked(this.props.article.body, {sanitize: true}),
+    }
+    const canModify =
+      this.props.currentUser &&
       this.props.currentUser.username === this.props.article.author.username
     return (
       <div className="article-page">
-
         <div className="banner">
           <div className="container">
-
             <h1 data-test="title">{this.props.article.title}</h1>
             <ArticleMeta article={this.props.article} canModify={canModify} />
-
           </div>
         </div>
 
         <div className="container page">
-
           <div className="row article-content">
             <div className="col-xs-12">
-
               <div dangerouslySetInnerHTML={markup} data-test="body" />
 
               <ul className="tag-list" data-test="tags">
@@ -65,7 +63,6 @@ class Article extends React.Component {
                   )
                 })}
               </ul>
-
             </div>
           </div>
 

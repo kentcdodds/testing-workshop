@@ -35,9 +35,7 @@ function ListOfCustomers({customers}) {
   return (
     <div>
       Here is your list of customers!
-      <ul>
-        {customers.map((c, i) => <li key={i}>{c.name}</li>)}
-      </ul>
+      <ul>{customers.map((c, i) => <li key={i}>{c.name}</li>)}</ul>
     </div>
   )
 }
@@ -47,11 +45,7 @@ ListOfCustomers.propTypes = {
 }
 
 function NoCustomers() {
-  return (
-    <div>
-      You have no customers. Better get to work!
-    </div>
-  )
+  return <div>You have no customers. Better get to work!</div>
 }
 
 export default CustomerList

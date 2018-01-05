@@ -6,7 +6,6 @@ function LoggedOutView(props) {
   if (!props.currentUser) {
     return (
       <ul className="nav navbar-nav pull-xs-right">
-
         <li className="nav-item">
           <Link to="/" className="nav-link">
             Home
@@ -24,7 +23,6 @@ function LoggedOutView(props) {
             Sign up
           </Link>
         </li>
-
       </ul>
     )
   }
@@ -35,7 +33,6 @@ function LoggedInView(props) {
   if (props.currentUser) {
     return (
       <ul className="nav navbar-nav pull-xs-right">
-
         <li className="nav-item">
           <Link to="/" className="nav-link">
             Home
@@ -68,7 +65,6 @@ function LoggedInView(props) {
             {props.currentUser.username}
           </Link>
         </li>
-
       </ul>
     )
   }
@@ -80,7 +76,6 @@ function Header(props) {
   return (
     <nav className="navbar navbar-light">
       <div className="container">
-
         <Link to="/" className="navbar-brand">
           {props.appName.toLowerCase()}
         </Link>

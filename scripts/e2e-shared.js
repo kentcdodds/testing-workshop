@@ -9,7 +9,6 @@ module.exports = {
   spawnPromise,
 }
 
-
 function runSequence(commands, ...spawnArgs) {
   return new Promise((resolve, reject) => {
     const children = []
@@ -18,7 +17,7 @@ function runSequence(commands, ...spawnArgs) {
         const {promise, child} = spawnPromise(command, ...spawnArgs)
         children.push(child)
         return promise
-      })
+      }),
     )
       .then(result => {
         resolve({result, children})

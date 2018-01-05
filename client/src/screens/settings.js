@@ -38,7 +38,6 @@ class SettingsForm extends React.Component {
     return (
       <form onSubmit={this.submitForm}>
         <fieldset>
-
           <fieldset className="form-group">
             <input
               className="form-control"
@@ -102,7 +101,6 @@ class SettingsForm extends React.Component {
           >
             Update Settings
           </button>
-
         </fieldset>
       </form>
     )
@@ -127,7 +125,6 @@ function Settings(props) {
       <div className="container page">
         <div className="row">
           <div className="col-md-6 offset-md-3 col-xs-12">
-
             <h1 className="text-xs-center">Your Settings</h1>
 
             <ListErrors errors={props.errors} />
@@ -146,7 +143,6 @@ function Settings(props) {
             >
               Or click here to logout.
             </button>
-
           </div>
         </div>
       </div>

@@ -18,7 +18,7 @@ import getTokenFromHeader from '../get-token-from-header'
 test('this is the title of your test', () => {
   // this is where you put your test code. Write code that will
   // throw an error if getTokenFromHeader has a bug. The `expect`
-  // global is a utility that makes writing such assertions easier,
+  // global is a utility that makes writting such assertions easier,
   // but you can do it however you like.
 })
 
