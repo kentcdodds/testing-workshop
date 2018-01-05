@@ -4,12 +4,12 @@ import Toggle from '../toggle'
 
 test('has toggle--off class applied by default', () => {
   const wrapper = renderToggle()
-  expect(wrapper).toMatchSnapshotWithGlamor()
+  expect(wrapper).toMatchSnapshot()
 })
 
 test('has toggle--on class applied when initialToggledOn: true', () => {
   const wrapper = renderToggle({initialToggledOn: true})
-  expect(wrapper).toMatchSnapshotWithGlamor()
+  expect(wrapper).toMatchSnapshot()
 })
 
 test('invokes the onToggle prop when clicked', () => {
@@ -43,7 +43,7 @@ function renderToggle(props = {}) {
  * @param {Object} wrapper - the enzyme wrapper
  */
 function clickButton(wrapper) {
-  wrapper.find(sel('button')).simulate('click')
+  wrapper.find(`button${sel('button')}`).simulate('click')
 }
 
 // this helper will make it easier for you to find

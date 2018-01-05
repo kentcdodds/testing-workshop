@@ -26,26 +26,24 @@ module.exports = {
       unit: {
         default: {
           description: 'run the unit tests and collect code coverage',
-          script: testEnv(
-            'jest --config=tests/jest.config.unit.json --coverage',
-          ),
+          script: testEnv('jest --config=tests/jest.config.unit.js --coverage'),
         },
         watch: {
           description: 'run the unit tests in watch mode',
-          script: testEnv('jest --config=tests/jest.config.unit.json --watch'),
+          script: testEnv('jest --config=tests/jest.config.unit.js --watch'),
         },
       },
       integration: {
         default: {
           description: 'run the integration tests and collect coverage',
           script: testEnv(
-            'jest --config=tests/jest.config.integration.json --coverage',
+            'jest --config=tests/jest.config.integration.js --coverage',
           ),
         },
         watch: {
           description: 'run the integration tests in watch mode',
           script: testEnv(
-            'jest --config=tests/jest.config.integration.json --watch',
+            'jest --config=tests/jest.config.integration.js --watch',
           ),
         },
       },
@@ -62,11 +60,11 @@ module.exports = {
       unit: {
         default: {
           hiddenFromHelp,
-          script: 'jest --config=demo/unit/jest.config.json',
+          script: 'jest --config=demo/unit/jest.config.js',
         },
         watch: {
           hiddenFromHelp,
-          script: 'jest --config=demo/unit/jest.config.json --watch',
+          script: 'jest --config=demo/unit/jest.config.js --watch',
         },
       },
       integration: {
@@ -98,16 +96,3 @@ module.exports = {
 function testEnv(script) {
   return crossEnv(`NODE_ENV=test ${script}`)
 }
-
-// this is not transpiled
-/*
-  eslint
-  comma-dangle: [
-    2,
-    {
-      arrays: 'always-multiline',
-      objects: 'always-multiline',
-      functions: 'never'
-    }
-  ]
- */

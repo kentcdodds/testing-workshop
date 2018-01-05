@@ -30,16 +30,3 @@ spawnPromise(startClientCommand, {
     console.error(error.stack)
   },
 )
-
-// this is not transpiled
-/*
-  eslint
-  comma-dangle: [
-    2,
-    {
-      arrays: 'always-multiline',
-      objects: 'always-multiline',
-      functions: 'never'
-    }
-  ]
- */

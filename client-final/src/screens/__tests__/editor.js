@@ -10,7 +10,7 @@ test('renders editor form by default', () => {
 test('renders the given title', () => {
   const title = 'The day I dualed Lord Voldemort'
   const wrapper = mountEditor({title})
-  expect(wrapper.find(sel('title')).node.value).toBe(title)
+  expect(wrapper.find(sel('title')).instance().value).toBe(title)
 })
 
 test('adds tag when the user hits enter', () => {

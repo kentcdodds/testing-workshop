@@ -15,9 +15,9 @@ test('logs in when the form is submitted', async () => {
   })
 
   const {history, wrapper} = renderApp({route: '/register'})
-  wrapper.find(sel('username')).node.value = user.username
-  wrapper.find(sel('email')).node.value = user.email
-  wrapper.find(sel('password')).node.value = user.password
+  wrapper.find(sel('username')).instance().value = user.username
+  wrapper.find(sel('email')).instance().value = user.email
+  wrapper.find(sel('password')).instance().value = user.password
   wrapper.find('form').simulate('submit')
   await flushAllPromises()
   expect(axiosMock.__mock.instance.post).toHaveBeenCalledTimes(1)
