@@ -1,8 +1,0 @@
-**/node_modules/**
-scripts/install.js
-scripts/verify.js
-coverage
-cypress/examples/**
-build
-dist
-scripts/workshop-setup.js
