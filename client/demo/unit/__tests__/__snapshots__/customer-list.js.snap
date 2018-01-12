@@ -1,5 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`1. before customers are added 1`] = `
+<CustomerList>
+  <NoCustomers>
+    <div>
+      You have no customers. Better get to work!
+    </div>
+  </NoCustomers>
+</CustomerList>
+`;
+
+exports[`2. after customers are added 1`] = `
+<CustomerList>
+  <NoCustomers>
+    <div>
+      You have no customers. Better get to work!
+    </div>
+  </NoCustomers>
+</CustomerList>
+`;
+
 exports[`should render customers 1`] = `
 <div>
   Here is your list of customers!
