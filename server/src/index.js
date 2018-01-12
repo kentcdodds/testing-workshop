@@ -1,6 +1,10 @@
-const express = require('express')
-const app = express()
+import logger from 'loglevel'
+import startServer from './start'
 
-app.get('/', (req, res) => res.send('Hello World!'))
+const notProd = process.env.NODE_ENV !== 'production'
+const notTest = process.env.NODE_ENV !== 'test'
+const logLevel = process.env.LOG_LEVEL || (notProd && notTest ? 'info' : 'warn')
 
-app.listen(3000, () => console.log('Example app listening on port 3000!'))
+logger.setLevel(getLogLevel())
+
+startServer()

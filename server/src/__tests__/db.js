@@ -1,18 +1,12 @@
 import faker from 'faker'
 import db from '../db'
 import {createUser, createTIL} from '../../other/generate'
+import {resetDb} from '../../other/db-test-utils'
 
-const mockData = {}
+let mockData
 
-beforeEach(() => {
-  mockData.users = Array.from({length: 10}, () =>
-    createUser({id: faker.random.uuid()})
-  )
-  mockData.tils = mockData.users.map(u =>
-    createTIL({authorId: u.id, id: faker.random.uuid()})
-  )
-  db.users = mockData.users
-  db.tils = mockData.tils
+beforeEach(async () => {
+  mockData = await resetDb()
 })
 
 /************ users ****************/

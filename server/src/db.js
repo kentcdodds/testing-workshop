@@ -37,7 +37,7 @@ async function insertUser(user) {
 }
 
 async function getUsers(filter) {
-  return db.users.filter(filter)
+  return filter ? db.users.filter(filter) : [...db.users]
 }
 
 async function getUser(id) {
@@ -66,7 +66,7 @@ async function insertTIL(til) {
 }
 
 async function getTILs(filter) {
-  return db.tils.filter(filter)
+  return filter ? db.tils.filter(filter) : [...tils]
 }
 
 async function getTIL(id) {
