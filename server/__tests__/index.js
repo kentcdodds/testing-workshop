@@ -1,7 +1,7 @@
 import axios from 'axios'
-import db from '../../../src/db'
-import {resetDb} from '../../../other/db-test-utils'
-import startServer from '../../../src/start'
+import db from '../src/db'
+import {resetDb} from '../other/db-test-utils'
+import startServer from '../src/start'
 
 const api = axios.create({
   baseURL: 'http://localhost:3000/api',
