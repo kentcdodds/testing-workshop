@@ -1,18 +1,18 @@
 import faker from 'faker'
-import {createUser, createTIL} from '../other/generate'
+import {createUser, createPost} from '../other/generate'
 
 const users = Array.from(
   {0: {username: 'kentcdodds', id: 'kentcdodds'}, length: 10},
   () => createUser({id: faker.random.uuid()})
 )
 
-const tils = users.map(u =>
-  createTIL({authorId: u.id, id: faker.random.uuid()})
+const posts = users.map(u =>
+  createPost({authorId: u.id, id: faker.random.uuid()})
 )
 
 const db = {
   users,
-  tils,
+  posts,
 
   insertUser,
   getUser,
@@ -20,11 +20,11 @@ const db = {
   updateUser,
   deleteUser,
 
-  insertTIL,
-  getTIL,
-  getTILs,
-  updateTIL,
-  deleteTIL,
+  insertPost,
+  getPost,
+  getPosts,
+  updatePost,
+  deletePost,
 }
 
 async function insertUser(user) {
@@ -56,33 +56,33 @@ async function deleteUser(id) {
   return user
 }
 
-async function insertTIL(til) {
-  const newTIL = {
-    ...til,
+async function insertPost(post) {
+  const newPost = {
+    ...post,
     id: faker.random.uuid(),
   }
-  db.tils.push(newTIL)
-  return newTIL
+  db.posts.push(newPost)
+  return newPost
 }
 
-async function getTILs(filter) {
-  return filter ? db.tils.filter(filter) : [...tils]
+async function getPosts(filter) {
+  return filter ? db.posts.filter(filter) : [...posts]
 }
 
-async function getTIL(id) {
-  return (await getTILs(t => t.id === id))[0]
+async function getPost(id) {
+  return (await getPosts(t => t.id === id))[0]
 }
 
-async function updateTIL(id, newInfo) {
-  const til = await getTIL(id)
-  Object.assign(til, newInfo)
-  return til
+async function updatePost(id, newInfo) {
+  const post = await getPost(id)
+  Object.assign(post, newInfo)
+  return post
 }
 
-async function deleteTIL(id) {
-  const til = await getTIL(id)
-  db.tils = db.tils.filter(t => t.id !== id)
-  return til
+async function deletePost(id) {
+  const post = await getPost(id)
+  db.posts = db.posts.filter(t => t.id !== id)
+  return post
 }
 
 export default db

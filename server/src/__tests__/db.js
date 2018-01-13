@@ -1,6 +1,6 @@
 import faker from 'faker'
 import db from '../db'
-import {createUser, createTIL} from '../../other/generate'
+import {createUser, createPost} from '../../other/generate'
 import {resetDb} from '../../other/db-test-utils'
 
 let mockData
@@ -37,8 +37,7 @@ test('can insert a user', async () => {
 
 test('can update a user', async () => {
   const {4: fifthUser} = mockData.users
-  const newUsername = 'some-username'
-  const updates = {username: newUsername}
+  const updates = {username: 'some-username'}
   const updatedUser = await db.updateUser(fifthUser.id, updates)
   expect(updatedUser).toMatchObject(updates)
 
@@ -57,50 +56,50 @@ test('can delete a user', async () => {
   expect(retrievedUser).toBeFalsy()
 })
 
-/************* tils ****************/
+/************* posts ****************/
 
-test('can get a til', async () => {
-  const [firstTIL] = mockData.tils
-  const til = await db.getTIL(firstTIL.id)
-  expect(til).toEqual(firstTIL)
+test('can get a post', async () => {
+  const [firstPost] = mockData.posts
+  const post = await db.getPost(firstPost.id)
+  expect(post).toEqual(firstPost)
 })
 
-test('can get multiple tils', async () => {
-  const {0: firstTIL, 3: fourthTIL} = mockData.tils
-  const tils = await db.getTILs(
-    u => u.id === firstTIL.id || u.id === fourthTIL.id
+test('can get multiple posts', async () => {
+  const {0: firstPost, 3: fourthPost} = mockData.posts
+  const posts = await db.getPosts(
+    u => u.id === firstPost.id || u.id === fourthPost.id
   )
-  expect(tils).toEqual([firstTIL, fourthTIL])
+  expect(posts).toEqual([firstPost, fourthPost])
 })
 
-test('can insert a til', async () => {
-  const newTIL = createTIL()
-  const insertedTIL = await db.insertTIL(newTIL)
-  expect(insertedTIL).toMatchObject(newTIL)
+test('can insert a post', async () => {
+  const newPost = createPost()
+  const insertedPost = await db.insertPost(newPost)
+  expect(insertedPost).toMatchObject(newPost)
 
-  // verify that the updated til is retrievable
-  const retrievedTIL = await db.getTIL(insertedTIL.id)
-  expect(retrievedTIL).toEqual(insertedTIL)
+  // verify that the updated post is retrievable
+  const retrievedPost = await db.getPost(insertedPost.id)
+  expect(retrievedPost).toEqual(insertedPost)
 })
 
-test('can update a til', async () => {
-  const {4: fifthTIL} = mockData.tils
+test('can update a post', async () => {
+  const {4: fifthPost} = mockData.posts
   const newTitle = 'the new title'
   const updates = {title: newTitle}
-  const updatedTIL = await db.updateTIL(fifthTIL.id, updates)
-  expect(updatedTIL).toMatchObject(updates)
+  const updatedPost = await db.updatePost(fifthPost.id, updates)
+  expect(updatedPost).toMatchObject(updates)
 
-  // verify that the updated til is retrievable
-  const retrievedTIL = await db.getTIL(fifthTIL.id)
-  expect(retrievedTIL).toEqual(updatedTIL)
+  // verify that the updated post is retrievable
+  const retrievedPost = await db.getPost(fifthPost.id)
+  expect(retrievedPost).toEqual(updatedPost)
 })
 
-test('can delete a til', async () => {
-  const {6: seventhTIL} = mockData.tils
-  const deletedTIL = await db.deleteTIL(seventhTIL.id)
-  expect(deletedTIL).toEqual(seventhTIL)
+test('can delete a post', async () => {
+  const {6: seventhPost} = mockData.posts
+  const deletedPost = await db.deletePost(seventhPost.id)
+  expect(deletedPost).toEqual(seventhPost)
 
-  // verify that the updated til is retrievable
-  const retrievedTIL = await db.getTIL(seventhTIL.id)
-  expect(retrievedTIL).toBeFalsy()
+  // verify that the updated post is retrievable
+  const retrievedPost = await db.getPost(seventhPost.id)
+  expect(retrievedPost).toBeFalsy()
 })

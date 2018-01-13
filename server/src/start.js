@@ -1,4 +1,5 @@
 import express from 'express'
+import bodyParser from 'body-parser'
 import 'express-async-errors'
 import logger from 'loglevel'
 import db from './db'
@@ -6,6 +7,7 @@ import setupUserRoutes from './routes/users'
 
 function startServer() {
   const app = express()
+  app.use(bodyParser.json())
   const userRouter = express.Router()
   setupUserRoutes(userRouter)
   app.use('/api/users', userRouter)

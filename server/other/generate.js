@@ -4,7 +4,7 @@ function createUser(overrides) {
   return {username: faker.internet.userName(), ...overrides}
 }
 
-function createTIL(overrides) {
+function createPost(overrides) {
   return {
     title: faker.lorem.words(),
     content: faker.lorem.paragraphs(),
@@ -17,4 +17,4 @@ function createTIL(overrides) {
   }
 }
 
-export {createUser, createTIL}
+export {createUser, createPost}

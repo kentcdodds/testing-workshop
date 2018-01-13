@@ -24,7 +24,7 @@ class Fetch extends Component {
 function Home() {
   return (
     <div>
-      <Fetch mockData={{users, tils}}>
+      <Fetch mockData={{users, posts}}>
         {({fetching, error, data}) =>
           fetching ? (
             'loading'
@@ -41,17 +41,17 @@ function Home() {
   )
 }
 
-function Timeline({users, tils}) {
+function Timeline({users, posts}) {
   return (
     <div>
-      {tils.map(t => (
-        <TIL key={t.id} til={t} author={users.find(u => u.id === t.authorId)} />
+      {posts.map(t => (
+        <Post key={t.id} post={t} author={users.find(u => u.id === t.authorId)} />
       ))}
     </div>
   )
 }
 
-function TIL({til: {title, content, tags}, author}) {
+function Post({post: {title, content, tags}, author}) {
   return (
     <div>
       <h2>{title}</h2>
@@ -95,7 +95,7 @@ class Editor extends Component {
   handleSubmit = e => {
     e.preventDefault()
     const {title, content, tags} = e.target.elements
-    const newTIL = {
+    const newPost = {
       id: faker.random.uuid(),
       title: title.value,
       content: content.value,
@@ -103,7 +103,7 @@ class Editor extends Component {
       date: new Date().toISOString(),
       authorId: this.props.user.id,
     }
-    tils.push(newTIL)
+    posts.push(newPost)
     this.props.history.push('/')
   }
   render() {
@@ -150,14 +150,14 @@ class App extends Component {
           </h1>
           <small>
             Inspired by{' '}
-            <a href="https://til.hashrocket.com/">til.hashrocket.com</a>
+            <a href="https://post.hashrocket.com/">post.hashrocket.com</a>
           </small>
           <div>
             {user ? (
               <div>
                 <span>{user.username}</span>
                 <button onClick={this.handleLogoutClick}>Logout</button>
-                <Link to="/editor">Add new TIL</Link>
+                <Link to="/editor">Add new Post</Link>
               </div>
             ) : (
               <Link to="/login">Login</Link>
@@ -170,7 +170,7 @@ class App extends Component {
 
           {user ? (
             <Route
-              path="/editor/:tilId?"
+              path="/editor/:postId?"
               render={props => <Editor user={user} {...props} />}
             />
           ) : null}
