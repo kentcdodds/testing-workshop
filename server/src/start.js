@@ -1,13 +1,18 @@
 import express from 'express'
 import bodyParser from 'body-parser'
-import 'express-async-errors'
+import passport from 'passport'
 import logger from 'loglevel'
+import {getLocalStrategy} from './auth'
+import 'express-async-errors'
 import db from './db'
 import setupUserRoutes from './routes/users'
 
 function startServer() {
   const app = express()
   app.use(bodyParser.json())
+  app.use(passport.initialize())
+  passport.use(getLocalStrategy())
+
   const userRouter = express.Router()
   setupUserRoutes(userRouter)
   app.use('/api/users', userRouter)

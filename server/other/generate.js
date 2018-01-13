@@ -1,7 +1,12 @@
 import faker from 'faker'
+import {getSaltAndHash} from '../src/auth'
 
 function createUser(overrides) {
-  return {username: faker.internet.userName(), ...overrides}
+  return {
+    username: faker.internet.userName(),
+    ...getSaltAndHash(faker.internet.password()),
+    ...overrides,
+  }
 }
 
 function createPost(overrides) {
