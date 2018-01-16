@@ -5,11 +5,17 @@
   "author": "Kent C. Dodds <kent@doddsfamily.us> (http://kentcdodds.com/)",
   "license": "MIT",
   "scripts": {
-    "test": "cd server && npm run test",
+    "test:client": "cd client && npm run test --silent",
+    "test:server": "cd server && npm run test --silent",
+    "test:client:no-watch": "cd client && npm run test:no-watch --silent",
+    "test:server:no-watch": "cd server && npm run test:no-watch --silent",
     "lint": "eslint . --cache --cache-location node_modules/.cache/eslint",
-    "setup": "node ./scripts/verify && node ./scripts/install && node ./scripts/load-database && npm start validate"
+    "validate": "concurrently --names \"lint,test:client,test:server\" --prefix \"[{name}]\" --prefix-colors \"bgGreen.reset.bold,bgBlue.reset.bold,bgCyan.reset.bold\" \"npm run lint --silent\" \"npm run test:client:no-watch --silent\" \"npm run test:server:no-watch --silent\"",
+    "setup": "node ./scripts/verify && node ./scripts/install && npm run validate"
   },
   "devDependencies": {
+    "concurrently": "^3.5.1",
+    "cross-env": "^5.1.3",
     "eslint": "^4.15.0",
     "eslint-config-kentcdodds": "^13.0.1",
     "replace-in-file": "^3.1.0"
@@ -33,6 +39,7 @@
   "eslintIgnore": [
     "node_modules",
     "build",
-    "dist"
+    "dist",
+    "workshop-setup.js"
   ]
 }
