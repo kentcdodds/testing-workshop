@@ -1,13 +1,13 @@
 import faker from 'faker'
-import {createUser, createPost} from '../other/generate'
+import {generateUserData, generatePostData} from '../other/generate'
 
 const users = Array.from(
   {0: {username: 'kentcdodds', id: 'kentcdodds'}, length: 10},
-  () => createUser({id: faker.random.uuid()})
+  () => generateUserData({id: faker.random.uuid()})
 )
 
 const posts = users.map(u =>
-  createPost({authorId: u.id, id: faker.random.uuid()})
+  generatePostData({authorId: u.id, id: faker.random.uuid()})
 )
 
 const db = {

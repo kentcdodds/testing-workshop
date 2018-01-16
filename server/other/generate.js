@@ -1,15 +1,18 @@
 import faker from 'faker'
 import {getSaltAndHash} from '../src/auth'
 
-function createUser(overrides) {
+function generateUserData({
+  password = faker.internet.password(),
+  ...overrides
+} = {}) {
   return {
     username: faker.internet.userName(),
-    ...getSaltAndHash(faker.internet.password()),
+    ...getSaltAndHash(password),
     ...overrides,
   }
 }
 
-function createPost(overrides) {
+function generatePostData(overrides) {
   return {
     title: faker.lorem.words(),
     content: faker.lorem.paragraphs(),
@@ -22,4 +25,4 @@ function createPost(overrides) {
   }
 }
 
-export {createUser, createPost}
+export {generateUserData, generatePostData}

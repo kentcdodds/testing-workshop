@@ -1,6 +1,6 @@
 import faker from 'faker'
 import db from '../db'
-import {createUser, createPost} from '../../other/generate'
+import {generateUserData, generatePostData} from '../../other/generate'
 import {resetDb} from '../../other/db-test-utils'
 
 let mockData
@@ -26,7 +26,7 @@ test('can get multiple users', async () => {
 })
 
 test('can insert a user', async () => {
-  const newUser = createUser()
+  const newUser = generateUserData()
   const insertedUser = await db.insertUser(newUser)
   expect(insertedUser).toMatchObject(newUser)
 
@@ -73,7 +73,7 @@ test('can get multiple posts', async () => {
 })
 
 test('can insert a post', async () => {
-  const newPost = createPost()
+  const newPost = generatePostData()
   const insertedPost = await db.insertPost(newPost)
   expect(insertedPost).toMatchObject(newPost)
 

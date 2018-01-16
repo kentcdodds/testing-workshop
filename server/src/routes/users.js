@@ -1,6 +1,5 @@
-import express from 'express'
 import passport from 'passport'
-import {authMiddleware} from '../auth'
+import {authMiddleware, userToJSON, getUserToken} from '../auth'
 import db from '../db'
 
 function setupUserRoutes(router) {
@@ -12,45 +11,27 @@ function setupUserRoutes(router) {
     }
   }
 
-  router.get('/me', authMiddleware.required, (req, res) => {
-    return res.json(req.user)
-  })
-
-  router.post('/login', (req, res, next) => {
-    if (!req.body.email) {
-      return res.status(422).json({errors: {email: "can't be blank"}})
-    }
-
-    if (!req.body.password) {
-      return res.status(422).json({errors: {password: "can't be blank"}})
-    }
-
-    passport.authenticate('local', {session: false}, (err, user, info) => {
-      if (err) {
-        return next(err)
-      }
-
-      if (user) {
-        return res.json({user})
-      } else {
-        return res.status(422).json(info)
-      }
-    })(req, res, next)
-  })
-
   router.get('/', async (req, res) => {
     const users = await db.getUsers()
     if (users) {
-      res.json(users)
+      res.json({users: users.map(u => userToJSON(u))})
     } else {
       res.status(404).send()
     }
   })
 
-  router.get('/:id', async (req, res) => {
+  router.get('/:id', authMiddleware.optional, async (req, res) => {
     const user = await db.getUser(req.params.id)
     if (user) {
-      res.json(user)
+      res.json({
+        user: {
+          ...userToJSON(user),
+          token:
+            req.user && req.user.id === req.params.id
+              ? getUserToken(user)
+              : undefined,
+        },
+      })
     } else {
       res.status(404).send()
     }
@@ -59,7 +40,7 @@ function setupUserRoutes(router) {
   router.post('/', async (req, res) => {
     const user = await db.insertUser(req.body)
     if (user) {
-      res.json(user)
+      res.json({user: userToJSON(user)})
     } else {
       res.status(404).send()
     }
@@ -71,7 +52,7 @@ function setupUserRoutes(router) {
     }
     const user = await db.updateUser(req.params.id, req.body)
     if (user) {
-      res.json(user)
+      res.json({user: userToJSON(user)})
     } else {
       res.status(404).send()
     }
@@ -84,7 +65,7 @@ function setupUserRoutes(router) {
     async (req, res) => {
       const user = await db.deleteUser(req.params.id)
       if (user) {
-        res.json(user)
+        res.json({user: userToJSON(user)})
       } else {
         res.status(404).send()
       }

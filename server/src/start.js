@@ -6,12 +6,17 @@ import {getLocalStrategy} from './auth'
 import 'express-async-errors'
 import db from './db'
 import setupUserRoutes from './routes/users'
+import setupAuthRoutes from './routes/auth'
 
 function startServer() {
   const app = express()
   app.use(bodyParser.json())
   app.use(passport.initialize())
   passport.use(getLocalStrategy())
+
+  const authRouter = express.Router()
+  setupAuthRoutes(authRouter)
+  app.use('/api/auth', authRouter)
 
   const userRouter = express.Router()
   setupUserRoutes(userRouter)

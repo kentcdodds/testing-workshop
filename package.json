@@ -5,6 +5,7 @@
   "author": "Kent C. Dodds <kent@doddsfamily.us> (http://kentcdodds.com/)",
   "license": "MIT",
   "scripts": {
+    "test": "cd server && npm run test",
     "setup":
       "node ./scripts/verify && node ./scripts/install && node ./scripts/load-database && npm start validate"
   },
