@@ -1,4 +1,3 @@
-import passport from 'passport'
 import {authMiddleware, userToJSON, getUserToken} from '../auth'
 import db from '../db'
 
@@ -52,9 +51,9 @@ function setupUserRoutes(router) {
     }
     const user = await db.updateUser(req.params.id, req.body)
     if (user) {
-      res.json({user: userToJSON(user)})
+      return res.json({user: userToJSON(user)})
     } else {
-      res.status(404).send()
+      return res.status(404).send()
     }
   })
 
@@ -65,9 +64,9 @@ function setupUserRoutes(router) {
     async (req, res) => {
       const user = await db.deleteUser(req.params.id)
       if (user) {
-        res.json({user: userToJSON(user)})
+        return res.json({user: userToJSON(user)})
       } else {
-        res.status(404).send()
+        return res.status(404).send()
       }
     }
   )

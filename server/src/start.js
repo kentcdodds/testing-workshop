@@ -2,9 +2,8 @@ import express from 'express'
 import bodyParser from 'body-parser'
 import passport from 'passport'
 import logger from 'loglevel'
-import {getLocalStrategy} from './auth'
 import 'express-async-errors'
-import db from './db'
+import {getLocalStrategy} from './auth'
 import setupUserRoutes from './routes/users'
 import setupAuthRoutes from './routes/auth'
 
@@ -26,9 +25,9 @@ function startServer() {
     const server = app.listen(process.env.PORT || 3000, () => {
       logger.info(`Listening on port ${server.address().port}`)
       const originalClose = server.close.bind(server)
-      server.close = function asyncClose() {
-        return new Promise(resolve => {
-          originalClose(resolve)
+      server.close = () => {
+        return new Promise(resolveClose => {
+          originalClose(resolveClose)
         })
       }
       resolve(server)

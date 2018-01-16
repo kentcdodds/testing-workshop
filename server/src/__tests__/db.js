@@ -1,4 +1,3 @@
-import faker from 'faker'
 import db from '../db'
 import {generateUserData, generatePostData} from '../../other/generate'
 import {resetDb} from '../../other/db-test-utils'

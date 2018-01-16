@@ -5,6 +5,6 @@ const notProd = process.env.NODE_ENV !== 'production'
 const notTest = process.env.NODE_ENV !== 'test'
 const logLevel = process.env.LOG_LEVEL || (notProd && notTest ? 'info' : 'warn')
 
-logger.setLevel(getLogLevel())
+logger.setLevel(logLevel)
 
 startServer()

@@ -1,9 +1,8 @@
 import axios from 'axios'
+import {omit} from 'lodash'
 import db from '../src/db'
 import {resetDb} from '../other/db-test-utils'
 import {generateUserData} from '../other/generate'
-import {filter} from '../src/auth'
-import {omit} from 'lodash'
 import startServer from '../src/start'
 
 const baseURL = 'http://localhost:3000/api'
@@ -12,8 +11,7 @@ const api = axios.create({baseURL})
 const getData = res => res.data
 const getUser = res => res.data.user
 
-let server
-let mockData
+let server, mockData
 
 beforeAll(async () => {
   server = await startServer()

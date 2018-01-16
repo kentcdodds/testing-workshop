@@ -1,6 +1,9 @@
 import React, {Component} from 'react'
 import {BrowserRouter as Router, Route, Link, Redirect} from 'react-router-dom'
 
+const users = []
+const posts = []
+
 // swap this for holen
 class Fetch extends Component {
   state = {error: false, fetching: false, data: null}
@@ -41,11 +44,16 @@ function Home() {
   )
 }
 
+// eslint-disable-next-line no-shadow
 function Timeline({users, posts}) {
   return (
     <div>
       {posts.map(t => (
-        <Post key={t.id} post={t} author={users.find(u => u.id === t.authorId)} />
+        <Post
+          key={t.id}
+          post={t}
+          author={users.find(u => u.id === t.authorId)}
+        />
       ))}
     </div>
   )
@@ -96,14 +104,13 @@ class Editor extends Component {
     e.preventDefault()
     const {title, content, tags} = e.target.elements
     const newPost = {
-      id: faker.random.uuid(),
       title: title.value,
       content: content.value,
       tags: tags.value.split(',').map(t => t.trim()),
       date: new Date().toISOString(),
       authorId: this.props.user.id,
     }
-    posts.push(newPost)
+    console.log(newPost)
     this.props.history.push('/')
   }
   render() {
@@ -136,7 +143,7 @@ class Editor extends Component {
 
 class App extends Component {
   state = {user: {username: 'kentcdodds', id: 'kentcdodds'}}
-  handleLoginSubmit = ({username, password}) => {
+  handleLoginSubmit = ({username, password: _password}) => {
     this.setState({user: users.find(u => username === u.username)})
   }
   handleLogoutClick = () => this.setState({user: null})

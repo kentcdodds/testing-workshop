@@ -1,6 +1,6 @@
 import faker from 'faker'
-import {generateUserData, generatePostData} from './generate'
 import db from '../src/db'
+import {generateUserData, generatePostData} from './generate'
 
 async function resetDb() {
   const users = Array.from({length: 10}, () =>

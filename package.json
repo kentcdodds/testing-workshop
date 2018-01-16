@@ -6,8 +6,33 @@
   "license": "MIT",
   "scripts": {
     "test": "cd server && npm run test",
-    "setup":
-      "node ./scripts/verify && node ./scripts/install && node ./scripts/load-database && npm start validate"
+    "lint": "eslint . --cache --cache-location node_modules/.cache/eslint",
+    "setup": "node ./scripts/verify && node ./scripts/install && node ./scripts/load-database && npm start validate"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "eslint": "^4.15.0",
+    "eslint-config-kentcdodds": "^13.0.1",
+    "replace-in-file": "^3.1.0"
+  },
+  "eslintConfig": {
+    "extends": [
+      "kentcdodds",
+      "kentcdodds/jest",
+      "kentcdodds/react"
+    ],
+    "rules": {
+      "require-await": "off",
+      "import/prefer-default-export": "off",
+      "babel/new-cap": "off",
+      "import/no-unassigned-import": "off",
+      "react/prop-types": "off",
+      "no-console": "warn",
+      "no-nested-ternary": "off"
+    }
+  },
+  "eslintIgnore": [
+    "node_modules",
+    "build",
+    "dist"
+  ]
 }
