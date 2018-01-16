@@ -1,18 +1,8 @@
 import faker from 'faker'
-import {generateUserData, generatePostData} from '../other/generate'
-
-const users = Array.from(
-  {0: {username: 'kentcdodds', id: 'kentcdodds'}, length: 10},
-  () => generateUserData({id: faker.random.uuid()})
-)
-
-const posts = users.map(u =>
-  generatePostData({authorId: u.id, id: faker.random.uuid()})
-)
 
 const db = {
-  users,
-  posts,
+  users: [],
+  posts: [],
 
   insertUser,
   getUser,
@@ -66,7 +56,7 @@ async function insertPost(post) {
 }
 
 async function getPosts(filter) {
-  return filter ? db.posts.filter(filter) : [...posts]
+  return filter ? db.posts.filter(filter) : [...db.posts]
 }
 
 async function getPost(id) {

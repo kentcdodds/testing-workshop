@@ -1,33 +1,13 @@
 import React, {Component} from 'react'
 import {BrowserRouter as Router, Route, Link, Redirect} from 'react-router-dom'
+import Holen from 'holen'
 
 const users = []
-const posts = []
-
-// swap this for holen
-class Fetch extends Component {
-  state = {error: false, fetching: false, data: null}
-  fetch = () => {
-    // TODO: make this fetch from an API
-    Promise.resolve().then(() =>
-      this.setState({error: false, fetching: false, data: this.props.mockData})
-    )
-  }
-  componentDidMount() {
-    this.fetch()
-  }
-  render() {
-    return this.props.children({
-      ...this.state,
-      fetch: this.fetch,
-    })
-  }
-}
 
 function Home() {
   return (
     <div>
-      <Fetch mockData={{users, posts}}>
+      <Holen url="http://localhost:8000/api/misc/all">
         {({fetching, error, data}) =>
           fetching ? (
             'loading'
@@ -39,13 +19,13 @@ function Home() {
             </div>
           ) : null
         }
-      </Fetch>
+      </Holen>
     </div>
   )
 }
 
 // eslint-disable-next-line no-shadow
-function Timeline({users, posts}) {
+function Timeline({users, posts = []}) {
   return (
     <div>
       {posts.map(t => (

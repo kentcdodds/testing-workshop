@@ -5,16 +5,15 @@ import {resetDb} from '../other/db-test-utils'
 import {generateUserData} from '../other/generate'
 import startServer from '../src/start'
 
-const baseURL = 'http://localhost:3000/api'
-const api = axios.create({baseURL})
-
 const getData = res => res.data
 const getUser = res => res.data.user
 
-let server, mockData
+let baseURL api, server, mockData
 
 beforeAll(async () => {
   server = await startServer()
+  baseURL = `http://localhost:${server.address().port}/api`
+  api = axios.create({baseURL})
 })
 
 afterAll(async () => {

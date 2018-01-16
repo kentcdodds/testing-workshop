@@ -1,5 +1,19 @@
 import faker from 'faker'
-import {getSaltAndHash} from '../src/auth'
+import * as auth from '../src/auth'
+import db from '../src/db'
+
+function initDb() {
+  const users = Array.from(
+    {0: {username: 'kentcdodds', id: 'kentcdodds'}, length: 10},
+    () => generateUserData({id: faker.random.uuid()})
+  )
+
+  const posts = users.map(u =>
+    generatePostData({authorId: u.id, id: faker.random.uuid()})
+  )
+  db.users = users
+  db.posts = posts
+}
 
 function generateUserData({
   password = faker.internet.password(),
@@ -7,7 +21,7 @@ function generateUserData({
 } = {}) {
   return {
     username: faker.internet.userName(),
-    ...getSaltAndHash(password),
+    ...auth.getSaltAndHash(password),
     ...overrides,
   }
 }
@@ -25,4 +39,4 @@ function generatePostData(overrides) {
   }
 }
 
-export {generateUserData, generatePostData}
+export {generateUserData, generatePostData, initDb}

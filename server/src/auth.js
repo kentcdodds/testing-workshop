@@ -5,7 +5,7 @@ import LocalStrategy from 'passport-local'
 import {omit} from 'lodash'
 import db from './db'
 
-const iterations = process.env.NODE_ENV === 'test' ? 1 : 100000
+const iterations = process.env.NODE_ENV === 'production' ? 100000 : 1
 const secret = 'secret'
 
 const authMiddleware = {
