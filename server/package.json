@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node .",
-    "test": "jest --watch",
-    "test:no-watch": "jest"
+    "test": "echo \"Run tests from the parent directory\""
   },
   "author": "Kent C. Dodds <kent@doddsfamily.us> (http://kentcdodds.com/)",
   "license": "MIT",
@@ -43,10 +42,6 @@
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-register": "^6.26.0",
-    "faker": "^4.1.0",
-    "jest": "^22.0.6"
-  },
-  "jest": {
-    "testEnvironment": "node"
+    "faker": "^4.1.0"
   }
 }

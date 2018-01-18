@@ -8,12 +8,12 @@
     "start": "concurrently --names \"server,client\" --prefix \"[{name}]\" --prefix-colors \"bgCyan.reset.bold,bgGreen.reset.bold\" \"npm run start:server --silent\" \"npm run start:client --silent\"",
     "start:client": "cd client && npm start --silent",
     "start:server": "cd server && npm start --silent",
-    "test:client": "cd client && npm run test --silent",
-    "test:server": "cd server && npm run test --silent",
-    "test:client:no-watch": "cd client && npm run test:no-watch --silent",
-    "test:server:no-watch": "cd server && npm run test:no-watch --silent",
+    "test": "jest --watch",
+    "test:client": "jest --config client --watch",
+    "test:server": "jest --config server --watch",
+    "test:coverage": "jest --coverage",
     "lint": "eslint . --cache --cache-location node_modules/.cache/eslint",
-    "validate": "concurrently --names \"lint,test:client,test:server\" --prefix \"[{name}]\" --prefix-colors \"bgGreen.reset.bold,bgBlue.reset.bold,bgCyan.reset.bold\" \"npm run lint --silent\" \"npm run test:client:no-watch --silent\" \"npm run test:server:no-watch --silent\"",
+    "validate": "concurrently --names \"lint,test:coverage\" --prefix \"[{name}]\" --prefix-colors \"bgGreen.reset.bold,bgBlue.reset.bold\" \"npm run lint --silent\" \"npm run test:coverage --silent\"",
     "setup": "node ./scripts/verify && node ./scripts/install && npm run validate"
   },
   "devDependencies": {
@@ -21,6 +21,7 @@
     "cross-env": "^5.1.3",
     "eslint": "^4.15.0",
     "eslint-config-kentcdodds": "^13.0.1",
+    "jest": "^22.1.2",
     "replace-in-file": "^3.1.0"
   },
   "eslintConfig": {
@@ -43,6 +44,7 @@
     "node_modules",
     "build",
     "dist",
+    "coverage",
     "workshop-setup.js"
   ]
 }

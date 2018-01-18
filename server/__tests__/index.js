@@ -8,7 +8,7 @@ import startServer from '../src/start'
 const getData = res => res.data
 const getUser = res => res.data.user
 
-let baseURL api, server, mockData
+let baseURL, api, server, mockData
 
 beforeAll(async () => {
   server = await startServer()
