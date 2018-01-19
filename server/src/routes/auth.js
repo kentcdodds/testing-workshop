@@ -1,5 +1,5 @@
 import passport from 'passport'
-import {getSaltAndHash, userToJSON, getUserToken} from '../auth'
+import {authMiddleware, getSaltAndHash, userToJSON, getUserToken} from '../auth'
 import db from '../db'
 
 const authUserToJSON = user => ({
@@ -7,7 +7,7 @@ const authUserToJSON = user => ({
   token: getUserToken(user),
 })
 
-function setupUserRoutes(router) {
+function setupAuthRoutes(router) {
   router.post('/register', async (req, res) => {
     const {username, password} = req.body
     if (!username) {
@@ -53,6 +53,14 @@ function setupUserRoutes(router) {
       }
     )(req, res, next)
   })
+
+  router.get('/me', authMiddleware.required, async (req, res) => {
+    if (req.user) {
+      return res.json({user: userToJSON(req.user)})
+    } else {
+      return res.status(404).send()
+    }
+  })
 }
 
-export default setupUserRoutes
+export default setupAuthRoutes

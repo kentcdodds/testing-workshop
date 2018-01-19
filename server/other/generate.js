@@ -3,9 +3,8 @@ import * as auth from '../src/auth'
 import db from '../src/db'
 
 function initDb() {
-  const users = Array.from(
-    {0: {username: 'kentcdodds', id: 'kentcdodds'}, length: 10},
-    () => generateUserData({id: faker.random.uuid()})
+  const users = Array.from({length: 10}, () =>
+    generateUserData({id: faker.random.uuid()})
   )
 
   const posts = users.map(u =>
@@ -13,6 +12,13 @@ function initDb() {
   )
   db.users = users
   db.posts = posts
+
+  const testUser = generateUserData({
+    id: faker.random.uuid(),
+    username: 'til',
+    password: 'til',
+  })
+  db.users.push(testUser)
 }
 
 function generateUserData({

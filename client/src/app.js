@@ -1,25 +1,61 @@
 import React, {Component} from 'react'
 import {BrowserRouter as Router, Route, Link, Redirect} from 'react-router-dom'
-import Holen from 'holen'
+import * as api from './api'
 
-const users = []
+class RenderPromise extends React.Component {
+  initialState = {result: null, error: null, pending: false}
+  state = this.initialState
+  _isMounted = false
+  reset(overrides) {
+    const newState = {...this.initialState, ...overrides}
+    if (this._isMounted) {
+      this.setState(newState)
+    }
+    return newState
+  }
+  componentDidMount() {
+    this._isMounted = true
+    if (!this.props.lazy) {
+      this.invoke()
+    }
+  }
+  componentWillUnmount() {
+    this._isMounted = false
+  }
+  invoke = (...args) => {
+    this.setState({pending: true})
+    return this.props
+      .fn(...args)
+      .then(
+        result => this.reset({result}),
+        error => Promise.reject(this.reset({error}))
+      )
+  }
+  render() {
+    return this.props.render({
+      ...this.state,
+      invoke: this.invoke,
+    })
+  }
+}
 
 function Home() {
   return (
     <div>
-      <Holen url="http://localhost:8000/api/misc/all">
-        {({fetching, error, data}) =>
-          fetching ? (
+      <RenderPromise
+        fn={() => Promise.all([api.users.get(), api.posts.get()])}
+        render={({pending, error, result}) =>
+          pending ? (
             'loading'
           ) : error ? (
             'error'
-          ) : data ? (
+          ) : result ? (
             <div>
-              <Timeline {...data} />
+              <Timeline users={result[0].users} posts={result[1].posts} />
             </div>
           ) : null
         }
-      </Holen>
+      />
     </div>
   )
 }
@@ -90,8 +126,9 @@ class Editor extends Component {
       date: new Date().toISOString(),
       authorId: this.props.user.id,
     }
-    console.log(newPost)
-    this.props.history.push('/')
+    api.posts.create(newPost).then(() => {
+      this.props.history.push('/')
+    })
   }
   render() {
     const {match} = this.props
@@ -121,60 +158,122 @@ class Editor extends Component {
   }
 }
 
-class App extends Component {
-  state = {user: {username: 'kentcdodds', id: 'kentcdodds'}}
-  handleLoginSubmit = ({username, password: _password}) => {
-    this.setState({user: users.find(u => username === u.username)})
+class User extends React.Component {
+  initialState = {user: null, error: null, pending: false}
+  state = this.initialState
+  reset(overrides) {
+    const newState = {...this.initialState, ...overrides}
+    this.setState(newState)
+    return newState
   }
-  handleLogoutClick = () => this.setState({user: null})
+  componentDidMount() {
+    this.reset({pending: true})
+    return api.auth
+      .me()
+      .then(
+        ({user}) => this.reset({user}),
+        error => Promise.reject(this.reset({error}))
+      )
+  }
+  login = (...args) => {
+    this.reset({pending: true})
+    return api.auth
+      .login(...args)
+      .then(
+        ({user}) => this.reset({user}),
+        error => Promise.reject(this.reset({error}))
+      )
+  }
+  logout = (...args) => {
+    this.reset({pending: true})
+    return api.auth
+      .logout(...args)
+      .catch(() => this.reset(), error => Promise.reject(this.reset({error})))
+      .finally(() => this.reset())
+  }
+  register = (...args) => {
+    this.reset({pending: true})
+    return api.auth
+      .register(...args)
+      .then(
+        ({user}) => this.reset({user}),
+        error => Promise.reject(this.reset({error}))
+      )
+  }
   render() {
-    const {user} = this.state
-    return (
-      <Router>
-        <div>
-          <h1>
-            <Link to="/">Today I Learned</Link>
-          </h1>
-          <small>
-            Inspired by{' '}
-            <a href="https://post.hashrocket.com/">post.hashrocket.com</a>
-          </small>
-          <div>
-            {user ? (
-              <div>
-                <span>{user.username}</span>
-                <button onClick={this.handleLogoutClick}>Logout</button>
-                <Link to="/editor">Add new Post</Link>
-              </div>
-            ) : (
-              <Link to="/login">Login</Link>
-            )}
-          </div>
-
-          <hr />
-
-          <Route exact path="/" component={Home} />
-
-          {user ? (
-            <Route
-              path="/editor/:postId?"
-              render={props => <Editor user={user} {...props} />}
-            />
-          ) : null}
-          <Route
-            path="/login"
-            render={() =>
-              user ? (
-                <Redirect to="/" />
-              ) : (
-                <Login onSubmit={this.handleLoginSubmit} />
-              )
-            }
-          />
-        </div>
-      </Router>
-    )
+    return this.props.render({
+      ...this.state,
+      login: this.login,
+      logout: this.logout,
+      register: this.register,
+    })
   }
+}
+
+function App() {
+  return (
+    <User
+      render={({user, error, pending, login, logout, register}) =>
+        pending ? (
+          <div>Loading...</div>
+        ) : (
+          <Router>
+            <div>
+              {error ? (
+                <pre>{JSON.stringify(error.response, null, 2)}</pre>
+              ) : null}
+              <h1>
+                <Link to="/">Today I Learned</Link>
+              </h1>
+              <small>
+                Inspired by{' '}
+                <a href="https://til.hashrocket.com/">til.hashrocket.com</a>
+              </small>
+              <div>
+                {user ? (
+                  <div>
+                    <span>{user.username}</span>
+                    <button onClick={logout}>Logout</button>
+                    <Link to="/editor">Add new Post</Link>
+                  </div>
+                ) : (
+                  <div>
+                    <Link to="/login">Login</Link>
+                    <Link to="/register">Register</Link>
+                  </div>
+                )}
+              </div>
+
+              <hr />
+
+              <Route exact path="/" component={Home} />
+
+              {user ? (
+                <Route
+                  path="/editor/:postId?"
+                  render={props => <Editor user={user} {...props} />}
+                />
+              ) : null}
+              <React.Fragment>
+                <Route
+                  path="/login"
+                  render={() =>
+                    user ? <Redirect to="/" /> : <Login onSubmit={login} />
+                  }
+                />
+                <Route
+                  path="/register"
+                  render={() =>
+                    user ? <Redirect to="/" /> : <Login onSubmit={register} />
+                  }
+                />
+              </React.Fragment>
+            </div>
+          </Router>
+        )
+      }
+    />
+  )
 }
 
 export default App

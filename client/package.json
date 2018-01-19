@@ -5,7 +5,9 @@
   "author": "Kent C. Dodds <kent@doddsfamily.us> (http://kentcdodds.com/)",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.17.1",
     "holen": "^2.0.1",
+    "query-string": "^5.0.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-router-dom": "^4.2.2",

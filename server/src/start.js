@@ -5,10 +5,7 @@ import passport from 'passport'
 import logger from 'loglevel'
 import 'express-async-errors'
 import {getLocalStrategy} from './auth'
-import setupUserRoutes from './routes/users'
-import setupAuthRoutes from './routes/auth'
-import setupPostRoutes from './routes/posts'
-import setupMiscRoutes from './routes/misc'
+import setupRoutes from './routes'
 
 function startServer() {
   const app = express()
@@ -17,21 +14,7 @@ function startServer() {
   app.use(passport.initialize())
   passport.use(getLocalStrategy())
 
-  const authRouter = express.Router()
-  setupAuthRoutes(authRouter)
-  app.use('/api/auth', authRouter)
-
-  const userRouter = express.Router()
-  setupUserRoutes(userRouter)
-  app.use('/api/users', userRouter)
-
-  const postRouter = express.Router()
-  setupPostRoutes(postRouter)
-  app.use('/api/posts', postRouter)
-
-  const miscRouter = express.Router()
-  setupMiscRoutes(miscRouter)
-  app.use('/api/misc', miscRouter)
+  setupRoutes(app)
 
   return new Promise(resolve => {
     const server = app.listen(process.env.PORT || 8000, () => {

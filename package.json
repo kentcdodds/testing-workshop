@@ -37,7 +37,8 @@
       "import/no-unassigned-import": "off",
       "react/prop-types": "off",
       "no-console": "warn",
-      "no-nested-ternary": "off"
+      "no-nested-ternary": "off",
+      "complexity": ["error", 12]
     }
   },
   "eslintIgnore": [

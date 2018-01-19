@@ -1,2 +1,4 @@
 // ./client/jest.config.js
-module.exports = {}
+module.exports = {
+  displayName: 'client',
+}
