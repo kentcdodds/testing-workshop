@@ -6,18 +6,15 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.17.1",
-    "holen": "^2.0.1",
-    "query-string": "^5.0.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-router-dom": "^4.2.2",
-    "react-scripts": "1.0.17"
+    "react-scripts": "^1.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "echo \"Run tests from the parent directory\"",
-    "eject": "react-scripts eject"
+    "test": "echo \"Run tests from the parent directory\""
   },
   "babel": {
     "presets": [

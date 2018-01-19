@@ -1,5 +1,4 @@
 import axios from 'axios'
-import queryString from 'query-string'
 
 const api = axios.create({
   baseURL: getAPIUrl(),
@@ -69,15 +68,10 @@ function setToken(token) {
 }
 
 function getAPIUrl() {
-  const productionUrl = 'https://my-prod-app.now.sh/api'
-  const developmentUrl = 'http://localhost:8000/api'
   const isProduction = process.env.NODE_ENV === 'production'
-  if (isProduction) {
-    return queryString.parse(window.location.search)['api-url'] || productionUrl
-  } else {
-    const search = window.location.hash.slice(window.location.hash.indexOf('?'))
-    return queryString.parse(search)['api-url'] || developmentUrl
-  }
+  return isProduction
+    ? 'https://my-prod-app.now.sh/api'
+    : `http://localhost:${process.env.REACT_APP_API_PORT || '8000'}/api`
 }
 
 function init() {

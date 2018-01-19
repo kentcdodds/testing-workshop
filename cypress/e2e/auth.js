@@ -1,8 +1,9 @@
 const sel = id => `[data-test="${id}"]`
 describe('authentication', () => {
   it('should have the right title', () => {
+    const home = `http://localhost:${Cypress.env('CLIENT_PORT')}/`
     cy
-      .visit('http://localhost:3000')
+      .visit(home)
       .get(sel('register-link'))
       .click()
       .get(sel('username-input'))
@@ -11,7 +12,7 @@ describe('authentication', () => {
       .type('some-password')
       .get(sel('login-submit'))
       .click()
-    cy.url().should('equal', 'http://localhost:3000/')
+    cy.url().should('equal', home)
     cy.get(sel('username-display')).should('contain', 'some-user')
   })
 })

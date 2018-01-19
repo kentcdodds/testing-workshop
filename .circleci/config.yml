@@ -10,12 +10,12 @@ jobs:
           keys:
           - v1-dependencies-{{ checksum "package.json" }}
           - v1-dependencies-
-      - run: npm install
+      - run: node ./scripts/verify && node ./scripts/install
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-      - run: npm run setup
+      - run: npm run validate
 general:
   branches:
     only:

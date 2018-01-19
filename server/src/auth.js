@@ -59,14 +59,13 @@ function userToJSON({id, username, ...otherUserProps}) {
 }
 
 function getUserToken({id, username}) {
-  const today = new Date()
-  const exp = new Date(today)
-  exp.setDate(today.getDate() + 60)
+  // seconds/minute * minutes/hour * hours/day * 60 days
+  const sixtyDaysInSeconds = 60 * 60 * 24 * 60
   return jwt.sign(
     {
       id,
       username,
-      exp: parseInt(exp.getTime() / 1000, 10),
+      exp: Math.floor(Date.now() / 1000) + sixtyDaysInSeconds,
     },
     secret
   )
