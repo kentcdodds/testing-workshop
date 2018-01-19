@@ -17,6 +17,7 @@
     "setup": "node ./scripts/verify && node ./scripts/install && npm run validate"
   },
   "devDependencies": {
+    "all-contributors-cli": "^4.10.1",
     "concurrently": "^3.5.1",
     "cross-env": "^5.1.3",
     "eslint": "^4.15.0",
@@ -38,7 +39,10 @@
       "react/prop-types": "off",
       "no-console": "warn",
       "no-nested-ternary": "off",
-      "complexity": ["error", 12]
+      "complexity": [
+        "error",
+        12
+      ]
     }
   },
   "eslintIgnore": [

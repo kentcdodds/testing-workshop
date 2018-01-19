@@ -1,32 +1,23 @@
 # Testing Workshop
 
-👋 hi there! My name is [Kent C. Dodds](https://kentcdodds.com)! This is a workshop repo to teach you about testing
-JavaScript applications.
+👋 hi there! My name is [Kent C. Dodds](https://kentcdodds.com)! This is a
+workshop repo to teach you about testing JavaScript applications.
+
+> **NOTICE**: If you're coming here from my Frontend Masters 2017 workshop,
+> please [go to the `fem` branch](https://github.com/kentcdodds/testing-workshop/tree/fem)
+> to make sure you're looking at the accurate information for your workshop.
 
 [![slides-badge][slides-badge]][slides]
 [![chat-badge][chat-badge]][chat]
 [![Build Status][build-badge]][build]
-[![Dependencies][dependencyci-badge]][dependencyci]
-[![MIT License][license-badge]][LICENSE]
-[![All Contributors](https://img.shields.io/badge/all_contributors-10-orange.svg?style=flat-square)](#contributors)
+[![MIT License][license-badge]][license]
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
 
 [![PRs Welcome][prs-badge]][prs]
-[![Donate][donate-badge]][donate]
 [![Code of Conduct][coc-badge]][coc]
 [![Watch on GitHub][github-watch-badge]][github-watch]
 [![Star on GitHub][github-star-badge]][github-star]
 [![Tweet][twitter-badge]][twitter]
-
-<a href="https://app.codesponsor.io/link/PKGFLnhDiFvsUA5P4kAXfiPs/kentcdodds/testing-workshop" rel="nofollow"><img src="https://app.codesponsor.io/embed/PKGFLnhDiFvsUA5P4kAXfiPs/kentcdodds/testing-workshop.svg" style="width: 888px; height: 68px;" alt="Sponsor" /></a>
-
-## Thank You
-
-Big thanks to the [RealWorld](https://github.com/gothinkster/realworld) project from
-[GoThinkster](https://github.com/gothinkster). This project is a copy of
-[the Node implementation](https://github.com/gothinkster/node-express-realworld-example-app) and
-[the React implementation](https://github.com/GoThinkster/react-redux-realworld-example-app) of the RealWorld project.
-
-Also thank you to all the [contributors](#contributors)
 
 ## Topics covered
 
@@ -42,35 +33,36 @@ configure the tools and why, when, where, and what to test.
 
 ## Branches
 
-This project has been used to teach about testing in various settings. You may want to
-switch to the appropriate branch for this workshop. Otherwise the code you're looking
-at may not be exactly the same as the code used in the setting you're working with.
+This project has been used to teach about testing in various settings. You may
+want to switch to the appropriate branch for this workshop. Otherwise the code
+you're looking at may not be exactly the same as the code used in the setting
+you're working with.
 
-- Frontend Masters [`fem`](https://github.com/kentcdodds/testing-workshop/tree/fem)
+* Frontend Masters 2017 [`fem`](https://github.com/kentcdodds/testing-workshop/tree/fem)
 
 ### System Requirements
 
-- [git][git] v2.10.2 or greater
-- [NodeJS][node] v6.9.5 or greater
-- [yarn][yarn] v0.20.3 or greater (or [npm][npm] v4.2.0 or greater)
-- [MongoDB][mongo] v3.4.2 or greater
+* [git][git] v2.14.1 or greater
+* [NodeJS][node] v8.9.4 or greater
+* [npm][npm] v5.6.0 or greater
 
-All of these must be available in your `PATH`. To verify things are set up properly, you can run this:
+All of these must be available in your `PATH`. To verify things are set up
+properly, you can run this:
 
 ```
 git --version
 node --version
-yarn --version
-mongod --version
+npm --version
 ```
 
-If you have trouble with any of these, learn more about the PATH environment variable and how to fix it here for
-[windows][win-path] or [mac/linux][mac-path].
+If you have trouble with any of these, learn more about the PATH environment
+variable and how to fix it here for [windows][win-path] or
+[mac/linux][mac-path].
 
 ### Setup
 
-After you've made sure to have the correct things (and versions) installed, you should be able to just run a few
-commands to get set up:
+After you've made sure to have the correct things (and versions) installed, you
+should be able to just run a few commands to get set up:
 
 ```
 git clone https://github.com/kentcdodds/testing-workshop.git
@@ -82,77 +74,48 @@ git commit -am "ready to go"
 
 > Change `YOUR@EMAIL.com` to your actual email address
 
-This may take a few minutes. If you get any errors, run `git reset origin/master --hard` to make sure
-you have a clean project again,
-then please read the error output and see whether there's any
-instructions to fix things and try again. If you're still getting errors or need any help at all, then please
-[file an issue][issue].
-
-**Note:** You might see this:
-
-<img src="other/cypress-network.png" alt="Cypress Network issue" title="Cypress Network issue" width="400" />
-
-I'm not sure how to prevent this from happening (suggestions appreciated!) but it happens every time you run the `e2e`
-tests. Just do nothing or hit `Allow` to make it go away (super annoying). Sorry about that 😞
+This may take a few minutes. If you get any errors, please read through them and
+see if you can find out what the problem is. You may also want to look at
+[Troubleshooting](#troubleshooting). If you can't work it out on your own then
+please [file an issue][issue] and provide _all_ the output from the commands you
+ran (even if it's a lot).
 
 #### Cypress
 
-> If you're a windows user, please see the next section...
-
-For everyone else, you'll want to come with Cypress.io downloaded, installed and have an account ready to go.
-Please follow [these instructions](https://docs.cypress.io/docs/installing-and-running) to do this!
-
-##### Windows users!!
-
-Unfortunately, the [cypress](https://www.cypress.io/) application does not yet support the Windows platform.
-(Bug them about it [here](https://github.com/cypress-io/cypress/issues/74)).
-You should still be able to run cypress in "headless" mode, but you will be unable to open the application
-for development.
-
-To get around this issue, you'll have to run the E2E portion of the workshop on Linux or Mac. I recommend either
-installing and booting your machine in Linux, or running a Linux Virtual Machine on your Windows computer.
-
-Alternatively, you could just forego the application bit and mostly observe that portion of the workshop. If you're
-doing this with a group, perhaps you could pair with someone who has a Mac or Linux machine.
+For everyone else, you'll want to come with Cypress.io downloaded, installed and
+have an account ready to go. Please follow
+[these instructions](https://docs.cypress.io/docs/installing-and-running) to do
+this!
 
 ### Running the app
 
 To get the app up and running (and really see if it worked), run:
 
 ```shell
-npm start dev
-
-# if using yarn
-yarn start dev
+npm start
 ```
 
-
-This _should_ start `mongod`, the `api` server, and the `client` server all at
+This will start the api server, and the client server in development mode at
 the same time. Your browser should open up automatically to
 `http://localhost:8080` (if it doesn't, just open that yourself) and you should
 be able to start messing around with the app.
 
-Here's what you should be looking at:
+<!-- TODO: add a screenshot -->
 
-<img src="other/conduit-screenshot.png" alt="Conduit Screenshot" title="Conduit Screenshot" width="700" />
+<!-- Here's what you should be looking at: -->
 
-If this fails at any point for you, please first see
-[Troubleshooting](#troubleshooting) and if you still can't get it working,
-[make an issue][issue].
+<!-- <img src="other/conduit-screenshot.png" alt="Conduit Screenshot" title="Conduit Screenshot" width="700" /> -->
+
+If this fails at any point for you, please [open an issue][issue].
 
 #### Login
 
 If you want to login, there's a user you can use:
 
-- **Email**: `joe@example.com`
-- **Password**: `joe`
+* **Username**: `til`
+* **Password**: `til`
 
 **To stop all the servers**, hit <kbd>Ctrl</kbd> + <kbd>C</kbd>.
-
-> Protip: we're using [`nps`](https://github.com/kentcdodds/nps) in this
-> project. If you want to type less, then you can install `nps` globally:
-> `yarn global add nps` (or `npm i -g nps`) and then you can run `nps`
-> instead of `npm start`
 
 ### Troubleshooting
 
@@ -160,103 +123,85 @@ If you want to login, there's a user you can use:
 
 <summary>"npm run setup" command not working</summary>
 
-Here's what the setup script does. If it fails, try doing each of these things individually yourself:
+Here's what the setup script does. If it fails, try doing each of these things
+individually yourself:
 
 ```
 # verify your environment will work with the project
 node ./scripts/verify
 
 # install dependencies in the root of the repo
-yarn
+npm install
 
 # install dependencies in the api directory
 cd api
-yarn
+npm install
 
 # install dependencies in the client directory
 cd ../client
-yarn
+npm install
 
 # get back to the root of the repo
 cd ..
 
-# load the database with fake data
-node ./scripts/load-database
-
 # verify the project is ready to run
-npm start lint
-npm start split.api.verify
-npm start split.client.verify
-npm start split.e2e.verify
+npm run lint
+npm run test:coverage
+npm run test:e2e
 ```
 
-If any of those scripts fail, feel free to file an issue with the output from that script.
-I will try to help if I can.
-
-In addition, during some of these steps, some files get temporarily changed and if they fail,
-then you may have changed but not cleaned up. So when everything's finished. Run:
-
-```
-git reset --hard HEAD
-```
-
-Just to make sure nothing's left over.
+If any of those scripts fail, please try to work out what went wrong by the
+error message you get. If you still can't work it out, feel free to
+[open an issue][issue] with _all_ the output from that script. I will try to
+help if I can.
 
 </details>
 
 <details>
 
-<summary>"npm start dev" command not working</summary>
+<summary>"npm start" command not working</summary>
 
-If it doesn't work for you, you can start each of these individually yourself:
-
-```
-npm start dev.mongo
-```
+If it doesn't work for you, you can start each of these individually yourself
+(in separate terminals):
 
 ```
-npm start dev.api
+cd server && npm start
 ```
 
 ```
-npm start dev.client
+cd client && npm start
 ```
 
-</details>
-
-<details>
-
-<summary>"verify.js" is saying something's wrong with mongo</summary>
-
-The `mongod` binary needs to be available in your path for you to run `mongod` from the command line (which is what this
-project's scripts does for you). Learn how to do this [on windows][win-path] or [on mac][mac-path].
-
-> Note: you'll need to open a new terminal/command prompt window after you've done this.
+If any of those scripts fail, please try to work out what went wrong by the
+error message you get. If you still can't work it out, feel free to
+[open an issue][issue] with _all_ the output from that script. I will try to
+help if I can.
 
 </details>
 
 ### Structure
 
-This project has a bit of a unique setup. Normally you'll have just a single `package.json` at the root of your
-repository, but to simplify setup I've included both the `api` and `client` projects in a single repository. The root
-of the project has a `package.json` as does `api`, and `client`. Most of our time working on tooling and running tests
-will be in one of these sub-directories (with the exception of the E2E tests).
-
-[issue]: https://github.com/kentcdodds/testing-workshop/issues/new
+This project has a bit of a unique setup. Normally you'll have just a single
+`package.json` at the root of your repository, but to simplify setup I've
+included both the `server` and `client` projects in a single repository. The
+root of the project has a `package.json` as does `server`, and `client`. While
+you'll be working in the source code and tests in these folders, you should be
+able to leave you command line in the root directory for the whole workshop.
 
 # LICENSE
 
-The original projects are licensed as noted in their respective `package.json` files. The rest of this project is MIT
-licensed.
+MIT
 
 ## Contributors
 
 Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-| [<img src="https://avatars.githubusercontent.com/u/8601733?v=3" width="100px;"/><br /><sub>Thinkster</sub>](https://thinkster.io)<br />[💻](https://github.com/kentcdodds/testing-workshop/commits?author=gothinkster "Code") | [<img src="https://avatars.githubusercontent.com/u/1500684?v=3" width="100px;"/><br /><sub>Kent C. Dodds</sub>](https://kentcdodds.com)<br />[💻](https://github.com/kentcdodds/testing-workshop/commits?author=kentcdodds "Code") [📖](https://github.com/kentcdodds/testing-workshop/commits?author=kentcdodds "Documentation") [🚇](#infra-kentcdodds "Infrastructure (Hosting, Build-Tools, etc)") [⚠️](https://github.com/kentcdodds/testing-workshop/commits?author=kentcdodds "Tests") | [<img src="https://avatars.githubusercontent.com/u/3995499?v=3" width="100px;"/><br /><sub>Callum Mellor-Reed</sub>](http://callummr.com)<br />[🐛](https://github.com/kentcdodds/testing-workshop/issues?q=author%3Acallummr "Bug reports") [💻](https://github.com/kentcdodds/testing-workshop/commits?author=callummr "Code") | [<img src="https://avatars.githubusercontent.com/u/622118?v=3" width="100px;"/><br /><sub>Eric McCormick</sub>](https://ericmccormick.io)<br />[🐛](https://github.com/kentcdodds/testing-workshop/issues?q=author%3Aedm00se "Bug reports") [💻](https://github.com/kentcdodds/testing-workshop/commits?author=edm00se "Code") | [<img src="https://avatars1.githubusercontent.com/u/2028470?v=3" width="100px;"/><br /><sub>Paul Falgout</sub>](http://otterball.com)<br />[💻](https://github.com/kentcdodds/testing-workshop/commits?author=paulfalgout "Code") [📖](https://github.com/kentcdodds/testing-workshop/commits?author=paulfalgout "Documentation") | [<img src="https://avatars1.githubusercontent.com/u/13877279?v=3" width="100px;"/><br /><sub>Brett Caudill</sub>](https://github.com/asBrettisay)<br />[💻](https://github.com/kentcdodds/testing-workshop/commits?author=asBrettisay "Code") [📖](https://github.com/kentcdodds/testing-workshop/commits?author=asBrettisay "Documentation") | [<img src="https://avatars2.githubusercontent.com/u/1271364?v=3" width="100px;"/><br /><sub>Jennifer Mann</sub>](http://jennifermann.ghost.io)<br />[🐛](https://github.com/kentcdodds/testing-workshop/issues?q=author%3Ajennifer-mann "Bug reports") |
-| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| [<img src="https://avatars1.githubusercontent.com/u/1268976?v=3" width="100px;"/><br /><sub>Brian Mann</sub>](https://cypress.io)<br />[🐛](https://github.com/kentcdodds/testing-workshop/issues?q=author%3Abrian-mann "Bug reports") | [<img src="https://avatars1.githubusercontent.com/u/840935?v=3" width="100px;"/><br /><sub>Francisco Ramini</sub>](https://github.com/framini)<br />[📖](https://github.com/kentcdodds/testing-workshop/commits?author=framini "Documentation") | [<img src="https://avatars0.githubusercontent.com/u/7076981?v=4" width="100px;"/><br /><sub>Romario</sub>](https://github.com/romarioraffington)<br />[📖](https://github.com/kentcdodds/testing-workshop/commits?author=romarioraffington "Documentation") |
+
+<!-- prettier-ignore -->
+| [<img src="https://avatars.githubusercontent.com/u/1500684?v=3" width="100px;"/><br /><sub><b>Kent C. Dodds</b></sub>](https://kentcdodds.com)<br />[💻](https://github.com/kentcdodds/testing-workshop/commits?author=kentcdodds "Code") [📖](https://github.com/kentcdodds/testing-workshop/commits?author=kentcdodds "Documentation") [🚇](#infra-kentcdodds "Infrastructure (Hosting, Build-Tools, etc)") [⚠️](https://github.com/kentcdodds/testing-workshop/commits?author=kentcdodds "Tests") |
+| :---: |
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification. Contributions of any kind welcome!
@@ -292,3 +237,4 @@ This project follows the [all-contributors](https://github.com/kentcdodds/all-co
 [all-contributors]: https://github.com/kentcdodds/all-contributors
 [win-path]: https://www.howtogeek.com/118594/how-to-edit-your-system-path-for-easy-command-line-access/
 [mac-path]: http://stackoverflow.com/a/24322978/971592
+[issue]: https://github.com/kentcdodds/testing-workshop/issues/new
