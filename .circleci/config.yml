@@ -9,12 +9,21 @@ jobs:
       - restore_cache:
           keys:
           - v1-dependencies-{{ checksum "package.json" }}
-          - v1-dependencies-
+          - v1-dependencies-{{ checksum "client/package.json" }}
+          - v1-dependencies-{{ checksum "server/package.json" }}
       - run: node ./scripts/verify && node ./scripts/install
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
+      - save_cache:
+          paths:
+            - client/node_modules
+          key: v1-dependencies-{{ checksum "client/package.json" }}
+      - save_cache:
+          paths:
+            - server/node_modules
+          key: v1-dependencies-{{ checksum "server/package.json" }}
       - run: npm run validate
 general:
   branches:
