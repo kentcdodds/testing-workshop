@@ -15,7 +15,7 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-      - run: npm run validate
+      - run: npm run setup
 general:
   branches:
     only:
