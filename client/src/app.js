@@ -101,15 +101,18 @@ function Login({onSubmit}) {
       >
         <div>
           <label>
-            username <input name="username" />
+            username <input name="username" data-test="username-input" />
           </label>
         </div>
         <div>
           <label>
-            password <input type="password" name="password" />
+            password{' '}
+            <input type="password" name="password" data-test="password-input" />
           </label>
         </div>
-        <button type="submit">Submit</button>
+        <button type="submit" data-test="login-submit">
+          Submit
+        </button>
       </form>
     </div>
   )
@@ -137,20 +140,22 @@ class Editor extends Component {
         <form onSubmit={this.handleSubmit}>
           <div>
             <label>
-              Title <input name="title" />
+              Title <input name="title" data-test="title-input" />
             </label>
           </div>
           <div>
             <label>
-              Content <textarea name="content" />
+              Content <textarea name="content" data-test="content-input" />
             </label>
           </div>
           <div>
             <label>
-              Tags: <input name="tags" />
+              Tags: <input name="tags" data-test="tags-input" />
             </label>
           </div>
-          <button type="submit">submit</button>
+          <button type="submit" data-test="editor-submit">
+            submit
+          </button>
         </form>
         Editor<pre>{JSON.stringify(match, null, 2)}</pre>
       </div>
@@ -232,14 +237,18 @@ function App() {
               <div>
                 {user ? (
                   <div>
-                    <span>{user.username}</span>
+                    <span data-test="username-display">{user.username}</span>
                     <button onClick={logout}>Logout</button>
                     <Link to="/editor">Add new Post</Link>
                   </div>
                 ) : (
                   <div>
-                    <Link to="/login">Login</Link>
-                    <Link to="/register">Register</Link>
+                    <Link to="/login" data-test="login-link">
+                      Login
+                    </Link>
+                    <Link to="/register" data-test="register-link">
+                      Register
+                    </Link>
                   </div>
                 )}
               </div>
