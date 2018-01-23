@@ -17,7 +17,7 @@ function startServer() {
   setupRoutes(app)
 
   return new Promise(resolve => {
-    const server = app.listen(process.env.API_PORT || 8000, () => {
+    const server = app.listen(process.env.SERVER_PORT || 8000, () => {
       logger.info(`Listening on port ${server.address().port}`)
       const originalClose = server.close.bind(server)
       server.close = () => {

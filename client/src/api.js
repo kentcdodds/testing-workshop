@@ -1,7 +1,10 @@
 import axios from 'axios'
+import queryString from 'query-string'
 
 const api = axios.create({
-  baseURL: getAPIUrl(),
+  baseURL:
+    queryString.parse(window.location.search)['api-url'] ||
+    process.env.REACT_APP_API_URL,
 })
 
 const getData = res => res.data
@@ -65,13 +68,6 @@ function setToken(token) {
   } else {
     delete api.defaults.headers.common.authorization
   }
-}
-
-function getAPIUrl() {
-  const isProduction = process.env.NODE_ENV === 'production'
-  return isProduction
-    ? 'https://my-prod-app.now.sh/api'
-    : `http://localhost:${process.env.REACT_APP_API_PORT || '8000'}/api`
 }
 
 function init() {
