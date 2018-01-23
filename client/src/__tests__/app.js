@@ -1,8 +1,15 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 import App from '../app'
+import {
+  renderWithRouter,
+  flushAllPromises,
+  sel,
+  findNodes,
+} from './helpers/utils'
 
-it('renders without crashing', () => {
-  const div = document.createElement('div')
-  ReactDOM.render(<App />, div)
+test('renders without crashing', async () => {
+  const {wrapper} = renderWithRouter(<App />)
+  await flushAllPromises()
+  wrapper.update()
+  expect(findNodes(wrapper, sel('login-link')).length).toBe(1)
 })
