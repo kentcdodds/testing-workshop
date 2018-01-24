@@ -9,7 +9,7 @@
     "start:core": "concurrently --names \"server,client\" --prefix \"[{name}]\" --prefix-colors \"bgCyan.reset.bold,bgGreen.reset.bold\" \"npm run start:server --silent\" \"npm run start:client --silent\"",
     "start:client": "cd client && npm start --silent",
     "start:server": "cd server && npm start --silent",
-    "dev": "concurrently --names \"server,client\" --prefix \"[{name}]\" --prefix-colors \"bgCyan.reset.bold,bgGreen.reset.bold\" \"npm run dev:server --silent\" \"npm run dev:client --silent\"",
+    "dev": "as-a DEV concurrently --names \"server,client\" --prefix \"[{name}]\" --prefix-colors \"bgCyan.reset.bold,bgGreen.reset.bold\" \"npm run dev:server --silent\" \"npm run dev:client --silent\"",
     "dev:client": "cd client && npm run dev --silent",
     "dev:server": "cd server && npm run dev --silent",
     "build": "concurrently --names \"server,client\" --prefix \"[{name}]\" --prefix-colors \"bgCyan.reset.bold,bgGreen.reset.bold\" \"npm run build:server --silent\" \"npm run build:client --silent\"",
