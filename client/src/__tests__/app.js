@@ -1,15 +1,10 @@
 import React from 'react'
 import App from '../app'
-import {
-  renderWithRouter,
-  flushAllPromises,
-  sel,
-  findNodes,
-} from './helpers/utils'
+import {renderWithRouter, flushAllPromises} from './helpers/utils'
 
 test('renders without crashing', async () => {
-  const {wrapper} = renderWithRouter(<App />)
+  const {findNodeByTestId, wrapper} = renderWithRouter(<App />)
   await flushAllPromises()
   wrapper.update()
-  expect(findNodes(wrapper, sel('login-link')).length).toBe(1)
+  expect(findNodeByTestId('login-link').length).toBe(1)
 })
