@@ -7,8 +7,8 @@ import Editor from './screens/editor'
 
 function App() {
   return (
-    <User
-      render={({user, error, pending, login, logout, register}) =>
+    <User>
+      {({user, error, pending, login, logout, register}) =>
         pending ? (
           <div>Loading...</div>
         ) : (
@@ -71,7 +71,7 @@ function App() {
           </Router>
         )
       }
-    />
+    </User>
   )
 }
 

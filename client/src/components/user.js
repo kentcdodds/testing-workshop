@@ -44,7 +44,7 @@ class User extends React.Component {
       )
   }
   render() {
-    return this.props.render({
+    return this.props.children({
       ...this.state,
       login: this.login,
       logout: this.logout,

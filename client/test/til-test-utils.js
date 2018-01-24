@@ -1,10 +1,9 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 import {Router} from 'react-router-dom'
 import {mount} from 'enzyme'
 import {createMemoryHistory} from 'history'
 
-function renderWithRouter(ui, {route = '/'} = {}) {
+function mountWithRouter(ui, {route = '/'} = {}) {
   const history = createMemoryHistory({initialEntries: [route]})
   const wrapper = mount(<Router history={history}>{ui}</Router>)
   return {
@@ -13,13 +12,6 @@ function renderWithRouter(ui, {route = '/'} = {}) {
     findNodes: findNodes.bind(null, wrapper),
     findNodeByTestId: findWrapperNodeByTestId.bind(null, wrapper),
   }
-}
-
-function renderToNodeWithRouter(ui, {route = '/'} = {}) {
-  const history = createMemoryHistory({initialEntries: [route]})
-  const div = document.createElement('div')
-  ReactDOM.render(<Router history={history}>{ui}</Router>, div)
-  return {history, div}
 }
 
 function sel(id) {
@@ -41,8 +33,7 @@ function findWrapperNodeByTestId(wrapper, id) {
 }
 
 export {
-  renderWithRouter,
-  renderToNodeWithRouter,
+  mountWithRouter,
   findWrapperNodeByTestId,
   sel,
   flushAllPromises,
