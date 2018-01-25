@@ -19,11 +19,7 @@ after_success:
 - npx codecov
 deploy:
   provider: script
-  script:
-    - npm i -g now
-    - cd server
-    - now -e NODE_ENV=production --token $NOW_TOKEN --npm deploy --public
-    - now alias --token=$NOW_TOKEN
+  script: scripts/deploy.sh
   on:
     branch: v2
 env:
