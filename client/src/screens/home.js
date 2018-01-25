@@ -73,7 +73,7 @@ function Timeline({users, posts = []}) {
   )
 }
 
-function Post({post: {title, content, tags}, author}) {
+function Post({post: {title, content, tags}, author = {username: 'unknown'}}) {
   return (
     <div>
       <h2>{title}</h2>
