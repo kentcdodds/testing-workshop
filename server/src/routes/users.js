@@ -36,15 +36,6 @@ function setupUserRoutes(router) {
     }
   })
 
-  router.post('/', async (req, res) => {
-    const user = await db.insertUser(req.body)
-    if (user) {
-      res.json({user: userToJSON(user)})
-    } else {
-      res.status(404).send()
-    }
-  })
-
   router.put('/:id', authMiddleware.required, authorize, async (req, res) => {
     if (req.user.id !== req.params.id) {
       return res.status(403).send()
@@ -68,7 +59,7 @@ function setupUserRoutes(router) {
       } else {
         return res.status(404).send()
       }
-    }
+    },
   )
 }
 

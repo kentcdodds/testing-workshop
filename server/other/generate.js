@@ -4,11 +4,11 @@ import db from '../src/db'
 
 function initDb() {
   const users = Array.from({length: 10}, () =>
-    generateUserData({id: faker.random.uuid()})
+    generateUserData({id: faker.random.uuid()}),
   )
 
   const posts = users.map(u =>
-    generatePostData({authorId: u.id, id: faker.random.uuid()})
+    generatePostData({authorId: u.id, id: faker.random.uuid()}),
   )
   db.users = users
   db.posts = posts
@@ -37,10 +37,10 @@ function generatePostData(overrides) {
     title: faker.lorem.words(),
     content: faker.lorem.paragraphs(),
     tags: [faker.lorem.word(), faker.lorem.word(), faker.lorem.word()].filter(
-      (w, i, a) => a.indexOf(w) === i
+      (w, i, a) => a.indexOf(w) === i,
     ),
     authorId: faker.random.uuid(),
-    date: faker.date.past(),
+    date: faker.date.past().toJSON(),
     ...overrides,
   }
 }

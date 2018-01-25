@@ -39,14 +39,19 @@ function setupPostRoutes(router) {
   })
 
   router.put('/:id', authMiddleware.required, authorize, async (req, res) => {
-    if (req.post.id !== req.params.id) {
+    const post = await db.getPost(req.params.id)
+    if (!post) {
+      return res.status(404).send()
+    }
+    if (req.user.id !== post.authorId) {
       return res.status(403).send()
     }
-    const post = await db.updatePost(req.params.id, req.body)
-    if (post) {
-      return res.json({post})
+    const updatedPost = await db.updatePost(req.params.id, req.body)
+    if (updatedPost) {
+      return res.json({post: updatedPost})
     } else {
-      return res.status(404).send()
+      // TODO: come up with a better status code...
+      return res.status(500).send()
     }
   })
 
@@ -61,7 +66,7 @@ function setupPostRoutes(router) {
       } else {
         return res.status(404).send()
       }
-    }
+    },
   )
 }
 
