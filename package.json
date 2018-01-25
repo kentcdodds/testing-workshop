@@ -47,6 +47,10 @@
   },
   "lint-staged": {
     "linters": {
+      "**/*.+(md|css|json)": [
+        "prettier --write",
+        "git add"
+      ],
       "**/+(src|test|scripts)/**/*.js": [
         "prettier --write",
         "eslint --cache --cache-location node_modules/.cache/eslint",

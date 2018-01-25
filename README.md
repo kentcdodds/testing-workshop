@@ -10,6 +10,7 @@ workshop repo to teach you about testing JavaScript applications.
 [![slides-badge][slides-badge]][slides]
 [![chat-badge][chat-badge]][chat]
 [![Build Status][build-badge]][build]
+[![AppVeyor Build Status][win-build-badge]][win-build]
 [![MIT License][license-badge]][license]
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
 
@@ -238,3 +239,5 @@ This project follows the [all-contributors](https://github.com/kentcdodds/all-co
 [win-path]: https://www.howtogeek.com/118594/how-to-edit-your-system-path-for-easy-command-line-access/
 [mac-path]: http://stackoverflow.com/a/24322978/971592
 [issue]: https://github.com/kentcdodds/testing-workshop/issues/new
+[win-build-badge]: https://img.shields.io/appveyor/ci/kentcdodds/testing-workshop.svg?style=flat-square
+[win-build]: https://ci.appveyor.com/project/kentcdodds/testing-workshop
