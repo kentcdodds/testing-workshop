@@ -36,6 +36,7 @@
     "concurrently": "^3.5.1",
     "cross-env": "^5.1.3",
     "cypress": "^1.4.1",
+    "doctoc": "^1.3.0",
     "eslint": "^4.16.0",
     "eslint-config-kentcdodds": "^13.0.1",
     "husky": "^0.14.3",
@@ -47,7 +48,12 @@
   },
   "lint-staged": {
     "linters": {
-      "**/*.+(md|css|json)": [
+      "README.md": [
+        "doctoc",
+        "prettier --write",
+        "git add"
+      ],
+      "**/!(README).+(md|css|json)": [
         "prettier --write",
         "git add"
       ],

@@ -20,6 +20,28 @@ workshop repo to teach you about testing JavaScript applications.
 [![Star on GitHub][github-star-badge]][github-star]
 [![Tweet][twitter-badge]][twitter]
 
+## Table of Contents
+
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+* [Topics covered](#topics-covered)
+* [Branches](#branches)
+* [System Requirements](#system-requirements)
+* [Setup](#setup)
+* [Running the app](#running-the-app)
+* [About the app](#about-the-app)
+  * [Register and Login](#register-and-login)
+* [Troubleshooting](#troubleshooting)
+* [Structure](#structure)
+* [Contributors](#contributors)
+* [LICENSE](#license)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## Topics covered
 
 1. Unit Testing with [Jest](http://facebook.github.io/jest)
@@ -39,7 +61,7 @@ you're working with.
 
 * Frontend Masters 2017 [`fem`](https://github.com/kentcdodds/testing-workshop/tree/fem)
 
-### System Requirements
+## System Requirements
 
 * [git][git] v2.14.1 or greater
 * [NodeJS][node] v8.9.4 or greater
@@ -58,7 +80,7 @@ If you have trouble with any of these, learn more about the PATH environment
 variable and how to fix it here for [windows][win-path] or
 [mac/linux][mac-path].
 
-### Setup
+## Setup
 
 After you've made sure to have the correct things (and versions) installed, you
 should be able to just run a few commands to get set up:
@@ -75,7 +97,7 @@ see if you can find out what the problem is. You may also want to look at
 please [file an issue][issue] and provide _all_ the output from the commands you
 ran (even if it's a lot).
 
-### Running the app
+## Running the app
 
 To get the app up and running (and really see if it worked), run:
 
@@ -98,7 +120,7 @@ If this fails at any point for you, please take a minute to read through any
 error messages you see and [try to troubleshoot the issue](#troubleshooting).
 If you can't work it out, feel free to [open an issue][issue].
 
-### About the app
+## About the app
 
 This app is based on the [Hashrocket](https://hashrocket.com/) project called
 [Today I Learned](https://til.hashrocket.com/). It's a real working application
@@ -108,14 +130,14 @@ the database is actually just a simple JavaScript file. Every time you start
 the app, all the data is reset (and in development mode, data is randomly
 generated).
 
-#### Register and Login
+### Register and Login
 
 If you want to login, go ahead and register a new account and login with that
 one.
 
 **To stop all the servers**, hit <kbd>Ctrl</kbd> + <kbd>C</kbd>.
 
-### Troubleshooting
+## Troubleshooting
 
 <details>
 
@@ -179,7 +201,7 @@ help if I can.
 
 </details>
 
-### Structure
+## Structure
 
 This project has a bit of a unique setup. Normally you'll have just a single
 `package.json` at the root of your repository, but to simplify setup I've
@@ -187,10 +209,6 @@ included both the `server` and `client` projects in a single repository. The
 root of the project has a `package.json` as does `server`, and `client`. While
 you'll be working in the source code and tests in these folders, you should be
 able to leave you command line in the root directory for the whole workshop.
-
-# LICENSE
-
-MIT
 
 ## Contributors
 
@@ -205,6 +223,10 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification. Contributions of any kind welcome!
+
+## LICENSE
+
+MIT
 
 [npm]: https://www.npmjs.com/
 [yarn]: https://yarnpkg.com/
