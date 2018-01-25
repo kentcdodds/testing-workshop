@@ -11,7 +11,7 @@ const getPost = res => res.data.post
 let baseURL, api, authAPI, server, mockData, testUser
 
 beforeAll(async () => {
-  server = await startServer()
+  server = await startServer({port: 8798})
   baseURL = `http://localhost:${server.address().port}/api`
   api = axios.create({baseURL})
 })
