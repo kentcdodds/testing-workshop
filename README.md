@@ -30,8 +30,6 @@ We'll mention other forms of testing, but these are the types we'll focus on and
 about the benefits (and tradeoffs) of [TDD](https://en.wikipedia.org/wiki/Test-driven_development). We'll learn how to
 configure the tools and why, when, where, and what to test.
 
-## Project
-
 ## Branches
 
 This project has been used to teach about testing in various settings. You may
@@ -69,11 +67,7 @@ should be able to just run a few commands to get set up:
 git clone https://github.com/kentcdodds/testing-workshop.git
 cd testing-workshop
 npm run setup --silent
-node ./scripts/autofill-feedback-email.js YOUR@EMAIL.com
-git commit -am "ready to go"
 ```
-
-> Change `YOUR@EMAIL.com` to your actual email address
 
 This may take a few minutes. If you get any errors, please read through them and
 see if you can find out what the problem is. You may also want to look at
@@ -81,24 +75,17 @@ see if you can find out what the problem is. You may also want to look at
 please [file an issue][issue] and provide _all_ the output from the commands you
 ran (even if it's a lot).
 
-#### Cypress
-
-For everyone else, you'll want to come with Cypress.io downloaded, installed and
-have an account ready to go. Please follow
-[these instructions](https://docs.cypress.io/docs/installing-and-running) to do
-this!
-
 ### Running the app
 
 To get the app up and running (and really see if it worked), run:
 
 ```shell
-npm start
+npm run dev
 ```
 
 This will start the api server, and the client server in development mode at
 the same time. Your browser should open up automatically to
-`http://localhost:8080` (if it doesn't, just open that yourself) and you should
+`http://localhost:3000` (if it doesn't, just open that yourself) and you should
 be able to start messing around with the app.
 
 <!-- TODO: add a screenshot -->
@@ -107,14 +94,24 @@ be able to start messing around with the app.
 
 <!-- <img src="other/conduit-screenshot.png" alt="Conduit Screenshot" title="Conduit Screenshot" width="700" /> -->
 
-If this fails at any point for you, please [open an issue][issue].
+If this fails at any point for you, please take a minute to read through any
+error messages you see and [try to troubleshoot the issue](#troubleshooting).
+If you can't work it out, feel free to [open an issue][issue].
 
-#### Login
+### About the app
 
-If you want to login, there's a user you can use:
+This app is based on the [Hashrocket](https://hashrocket.com/) project called
+[Today I Learned](https://til.hashrocket.com/). It's a real working application
+but has been simplified to help us focus on learning testing rather than
+worrying about distracting ourselves with setting up the project. For example
+the database is actually just a simple JavaScript file. Every time you start
+the app, all the data is reset (and in development mode, data is randomly
+generated).
 
-* **Username**: `til`
-* **Password**: `til`
+#### Register and Login
+
+If you want to login, go ahead and register a new account and login with that
+one.
 
 **To stop all the servers**, hit <kbd>Ctrl</kbd> + <kbd>C</kbd>.
 
@@ -160,17 +157,19 @@ help if I can.
 
 <details>
 
-<summary>"npm start" command not working</summary>
+<summary>"npm run dev" command not working</summary>
 
 If it doesn't work for you, you can start each of these individually yourself
 (in separate terminals):
 
 ```
-cd server && npm start
+cd server
+npm run dev
 ```
 
 ```
-cd client && npm start
+cd client
+npm run dev
 ```
 
 If any of those scripts fail, please try to work out what went wrong by the
