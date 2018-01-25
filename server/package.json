@@ -7,8 +7,6 @@
     "start": "cross-env NODE_ENV=production node .",
     "dev": "node .",
     "build": "babel --ignore __tests__,__mocks__ --out-dir dist src",
-    "now-build": "echo \"build was run on CI\"",
-    "now-start": "node .",
     "test": "cd .. && npm run test:server --silent"
   },
   "now": {
