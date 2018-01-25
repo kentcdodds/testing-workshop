@@ -1,12 +1,15 @@
 sudo: false
 language: node_js
 node_js: 8
+install: echo "Installation happens in the setup script"
 script: npm run setup
 after_success: npx codecov
 cache:
   directories:
     - /home/travis/.cypress/Cypress
     - node_modules
+    - server/node_modules
+    - client/node_modules
 notifications:
   email: false
 branches:
