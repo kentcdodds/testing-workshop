@@ -8,9 +8,7 @@ import detectPort from 'detect-port'
 import {getLocalStrategy} from './auth'
 import setupRoutes from './routes'
 
-async function startServer({
-  port = process.env.PORT || process.env.SERVER_PORT,
-} = {}) {
+async function startServer({port = process.env.SERVER_PORT} = {}) {
   port = port || (await detectPort(8000))
   const app = express()
   app.use(cors())
