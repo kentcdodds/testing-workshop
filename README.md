@@ -34,6 +34,8 @@ workshop repo to teach you about testing JavaScript applications.
 * [Setup](#setup)
 * [Running the app](#running-the-app)
 * [About the app](#about-the-app)
+  * [Continuous Integration](#continuous-integration)
+  * [Hosting](#hosting)
   * [Register and Login](#register-and-login)
 * [Troubleshooting](#troubleshooting)
 * [Structure](#structure)
@@ -129,6 +131,28 @@ worrying about distracting ourselves with setting up the project. For example
 the database is actually just a simple JavaScript file. Every time you start
 the app, all the data is reset (and in development mode, data is randomly
 generated).
+
+### Continuous Integration
+
+We're using two CI services:
+
+* [Travis][build] (Linux): find config in `.travis.yml`
+* [AppVeyor][win-build] (Windows): find config in `appveyor.yml`
+
+### Hosting
+
+The backend code is deployed to [now.sh](https://now.sh):
+[til.now.sh](https://til.now.sh). Try hitting one of the unauthenticated
+endpoints like [`/api/posts`](https://til.now.sh/api/posts) (note: it's using
+the open source free tier, so it may take a while to respond as it warms up).
+The Travis build is responsible for deploying the backend to `now.sh`.
+
+The frontend code is deployed using [netlify](https://netlify.com):
+[til.netlify.com](https://til.netlify.com). We could host the frontend code
+on `now` as well, except Netlify has some pretty awesome features with GitHub
+integration, and I want to show those off (and benefit from them as well).
+The frontend code is deployed to netlify using Netlify's integration with
+GitHub.
 
 ### Register and Login
 
