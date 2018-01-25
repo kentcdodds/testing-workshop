@@ -4,3 +4,5 @@ dist
 build
 coverage
 scripts/workshop-setup.js
+scripts/verify.js
+scripts/install.js
