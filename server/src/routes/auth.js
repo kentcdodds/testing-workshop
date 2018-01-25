@@ -17,7 +17,7 @@ function setupAuthRoutes(router) {
     if (!password) {
       return res.status(422).json({errors: {password: `can't be blank`}})
     }
-    const existingUser = await db.getUser(u => u.username === username)
+    const existingUser = (await db.getUsers(u => u.username === username))[0]
     if (existingUser) {
       return res.status(422).json({errors: {username: 'taken'}})
     }

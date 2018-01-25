@@ -1,8 +1,6 @@
 import axios from 'axios'
 import {omit} from 'lodash'
-import db from '../src/db'
 import {resetDb} from '../other/db-test-utils'
-import {generateUserData} from '../other/generate'
 import startServer from '../src/start'
 
 const getData = res => res.data
@@ -71,20 +69,4 @@ test('user CRUD', async () => {
 test('get users', async () => {
   const {users} = await api.get('users').then(getData)
   expect(users).toEqual(mockData.users.map(u => omit(u, ['hash', 'salt'])))
-})
-
-test('successful login', async () => {
-  const password = 'some password'
-  const testUser = await db.insertUser(generateUserData({password}))
-  const user = await api
-    .post('auth/login', {
-      username: testUser.username,
-      password,
-    })
-    .then(getUser)
-  expect(user).toEqual({
-    token: expect.any(String),
-    id: testUser.id,
-    username: testUser.username,
-  })
 })
