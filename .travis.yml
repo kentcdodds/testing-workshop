@@ -7,7 +7,6 @@ cache:
   - node_modules
   - server/node_modules
   - client/node_modules
-  - now alias --token=$NOW_TOKEN
 notifications:
   email: false
 branches:
