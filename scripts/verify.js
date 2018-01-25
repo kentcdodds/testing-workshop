@@ -18,8 +18,8 @@ verifyPromise.then(
     console.error(error)
     console.info(
       "\nIf you don't care about these warnings, go " +
-        'ahead and install dependencies with `node ./scripts/install`'
+        'ahead and install dependencies with `node ./scripts/install`',
     )
     process.exitCode = 1
-  }
+  },
 )

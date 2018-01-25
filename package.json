@@ -26,6 +26,7 @@
     "cy:open": "cypress open",
     "lint": "eslint . --cache --cache-location node_modules/.cache/eslint",
     "validate": "concurrently --names \"lint,test:coverage,test:e2e\" --prefix \"[{name}]\" --prefix-colors \"bgGreen.reset.bold,bgBlue.reset.bold,bgRed.reset.bold\" \"npm run lint --silent\" \"npm run test:coverage --silent\" \"npm run test:e2e --silent\"",
+    "precommit": "lint-staged && npm run --silent validate",
     "setup": "node ./scripts/verify && node ./scripts/install && npm run validate"
   },
   "devDependencies": {
@@ -36,9 +37,21 @@
     "cypress": "^1.4.1",
     "eslint": "^4.16.0",
     "eslint-config-kentcdodds": "^13.0.1",
+    "husky": "^0.14.3",
     "jest": "^22.1.2",
+    "lint-staged": "^6.0.1",
     "npm-run-all": "^4.1.2",
+    "prettier": "^1.10.2",
     "replace-in-file": "^3.1.0"
+  },
+  "lint-staged": {
+    "linters": {
+      "**/+(src|test|scripts)/**/*.js": [
+        "prettier --write",
+        "eslint --cache --cache-location node_modules/.cache/eslint",
+        "git add"
+      ]
+    }
   },
   "eslintConfig": {
     "extends": [

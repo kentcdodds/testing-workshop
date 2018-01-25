@@ -12,5 +12,5 @@ installDeps([main, server, client]).then(
   },
   () => {
     // ignore, workshop-setup will log for us...
-  }
+  },
 )

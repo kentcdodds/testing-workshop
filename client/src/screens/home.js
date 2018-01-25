@@ -27,7 +27,7 @@ class RenderPromise extends Component {
       .fn(...args)
       .then(
         result => this.reset({result}),
-        error => Promise.reject(this.reset({error}))
+        error => Promise.reject(this.reset({error})),
       )
   }
   render() {

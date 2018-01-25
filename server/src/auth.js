@@ -67,7 +67,7 @@ function getUserToken({id, username}) {
       username,
       exp: Math.floor(Date.now() / 1000) + sixtyDaysInSeconds,
     },
-    secret
+    secret,
   )
 }
 

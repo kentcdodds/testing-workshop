@@ -15,7 +15,7 @@ class User extends React.Component {
       .me()
       .then(
         ({user}) => this.reset({user}),
-        error => Promise.reject(this.reset({error}))
+        error => Promise.reject(this.reset({error})),
       )
   }
   login = (...args) => {
@@ -24,7 +24,7 @@ class User extends React.Component {
       .login(...args)
       .then(
         ({user}) => this.reset({user}),
-        error => Promise.reject(this.reset({error}))
+        error => Promise.reject(this.reset({error})),
       )
   }
   logout = (...args) => {
@@ -40,7 +40,7 @@ class User extends React.Component {
       .register(...args)
       .then(
         ({user}) => this.reset({user}),
-        error => Promise.reject(this.reset({error}))
+        error => Promise.reject(this.reset({error})),
       )
   }
   render() {

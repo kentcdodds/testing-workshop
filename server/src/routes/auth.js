@@ -50,7 +50,7 @@ function setupAuthRoutes(router) {
         } else {
           return res.status(422).json(info)
         }
-      }
+      },
     )(req, res, next)
   })
 

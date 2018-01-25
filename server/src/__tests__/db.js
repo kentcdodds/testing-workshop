@@ -19,7 +19,7 @@ test('can get a user', async () => {
 test('can get multiple users', async () => {
   const {0: firstUser, 3: fourthUser} = mockData.users
   const users = await db.getUsers(
-    u => u.id === firstUser.id || u.id === fourthUser.id
+    u => u.id === firstUser.id || u.id === fourthUser.id,
   )
   expect(users).toEqual([firstUser, fourthUser])
 })
@@ -66,7 +66,7 @@ test('can get a post', async () => {
 test('can get multiple posts', async () => {
   const {0: firstPost, 3: fourthPost} = mockData.posts
   const posts = await db.getPosts(
-    u => u.id === firstPost.id || u.id === fourthPost.id
+    u => u.id === firstPost.id || u.id === fourthPost.id,
   )
   expect(posts).toEqual([firstPost, fourthPost])
 })
