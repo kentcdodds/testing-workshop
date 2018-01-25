@@ -1,34 +1,78 @@
 import React from 'react'
-import {Route} from 'react-router'
-import Root from './screens/app'
-import Article from './screens/article'
-import Editor from './screens/editor'
+import {BrowserRouter as Router, Route, Link, Redirect} from 'react-router-dom'
+import User from './components/user'
+import Login from './components/login'
 import Home from './screens/home'
-import Login from './screens/login'
-import ConnectedProfile from './screens/profile'
-import ProfileFavorites from './screens/profile-favorites'
-import Register from './screens/register'
-import Settings from './screens/settings'
+import Editor from './screens/editor'
 
-export default AppRoutes
-
-function AppRoutes() {
+function App() {
   return (
-    <Route
-      path="/"
-      render={props => (
-        <Root {...props}>
-          <Route path="/" exact component={Home} />
-          <Route path="/login" component={Login} />
-          <Route path="/register" component={Register} />
-          <Route path="/editor" exact component={Editor} />
-          <Route path="/editor/:slug" component={Editor} />
-          <Route path="/article/:id" component={Article} />
-          <Route path="/settings" component={Settings} />
-          <Route path="/@:username" component={ConnectedProfile} />
-          <Route path="/@:username/favorites" component={ProfileFavorites} />
-        </Root>
-      )}
-    />
+    <User>
+      {({user, error, pending, login, logout, register}) =>
+        pending ? (
+          <div>Loading...</div>
+        ) : (
+          <Router>
+            <div>
+              {error ? (
+                <pre>{JSON.stringify(error.response, null, 2)}</pre>
+              ) : null}
+              <h1>
+                <Link to="/">Today I Learned</Link>
+              </h1>
+              <small>
+                Inspired by{' '}
+                <a href="https://til.hashrocket.com/">til.hashrocket.com</a>
+              </small>
+              <div>
+                {user ? (
+                  <div>
+                    <span data-test="username-display">{user.username}</span>
+                    <button onClick={logout}>Logout</button>
+                    <Link to="/editor">Add new Post</Link>
+                  </div>
+                ) : (
+                  <div>
+                    <Link to="/login" data-test="login-link">
+                      Login
+                    </Link>
+                    <Link to="/register" data-test="register-link">
+                      Register
+                    </Link>
+                  </div>
+                )}
+              </div>
+
+              <hr />
+
+              <Route exact path="/" component={Home} />
+
+              {user ? (
+                <Route
+                  path="/editor/:postId?"
+                  render={props => <Editor user={user} {...props} />}
+                />
+              ) : null}
+              <React.Fragment>
+                <Route
+                  path="/login"
+                  render={() =>
+                    user ? <Redirect to="/" /> : <Login onSubmit={login} />
+                  }
+                />
+                <Route
+                  path="/register"
+                  render={() =>
+                    user ? <Redirect to="/" /> : <Login onSubmit={register} />
+                  }
+                />
+              </React.Fragment>
+            </div>
+          </Router>
+        )
+      }
+    </User>
   )
 }
+
+export default App

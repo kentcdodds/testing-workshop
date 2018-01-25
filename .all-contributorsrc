@@ -8,15 +8,6 @@
   "commit": false,
   "contributors": [
     {
-      "login": "gothinkster",
-      "name": "Thinkster",
-      "avatar_url": "https://avatars.githubusercontent.com/u/8601733?v=3",
-      "profile": "https://thinkster.io",
-      "contributions": [
-        "code"
-      ]
-    },
-    {
       "login": "kentcdodds",
       "name": "Kent C. Dodds",
       "avatar_url": "https://avatars.githubusercontent.com/u/1500684?v=3",
@@ -26,82 +17,6 @@
         "doc",
         "infra",
         "test"
-      ]
-    },
-    {
-      "login": "callummr",
-      "name": "Callum Mellor-Reed",
-      "avatar_url": "https://avatars.githubusercontent.com/u/3995499?v=3",
-      "profile": "http://callummr.com",
-      "contributions": [
-        "bug",
-        "code"
-      ]
-    },
-    {
-      "login": "edm00se",
-      "name": "Eric McCormick",
-      "avatar_url": "https://avatars.githubusercontent.com/u/622118?v=3",
-      "profile": "https://ericmccormick.io",
-      "contributions": [
-        "bug",
-        "code"
-      ]
-    },
-    {
-      "login": "paulfalgout",
-      "name": "Paul Falgout",
-      "avatar_url": "https://avatars1.githubusercontent.com/u/2028470?v=3",
-      "profile": "http://otterball.com",
-      "contributions": [
-        "code",
-        "doc"
-      ]
-    },
-    {
-      "login": "asBrettisay",
-      "name": "Brett Caudill",
-      "avatar_url": "https://avatars1.githubusercontent.com/u/13877279?v=3",
-      "profile": "https://github.com/asBrettisay",
-      "contributions": [
-        "code",
-        "doc"
-      ]
-    },
-    {
-      "login": "jennifer-mann",
-      "name": "Jennifer Mann",
-      "avatar_url": "https://avatars2.githubusercontent.com/u/1271364?v=3",
-      "profile": "http://jennifermann.ghost.io",
-      "contributions": [
-        "bug"
-      ]
-    },
-    {
-      "login": "brian-mann",
-      "name": "Brian Mann",
-      "avatar_url": "https://avatars1.githubusercontent.com/u/1268976?v=3",
-      "profile": "https://cypress.io",
-      "contributions": [
-        "bug"
-      ]
-    },
-    {
-      "login": "framini",
-      "name": "Francisco Ramini",
-      "avatar_url": "https://avatars1.githubusercontent.com/u/840935?v=3",
-      "profile": "https://github.com/framini",
-      "contributions": [
-        "doc"
-      ]
-    },
-    {
-      "login": "romarioraffington",
-      "name": "Romario",
-      "avatar_url": "https://avatars0.githubusercontent.com/u/7076981?v=4",
-      "profile": "https://github.com/romarioraffington",
-      "contributions": [
-        "doc"
       ]
     }
   ]

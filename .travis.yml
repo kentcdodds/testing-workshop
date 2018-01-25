@@ -1,24 +1,26 @@
 sudo: false
 language: node_js
-node_js: 6
-env:
-  global:
-    - MONGODB_VERSION=3.4.2
-before_install:
-  - wget http://fastdl.mongodb.org/linux/mongodb-linux-x86_64-$MONGODB_VERSION.tgz
-  - tar xfz mongodb-linux-x86_64-$MONGODB_VERSION.tgz
-  - export PATH=`pwd`/mongodb-linux-x86_64-$MONGODB_VERSION/bin:$PATH
-install:
-  - curl -o- -L https://yarnpkg.com/install.sh | bash
-  - export PATH="$HOME/.yarn/bin:$PATH"
-script: yarn run setup
+node_js: 8
+install: echo "Installation happens in the setup script"
 cache:
-  yarn: true
   directories:
-    - /home/travis/.cypress/Cypress
-    - node_modules
+  - node_modules
+  - server/node_modules
+  - client/node_modules
 notifications:
   email: false
 branches:
   only:
-    - master
+  - master
+script: npm run setup
+after_success:
+- npx codecov
+deploy:
+  provider: script
+  script: scripts/deploy.sh
+  skip_cleanup: true
+  on:
+    branch: master
+env:
+  global:
+    secure: BeiaBcr1Gturc5Bc7sTMz/iYc05tI/CeT2JkADJ8N/9ATYpF1EocyOXAr5P/O0eKFNrRkaLMe7dFyv5WD4gzn30fW0R1keIUtJeg9BsXXLQNFk57KTqx2R9z9JKF70oGQMi8yqhvjCYsbT9bw9v0aJ0pNAz54jY1923ELDCkke6jjbmB7xhXmxHVhBw25/WVeohBTO+BcBS2iz/wKe1G4M2Gd/DO9EuUQl7zormzTGqg1oLsP8SNRbpoqRfPUN31iH94LTqujdK/xm2VfUfWi1GLnwxkx73TGqEZ10z+8y8+j+D/9PHcMxtidtWYO556rJsZRAD5WgYs7qsimwhG3bHQoiur0OI/yHKNoie3ldm3Pi7yXgW5qM9h9HHWxWJDSiShqBUjVgQe0Ou+CRikh19enpGCI6WhadybgZvvng3cVhaGfcPNwNOe2IaYV7nGzocBgXIX5jVTabYJpeva4Mzn2SJOjnJv8Cx63R3F9GOQTJEFXriFV8KXZa4JdhLLIReyNEPnNAWzGVYFCGqgyN5OcdfG91wGTcFQGcsWtfV+oktzT1GEKOG8ak0FR4yTeTVTBSU9G1koXtHXHy2M8EICfoVjJpOfH7dffg69QUU2offAZgZiGMabxy25jp6j+cLnRA7vQyjU4A9lwprj8bFVXOC5ntV9OyafGyUD+2Y=

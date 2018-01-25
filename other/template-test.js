@@ -1,3 +1,6 @@
+// COMMENT_START
+/* eslint jest/no-identical-title:0,jest/no-disabled-tests:0 */
+// COMMENT_END
 // WORKSHOP_START
 //////// Elaboration & Feedback /////////
 // When you've finished with the exercises:

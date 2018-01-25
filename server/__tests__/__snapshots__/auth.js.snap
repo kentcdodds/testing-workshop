@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`password required to login 1`] = `
+Object {
+  "password": "can't be blank",
+}
+`;
+
+exports[`password required to register 1`] = `
+Object {
+  "password": "can't be blank",
+}
+`;
+
+exports[`user must exist to login 1`] = `
+Object {
+  "username or password": "is invalid",
+}
+`;
+
+exports[`username must be unique 1`] = `
+Object {
+  "username": "taken",
+}
+`;
+
+exports[`username required to login 1`] = `
+Object {
+  "username": "can't be blank",
+}
+`;
+
+exports[`username required to register 1`] = `
+Object {
+  "username": "can't be blank",
+}
+`;

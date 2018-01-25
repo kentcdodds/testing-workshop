@@ -1,46 +1,84 @@
 {
   "name": "testing-workshop",
-  "version": "1.0.0",
-  "main": "index.js",
+  "version": "2.0.0",
   "repository": "git@github.com:kentcdodds/testing-workshop.git",
   "author": "Kent C. Dodds <kent@doddsfamily.us> (http://kentcdodds.com/)",
   "license": "MIT",
   "scripts": {
-    "start": "nps",
-    "test": "nps test",
-    "precommit": "opt --in precommit --exec \"nps validate\"",
-    "setup": "node ./scripts/verify && node ./scripts/install && node ./scripts/load-database && npm start validate"
+    "start": "as-a PROD npm run start:core --silent",
+    "start:core": "concurrently --names \"server,client\" --prefix \"[{name}]\" --prefix-colors \"bgCyan.reset.bold,bgGreen.reset.bold\" \"npm run start:server --silent\" \"npm run start:client --silent\"",
+    "start:client": "cd client && npm start --silent",
+    "start:server": "cd server && npm start --silent",
+    "dev": "as-a DEV concurrently --names \"server,client\" --prefix \"[{name}]\" --prefix-colors \"bgCyan.reset.bold,bgGreen.reset.bold\" \"npm run dev:server --silent\" \"npm run dev:client --silent\"",
+    "dev:client": "cd client && npm run dev --silent",
+    "dev:server": "cd server && npm run dev --silent",
+    "build": "concurrently --names \"server,client\" --prefix \"[{name}]\" --prefix-colors \"bgCyan.reset.bold,bgGreen.reset.bold\" \"npm run build:server --silent\" \"npm run build:client --silent\"",
+    "build:client": "cd client && npm run build --silent",
+    "build:server": "cd server && npm run build --silent",
+    "test": "jest --watch",
+    "test:client": "jest --config ./client/jest.config.js --watch",
+    "test:server": "jest --config ./server/jest.config.js --watch",
+    "test:coverage": "jest --coverage",
+    "pretest:e2e": "npm run build --silent",
+    "test:e2e": "as-a E2E npm-run-all --parallel --race start:core cy:run",
+    "test:e2e:dev": "as-a E2E npm-run-all --parallel --race dev cy:open",
+    "cy:run": "cypress run",
+    "cy:open": "cypress open",
+    "lint": "eslint . --cache --cache-location node_modules/.cache/eslint",
+    "validate": "concurrently --names \"lint,test:coverage,test:e2e\" --prefix \"[{name}]\" --prefix-colors \"bgGreen.reset.bold,bgBlue.reset.bold,bgRed.reset.bold\" \"npm run lint --silent\" \"npm run test:coverage --silent\" \"npm run test:e2e --silent\"",
+    "precommit": "lint-staged && npm run --silent validate",
+    "setup": "node ./scripts/verify && node ./scripts/install && npm run validate"
   },
   "devDependencies": {
-    "all-contributors-cli": "^4.1.0",
-    "babel-eslint": "^7.2.2",
-    "babel-polyfill": "^6.23.0",
-    "babel-preset-env": "^1.3.3",
-    "babel-preset-stage-2": "^6.24.1",
-    "common-tags": "^1.4.0",
-    "concurrently": "^3.4.0",
-    "cypress-cli": "^0.13.1",
-    "eslint": "^3.19.0",
-    "eslint-config-kentcdodds": "^12.2.1",
-    "eslint-config-react-app": "^0.6.2",
-    "eslint-plugin-flowtype": "^2.30.4",
-    "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-jsx-a11y": "^4.0.0",
-    "eslint-plugin-react": "^6.10.3",
-    "faker": "^4.1.0",
-    "husky": "^0.13.3",
-    "is-windows": "^1.0.0",
-    "lodash": "^4.17.4",
-    "mkdirp": "^0.5.1",
-    "nps": "^5.0.5",
-    "nps-utils": "^1.2.0",
-    "opt-cli": "^1.5.1",
-    "p-series": "^1.0.0",
-    "prettier-eslint-cli": "^3.3.0",
-    "replace-in-file": "^2.5.0",
-    "slugify": "^1.1.0",
-    "spawn-command-with-kill": "^1.0.0",
-    "split-guide": "^3.0.0",
-    "stream-to-promise": "^2.2.0"
-  }
+    "all-contributors-cli": "^4.10.1",
+    "as-a": "^1.3.1",
+    "child-process-promise": "^2.2.1",
+    "concurrently": "^3.5.1",
+    "cross-env": "^5.1.3",
+    "cypress": "^1.4.1",
+    "eslint": "^4.16.0",
+    "eslint-config-kentcdodds": "^13.0.1",
+    "husky": "^0.14.3",
+    "jest": "^22.1.2",
+    "lint-staged": "^6.0.1",
+    "npm-run-all": "^4.1.2",
+    "prettier": "^1.10.2",
+    "replace-in-file": "^3.1.0"
+  },
+  "lint-staged": {
+    "linters": {
+      "**/+(src|test|scripts)/**/*.js": [
+        "prettier --write",
+        "eslint --cache --cache-location node_modules/.cache/eslint",
+        "git add"
+      ]
+    }
+  },
+  "eslintConfig": {
+    "extends": [
+      "kentcdodds",
+      "kentcdodds/jest",
+      "kentcdodds/react"
+    ],
+    "rules": {
+      "require-await": "off",
+      "import/prefer-default-export": "off",
+      "babel/new-cap": "off",
+      "import/no-unassigned-import": "off",
+      "react/prop-types": "off",
+      "no-console": "warn",
+      "no-nested-ternary": "off",
+      "complexity": [
+        "error",
+        12
+      ]
+    }
+  },
+  "eslintIgnore": [
+    "node_modules",
+    "build",
+    "dist",
+    "coverage",
+    "workshop-setup.js"
+  ]
 }
