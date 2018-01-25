@@ -50,11 +50,11 @@ test('post CRUD', async () => {
   expect(deletedPost).toEqual(updatedTestPost)
 
   // read of deleted user
-  const error = await api.get(`users/${deletedPost.id}`).catch(e => e.response)
+  const error = await api.get(`posts/${deletedPost.id}`).catch(e => e.response)
   expect(error.status).toBe(404)
 })
 
-test('get users', async () => {
+test('get posts', async () => {
   const {posts} = await api.get('posts').then(getData)
   expect(posts).toEqual(mockData.posts)
 })

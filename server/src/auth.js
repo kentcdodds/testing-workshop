@@ -54,7 +54,7 @@ function userToJSON({id, username, ...otherUserProps}) {
   return {
     id,
     username,
-    ...omit(otherUserProps, ['hash', 'salt']),
+    ...omit(otherUserProps, ['exp', 'iat', 'hash', 'salt']),
   }
 }
 

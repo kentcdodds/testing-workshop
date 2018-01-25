@@ -7,7 +7,7 @@
     "start": "cross-env NODE_ENV=production node .",
     "dev": "node .",
     "build": "babel --ignore __tests__,__mocks__ --out-dir dist src",
-    "test": "echo \"Run tests from the parent directory\""
+    "test": "cd .. && npm run test --silent server"
   },
   "author": "Kent C. Dodds <kent@doddsfamily.us> (http://kentcdodds.com/)",
   "license": "MIT",
@@ -46,6 +46,7 @@
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-register": "^6.26.0",
+    "detect-port": "^1.2.2",
     "faker": "^4.1.0",
     "nodemon": "^1.14.11"
   }
