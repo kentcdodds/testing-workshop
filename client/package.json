@@ -19,7 +19,7 @@
     "start": "cross-env serve -s build --port $CLIENT_PORT",
     "dev": "react-scripts start",
     "build": "react-scripts build",
-    "test": "cd ../ && npm run test:client"
+    "test": "cd ../ && npm run test:client --silent"
   },
   "babel": {
     "presets": [

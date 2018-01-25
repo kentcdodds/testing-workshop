@@ -7,7 +7,11 @@
     "start": "cross-env NODE_ENV=production node .",
     "dev": "node .",
     "build": "babel --ignore __tests__,__mocks__ --out-dir dist src",
-    "test": "cd .. && npm run test --silent server"
+    "test": "cd .. && npm run test:server --silent"
+  },
+  "now": {
+    "name": "til",
+    "alias": "til.now.sh"
   },
   "author": "Kent C. Dodds <kent@doddsfamily.us> (http://kentcdodds.com/)",
   "license": "MIT",
