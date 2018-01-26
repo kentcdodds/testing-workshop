@@ -1,3 +1,3 @@
 require('babel-register')
-require('./other/generate').initDb()
+require('./other/db-db-test-utils').initDb()
 require('./src')

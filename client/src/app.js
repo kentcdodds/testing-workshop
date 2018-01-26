@@ -28,7 +28,9 @@ function App() {
                 {user ? (
                   <div>
                     <span data-test="username-display">{user.username}</span>
-                    <button onClick={logout}>Logout</button>
+                    <button onClick={logout} data-test="logout-button">
+                      Logout
+                    </button>
                     <Link to="/editor">Add new Post</Link>
                   </div>
                 ) : (

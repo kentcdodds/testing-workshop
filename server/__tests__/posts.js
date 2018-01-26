@@ -1,7 +1,7 @@
 import faker from 'faker'
 import axios from 'axios'
 import {resetDb} from '../other/db-test-utils'
-import {generatePostData, generateUserData} from '../other/generate'
+import {generatePostData, generateUserData} from '../../other/generate'
 import {getUserToken} from '../src/auth'
 import startServer from '../src/start'
 
