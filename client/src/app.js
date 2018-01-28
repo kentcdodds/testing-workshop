@@ -143,7 +143,9 @@ function App() {
                       <UserBtn data-test="username-display">
                         {user.username.split('@')[0]}
                       </UserBtn>
-                      <UserBtn onClick={logout}>Logout</UserBtn>
+                      <UserBtn data-test="logout-button" onClick={logout}>
+                        Logout
+                      </UserBtn>
                       <NewPostBtn>
                         <Link to="/editor">+</Link>
                       </NewPostBtn>
