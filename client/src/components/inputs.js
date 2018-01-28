@@ -50,6 +50,7 @@ const ButtonStyled = glamorous.input({
   display: 'block',
   margin: 'auto',
   color: 'white',
+  border: 'none',
   borderRadius: 10,
   boxShadow: 'var(--shadow)',
   cursor: 'pointer',
