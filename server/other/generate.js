@@ -1,8 +1,8 @@
 // this file is not transpiled
 // we could probably make it work
 // but meh... ¯\_(ツ)_/¯
-const faker = require('faker')
-const {getSaltAndHash} = require('../server/src/auth')
+import faker from 'faker'
+import {getSaltAndHash} from '../src/auth'
 
 function generateUserData({
   password = faker.internet.password(),
@@ -28,4 +28,4 @@ function generatePostData(overrides) {
   }
 }
 
-module.exports = {generateUserData, generatePostData}
+export {generateUserData, generatePostData}

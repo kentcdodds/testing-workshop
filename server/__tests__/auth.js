@@ -3,7 +3,7 @@ import axios from 'axios'
 import db from '../src/db'
 import {resetDb} from '../other/db-test-utils'
 import {getUserToken} from '../src/auth'
-import {generateUserData} from '../../other/generate'
+import {generateUserData} from '../other/generate'
 import startServer from '../src/start'
 
 const getData = res => res.data

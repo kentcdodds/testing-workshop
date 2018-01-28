@@ -5,6 +5,7 @@
   "author": "Kent C. Dodds <kent@doddsfamily.us> (http://kentcdodds.com/)",
   "license": "MIT",
   "scripts": {
+    "add-contributor": "all-contributors add",
     "start": "as-a PROD npm run start:core --silent",
     "start:core": "concurrently --names \"server,client\" --prefix \"[{name}]\" --prefix-colors \"bgCyan.reset.bold,bgGreen.reset.bold\" \"npm run start:server --silent\" \"npm run start:client --silent\"",
     "start:client": "cd client && npm start --silent",

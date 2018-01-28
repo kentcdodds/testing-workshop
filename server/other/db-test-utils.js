@@ -1,6 +1,6 @@
 import faker from 'faker'
 import db from '../src/db'
-import {generateUserData, generatePostData} from '../../other/generate'
+import {generateUserData, generatePostData} from '../other/generate'
 
 function initDb() {
   const users = Array.from({length: 10}, () =>

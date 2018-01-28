@@ -1,7 +1,7 @@
 // This is how we'd implement unit tests for the auth controller
 // compare this to the integration tests :)
 import db from '../../db'
-import {generateUserData} from '../../../../other/generate'
+import {generateUserData} from '../../../other/generate'
 import * as authController from '../auth'
 
 function setup() {
