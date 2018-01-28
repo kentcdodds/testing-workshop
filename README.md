@@ -11,6 +11,7 @@ workshop repo to teach you about testing JavaScript applications.
 [![chat-badge][chat-badge]][chat]
 [![Build Status][build-badge]][build]
 [![AppVeyor Build Status][win-build-badge]][win-build]
+[![Code Coverage][coverage-badge]][coverage]
 [![MIT License][license-badge]][license]
 [![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors)
 
@@ -286,3 +287,5 @@ MIT
 [issue]: https://github.com/kentcdodds/testing-workshop/issues/new
 [win-build-badge]: https://img.shields.io/appveyor/ci/kentcdodds/testing-workshop.svg?style=flat-square
 [win-build]: https://ci.appveyor.com/project/kentcdodds/testing-workshop
+[coverage-badge]: https://img.shields.io/codecov/c/github/kentcdodds/testing-workshop.svg?style=flat-square
+[coverage]: https://codecov.io/github/kentcdodds/testing-workshop
