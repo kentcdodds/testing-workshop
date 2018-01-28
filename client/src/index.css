@@ -13,14 +13,15 @@ html {
   text-shadow: 0 2px 0 rgba(0, 0, 0, 0.07);
 }
 
-input, textarea {
+input,
+textarea {
   font-family: 'Raleway', sans-serif;
   outline: none;
   font-size: 13px;
 }
 
-textarea{
-    resize: none;
+textarea {
+  resize: none;
 }
 
 body {

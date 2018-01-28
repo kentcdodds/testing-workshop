@@ -38,10 +38,10 @@ const SecondaryTitle = glamorous.span({
 })
 
 const Inspired = glamorous.small({
-  transition:'0.5s',
-  ':hover':{
-    color:'var(--green)'
-  }
+  transition: '0.5s',
+  ':hover': {
+    color: 'var(--green)',
+  },
 })
 const SocialLogo = glamorous.img({
   width: 25,
@@ -71,7 +71,7 @@ const UserBtn = glamorous.span({
   borderRadius: 15,
   padding: 15,
   marginLeft: 15,
-  cursor:'pointer',
+  cursor: 'pointer',
   transition: '0.5s',
   ':hover': {
     boxShadow: 'var(--shadowHover)',
@@ -81,16 +81,16 @@ const UserBtn = glamorous.span({
 const NewPostBtn = glamorous.span({
   background: 'var(--green)',
   boxShadow: 'var(--shadow)',
-  color:'white',
-  fontSize:40,
+  color: 'white',
+  fontSize: 40,
   borderRadius: 15,
   padding: 15,
-  lineHeight:0.5,
+  lineHeight: 0.5,
   transition: '0.5s',
-  cursor:'pointer',
-  position:'fixed',
-  bottom:10,
-  right:10,  
+  cursor: 'pointer',
+  position: 'fixed',
+  bottom: 10,
+  right: 10,
   ':hover': {
     boxShadow: 'var(--shadowHover)',
   },
@@ -140,9 +140,13 @@ function App() {
                 <UserBtnsContainer>
                   {user ? (
                     <div>
-                      <UserBtn data-test="username-display">{user.username.split('@')[0]}</UserBtn>
+                      <UserBtn data-test="username-display">
+                        {user.username.split('@')[0]}
+                      </UserBtn>
                       <UserBtn onClick={logout}>Logout</UserBtn>
-                      <NewPostBtn><Link to="/editor">+</Link></NewPostBtn>
+                      <NewPostBtn>
+                        <Link to="/editor">+</Link>
+                      </NewPostBtn>
                     </div>
                   ) : (
                     <div>

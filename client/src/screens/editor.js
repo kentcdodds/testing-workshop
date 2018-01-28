@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import * as api from '../utils/api'
-import { Input, Button, TextArea } from '../components/inputs'
+import {Input, Button, TextArea} from '../components/inputs'
 
 class Editor extends Component {
   handleSubmit = e => {
@@ -21,10 +21,14 @@ class Editor extends Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-        <Input placeholder="title" name="title" data-test="title-input" />
-        <TextArea placeholder="content" name="content" data-test="content-input" />
-        <Input placeholder="tags" name="tags" data-test="tags-input" />
-        <Button type="submit" data-test="editor-submit" />
+          <Input placeholder="title" name="title" data-test="title-input" />
+          <TextArea
+            placeholder="content"
+            name="content"
+            data-test="content-input"
+          />
+          <Input placeholder="tags" name="tags" data-test="tags-input" />
+          <Button type="submit" data-test="editor-submit" />
         </form>
       </div>
     )
