@@ -1,0 +1,54 @@
+:root {
+  --green: #5edb93;
+  --black: #414141;
+  --shadow: 0px 8px 30px -5px rgba(79, 79, 79, 0.3);
+  --shadowHover: 0px 8px 5px -5px rgba(79, 79, 79, 0.3);
+}
+
+html {
+  box-sizing: border-box;
+  font-family: 'Raleway', sans-serif;
+  font-size: 10px;
+  color: var(--black);
+  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.07);
+}
+
+input, textarea {
+  font-family: 'Raleway', sans-serif;
+  outline: none;
+  font-size: 13px;
+}
+
+textarea{
+    resize: none;
+}
+
+body {
+  background: #fffef3;
+  width: 80%;
+  margin: auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0 0 5px 0;
+}
+
+p {
+  font-size: 13px;
+  line-height: 20px;
+}
+a,
+a:visited,
+a:hover,
+a:active {
+  text-decoration: none;
+  color: inherit;
+}
+svg {
+  fill: #414141;
+}

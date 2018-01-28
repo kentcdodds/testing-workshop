@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import * as api from '../utils/api'
+import { Input, Button, TextArea } from '../components/inputs'
 
 class Editor extends Component {
   handleSubmit = e => {
@@ -17,30 +18,14 @@ class Editor extends Component {
     })
   }
   render() {
-    const {match} = this.props
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <div>
-            <label>
-              Title <input name="title" data-test="title-input" />
-            </label>
-          </div>
-          <div>
-            <label>
-              Content <textarea name="content" data-test="content-input" />
-            </label>
-          </div>
-          <div>
-            <label>
-              Tags: <input name="tags" data-test="tags-input" />
-            </label>
-          </div>
-          <button type="submit" data-test="editor-submit">
-            submit
-          </button>
+        <Input placeholder="title" name="title" data-test="title-input" />
+        <TextArea placeholder="content" name="content" data-test="content-input" />
+        <Input placeholder="tags" name="tags" data-test="tags-input" />
+        <Button type="submit" data-test="editor-submit" />
         </form>
-        Editor<pre>{JSON.stringify(match, null, 2)}</pre>
       </div>
     )
   }

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Input, Button } from './inputs'
 
 function Login({onSubmit}) {
   return (
@@ -14,20 +15,18 @@ function Login({onSubmit}) {
           })
         }}
       >
-        <div>
-          <label>
-            username <input name="username" data-test="username-input" />
-          </label>
-        </div>
-        <div>
-          <label>
-            password{' '}
-            <input type="password" name="password" data-test="password-input" />
-          </label>
-        </div>
-        <button type="submit" data-test="login-submit">
-          Submit
-        </button>
+        <Input
+          placeholder="Username..."
+          name="username"
+          data-test="username-input"
+        />
+        <Input
+          placeholder="Password..."
+          type="password"
+          name="password"
+          data-test="password-input"
+        />
+        <Button type="submit" data-test="login-submit" />
       </form>
     </div>
   )

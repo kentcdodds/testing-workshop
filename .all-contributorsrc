@@ -18,6 +18,16 @@
         "infra",
         "test"
       ]
+    },
+    {
+      "login": "osamajandali",
+      "name": "Osama Jandali",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/13832392?v=4",
+      "profile": "https://github.com/osamajandali",
+      "contributions": [
+        "code",
+        "design"
+      ]
     }
   ]
 }

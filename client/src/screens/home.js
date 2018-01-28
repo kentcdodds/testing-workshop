@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import glamorous from 'glamorous'
 import * as api from '../utils/api'
 
 class RenderPromise extends Component {
@@ -73,14 +74,43 @@ function Timeline({users, posts = []}) {
   )
 }
 
+const PostContainer = glamorous.div({
+  background: 'white',
+  marginBottom: 20,
+  padding: '30px 50px',
+  borderRadius: '50px',
+  boxShadow: 'var(--shadow)',
+})
+
+const PostTitle = glamorous.h2({
+  color: 'var(--green)',
+})
+
+const PostSeparator = glamorous.hr({
+  border: 0,
+  borderRadius: 10,
+  height: 5,
+  width: 30,
+  margin: '0 0 10px 0',
+  background: 'var(--green)',
+})
+
+const Tag = glamorous.span({
+  background: 'var(--green)',
+  color: 'white',
+  padding: 5,
+  marginRight: 5,
+  borderRadius: 5,
+})
 function Post({post: {title, content, tags}, author = {username: 'unknown'}}) {
   return (
-    <div>
-      <h2>{title}</h2>
-      <div>{content}</div>
-      <div>{tags.map(t => <span key={t}>{t}</span>)}</div>
-      <div>by {author.username}</div>
-    </div>
+    <PostContainer>
+      <PostTitle>{title}</PostTitle>
+      <h4>by {author.username}</h4>
+      <PostSeparator />
+      <p>{content}</p>
+      <div>{tags.map(t => <Tag key={t}>{t}</Tag>)}</div>
+    </PostContainer>
   )
 }
 

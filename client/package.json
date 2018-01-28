@@ -7,6 +7,8 @@
   "dependencies": {
     "axios": "^0.17.1",
     "cross-env": "^5.1.3",
+    "glamor": "^2.20.40",
+    "glamorous": "^4.11.4",
     "history": "^4.7.2",
     "query-string": "^5.0.1",
     "react": "^16.2.0",
