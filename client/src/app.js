@@ -153,7 +153,9 @@ function App() {
                         Logout
                       </UserBtn>
                       <NewPostBtn>
-                        <Link to="/editor">+</Link>
+                        <Link to="/editor" data-test="create-post-link">
+                          +
+                        </Link>
                       </NewPostBtn>
                     </div>
                   ) : (

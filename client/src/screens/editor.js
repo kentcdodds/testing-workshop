@@ -20,7 +20,7 @@ class Editor extends Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit} data-test="editor-form">
           <Input placeholder="title" name="title" data-test="title-input" />
           <TextArea
             placeholder="content"
