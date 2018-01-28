@@ -1,7 +1,6 @@
-import React from 'react'
 import glamorous from 'glamorous'
 
-const InputStyled = glamorous.input({
+const Input = glamorous.input({
   background: 'white',
   height: 50,
   border: 'none',
@@ -20,9 +19,7 @@ const InputStyled = glamorous.input({
   },
 })
 
-export const Input = ({...props}) => <InputStyled {...props} />
-
-const TextAreaStyled = glamorous.textarea({
+const TextArea = glamorous.textarea({
   background: 'white',
   border: 'none',
   height: 200,
@@ -42,9 +39,7 @@ const TextAreaStyled = glamorous.textarea({
   },
 })
 
-export const TextArea = ({...props}) => <TextAreaStyled {...props} />
-
-const ButtonStyled = glamorous.input({
+const Button = glamorous.input({
   background: 'var(--green)',
   padding: '10px 20px',
   display: 'block',
@@ -60,4 +55,4 @@ const ButtonStyled = glamorous.input({
   },
 })
 
-export const Button = ({...props}) => <ButtonStyled {...props} />
+export {Input, TextArea, Button}

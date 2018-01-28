@@ -31,6 +31,7 @@ const Title = glamorous.h1({
   color: 'var(--green)',
   fontSize: 50,
   lineHeight: '40px',
+  textTransform: 'upperase',
 })
 
 const SecondaryTitle = glamorous.span({
@@ -130,8 +131,8 @@ function App() {
                   <div>
                     <Title>
                       <Link to="/">
-                        TODAY<br />
-                        <SecondaryTitle>I LEARNED</SecondaryTitle>
+                        Today<br />
+                        <SecondaryTitle>I Learned</SecondaryTitle>
                       </Link>
                     </Title>
                     <Inspired>
