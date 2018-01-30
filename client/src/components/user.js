@@ -15,7 +15,7 @@ class User extends React.Component {
       .me()
       .then(
         ({user}) => this.reset({user}),
-        error => Promise.reject(this.reset({error})),
+        ({error}) => Promise.reject(this.reset({error})),
       )
   }
   login = (...args) => {
@@ -24,15 +24,17 @@ class User extends React.Component {
       .login(...args)
       .then(
         ({user}) => this.reset({user}),
-        error => Promise.reject(this.reset({error})),
+        ({error}) => Promise.reject(this.reset({error})),
       )
   }
-  logout = (...args) => {
+  logout = () => {
     this.reset({pending: true})
     return api.auth
-      .logout(...args)
-      .catch(() => this.reset(), error => Promise.reject(this.reset({error})))
-      .finally(() => this.reset())
+      .logout()
+      .then(
+        () => this.reset(),
+        ({error}) => Promise.reject(this.reset({error})),
+      )
   }
   register = (...args) => {
     this.reset({pending: true})
@@ -40,7 +42,7 @@ class User extends React.Component {
       .register(...args)
       .then(
         ({user}) => this.reset({user}),
-        error => Promise.reject(this.reset({error})),
+        ({error}) => Promise.reject(this.reset({error})),
       )
   }
   render() {

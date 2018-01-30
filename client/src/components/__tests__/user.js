@@ -1,8 +1,9 @@
 import React from 'react'
+import {mount} from 'enzyme'
 import User from '../user'
 import * as apiMock from '../../utils/api'
 // eslint-disable-next-line
-import {mountWithRouter, flushAllPromises} from 'til-test-utils'
+import {flushAllPromises} from 'til-test-utils'
 
 jest.mock('../../utils/api', () => {
   const mock = {}
@@ -11,6 +12,9 @@ jest.mock('../../utils/api', () => {
     Object.assign(mock, {
       auth: Object.assign(mock.auth || {}, {
         me: jest.fn(() => Promise.resolve(authResponse)),
+        login: jest.fn(() => Promise.resolve(authResponse)),
+        register: jest.fn(() => Promise.resolve(authResponse)),
+        logout: jest.fn(() => Promise.resolve(authResponse)),
       }),
       reset,
     })
@@ -25,8 +29,97 @@ beforeEach(() => {
 })
 
 test('attempts to get the current user on mount', async () => {
-  const children = jest.fn(() => null)
-  mountWithRouter(<User>{children}</User>)
-  await flushAllPromises()
+  await setup()
   expect(apiMock.auth.me).toHaveBeenCalledTimes(1)
 })
+
+test('login rerenders with the retrieved user', async () => {
+  const {children, controller} = await setup()
+  const fakeUser = {username: 'luke'}
+  apiMock.auth.login.mockImplementationOnce(() =>
+    Promise.resolve({user: fakeUser}),
+  )
+  const form = {username: 'luke', password: 'skywalker'}
+  controller.login(form)
+  await flushAllPromises()
+  expect(apiMock.auth.login).toHaveBeenCalledTimes(1)
+  expect(apiMock.auth.login).toHaveBeenCalledWith(form)
+  expect(children).toHaveBeenCalledTimes(2)
+  expect(children).toHaveBeenCalledWith(
+    expect.objectContaining({
+      pending: true,
+      error: null,
+      user: null,
+    }),
+  )
+  expect(children).toHaveBeenLastCalledWith(
+    expect.objectContaining({
+      error: null,
+      pending: false,
+      user: fakeUser,
+    }),
+  )
+})
+
+test('logout rerenders with a null user', async () => {
+  const {children, controller} = await setup()
+  controller.logout()
+  await flushAllPromises()
+  expect(apiMock.auth.logout).toHaveBeenCalledTimes(1)
+  expect(children).toHaveBeenCalledTimes(2)
+  expect(children).toHaveBeenCalledWith(
+    expect.objectContaining({
+      pending: true,
+      error: null,
+      user: null,
+    }),
+  )
+  expect(children).toHaveBeenLastCalledWith(
+    expect.objectContaining({
+      error: null,
+      pending: false,
+      user: null,
+    }),
+  )
+})
+
+test('on register failure, rerenders with the error', async () => {
+  const {children, controller} = await setup()
+  const fakeError = {mock: 'failure'}
+  apiMock.auth.register.mockImplementationOnce(() =>
+    Promise.reject({error: fakeError}),
+  )
+  const form = {username: 'luke', password: 'skywalker'}
+  // the catch below is simply to ignore the error thrown
+  controller.register(form).catch(i => i)
+  await flushAllPromises()
+  expect(apiMock.auth.register).toHaveBeenCalledTimes(1)
+  expect(apiMock.auth.register).toHaveBeenCalledWith(form)
+  expect(children).toHaveBeenCalledTimes(2)
+  expect(children).toHaveBeenCalledWith(
+    expect.objectContaining({
+      pending: true,
+      error: null,
+      user: null,
+    }),
+  )
+  expect(children).toHaveBeenLastCalledWith(
+    expect.objectContaining({
+      error: fakeError,
+      pending: false,
+      user: null,
+    }),
+  )
+})
+
+async function setup() {
+  let controller
+  const children = jest.fn(c => {
+    controller = c
+    return null
+  })
+  mount(<User>{children}</User>)
+  await flushAllPromises()
+  children.mockClear()
+  return {controller, children}
+}
