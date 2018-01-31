@@ -1,5 +1,5 @@
 import React from 'react'
-import glamorous from 'glamorous'
+import glamorous from 'glamorous.macro'
 import {BrowserRouter as Router, Route, Link, Redirect} from 'react-router-dom'
 import User from './components/user'
 import Login from './components/login'

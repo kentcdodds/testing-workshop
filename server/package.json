@@ -44,6 +44,7 @@
       ]
     ],
     "plugins": [
+      "macros",
       "transform-object-rest-spread"
     ]
   },
@@ -51,9 +52,11 @@
     "axios": "^0.17.1",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
+    "babel-plugin-macros": "^2.1.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-register": "^6.26.0",
+    "ms.macro": "^1.0.0",
     "nodemon": "^1.14.11"
   }
 }

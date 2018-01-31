@@ -1,4 +1,4 @@
-import glamorous from 'glamorous'
+import glamorous from 'glamorous.macro'
 
 const Input = glamorous.input({
   background: 'white',

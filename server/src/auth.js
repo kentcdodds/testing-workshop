@@ -3,6 +3,7 @@ import jwt from 'jsonwebtoken'
 import expressJWT from 'express-jwt'
 import LocalStrategy from 'passport-local'
 import {omit} from 'lodash'
+import ms from 'ms.macro'
 import db from './db'
 
 const iterations = process.env.NODE_ENV === 'production' ? 100000 : 1
@@ -59,13 +60,13 @@ function userToJSON({id, username, ...otherUserProps}) {
 }
 
 function getUserToken({id, username}) {
-  // seconds/minute * minutes/hour * hours/day * 60 days
-  const sixtyDaysInSeconds = 60 * 60 * 24 * 60
+  /* istanbul ignore next (figure out why istanbul doesn't like babel-plugin-macros) */
+  const sixtyDaysInMilliseconds = ms('60 days')
   return jwt.sign(
     {
       id,
       username,
-      exp: Math.floor(Date.now() / 1000) + sixtyDaysInSeconds,
+      exp: Math.floor(Date.now() / 1000) + sixtyDaysInMilliseconds / 1000,
     },
     secret,
   )

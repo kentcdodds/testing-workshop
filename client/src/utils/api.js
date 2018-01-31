@@ -1,5 +1,6 @@
 import axios from 'axios'
 import queryString from 'query-string'
+import {it} from 'param.macro'
 
 const api = axios.create({
   baseURL:
@@ -7,7 +8,7 @@ const api = axios.create({
     process.env.REACT_APP_API_URL,
 })
 
-const getData = res => res.data
+const getData = it.data
 
 const requests = {
   delete: url => api.delete(url).then(getData),

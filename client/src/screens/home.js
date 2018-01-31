@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import glamorous from 'glamorous'
+import glamorous from 'glamorous.macro'
 import * as api from '../utils/api'
 
 class RenderPromise extends Component {
