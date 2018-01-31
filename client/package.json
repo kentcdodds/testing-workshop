@@ -14,7 +14,6 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-router-dom": "^4.2.2",
-    "react-scripts": "^1.1.0",
     "serve": "^6.4.8"
   },
   "scripts": {
@@ -32,6 +31,20 @@
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "enzyme-to-json": "^3.3.0",
+    "react-scripts": "^2.0.0-next.9754a231",
     "react-test-renderer": "^16.2.0"
+  },
+  "browserslist": {
+    "development": [
+      "last 2 chrome versions",
+      "last 2 firefox versions",
+      "last 2 edge versions"
+    ],
+    "production": [
+      ">1%",
+      "last 4 versions",
+      "Firefox ESR",
+      "not ie < 11"
+    ]
   }
 }
