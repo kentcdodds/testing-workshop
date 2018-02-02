@@ -2,8 +2,6 @@
 const path = require('path')
 const installDeps = require('./workshop-setup').installDeps
 
-require('./ensure-symlinks')
-
 const main = path.resolve(__dirname, '..')
 const shared = path.resolve(__dirname, '../shared')
 const server = path.resolve(__dirname, '../server')

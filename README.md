@@ -173,9 +173,6 @@ individually yourself:
 # verify your environment will work with the project
 node ./scripts/verify
 
-# ensure symlinks are in place for the shared directory
-node ./scripts/ensure-symlinks
-
 # install dependencies in the root of the repo
 npm install
 
