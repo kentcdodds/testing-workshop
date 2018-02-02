@@ -268,7 +268,7 @@ MIT
 [slides-badge]: https://cdn.rawgit.com/kentcdodds/custom-badges/2/badges/slides.svg
 [chat]: https://gitter.im/kentcdodds/testing-workshop
 [chat-badge]: https://img.shields.io/gitter/room/kentcdodds/testing-workshop.js.svg?style=flat-square
-[build-badge]: https://img.shields.io/travis/kentcdodds/testing-workshop.svg?style=flat-square
+[build-badge]: https://img.shields.io/travis/kentcdodds/testing-workshop.svg?style=flat-square&logo=travis
 [build]: https://travis-ci.org/kentcdodds/testing-workshop
 [dependencyci-badge]: https://dependencyci.com/github/kentcdodds/testing-workshop/badge?style=flat-square
 [dependencyci]: https://dependencyci.com/github/kentcdodds/testing-workshop
@@ -291,7 +291,7 @@ MIT
 [win-path]: https://www.howtogeek.com/118594/how-to-edit-your-system-path-for-easy-command-line-access/
 [mac-path]: http://stackoverflow.com/a/24322978/971592
 [issue]: https://github.com/kentcdodds/testing-workshop/issues/new
-[win-build-badge]: https://img.shields.io/appveyor/ci/kentcdodds/testing-workshop.svg?style=flat-square
+[win-build-badge]: https://img.shields.io/appveyor/ci/kentcdodds/testing-workshop.svg?style=flat-square&logo=appveyor
 [win-build]: https://ci.appveyor.com/project/kentcdodds/testing-workshop
 [coverage-badge]: https://img.shields.io/codecov/c/github/kentcdodds/testing-workshop.svg?style=flat-square
 [coverage]: https://codecov.io/github/kentcdodds/testing-workshop
