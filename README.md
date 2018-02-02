@@ -193,7 +193,7 @@ npm install --prefix client
 # verify the project is ready to run
 npm run lint
 npm run test:coverage
-npm run test:e2e
+npm run test:e2e:run
 ```
 
 If any of those scripts fail, please try to work out what went wrong by the
