@@ -113,11 +113,9 @@ the same time. Your browser should open up automatically to
 `http://localhost:3000` (if it doesn't, just open that yourself) and you should
 be able to start messing around with the app.
 
-<!-- TODO: add a screenshot -->
+Here's what you should be looking at:
 
-<!-- Here's what you should be looking at: -->
-
-<!-- <img src="other/conduit-screenshot.png" alt="Conduit Screenshot" title="Conduit Screenshot" width="700" /> -->
+<img src="other/screenshot.png" alt="App Screenshot" title="App Screenshot" width="700" />
 
 If this fails at any point for you, please take a minute to read through any
 error messages you see and [try to troubleshoot the issue](#troubleshooting).
