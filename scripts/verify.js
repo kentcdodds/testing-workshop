@@ -3,8 +3,8 @@
 var verifySystem = require('./workshop-setup').verifySystem
 
 var verifyPromise = verifySystem([
-  verifySystem.validators.node('^8.4.0'),
-  verifySystem.validators.npm('^5.4.1')
+  verifySystem.validators.node('>=8.9.4'),
+  verifySystem.validators.npm('>=5.6.0')
 ])
 
 verifyPromise.then(
