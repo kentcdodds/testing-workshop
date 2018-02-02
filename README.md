@@ -267,7 +267,7 @@ MIT
 [slides]: http://kcd.im/testing-workshop-slides
 [slides-badge]: https://cdn.rawgit.com/kentcdodds/custom-badges/2/badges/slides.svg
 [chat]: https://gitter.im/kentcdodds/testing-workshop
-[chat-badge]: https://img.shields.io/gitter/room/kentcdodds/testing-workshop.js.svg?style=flat-square
+[chat-badge]: https://img.shields.io/gitter/room/kentcdodds/testing-workshop.js.svg?style=flat-square&logo=gitter-white
 [build-badge]: https://img.shields.io/travis/kentcdodds/testing-workshop.svg?style=flat-square&logo=travis
 [build]: https://travis-ci.org/kentcdodds/testing-workshop
 [dependencyci-badge]: https://dependencyci.com/github/kentcdodds/testing-workshop/badge?style=flat-square
