@@ -175,13 +175,8 @@ individually yourself:
 # verify your environment will work with the project
 node ./scripts/verify
 
-# make symlink from client/other/shared -> shared
-ln -s $PWD/shared $PWD/client/other/shared
-# NOTE: this will be different on windows
-
-# make symlink from server/other/shared -> shared
-ln -s $PWD/shared $PWD/server/other/shared
-# NOTE: this will be different on windows
+# ensure symlinks are in place for the shared directory
+node ./scripts/ensure-symlinks
 
 # install dependencies in the root of the repo
 npm install

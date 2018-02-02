@@ -1,20 +1,8 @@
 /* eslint-disable */
-
 const path = require('path')
-const fs = require('fs')
 const installDeps = require('./workshop-setup').installDeps
 
-ensureExists(path.resolve(__dirname, '../client/other'))
-ensureExists(path.resolve(__dirname, '../server/other'))
-
-symlinkDir(
-  path.resolve(__dirname, '../shared/'),
-  path.resolve(__dirname, '../client/other/shared')
-)
-symlinkDir(
-  path.resolve(__dirname, '../shared/'),
-  path.resolve(__dirname, '../server/other/shared')
-)
+require('./ensure-symlinks')
 
 const main = path.resolve(__dirname, '..')
 const shared = path.resolve(__dirname, '../shared')
@@ -29,15 +17,3 @@ installDeps([main, shared, server, client]).then(
     // ignore, workshop-setup will log for us...
   },
 )
-
-function symlinkDir(src, dest) {
-  if (!fs.existsSync(dest)) {
-    fs.symlinkSync(src, dest, 'dir')
-  }
-}
-
-function ensureExists(dir) {
-  if (!fs.existsSync(dir)) {
-    fs.mkdirSync(dir)
-  }
-}
