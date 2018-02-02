@@ -1,9 +1,4 @@
 {
-  "globals": {
-    "cy": false,
-    "Cypress": false,
-  },
-  "env": {
-    "mocha": true,
-  },
+  "plugins": ["cypress"],
+  "env": {"cypress/globals": true}
 }

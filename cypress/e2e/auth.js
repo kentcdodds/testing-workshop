@@ -1,4 +1,4 @@
-import {createNewUser, logout, generate} from '../utils'
+import {createNewUser, logout, generate, assertRoute} from '../utils'
 
 describe('authentication', () => {
   beforeEach(() => {
@@ -17,7 +17,7 @@ describe('authentication', () => {
       .type(user.password)
       .getByTestId('login-submit')
       .click()
-    cy.url().should('equal', `${Cypress.env('CLIENT_URL').trim()}/`)
+    assertRoute('/')
     cy.getByTestId('username-display').should('contain', user.username)
   })
 
@@ -33,7 +33,7 @@ describe('authentication', () => {
         .type(user.password)
         .getByTestId('login-submit')
         .click()
-      cy.url().should('equal', `${Cypress.env('CLIENT_URL').trim()}/`)
+      assertRoute('/')
       cy.getByTestId('username-display').should('contain', user.username)
     })
   })

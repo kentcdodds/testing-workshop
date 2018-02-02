@@ -22,4 +22,8 @@ function logout() {
   window.localStorage.removeItem('jwt')
 }
 
-export {createNewUser, loginAsNewUser, logout, generate}
+function assertRoute(route) {
+  cy.url().should('equal', `${Cypress.env('CLIENT_URL').trim()}${route}`)
+}
+
+export {createNewUser, loginAsNewUser, logout, generate, assertRoute}

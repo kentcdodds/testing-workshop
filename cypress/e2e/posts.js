@@ -1,4 +1,4 @@
-import {loginAsNewUser, logout, generate} from '../utils'
+import {loginAsNewUser, logout, generate, assertRoute} from '../utils'
 
 describe('authentication', () => {
   beforeEach(() => {
@@ -24,7 +24,7 @@ describe('authentication', () => {
         .type(fakePost.tags.join(', '))
         .getByTestId('editor-submit')
         .click()
-      cy.url().should('equal', `${Cypress.env('CLIENT_URL').trim()}/`)
+      assertRoute('/')
       cy
         .getByTestId('post-title')
         .first()
