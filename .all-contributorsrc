@@ -28,6 +28,42 @@
         "code",
         "design"
       ]
+    },
+    {
+      "login": "stefanivic",
+      "name": "Stefan Ivic",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/3818515?v=4",
+      "profile": "http://stefanivic.me/",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "bodiddlie",
+      "name": "Nick Klepinger",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/2413413?v=4",
+      "profile": "https://github.com/bodiddlie",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "abinavseelan",
+      "name": "Abinav Seelan",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/6417910?v=4",
+      "profile": "http://abinavseelan.com",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "fipo",
+      "name": "Philip Sotirov",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/2751691?v=4",
+      "profile": "http://philipsotirov.com",
+      "contributions": [
+        "bug"
+      ]
     }
   ]
 }
