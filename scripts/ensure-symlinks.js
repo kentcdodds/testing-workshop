@@ -8,11 +8,11 @@ ensureExists(path.resolve(__dirname, '../server/other'))
 
 symlinkDir(
   path.resolve(__dirname, '../shared/'),
-  path.resolve(__dirname, '../client/other/shared'),
+  path.resolve(__dirname, '../client/other/shared')
 )
 symlinkDir(
   path.resolve(__dirname, '../shared/'),
-  path.resolve(__dirname, '../server/other/shared'),
+  path.resolve(__dirname, '../server/other/shared')
 )
 
 function symlinkDir(src, dest) {
