@@ -13,3 +13,5 @@ cypress/screenshots
 dist
 .opt-in
 .eslintcache
+/client/other/shared
+/server/other/shared
