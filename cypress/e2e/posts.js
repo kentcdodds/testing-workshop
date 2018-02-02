@@ -1,4 +1,4 @@
-import {loginAsNewUser, logout} from '../utils'
+import {loginAsNewUser, logout, generate} from '../utils'
 
 describe('authentication', () => {
   beforeEach(() => {
@@ -6,12 +6,9 @@ describe('authentication', () => {
   })
 
   it('should allow existing users to login', () => {
-    const now = new Date().toISOString()
-    const fakePost = {
-      title: `Make a sandwich ${now}`,
-      content: `Bread, jam, peanut butter ${now}`,
-      tags: ['b', 'j', 'pb', now],
-    }
+    const fakePost = generate.postData()
+    // shorten the content so we don't have to wait so long
+    fakePost.content = fakePost.content.slice(0, 50)
     loginAsNewUser().then(user => {
       cy
         .visitApp()
@@ -20,7 +17,9 @@ describe('authentication', () => {
         .getByTestId('title-input')
         .type(fakePost.title)
         .getByTestId('content-input')
-        .type(fakePost.content)
+        // the delay is because the content takes
+        // forever to type otherwise
+        .type(fakePost.content, {delay: 1})
         .getByTestId('tags-input')
         .type(fakePost.tags.join(', '))
         .getByTestId('editor-submit')

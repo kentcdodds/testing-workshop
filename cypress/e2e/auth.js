@@ -1,4 +1,4 @@
-import {createNewUser, logout} from '../utils'
+import {createNewUser, logout, generate} from '../utils'
 
 describe('authentication', () => {
   beforeEach(() => {
@@ -6,10 +6,7 @@ describe('authentication', () => {
   })
 
   it('should allow users to register', () => {
-    const user = {
-      username: `temp-${new Date().getTime()}`,
-      password: 'some-password',
-    }
+    const user = generate.loginForm()
     cy
       .visitApp()
       .getByTestId('register-link')

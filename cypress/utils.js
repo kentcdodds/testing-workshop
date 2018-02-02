@@ -1,3 +1,5 @@
+import * as generate from '../other/generate'
+
 function loginAsNewUser() {
   return createNewUser().then(user => {
     window.localStorage.setItem('jwt', user.token)
@@ -6,7 +8,7 @@ function loginAsNewUser() {
 }
 
 function createNewUser() {
-  const user = {username: `temp-${new Date().getTime()}`, password: '123'}
+  const user = generate.loginForm()
 
   return cy
     .log('create a test new user')
@@ -20,4 +22,4 @@ function logout() {
   window.localStorage.removeItem('jwt')
 }
 
-export {createNewUser, loginAsNewUser, logout}
+export {createNewUser, loginAsNewUser, logout, generate}
