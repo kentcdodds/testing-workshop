@@ -17,7 +17,7 @@ after_success:
 - npx codecov
 deploy:
   provider: script
-  script: scripts/deploy.sh
+  script: scripts/deploy-backend.sh
   skip_cleanup: true
   on:
     branch: master
