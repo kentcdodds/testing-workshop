@@ -17,7 +17,7 @@ describe('authentication', () => {
       .type(user.password)
       .getByTestId('login-submit')
       .click()
-    cy.url().should('equal', `${Cypress.env('CLIENT_URL')}/`)
+    cy.url().should('equal', `${Cypress.env('CLIENT_URL').trim()}/`)
     cy.getByTestId('username-display').should('contain', user.username)
   })
 
@@ -33,7 +33,7 @@ describe('authentication', () => {
         .type(user.password)
         .getByTestId('login-submit')
         .click()
-      cy.url().should('equal', `${Cypress.env('CLIENT_URL')}/`)
+      cy.url().should('equal', `${Cypress.env('CLIENT_URL').trim()}/`)
       cy.getByTestId('username-display').should('contain', user.username)
     })
   })

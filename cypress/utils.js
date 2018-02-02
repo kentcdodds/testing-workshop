@@ -12,7 +12,7 @@ function createNewUser() {
 
   return cy
     .log('create a test new user')
-    .request('POST', `${Cypress.env('API_URL')}/auth/register`, user)
+    .request('POST', `${Cypress.env('API_URL').trim()}/auth/register`, user)
     .then(({body}) => {
       return Object.assign({}, body.user, user)
     })

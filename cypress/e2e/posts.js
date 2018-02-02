@@ -24,7 +24,7 @@ describe('authentication', () => {
         .type(fakePost.tags.join(', '))
         .getByTestId('editor-submit')
         .click()
-      cy.url().should('equal', `${Cypress.env('CLIENT_URL')}/`)
+      cy.url().should('equal', `${Cypress.env('CLIENT_URL').trim()}/`)
       cy
         .getByTestId('post-title')
         .first()
