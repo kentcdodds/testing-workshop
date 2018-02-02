@@ -29,21 +29,8 @@
     "lint": "eslint . --cache --cache-location node_modules/.cache/eslint",
     "validate": "concurrently --names \"lint,test:coverage,test:e2e\" --prefix \"[{name}]\" --prefix-colors \"bgGreen.reset.bold,bgBlue.reset.bold,bgRed.reset.bold\" \"npm run lint --silent\" \"npm run test:coverage --silent\" \"npm run test:e2e --silent\"",
     "precommit": "lint-staged && npm run --silent validate",
-    "clean": "rimraf node_modules ./client/node_modules ./server/node_modules",
-    "setup": "node ./scripts/verify && node ./scripts/install && npm run validate",
-    "now-build": "cd server && npm install",
-    "now-start": "node ./server"
-  },
-  "now": {
-    "name": "til",
-    "alias": "til.now.sh",
-    "files": [
-      "./server",
-      "./shared"
-    ]
-  },
-  "dependencies": {
-    "jsonwebtoken": "^8.1.1"
+    "clean": "rimraf node_modules ./shared/node_modules ./client/node_modules ./server/node_modules",
+    "setup": "node ./scripts/verify && node ./scripts/install && npm run validate"
   },
   "devDependencies": {
     "all-contributors-cli": "^4.10.1",

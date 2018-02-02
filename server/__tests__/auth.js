@@ -1,4 +1,3 @@
-import faker from 'faker'
 import axios from 'axios'
 import db from '../src/db'
 // eslint-disable-next-line
@@ -23,7 +22,7 @@ afterAll(async () => {
 })
 
 beforeEach(async () => {
-  testUser = generate.userData({id: faker.random.uuid()})
+  testUser = generate.userData({id: generate.id()})
   await resetDb({testUser})
   const token = getUserToken(testUser)
   authAPI = axios.create({baseURL})

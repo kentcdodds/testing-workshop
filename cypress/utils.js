@@ -1,4 +1,4 @@
-import * as generate from '../other/generate'
+import * as generate from '../shared/generate'
 
 function loginAsNewUser() {
   return createNewUser().then(user => {

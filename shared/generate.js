@@ -1,10 +1,6 @@
-// this file is not transpiled
-// we could probably make it work
-// but meh... ¯\_(ツ)_/¯
-
 const omit = require('lodash.omit')
 const faker = require('faker')
-const {getSaltAndHash, getUserToken} = require('../shared/auth')
+const {getSaltAndHash, getUserToken} = require('./auth')
 
 function userData(overrides = {}) {
   const password = overrides.password || faker.internet.password()

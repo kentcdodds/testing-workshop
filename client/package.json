@@ -34,7 +34,8 @@
     "enzyme-to-json": "^3.3.0",
     "lodash.pick": "^4.4.0",
     "react-scripts": "^2.0.0-next.9754a231",
-    "react-test-renderer": "^16.2.0"
+    "react-test-renderer": "^16.2.0",
+    "til-shared": "file:other/shared"
   },
   "browserslist": {
     "development": [

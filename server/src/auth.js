@@ -6,7 +6,7 @@ import {
   isPasswordValid,
   secret,
   getUserToken,
-} from '../../shared/auth'
+} from 'til-shared/auth'
 import db from './db'
 
 const authMiddleware = {

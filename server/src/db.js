@@ -1,4 +1,4 @@
-import faker from 'faker'
+import * as generate from 'til-shared/generate'
 
 const db = {
   users: [],
@@ -20,7 +20,7 @@ const db = {
 async function insertUser(user) {
   const newUser = {
     ...user,
-    id: faker.random.uuid(),
+    id: generate.id(),
   }
   db.users.push(newUser)
   return newUser
@@ -49,7 +49,7 @@ async function deleteUser(id) {
 async function insertPost(post) {
   const newPost = {
     ...post,
-    id: faker.random.uuid(),
+    id: generate.id(),
   }
   db.posts.push(newPost)
   return newPost

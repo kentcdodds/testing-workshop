@@ -1,20 +1,19 @@
-import faker from 'faker'
+import * as generate from 'til-shared/generate'
 import db from '../src/db'
-import * as generate from '../../other/generate'
 
 function initDb() {
   const users = Array.from({length: 10}, () =>
-    generate.userData({id: faker.random.uuid()}),
+    generate.userData({id: generate.id()}),
   )
 
   const posts = users.map(u =>
-    generate.postData({authorId: u.id, id: faker.random.uuid()}),
+    generate.postData({authorId: u.id, id: generate.id()}),
   )
   db.users = users
   db.posts = posts
 
   const testUser = generate.userData({
-    id: faker.random.uuid(),
+    id: generate.id(),
     username: 'til',
     password: 'til',
   })
@@ -23,10 +22,10 @@ function initDb() {
 
 async function resetDb({testUser} = {}) {
   const users = Array.from({length: 10}, () =>
-    generate.userData({id: faker.random.uuid()}),
+    generate.userData({id: generate.id()}),
   )
   const posts = users.map(u =>
-    generate.postData({authorId: u.id, id: faker.random.uuid()}),
+    generate.postData({authorId: u.id, id: generate.id()}),
   )
   db.users = users
   db.posts = posts

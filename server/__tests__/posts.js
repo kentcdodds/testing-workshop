@@ -1,4 +1,3 @@
-import faker from 'faker'
 import axios from 'axios'
 // eslint-disable-next-line
 import {resetDb, generate} from 'server-test-utils'
@@ -21,7 +20,7 @@ afterAll(async () => {
 })
 
 beforeEach(async () => {
-  testUser = generate.userData({id: faker.random.uuid()})
+  testUser = generate.userData({id: generate.id()})
   mockData = await resetDb({testUser})
   const token = getUserToken(testUser)
   authAPI = axios.create({baseURL})
