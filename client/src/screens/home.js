@@ -60,18 +60,24 @@ function Home() {
   )
 }
 
-function Timeline({users, posts = []}) {
+function Timeline({users = [], posts = []}) {
   return (
     <div>
-      {posts.map(t => (
-        <Post
-          key={t.id}
-          post={t}
-          author={users.find(u => u.id === t.authorId)}
-        />
-      ))}
+      {posts
+        .sort(sortByLatest)
+        .map(p => (
+          <Post
+            key={p.id}
+            post={p}
+            author={users.find(u => u.id === p.authorId)}
+          />
+        ))}
     </div>
   )
+}
+
+function sortByLatest(p1, p2) {
+  return p1.date > p2.date ? -1 : 1
 }
 
 const PostContainer = glamorous.div({
@@ -105,11 +111,17 @@ const Tag = glamorous.span({
 function Post({post: {title, content, tags}, author = {username: 'unknown'}}) {
   return (
     <PostContainer>
-      <PostTitle>{title}</PostTitle>
-      <h4>by {author.username}</h4>
+      <PostTitle data-test="post-title">{title}</PostTitle>
+      <h4 data-test="post-author-username">by {author.username}</h4>
       <PostSeparator />
-      <p>{content}</p>
-      <div>{tags.map(t => <Tag key={t}>{t}</Tag>)}</div>
+      <p data-test="post-content">{content}</p>
+      <div>
+        {tags.map((t, i) => (
+          <Tag key={t} data-test={`post-tag-${i}`}>
+            {t}
+          </Tag>
+        ))}
+      </div>
     </PostContainer>
   )
 }
