@@ -175,19 +175,25 @@ individually yourself:
 # verify your environment will work with the project
 node ./scripts/verify
 
+# make symlink from client/other/shared -> shared
+ln -s $PWD/shared $PWD/client/other/shared
+# NOTE: this will be different on windows
+
+# make symlink from server/other/shared -> shared
+ln -s $PWD/shared $PWD/server/other/shared
+# NOTE: this will be different on windows
+
 # install dependencies in the root of the repo
 npm install
 
-# install dependencies in the api directory
-cd api
-npm install
+# install dependencies in the shared directory
+npm install --prefix shared
+
+# install dependencies in the server directory
+npm install --prefix server
 
 # install dependencies in the client directory
-cd ../client
-npm install
-
-# get back to the root of the repo
-cd ..
+npm install --prefix client
 
 # verify the project is ready to run
 npm run lint
