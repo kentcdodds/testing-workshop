@@ -1,6 +1,6 @@
 import db from '../db'
-import {generateUserData, generatePostData} from '../../other/generate'
-import {resetDb} from '../../other/db-test-utils'
+// eslint-disable-next-line
+import {resetDb, generate} from 'server-test-utils'
 
 let mockData
 
@@ -25,7 +25,7 @@ test('can get multiple users', async () => {
 })
 
 test('can insert a user', async () => {
-  const newUser = generateUserData()
+  const newUser = generate.userData()
   const insertedUser = await db.insertUser(newUser)
   expect(insertedUser).toMatchObject(newUser)
 
@@ -36,7 +36,7 @@ test('can insert a user', async () => {
 
 test('can update a user', async () => {
   const {4: fifthUser} = mockData.users
-  const updates = {username: 'some-username'}
+  const updates = {username: generate.username()}
   const updatedUser = await db.updateUser(fifthUser.id, updates)
   expect(updatedUser).toMatchObject(updates)
 
@@ -72,7 +72,7 @@ test('can get multiple posts', async () => {
 })
 
 test('can insert a post', async () => {
-  const newPost = generatePostData()
+  const newPost = generate.postData()
   const insertedPost = await db.insertPost(newPost)
   expect(insertedPost).toMatchObject(newPost)
 
@@ -83,7 +83,7 @@ test('can insert a post', async () => {
 
 test('can update a post', async () => {
   const {4: fifthPost} = mockData.posts
-  const newTitle = 'the new title'
+  const newTitle = generate.title()
   const updates = {title: newTitle}
   const updatedPost = await db.updatePost(fifthPost.id, updates)
   expect(updatedPost).toMatchObject(updates)

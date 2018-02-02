@@ -1,9 +1,17 @@
+/*
+ * This is a unit test for the <User /> component.
+ * It's a little bit of a tricky one because it
+ * runs code on componentDidMount and it interacts
+ * with the API a lot. Because this is a unit test,
+ * we have an inline mock of the API.
+ */
+
 import React from 'react'
 import {mount} from 'enzyme'
 import User from '../user'
 import * as apiMock from '../../utils/api'
 // eslint-disable-next-line
-import {flushAllPromises} from 'til-test-utils'
+import {flushAllPromises, generate} from 'client-test-utils'
 
 jest.mock('../../utils/api', () => {
   const mock = {}
@@ -35,11 +43,11 @@ test('attempts to get the current user on mount', async () => {
 
 test('login rerenders with the retrieved user', async () => {
   const {children, controller} = await setup()
-  const fakeUser = {username: 'luke'}
+  const fakeUser = {username: generate.username()}
   apiMock.auth.login.mockImplementationOnce(() =>
     Promise.resolve({user: fakeUser}),
   )
-  const form = {username: 'luke', password: 'skywalker'}
+  const form = generate.loginForm(fakeUser)
   controller.login(form)
   await flushAllPromises()
   expect(apiMock.auth.login).toHaveBeenCalledTimes(1)
@@ -89,7 +97,7 @@ test('on register failure, rerenders with the error', async () => {
   apiMock.auth.register.mockImplementationOnce(() =>
     Promise.reject({error: fakeError}),
   )
-  const form = {username: 'luke', password: 'skywalker'}
+  const form = generate.loginForm()
   // the catch below is simply to ignore the error thrown
   controller.register(form).catch(i => i)
   await flushAllPromises()

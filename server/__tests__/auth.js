@@ -1,9 +1,9 @@
 import faker from 'faker'
 import axios from 'axios'
 import db from '../src/db'
-import {resetDb} from '../other/db-test-utils'
+// eslint-disable-next-line
+import {resetDb, generate} from 'server-test-utils'
 import {getUserToken} from '../src/auth'
-import {generateUserData} from '../other/generate'
 import startServer from '../src/start'
 
 const getData = res => res.data
@@ -23,7 +23,7 @@ afterAll(async () => {
 })
 
 beforeEach(async () => {
-  testUser = generateUserData({id: faker.random.uuid()})
+  testUser = generate.userData({id: faker.random.uuid()})
   await resetDb({testUser})
   const token = getUserToken(testUser)
   authAPI = axios.create({baseURL})
@@ -37,7 +37,7 @@ test('get me', async () => {
 
 test('username required to register', async () => {
   const error = await api
-    .post('auth/register', {password: 'puppies'})
+    .post('auth/register', {password: generate.password()})
     .catch(getError)
   expect(error).toMatchObject({
     status: 422,
@@ -48,7 +48,7 @@ test('username required to register', async () => {
 
 test('password required to register', async () => {
   const error = await api
-    .post('auth/register', {username: 'kittens'})
+    .post('auth/register', {username: generate.username()})
     .catch(getError)
   expect(error).toMatchObject({
     status: 422,
@@ -59,7 +59,7 @@ test('password required to register', async () => {
 
 test('username required to login', async () => {
   const error = await api
-    .post('auth/login', {password: 'puppies'})
+    .post('auth/login', {password: generate.password()})
     .catch(getError)
   expect(error).toMatchObject({
     status: 422,
@@ -70,7 +70,7 @@ test('username required to login', async () => {
 
 test('password required to login', async () => {
   const error = await api
-    .post('auth/login', {username: 'kittens'})
+    .post('auth/login', {username: generate.username()})
     .catch(getError)
   expect(error).toMatchObject({
     status: 422,
@@ -81,10 +81,7 @@ test('password required to login', async () => {
 
 test('user must exist to login', async () => {
   const error = await api
-    .post('auth/login', {
-      username: 'username_will_never_exist',
-      password: 'haha',
-    })
+    .post('auth/login', generate.loginForm({username: '__will_never_exist__'}))
     .catch(getError)
   expect(error).toMatchObject({
     status: 422,
@@ -94,8 +91,8 @@ test('user must exist to login', async () => {
 })
 
 test('username must be unique', async () => {
-  const username = 'frank_sinatra'
-  await db.insertUser(generateUserData({username}))
+  const username = generate.username()
+  await db.insertUser(generate.userData({username}))
   const error = await api
     .post('auth/register', {username, password: 'nancy'})
     .catch(getError)
@@ -107,8 +104,8 @@ test('username must be unique', async () => {
 })
 
 test('successful login', async () => {
-  const password = 'some password'
-  const newTestUser = await db.insertUser(generateUserData({password}))
+  const password = generate.password()
+  const newTestUser = await db.insertUser(generate.userData({password}))
   const user = await api
     .post('auth/login', {
       username: newTestUser.username,

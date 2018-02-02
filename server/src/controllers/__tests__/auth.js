@@ -1,7 +1,8 @@
 // This is how we'd implement unit tests for the auth controller
 // compare this to the integration tests :)
 import db from '../../db'
-import {generateUserData} from '../../../other/generate'
+// eslint-disable-next-line
+import {generate} from 'server-test-utils'
 import * as authController from '../auth'
 
 function setup() {
@@ -32,7 +33,7 @@ function setup() {
 
 test('username required to register', async () => {
   const {req, res, next} = setup()
-  req.body = {password: 'puppies'}
+  req.body = {password: generate.password()}
   await authController.register(req, res, next)
   expect(res.status).toHaveBeenCalledTimes(1)
   expect(res.status).toHaveBeenCalledWith(422)
@@ -45,7 +46,7 @@ test('username required to register', async () => {
 
 test('password required to register', async () => {
   const {req, res, next} = setup()
-  req.body = {username: 'kittens'}
+  req.body = {username: generate.username()}
   await authController.register(req, res, next)
   expect(res.status).toHaveBeenCalledTimes(1)
   expect(res.status).toHaveBeenCalledWith(422)
@@ -58,7 +59,7 @@ test('password required to register', async () => {
 
 test('username required to login', async () => {
   const {req, res, next} = setup()
-  req.body = {password: 'puppies'}
+  req.body = {password: generate.password()}
   await authController.login(req, res, next)
   expect(res.status).toHaveBeenCalledTimes(1)
   expect(res.status).toHaveBeenCalledWith(422)
@@ -71,7 +72,7 @@ test('username required to login', async () => {
 
 test('password required to login', async () => {
   const {req, res, next} = setup()
-  req.body = {username: 'kittens'}
+  req.body = {username: generate.username()}
   await authController.login(req, res, next)
   expect(res.status).toHaveBeenCalledTimes(1)
   expect(res.status).toHaveBeenCalledWith(422)
@@ -83,11 +84,11 @@ test('password required to login', async () => {
 })
 
 test('username must be unique', async () => {
-  const username = 'frank_sinatra'
-  await db.insertUser(generateUserData({username}))
+  const username = generate.username()
+  await db.insertUser(generate.userData({username}))
 
   const {req, res, next} = setup()
-  req.body = {username: 'frank_sinatra', password: 'nancy'}
+  req.body = generate.loginForm({username})
   await authController.register(req, res, next)
   expect(res.status).toHaveBeenCalledTimes(1)
   expect(res.status).toHaveBeenCalledWith(422)

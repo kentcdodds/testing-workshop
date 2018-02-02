@@ -2,6 +2,7 @@ import React from 'react'
 import {Router} from 'react-router-dom'
 import {mount} from 'enzyme'
 import {createMemoryHistory} from 'history'
+import * as generate from '../../other/generate'
 
 function mountWithRouter(ui, {route = '/'} = {}) {
   const history = createMemoryHistory({initialEntries: [route]})
@@ -38,4 +39,5 @@ export {
   sel,
   flushAllPromises,
   findNodes,
+  generate,
 }

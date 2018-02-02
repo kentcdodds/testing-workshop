@@ -1,7 +1,7 @@
 import faker from 'faker'
 import axios from 'axios'
-import {resetDb} from '../other/db-test-utils'
-import {generatePostData, generateUserData} from '../other/generate'
+// eslint-disable-next-line
+import {resetDb, generate} from 'server-test-utils'
 import {getUserToken} from '../src/auth'
 import startServer from '../src/start'
 
@@ -21,7 +21,7 @@ afterAll(async () => {
 })
 
 beforeEach(async () => {
-  testUser = generateUserData({id: faker.random.uuid()})
+  testUser = generate.userData({id: faker.random.uuid()})
   mockData = await resetDb({testUser})
   const token = getUserToken(testUser)
   authAPI = axios.create({baseURL})
@@ -30,7 +30,7 @@ beforeEach(async () => {
 
 test('post CRUD', async () => {
   // create
-  const newPostData = generatePostData({authorId: testUser.id})
+  const newPostData = generate.postData({authorId: testUser.id})
   const testPost = await authAPI.post(`posts`, newPostData).then(getPost)
   expect(testPost).toMatchObject(newPostData)
 
@@ -39,7 +39,7 @@ test('post CRUD', async () => {
   expect(readPost).toEqual(testPost)
 
   // update
-  const updates = {title: 'The tale of Peter Rabbit'}
+  const updates = {title: generate.title()}
   const updatedTestPost = await authAPI
     .put(`posts/${testPost.id}`, updates)
     .then(getPost)

@@ -1,19 +1,19 @@
 import faker from 'faker'
 import db from '../src/db'
-import {generateUserData, generatePostData} from '../other/generate'
+import * as generate from '../../other/generate'
 
 function initDb() {
   const users = Array.from({length: 10}, () =>
-    generateUserData({id: faker.random.uuid()}),
+    generate.userData({id: faker.random.uuid()}),
   )
 
   const posts = users.map(u =>
-    generatePostData({authorId: u.id, id: faker.random.uuid()}),
+    generate.postData({authorId: u.id, id: faker.random.uuid()}),
   )
   db.users = users
   db.posts = posts
 
-  const testUser = generateUserData({
+  const testUser = generate.userData({
     id: faker.random.uuid(),
     username: 'til',
     password: 'til',
@@ -23,10 +23,10 @@ function initDb() {
 
 async function resetDb({testUser} = {}) {
   const users = Array.from({length: 10}, () =>
-    generateUserData({id: faker.random.uuid()}),
+    generate.userData({id: faker.random.uuid()}),
   )
   const posts = users.map(u =>
-    generatePostData({authorId: u.id, id: faker.random.uuid()}),
+    generate.postData({authorId: u.id, id: faker.random.uuid()}),
   )
   db.users = users
   db.posts = posts
@@ -36,4 +36,4 @@ async function resetDb({testUser} = {}) {
   return {users, posts}
 }
 
-export {resetDb, initDb}
+export {resetDb, initDb, generate}

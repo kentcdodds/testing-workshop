@@ -1,7 +1,15 @@
+/*
+ * This is an example of integration tests for the client
+ * They're still fairly react-specific, but less-so than
+ * the unit tests. They are also quite longer than
+ * unit tests. They cover more code than the unit tests
+ * per test.
+ */
+
 import React from 'react'
 import axiosMock from 'axios'
 // eslint-disable-next-line
-import {mountWithRouter, flushAllPromises} from 'til-test-utils'
+import {mountWithRouter, flushAllPromises, generate} from 'client-test-utils'
 import {init as initAPI} from '../utils/api'
 import App from '../app'
 
@@ -23,7 +31,7 @@ test('register a new user', async () => {
   expect(window.location.href).toContain('register')
 
   // fill out form
-  const fakeUser = {username: 'barry', password: 'allen'}
+  const fakeUser = generate.loginForm()
   const usernameNode = findNodeByTestId('username-input').instance()
   const passwordNode = findNodeByTestId('password-input').instance()
   const formWrapper = findNodeByTestId('login-form')
@@ -32,7 +40,7 @@ test('register a new user', async () => {
 
   // submit form
   const {post} = axiosMock.__mock.instance
-  const token = 'my-mock-token'
+  const token = generate.token(fakeUser)
   post.mockImplementationOnce(() =>
     Promise.resolve({
       data: {user: {...fakeUser, token}},
@@ -71,7 +79,7 @@ test('login', async () => {
   expect(window.location.href).toContain('login')
 
   // fill out form
-  const fakeUser = {username: 'barry', password: 'allen'}
+  const fakeUser = generate.loginForm()
   const usernameNode = findNodeByTestId('username-input').instance()
   const passwordNode = findNodeByTestId('password-input').instance()
   const formWrapper = findNodeByTestId('login-form')
@@ -80,7 +88,7 @@ test('login', async () => {
 
   // submit form
   const {post} = axiosMock.__mock.instance
-  const token = 'my-mock-token'
+  const token = generate.token(fakeUser)
   post.mockImplementationOnce(() =>
     Promise.resolve({
       data: {user: {...fakeUser, token}},
@@ -111,7 +119,10 @@ test('create post', async () => {
   const {get, post} = axiosMock.__mock.instance
   window.localStorage.setItem('jwt', 'my.fake.jwt')
   initAPI()
-  const fakeUser = {username: 'barry', id: 'fake-user-id'}
+  const fakeUser = {
+    username: generate.username(),
+    id: generate.id(),
+  }
   get.mockImplementation(url => {
     if (url === '/auth/me') {
       return Promise.resolve({data: {user: fakeUser}})
@@ -153,7 +164,7 @@ test('create post', async () => {
   tagsNode.value = fakePost.tags.join(',')
 
   // submit form
-  const fakeId = 'fake-id'
+  const fakeId = generate.id()
   post.mockImplementationOnce(() =>
     Promise.resolve({
       data: {post: {...post, id: fakeId}},

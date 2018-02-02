@@ -1,6 +1,7 @@
 import axios from 'axios'
 import {omit} from 'lodash'
-import {resetDb} from '../other/db-test-utils'
+// eslint-disable-next-line
+import {resetDb, generate} from 'server-test-utils'
 import startServer from '../src/start'
 
 const getData = res => res.data
@@ -24,7 +25,7 @@ beforeEach(async () => {
 
 test('user CRUD', async () => {
   // create
-  const registerData = {username: 'my-user', password: 'abc123'}
+  const registerData = generate.loginForm()
   const testUser = await api.post('auth/register', registerData).then(getUser)
   expect(testUser.username).toBe(registerData.username)
 
@@ -47,7 +48,7 @@ test('user CRUD', async () => {
   expect(readUserAuthenticated).toEqual(testUser)
 
   // update
-  const updates = {username: 'my-user2'}
+  const updates = {username: generate.username()}
   const updatedTestUser = await authAPI
     .put(`users/${testUser.id}`, updates)
     .then(getUser)

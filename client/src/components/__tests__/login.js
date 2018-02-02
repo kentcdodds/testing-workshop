@@ -1,14 +1,17 @@
+/*
+ * This is a simple unit test for a function component.
+ * These are quite easy to test generally.
+ */
+
 import React from 'react'
 import {mount} from 'enzyme'
+// eslint-disable-next-line
+import {findWrapperNodeByTestId, generate} from 'client-test-utils'
 import Login from '../login'
-
-const sel = id => `[data-test="${id}"]`
-const findWrapperNodeByTestId = (wrapper, id) =>
-  wrapper.find(sel(id)).hostNodes()
 
 test('calls onSubmit with the username and password when submitted', () => {
   const handleSubmit = jest.fn()
-  const fakeUser = {username: 'barry', password: 'allen'}
+  const fakeUser = generate.loginForm()
   const wrapper = mount(<Login onSubmit={handleSubmit} />)
   const findNodeByTestId = findWrapperNodeByTestId.bind(null, wrapper)
   const usernameNode = findNodeByTestId('username-input').instance()
