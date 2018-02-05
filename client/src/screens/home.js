@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import glamorous from 'glamorous'
 import * as api from '../utils/api'
+import Loading from './../components/loading'
 
 class RenderPromise extends Component {
   initialState = {result: null, error: null, pending: false}
@@ -46,7 +47,7 @@ function Home() {
         fn={() => Promise.all([api.users.get(), api.posts.get()])}
         render={({pending, error, result}) =>
           pending ? (
-            'loading'
+            <Loading />
           ) : error ? (
             'error'
           ) : result ? (

@@ -3,6 +3,7 @@ import glamorous from 'glamorous'
 import {BrowserRouter as Router, Route, Link, Redirect} from 'react-router-dom'
 import User from './components/user'
 import Login from './components/login'
+import Loading from './components/loading'
 import Home from './screens/home'
 import Editor from './screens/editor'
 import githubLogo from './assets/github.svg'
@@ -22,7 +23,7 @@ const TitleContainer = glamorous.div({
   padding: '30px 50px',
   boxShadow: 'var(--shadow)',
   borderRadius: '50px',
-  '@media only screen and (max-width: 895px)': {
+  '@media only screen and (max-width: 819px)': {
     order: 0,
   },
 })
@@ -51,6 +52,7 @@ const SocialLogo = glamorous.img({
   borderRadius: 20,
   padding: 15,
   marginRight: 15,
+  cursor: 'pointer',
   transition: '0.5s',
   ':hover': {
     boxShadow: 'var(--shadowHover)',
@@ -60,7 +62,7 @@ const UserBtnsContainer = glamorous.div({
   width: '25%',
   display: 'flex',
   justifyContent: 'center',
-  '@media only screen and (max-width: 895px)': {
+  '@media only screen and (max-width: 819px)': {
     order: 1,
     marginTop: 10,
     width: '50%',
@@ -100,6 +102,7 @@ const NewPostBtn = glamorous.span({
 const SocialButton = glamorous.button({
   border: 'none',
   backgroundColor: 'transparent',
+  outline: 'none',
 })
 
 const SocialMedia = () => (
@@ -118,7 +121,7 @@ function App() {
     <User>
       {({user, error, pending, login, logout, register}) =>
         pending ? (
-          <div>Loading...</div>
+          <Loading />
         ) : (
           <Router>
             <div>

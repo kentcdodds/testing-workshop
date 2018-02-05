@@ -1,5 +1,5 @@
 import React from 'react'
-import {Input, Button} from './inputs'
+import { Input, Button } from './inputs'
 
 function Login({onSubmit}) {
   return (
