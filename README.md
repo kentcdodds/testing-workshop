@@ -55,6 +55,13 @@ We'll mention other forms of testing, but these are the types we'll focus on and
 about the benefits (and tradeoffs) of [TDD](https://en.wikipedia.org/wiki/Test-driven_development). We'll learn how to
 configure the tools and why, when, where, and what to test.
 
+**NOTE: This repository is meant for instructional purposes. While you'll
+probably learn a great deal looking through this project, remember that it's
+not necessarily a recommendation to test your apps this way. Some code is
+"over covered" by unit, integration, and end-to-end tests simply to demonstrate
+the differences. In a real application it would be unnecessary to be this
+extensive in coverage.**
+
 ## Branches
 
 This project has been used to teach about testing in various settings. You may

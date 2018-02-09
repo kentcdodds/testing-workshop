@@ -31,7 +31,7 @@ beforeEach(async () => {
 
 test('get me', async () => {
   const {user} = await authAPI.get('auth/me').then(getData)
-  expect(testUser).toMatchObject(user)
+  expect({...testUser, token: generate.token(testUser)}).toMatchObject(user)
 })
 
 test('username required to register', async () => {

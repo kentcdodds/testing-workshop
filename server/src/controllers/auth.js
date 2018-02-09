@@ -58,7 +58,7 @@ function authenticate(req, res, next) {
 
 async function me(req, res) {
   if (req.user) {
-    return res.json({user: userToJSON(req.user)})
+    return res.json({user: authUserToJSON(req.user)})
   } else {
     return res.status(404).send()
   }
