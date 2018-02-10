@@ -51,9 +51,9 @@ workshop repo to teach you about testing JavaScript applications.
 2. Integration Testing with [Jest](http://facebook.github.io/jest)
 3. End to End (E2E) Testing with [Cypress](https://www.cypress.io/)
 
-We'll mention other forms of testing, but these are the types we'll focus on and learn in this workshop. We'll learn
-about the benefits (and tradeoffs) of [TDD](https://en.wikipedia.org/wiki/Test-driven_development). We'll learn how to
-configure the tools and why, when, where, and what to test.
+We'll mention other forms of testing, but these are the types we'll focus on and
+learn in this workshop. Learn more about the course goals and specific topics
+covered in the [`other/INSTRUCTIONS.md`](./other/INSTRUCTIONS.md) file.
 
 **NOTE: This repository is meant for instructional purposes. While you'll
 probably learn a great deal looking through this project, remember that it's
