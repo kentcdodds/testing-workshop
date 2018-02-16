@@ -2,7 +2,7 @@ import axios from 'axios'
 import {omit} from 'lodash'
 // eslint-disable-next-line
 import {resetDb, generate} from 'server-test-utils'
-import startServer from '../src/start'
+import startServer from '../../start'
 
 const getData = res => res.data
 const getUser = res => res.data.user

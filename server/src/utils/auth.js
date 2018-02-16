@@ -36,12 +36,8 @@ function getLocalStrategy() {
   })
 }
 
-function userToJSON({id, username, ...otherUserProps}) {
-  return {
-    id,
-    username,
-    ...omit(otherUserProps, ['exp', 'iat', 'hash', 'salt']),
-  }
+function userToJSON(user) {
+  return omit(user, ['exp', 'iat', 'hash', 'salt'])
 }
 
 export {

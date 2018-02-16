@@ -36,8 +36,11 @@ async function getUser(id) {
 
 async function updateUser(id, newInfo) {
   const user = await getUser(id)
-  Object.assign(user, newInfo)
-  return user
+  // doing this to make a new copy of the user to avoid subtle bugs
+  // that rely on mutation.
+  const newUserWithUpdates = Object.assign({}, user, newInfo)
+  db.users[db.users.indexOf(user)] = newUserWithUpdates
+  return newUserWithUpdates
 }
 
 async function deleteUser(id) {
@@ -65,8 +68,11 @@ async function getPost(id) {
 
 async function updatePost(id, newInfo) {
   const post = await getPost(id)
-  Object.assign(post, newInfo)
-  return post
+  // doing this to make a new copy of the user to avoid subtle bugs
+  // that rely on mutation.
+  const newPostWithUpdates = Object.assign({}, post, newInfo)
+  db.posts[db.posts.indexOf(post)] = newPostWithUpdates
+  return newPostWithUpdates
 }
 
 async function deletePost(id) {

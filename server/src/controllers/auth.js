@@ -1,6 +1,6 @@
 import passport from 'passport'
-import {getSaltAndHash, userToJSON, getUserToken} from '../auth'
-import db from '../db'
+import {getSaltAndHash, userToJSON, getUserToken} from '../utils/auth'
+import db from '../utils/db'
 
 const authUserToJSON = user => ({
   ...userToJSON(user),

@@ -7,3 +7,4 @@ scripts/workshop-setup.js
 scripts/verify.js
 scripts/install.js
 scripts/ensure-symlinks.js
+other/coverage-example

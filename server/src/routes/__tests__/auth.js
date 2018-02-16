@@ -1,9 +1,9 @@
 import axios from 'axios'
-import db from '../src/db'
+import db from '../../utils/db'
 // eslint-disable-next-line
 import {resetDb, generate} from 'server-test-utils'
-import {getUserToken} from '../src/auth'
-import startServer from '../src/start'
+import {getUserToken} from '../../utils/auth'
+import startServer from '../../start'
 
 const getData = res => res.data
 const getError = error => error.response

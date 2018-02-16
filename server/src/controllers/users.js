@@ -1,5 +1,5 @@
-import {userToJSON, getUserToken} from '../auth'
-import db from '../db'
+import {userToJSON, getUserToken} from '../utils/auth'
+import db from '../utils/db'
 
 function authorize(req, res, next) {
   if (req.user.id === req.params.id) {

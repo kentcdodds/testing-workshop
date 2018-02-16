@@ -1,3 +1,7 @@
-require('babel-register')
-require('./test/server-test-utils').initDb()
-require('./src')
+;(async () => {
+  require('babel-register')
+  const serverTestUtils = require('./test/server-test-utils')
+  await serverTestUtils.initDb()
+  await serverTestUtils.insertTestUser()
+  require('./src')
+})()

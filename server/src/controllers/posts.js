@@ -1,4 +1,4 @@
-import db from '../db'
+import db from '../utils/db'
 
 async function authorize(req, res, next) {
   const {authorId} = await db.getPost(req.params.id)

@@ -1,4 +1,4 @@
-import {authMiddleware} from '../auth'
+import {authMiddleware} from '../utils/auth'
 import * as postController from '../controllers/posts'
 
 function setupPostRoutes(router) {

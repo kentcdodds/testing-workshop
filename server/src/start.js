@@ -5,7 +5,7 @@ import passport from 'passport'
 import logger from 'loglevel'
 import 'express-async-errors'
 import detectPort from 'detect-port'
-import {getLocalStrategy} from './auth'
+import {getLocalStrategy} from './utils/auth'
 import setupRoutes from './routes'
 
 async function startServer({port = process.env.SERVER_PORT} = {}) {

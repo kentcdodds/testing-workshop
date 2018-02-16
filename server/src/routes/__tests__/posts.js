@@ -1,8 +1,8 @@
 import axios from 'axios'
 // eslint-disable-next-line
 import {resetDb, generate} from 'server-test-utils'
-import {getUserToken} from '../src/auth'
-import startServer from '../src/start'
+import {getUserToken} from '../../utils/auth'
+import startServer from '../../start'
 
 const getData = res => res.data
 const getPost = res => res.data.post

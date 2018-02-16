@@ -1,4 +1,4 @@
-import {authMiddleware} from '../auth'
+import {authMiddleware} from '../utils/auth'
 import * as userController from '../controllers/users'
 
 function setupUserRoutes(router) {
