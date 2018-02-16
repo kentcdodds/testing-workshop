@@ -155,6 +155,10 @@ TODO
 
 TODO
 
+**Takeaways**:
+
+* Tests often have the basic shape of: Arrange, Act, Assert
+
 ### Fixing bugs with Test-Driven Development
 
 TODO

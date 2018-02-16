@@ -47,16 +47,11 @@ async function updateUser(req, res) {
   }
 }
 
-async function deleteUser(req, res) {
-  if (!req.user || req.user.id !== req.params.id) {
-    return res.status(403).send()
-  }
-  const user = await db.getUser(req.params.id)
-  if (!user) {
-    return res.status(404).send()
-  }
-  const deletedUser = await db.deleteUser(req.params.id)
-  return res.json({user: userToJSON(deletedUser)})
-}
+// Here's where you'll add your deleteUser function!
+// 1. If the req.user.id does not match the req.param.id then send a 403
+// 2. Get the user from the DB. If that doesn't exist, send a 404
+// 3. Delete the user
+// 4. Send the user back (use userToJSON)
+// Don't forget! It needs to be an async function, and you need to add it to the list of exports below.
 
-export {getUsers, getUser, updateUser, deleteUser, authorize}
+export {getUsers, getUser, updateUser, authorize}

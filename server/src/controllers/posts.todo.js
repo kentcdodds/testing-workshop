@@ -53,16 +53,13 @@ async function updatePost(req, res) {
   }
 }
 
-async function deletePost(req, res) {
-  const post = await db.getPost(req.params.id)
-  if (!post) {
-    return res.status(404).send()
-  }
-  if (!req.user || req.user.id !== post.authorId) {
-    return res.status(403).send()
-  }
-  const deletedPost = await db.deletePost(req.params.id)
-  return res.json({post: deletedPost})
-}
+// Here's where you'll add your deletePost function!
+// It should:
+// 1. Attempt to get the post from the database (see updatePost for an example)
+// 2. If a post doesn't exist it should send a 404 error
+// 3. If the post authorId is not the same as the req.user.id, it should send a 403 error
+// 4. Delete the post
+// 5. Finally send the json for the deleted post
+// Don't forget! It needs to be an async function, and you need to add it to the list of exports below.
 
-export {authorize, getPosts, getPost, createPost, updatePost, deletePost}
+export {authorize, getPosts, getPost, createPost, updatePost}

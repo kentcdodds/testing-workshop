@@ -86,47 +86,21 @@ test('updateUser updates the user with the given changes', async () => {
   expect(userFromDb).toEqual(updatedUser)
 })
 
-test('deleteUser deletes a user', async () => {
-  const testUser = await db.insertUser(generate.userData())
-  const {req, res} = setup()
-  req.user = {id: testUser.id}
-  req.params = {id: testUser.id}
+// Here's where you'll add your tests!
+// - Think more about use cases than code coverage and use those use cases to title your tests
+// - Write the code and tests iteratively as little as necessary at a time.
 
-  await usersController.deleteUser(req, res)
-
-  expect(res.json).toHaveBeenCalledTimes(1)
-  const firstCall = res.json.mock.calls[0]
-  const firstArg = firstCall[0]
-  const {user} = firstArg
-  expect(user).toEqual(safeUser(testUser))
-  const userFromDb = await db.getPost(user.id)
-  expect(userFromDb).not.toBeDefined()
+//////// Elaboration & Feedback /////////
+// When you've finished with the exercises:
+// 1. Copy the URL below into your browser and fill out the form
+// 2. remove the `.skip` from the test below
+// 3. Change submitted from `false` to `true`
+// 4. And you're all done!
+/*
+http://ws.kcd.im/?ws=Testing&e=postsController&em=
+*/
+test.skip('I submitted my elaboration and feedback', () => {
+  const submitted = false // change this when you've submitted!
+  expect(true).toBe(submitted)
 })
-
-test('deleteUser will 404 if made to a non-existing user', async () => {
-  const {req, res} = setup()
-  const nonExistantId = generate.id()
-  req.params = {id: nonExistantId}
-  req.user = {id: nonExistantId}
-  await usersController.deleteUser(req, res)
-
-  expect(res.json).not.toHaveBeenCalled()
-  expect(res.status).toHaveBeenCalledTimes(1)
-  expect(res.status).toHaveBeenCalledWith(404)
-  expect(res.send).toHaveBeenCalledTimes(1)
-})
-
-test('deleteUser will 403 if not made by the author', async () => {
-  const testUser = await db.insertPost(generate.userData())
-  const {req, res} = setup()
-  req.params = {id: testUser.id}
-
-  await usersController.deleteUser(req, res)
-
-  expect(res.json).not.toHaveBeenCalled()
-  expect(res.status).toHaveBeenCalledTimes(1)
-  expect(res.status).toHaveBeenCalledWith(403)
-  expect(res.send).toHaveBeenCalledTimes(1)
-  const userFromDb = await db.getPost(testUser.id)
-  expect(userFromDb).toEqual(testUser)
-})
+////////////////////////////////

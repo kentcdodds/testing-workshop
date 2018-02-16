@@ -88,6 +88,7 @@
       "react/prop-types": "off",
       "no-console": "warn",
       "no-nested-ternary": "off",
+      "jest/no-disabled-tests": "off",
       "complexity": [
         "error",
         12
