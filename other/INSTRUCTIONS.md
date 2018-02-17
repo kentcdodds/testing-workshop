@@ -22,6 +22,7 @@ through it on your own if you like.
     * [Code Coverage](#code-coverage)
   * [Unit tests](#unit-tests)
     * [Mocking dependencies](#mocking-dependencies)
+  * [Test Object Factories](#test-object-factories)
   * [New features with Test-Driven Development](#new-features-with-test-driven-development)
   * [Integration tests](#integration-tests)
   * [Fixing bugs with Test-Driven Development](#fixing-bugs-with-test-driven-development)
@@ -243,6 +244,27 @@ could go.
 * Mocking dependencies is sometimes the _only_ way to write reliable tests
 * Jest has an amazing mocking library
 
+### Test Object Factories
+
+**Demo**:
+
+1. Open `server/src/controllers/__tests__/users.todo.js` and `server/src/controllers/users.todo.js`
+2. Implement a test for `getUsers` and `getUser`
+3. Demonstrate the test object factory pattern by extracting the common `req`, and `res` setup to a `setup` function
+
+**Exercise**:
+
+> This one's optional based on how much time is available...
+
+1. Open `server/src/controllers/__tests__/posts.todo.js` and `server/src/controllers/posts.todo.js`
+2. Implement a test for `getPosts` and `getPost` using test object factories
+
+**Takeaways**:
+
+* Multiple tests that look basically the same can be hard to maintain/understand
+* Using a test object factory allows you to abstract some common code and leave
+  only the code that's relevant for the test itself.
+
 ### New features with Test-Driven Development
 
 **Demo**:
@@ -367,9 +389,3 @@ list of things we'll need to cover for you to be successful for this workshop:
 * TODO
 
 #### Utilities
-
----
-
-TODO: find a place for this takeaway:
-
-* "Object Mother" or "Test Object Factories" are really handy (when kept simple)
