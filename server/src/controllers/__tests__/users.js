@@ -11,7 +11,6 @@ function setup() {
     body: {},
   }
   const res = {}
-  const next = jest.fn()
   Object.assign(res, {
     status: jest.fn(
       function status() {
@@ -29,7 +28,7 @@ function setup() {
       }.bind(res),
     ),
   })
-  return {req, res, next}
+  return {req, res}
 }
 
 const safeUser = u => omit(u, ['salt', 'hash'])

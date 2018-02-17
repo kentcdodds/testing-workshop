@@ -19,9 +19,7 @@ beforeAll(async () => {
   api = axios.create({baseURL})
 })
 
-afterAll(async () => {
-  await server.close()
-})
+afterAll(() => server.close())
 
 beforeEach(async () => {
   testUser = generate.userData({id: generate.id()})

@@ -245,7 +245,20 @@ could go.
 
 ### New features with Test-Driven Development
 
-TODO
+**Demo**:
+
+1. Open `server/src/controllers/__tests__/users.todo.js` and `server/src/controllers/users.todo.js`
+2. Implement a `deleteUser` async function using TDD.
+
+**Exercise**:
+
+1. Open `server/src/controllers/__tests__/posts.todo.js` and `server/src/controllers/posts.todo.js`
+2. Implement a `deletePost` async function using TDD.
+
+**Takeaways**:
+
+* Implement one part at a time to keep focused.
+* Red, Green, Refactor (Don't forget the refactor!)
 
 ### Integration tests
 
@@ -257,20 +270,7 @@ TODO
 
 ### Fixing bugs with Test-Driven Development
 
-**Demo**:
-
-1. Open `server/src/controllers/users.todo.js` and `server/src/controllers/users.todo.js`
-2. Implement a `deleteUser` async function using TDD.
-
-**Exercise**:
-
-1. Open `server/src/controllers/posts.todo.js` and `server/src/controllers/posts.todo.js`
-2. Implement a `deletePost` async function using TDD.
-
-**Takeaways**:
-
-* Implement one part at a time to keep focused.
-* Red, Green, Refactor (Don't forget the refactor!)
+TODO
 
 ### Write tests. Not too many. Mostly integration.
 

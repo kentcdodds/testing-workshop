@@ -11,7 +11,6 @@ function setup() {
     body: {},
   }
   const res = {}
-  const next = jest.fn()
   Object.assign(res, {
     status: jest.fn(
       function status() {
@@ -29,7 +28,7 @@ function setup() {
       }.bind(res),
     ),
   })
-  return {req, res, next}
+  return {req, res}
 }
 
 beforeEach(() => initDb())
@@ -61,7 +60,7 @@ test('getPost returns the specific post', async () => {
   const {post} = firstArg
   expect(post).toEqual(testPost)
   const postFromDb = await db.getPost(post.id)
-  expect(postFromDb).toEqual(testPost)
+  expect(post).toEqual(postFromDb)
 })
 
 test('updatePost updates the post with the given changes', async () => {
@@ -84,7 +83,7 @@ test('updatePost updates the post with the given changes', async () => {
   const {post} = firstArg
   expect(post).toEqual(updatedPost)
   const postFromDb = await db.getPost(post.id)
-  expect(postFromDb).toEqual(updatedPost)
+  expect(post).toEqual(postFromDb)
 })
 
 test('deletePost deletes a post', async () => {
