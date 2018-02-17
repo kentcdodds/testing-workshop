@@ -16,7 +16,6 @@ through it on your own if you like.
 * [Setup](#setup)
   * [Learning the codebase](#learning-the-codebase)
 * [🕴 Testing Practices and Principles:](#-testing-practices-and-principles)
-  * [Course Topics](#course-topics)
   * [What's a test](#whats-a-test)
   * [What types of testing are there?](#what-types-of-testing-are-there)
   * [Brief intro to Jest](#brief-intro-to-jest)
@@ -28,7 +27,7 @@ through it on your own if you like.
   * [Fixing bugs with Test-Driven Development](#fixing-bugs-with-test-driven-development)
   * [Write tests. Not too many. Mostly integration.](#write-tests-not-too-many-mostly-integration)
 * [⚛️ Testing React and Web Applications:](#-testing-react-and-web-applications)
-  * [Course Topics](#course-topics-1)
+  * [Course Topics](#course-topics)
   * [What's a test](#whats-a-test-1)
   * [What types of testing are there?](#what-types-of-testing-are-there-1)
   * [Configuring Jest](#configuring-jest)
@@ -62,7 +61,7 @@ The main ones you should care about are:
 
 ## 🕴 Testing Practices and Principles:
 
-### Course Topics
+**Course Topics**
 
 * Fundamentals behind tests and testing frameworks
 * Distinctions of different forms of testing
@@ -84,7 +83,7 @@ files.
 Learn more about this from:
 ["But really, what is a JavaScript test?"](https://blog.kentcdodds.com/46fe5f3fad77)
 
-**New Terms**:
+**New Things**:
 
 * Assertion: A way for you to specify how things should be. Will throw an error if they are not that way, this is what fails the test.
 
@@ -103,9 +102,73 @@ Watch this 5 minute lightning talk:
 We're focusing on principles here so this introduction will be useful enough to
 get you productive for the workshop, but brief enough so we can move on to the
 main topics. Here's a list of things we'll need to cover for you to be
-successful for this workshop:
+successful for this workshop
+([full list of assertions here](https://facebook.github.io/jest/docs/en/expect.html)):
 
-TODO
+* [`toBe`](https://facebook.github.io/jest/docs/en/expect.html#tobevalue) is
+  basically `===`: `expect(1).toBe(1)`
+* [`toEqual`](https://facebook.github.io/jest/docs/en/expect.html#toequalvalue)
+  is like [`lodash.isEqual`](https://lodash.com/docs/4.17.4#isEqual):
+  `expect({a: {b: 'c'}, d: 'e'}).toEqual({a: {b: 'c'}, d: 'e'})`
+* [`toMatchObject`](https://facebook.github.io/jest/docs/en/expect.html#tomatchobjectobject)
+  is similar to `toEqual`, but for partial equality:
+  `expect({a: {b: 'c'}, d: 'e'}).toEqual({d: 'e'})`
+* [`toHaveBeenCalledTimes`](https://facebook.github.io/jest/docs/en/expect.html#tohavebeencalledtimesnumber)
+  is a jest mock function (`jest.fn()`) assertion:
+  `expect(mockFn).toHaveBeenCalledTimes(0)`
+* [`toHaveBeenCalledWith`](https://facebook.github.io/jest/docs/en/expect.html#tohavebeencalledwitharg1-arg2-)
+  is a jest mock function (`jest.fn()`) assertion. The arguments correspond to
+  what you expect it to have been called with:
+  `expect(mockFn).toHaveBeenCalledWith(arg1, arg2)`
+* [`toBeGreaterThan`](https://facebook.github.io/jest/docs/en/expect.html#tobegreaterthannumber)
+  is a number assertion: `expect(1).toBeGreaterThan(0)`
+* [`toBeFalsy`](https://facebook.github.io/jest/docs/en/expect.html#tobefalsy)
+  is a JavaScript falsy assertion: `expect(0).toBeFalsy()`, `expect(null).toBeFalsy()`
+
+For `toEqual`, `toMatchObject`, and `toHaveBeenCalledWith`, you can match a
+schema using some utilities available on the `expect` global. For example:
+
+```javascript
+const birthday = {
+  day: 18,
+  month: 10,
+  year: 1988,
+  meta: {display: 'Oct 18th, 1988'},
+}
+const schema = {
+  day: expect.any(Number),
+  month: expect.any(Number),
+  year: expect.any(Number),
+  meta: {display: expect.stringContaining('1988')},
+  // there's also expect.arrayContaining, or expect.objectContaining
+}
+expect(birthday).toEqual(schema)
+```
+
+You can negate any assertion by prefixing it with `.not`. For example:
+`expect(2).not.toBe(3)`
+
+If you would like to get more fine-grained assertions on mock function
+arguments, you can get them from the `.mock.calls` property on the mock
+function:
+
+```javascript
+const myFn = jest.fn()
+myFn('first', {second: 'val'})
+const calls = myFn.mock.calls
+const firstCall = calls[0]
+const firstArg = firstCall[0]
+const secondArg = firstCall[1]
+
+expect(firstArg).toBe('first')
+expect(secondArg).toEqual({second: 'val'})
+```
+
+You may also destructure those args in a single line:
+
+```javascript
+const [[firstArg, secondArg]] = myFn.mock.calls
+```
 
 #### Code Coverage
 
@@ -115,7 +178,7 @@ instrumented with coverage meaning there's a variable set up for the file
 and the code has been changed to include tracking of everywhere the code path
 could go.
 
-**New Terms**:
+**New Things**:
 
 * Branch: A branch in the code path. For example: `if`, `else`, `ternary`, `switch`.
 * Statement: A syntax expression intended to be executed: Function call and/or assignment
@@ -134,18 +197,51 @@ could go.
 
 ### Unit tests
 
+**Demo**:
+
+1. Open `server/src/utils/__tests__/auth.todo.js` and `server/src/utils/auth.js`
+2. Implement tests for `isPasswordAllowed`
+
+**Exercise**:
+
+1. Stay in `server/src/utils/__tests__/auth.todo.js` and `server/src/utils/auth.js`
+2. Implement a single test for `userToJSON`
+
 **Takeaways**:
 
 * Interact with the unit in the same way you would in the actual code. Then
   assert on the resulting value or changes in state.
-* Pure functions === easiest to unit test
+* Pure functions are the easiest to unit test
 * Test for use cases rather than for code coverage
-* "Object Mother" or "Test Object Factories" are really handy (when kept simple)
 * Using variables to be explicit about relationships is useful (when kept simple).
 
 #### Mocking dependencies
 
-TODO: When it's useful, when it's not
+**New Things**:
+
+* `jest.mock` allows you to mock a dependency
+* `jest.fn` allows you to create a function which keeps track of how it's called
+* `jest.spyOn` allows you to wrap an object's function with a mock function.
+
+**Demo**:
+
+1. Open `server/src/utils/gist.js` and `server/src/utils/__tests__/gist.todo.js`
+2. Implement an axios mock (inline with `jest.mock`)
+3. Write the test and make assertions on the mock
+4. Remove the inline mock and show the existing `__mocks__/axios.js` file
+
+**Exercise**:
+
+1. Open `server/src/utils/myjson.js` and `server/src/utils/__tests__/myjson.todo.js`
+2. (Optionally) Implement an axios mock (inline with `jest.mock`)
+3. Write the test and make assertions on the mock
+4. Remove the inline mock use the existing `__mocks__/axios.js` file
+
+**Takeaways**:
+
+* Mocking dependencies reduces confidence that our application works
+* Mocking dependencies is sometimes the _only_ way to write reliable tests
+* Jest has an amazing mocking library
 
 ### New features with Test-Driven Development
 
@@ -161,7 +257,20 @@ TODO
 
 ### Fixing bugs with Test-Driven Development
 
-TODO
+**Demo**:
+
+1. Open `server/src/controllers/users.todo.js` and `server/src/controllers/users.todo.js`
+2. Implement a `deleteUser` async function using TDD.
+
+**Exercise**:
+
+1. Open `server/src/controllers/posts.todo.js` and `server/src/controllers/posts.todo.js`
+2. Implement a `deletePost` async function using TDD.
+
+**Takeaways**:
+
+* Implement one part at a time to keep focused.
+* Red, Green, Refactor (Don't forget the refactor!)
 
 ### Write tests. Not too many. Mostly integration.
 
@@ -193,7 +302,7 @@ files.
 Learn more about this from:
 ["But really, what is a JavaScript test?"](https://blog.kentcdodds.com/46fe5f3fad77)
 
-**New Terms**:
+**New Things**:
 
 * Assertion: A way for you to specify how things should be. Will throw an error if they are not that way, this is what fails the test.
 
@@ -209,7 +318,7 @@ Watch this 5 minute lightning talk:
 
 ### Configuring Jest
 
-**New Terms**:
+**New Things**:
 
 * Code Coverage: A mechanism for us to understand how much of our code is run during the unit tests. 100% for libs, 70%ish for applications.
 
@@ -231,7 +340,7 @@ instrumented with coverage meaning there's a variable set up for the file
 and the code has been changed to include tracking of everywhere the code path
 could go.
 
-**New Terms**:
+**New Things**:
 
 * Branch: A branch in the code path. For example: `if`, `else`, `ternary`, `switch`.
 * Statement: A syntax expression intended to be executed: Function call and/or assignment
@@ -258,3 +367,9 @@ list of things we'll need to cover for you to be successful for this workshop:
 * TODO
 
 #### Utilities
+
+---
+
+TODO: find a place for this takeaway:
+
+* "Object Mother" or "Test Object Factories" are really handy (when kept simple)

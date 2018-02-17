@@ -1,5 +1,6 @@
-// you'll need to import the function you need to use:
-// import {userToJSON} from '../auth'
+test('isPasswordAllowed only allows some passwords', () => {
+  // here's where I'll demo things for you :)
+})
 
 test('userToJSON excludes secure properties', () => {
   // Here you'll need to create a test user object

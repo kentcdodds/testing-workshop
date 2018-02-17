@@ -5,6 +5,8 @@ import {resetDb, generate} from 'server-test-utils'
 import {getUserToken} from '../../utils/auth'
 import startServer from '../../start'
 
+jest.unmock('axios')
+
 const getData = res => res.data
 const getError = error => error.response
 const getUser = res => res.data.user

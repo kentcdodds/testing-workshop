@@ -4,6 +4,8 @@ import {omit} from 'lodash'
 import {resetDb, generate} from 'server-test-utils'
 import startServer from '../../start'
 
+jest.unmock('axios')
+
 const getData = res => res.data
 const getUser = res => res.data.user
 

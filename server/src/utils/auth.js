@@ -40,10 +40,15 @@ function userToJSON(user) {
   return omit(user, ['exp', 'iat', 'hash', 'salt'])
 }
 
+function isPasswordAllowed(password) {
+  return password.length > 6 && /\d/.test(password) && /\D/.test(password)
+}
+
 export {
   authMiddleware,
   getSaltAndHash,
   userToJSON,
   getLocalStrategy,
   getUserToken,
+  isPasswordAllowed,
 }
