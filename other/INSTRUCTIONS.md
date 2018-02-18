@@ -281,14 +281,26 @@ could go.
 
 * Implement one part at a time to keep focused.
 * Red, Green, Refactor (Don't forget the refactor!)
+* Tests often have the basic shape of: Arrange, Act, Assert
 
 ### Integration tests
 
-TODO
+**Demo**:
+
+1. Open `server/src/routes/__tests__/users.todo.js` and `server/src/controllers/users.js`
+2. Implement requests to verify each of the users endpoints.
+
+**Exercise**:
+
+1. Open `server/src/routes/__tests__/posts.todo.js` and `server/src/controllers/posts.js`
+2. Implement requests to verify each of the posts endpoints.
 
 **Takeaways**:
 
-* Tests often have the basic shape of: Arrange, Act, Assert
+* Multiple assertions within a single test is often more pragmatic/practical
+  than splitting things up into multiple tests.
+* Integration often takes a fair amount more effort/setup, and has more points
+  of failure, but the payoff is much greater.
 
 ### Fixing bugs with Test-Driven Development
 

@@ -1,7 +1,7 @@
 import axios from 'axios'
 import {omit} from 'lodash'
 // eslint-disable-next-line
-import {resetDb, generate} from 'server-test-utils'
+import {initDb, generate} from 'server-test-utils'
 import startServer from '../../start'
 
 jest.unmock('axios')
@@ -17,12 +17,10 @@ beforeAll(async () => {
   api = axios.create({baseURL})
 })
 
-afterAll(async () => {
-  await server.close()
-})
+afterAll(() => server.close())
 
 beforeEach(async () => {
-  mockData = await resetDb()
+  mockData = await initDb()
 })
 
 test('user CRUD', async () => {

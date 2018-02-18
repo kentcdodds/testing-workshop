@@ -27,6 +27,6 @@ http://ws.kcd.im/?ws=Testing&e=auth%20util&em=
 */
 test.skip('I submitted my elaboration and feedback', () => {
   const submitted = false // change this when you've submitted!
-  expect(true).toBe(submitted)
+  expect(submitted).toBe(true)
 })
 ////////////////////////////////

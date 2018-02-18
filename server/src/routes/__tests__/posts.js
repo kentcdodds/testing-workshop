@@ -17,9 +17,7 @@ beforeAll(async () => {
   api = axios.create({baseURL})
 })
 
-afterAll(async () => {
-  await server.close()
-})
+afterAll(() => server.close())
 
 beforeEach(async () => {
   testUser = generate.userData({id: generate.id()})
@@ -50,7 +48,7 @@ test('post CRUD', async () => {
   const deletedPost = await authAPI.delete(`posts/${testPost.id}`).then(getPost)
   expect(deletedPost).toEqual(updatedTestPost)
 
-  // read of deleted user
+  // read of deleted post
   const error = await api.get(`posts/${deletedPost.id}`).catch(e => e.response)
   expect(error.status).toBe(404)
 })

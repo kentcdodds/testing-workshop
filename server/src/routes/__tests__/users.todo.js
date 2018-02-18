@@ -1,7 +1,3 @@
-// COMMENT_START
-/* eslint jest/no-identical-title:0,jest/no-disabled-tests:0 */
-// COMMENT_END
-// WORKSHOP_START
 //////// Elaboration & Feedback /////////
 // When you've finished with the exercises:
 // 1. Copy the URL below into your browser and fill out the form
@@ -9,17 +5,10 @@
 // 3. Change submitted from `false` to `true`
 // 4. And you're all done!
 /*
-http://ws.kcd.im/?ws=Testing&e=TDD&em=
+http://ws.kcd.im/?ws=Testing&e=users%20integration&em=
 */
 test.skip('I submitted my elaboration and feedback', () => {
   const submitted = false // change this when you've submitted!
   expect(submitted).toBe(true)
 })
 ////////////////////////////////
-// WORKSHOP_END
-// FINAL_START
-test('I submitted my elaboration and feedback', () => {
-  const submitted = true
-  expect(submitted).toBe(true)
-})
-// FINAL_END

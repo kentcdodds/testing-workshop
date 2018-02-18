@@ -1,11 +1,11 @@
 import db from '../db'
 // eslint-disable-next-line
-import {resetDb, generate} from 'server-test-utils'
+import {initDb, generate} from 'server-test-utils'
 
 let mockData
 
 beforeEach(async () => {
-  mockData = await resetDb()
+  mockData = await initDb()
 })
 
 test('can get a user', async () => {
