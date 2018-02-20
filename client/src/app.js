@@ -99,7 +99,7 @@ const NewPostBtn = glamorous.span({
   },
 })
 
-const SocialButton = glamorous.button({
+const SocialButton = glamorous.a({
   border: 'none',
   backgroundColor: 'transparent',
   outline: 'none',
@@ -107,10 +107,10 @@ const SocialButton = glamorous.button({
 
 const SocialMedia = () => (
   <UserBtnsContainer>
-    <SocialButton>
+    <SocialButton href="https://twitter.com/kentcdodds">
       <SocialLogo src={twitterLogo} />
     </SocialButton>
-    <SocialButton>
+    <SocialButton href="https://github.com/kentcdodds/testing-workshop">
       <SocialLogo src={githubLogo} />
     </SocialButton>
   </UserBtnsContainer>
