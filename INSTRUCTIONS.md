@@ -309,9 +309,34 @@ could go.
 
 **Instruction**:
 
+> This one doesn't require a demo
+
+1. Open `server/src/routes/users.js` and replace `../controllers/users` with
+   `../controllers/users.bug.todo` (without anyone noticing?)
+2. Run `npm run dev` and open the app. Note that the users endpoint is returning
+   all of the user information (including the `salt` and `hash`).
+3. Open the `server/src/routes/users.js` file again and note that the users
+   endpoint codepath goes through `server/src/controllers/users.bug.todo.js`.
+4. Notice the bug in the users method.
+
 **Exercise**:
 
+1. Open `server/src/controllers/__tests__/users.bug.todo.js` and
+   `server/src/controllers/users.bug.todo.js`
+2. Implement the test for the bug fix first, then fix the bug
+
 **Takaways**:
+
+* Notice that we can be more certain that our code changes fixed the bug because
+  we reproduced the failure in our tests and our code changes fixed the tests.
+* Notice also that after we've manually verified things work as well, we should
+  hopefully never have to do so again because the test is in place to ensure it
+  wont break without failing the test.
+* This could also have been done using an integration test instead. It would
+  have actually been easier to implement the test before we found where the bug
+  was. We didn't do that here in an effort to keep things simple and general,
+  but if you _can_ implement the test at a high level somewhere first, that can
+  be a real benefit in helping identify where the bug is.
 
 ### End-to-end testing
 
