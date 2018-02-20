@@ -199,7 +199,7 @@ could go.
 
 ### Unit tests
 
-**Demo**:
+**Instruction**:
 
 1. Open `server/src/utils/__tests__/auth.todo.js` and `server/src/utils/auth.js`
 2. Implement tests for `isPasswordAllowed`
@@ -225,7 +225,7 @@ could go.
 * `jest.fn` allows you to create a function which keeps track of how it's called
 * `jest.spyOn` allows you to wrap an object's function with a mock function.
 
-**Demo**:
+**Instruction**:
 
 1. Open `server/src/utils/gist.js` and `server/src/utils/__tests__/gist.todo.js`
 2. Implement an axios mock (inline with `jest.mock`)
@@ -247,7 +247,7 @@ could go.
 
 ### Test Object Factories
 
-**Demo**:
+**Instruction**:
 
 1. Open `server/src/controllers/__tests__/users.todo.js` and `server/src/controllers/users.todo.js`
 2. Implement a test for `getUsers` and `getUser`
@@ -268,7 +268,7 @@ could go.
 
 ### New features with Test-Driven Development
 
-**Demo**:
+**Instruction**:
 
 1. Open `server/src/controllers/__tests__/users.todo.js` and `server/src/controllers/users.todo.js`
 2. Implement a `deleteUser` async function using TDD.
@@ -286,7 +286,7 @@ could go.
 
 ### Integration tests
 
-**Demo**:
+**Instruction**:
 
 1. Open `server/src/routes/__tests__/users.todo.js` and `server/src/controllers/users.js`
 2. Implement requests to verify each of the users endpoints.
@@ -305,11 +305,23 @@ could go.
 
 ### Fixing bugs with Test-Driven Development
 
-TODO
+**New Things**:
+
+**Instruction**:
+
+**Exercise**:
+
+**Takaways**:
 
 ### End-to-end testing
 
-**Demo**:
+**New Things**:
+
+* The new script is `npm run test:e2e`
+* Cypress uses a mocha-like framework for tests (`describe`, and `it`)
+* Cypress uses a chai-like assertion library.
+
+**Instruction**:
 
 1. Open `cypress/e2e/auth.register.todo.js` and run `npm run test:e2e`
 2. Run the tests `auth.register.todo.js`
