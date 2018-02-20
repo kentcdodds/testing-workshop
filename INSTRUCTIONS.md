@@ -178,7 +178,8 @@ Take a look at `other/coverage-example`. Look at the `example.js` file and
 compare it to the `example.coverage.js` file. The one with coverage has been
 instrumented with coverage meaning there's a variable set up for the file
 and the code has been changed to include tracking of everywhere the code path
-could go.
+could go. Open up `coverage/lcov-report/index.html` in a browser to see the
+report that this is intended to create.
 
 **New Things**:
 
@@ -247,6 +248,14 @@ could go.
 
 ### Test Object Factories
 
+**New Things**:
+
+* `beforeEach` allows you to run code before every test. There's also
+  `afterEach`, but using that can be less optimal in some situations. It's
+  generally better to use `beforeEach` to clean up and prepare the environment
+  for your test so if it fails the environment remains as it is at the time of
+  the failure which can help debugging why the failure occurred.
+
 **Instruction**:
 
 1. Open `server/src/controllers/__tests__/users.todo.js` and `server/src/controllers/users.todo.js`
@@ -286,6 +295,14 @@ could go.
 
 ### Integration tests
 
+**New Things**:
+
+* Because integration tests are higher level, they require a bit more setup.
+  The `startServer` function accepts an options object. One option is the `port`
+  that should be used to start the server. It's important to specify that
+  because when running the tests in parallel, it's impossible to know exactly
+  which port other tests are using.
+
 **Instruction**:
 
 1. Open `server/src/routes/__tests__/users.todo.js` and `server/src/controllers/users.js`
@@ -309,19 +326,20 @@ could go.
 
 **Instruction**:
 
-> This one doesn't require a demo
-
 1. Open `server/src/routes/users.js` and replace `../controllers/users` with
    `../controllers/users.bug.todo` (without anyone noticing?)
 2. Run `npm run dev` and open the app. Note that the users endpoint is returning
    all of the user information (including the `salt` and `hash`).
-3. Open the `server/src/routes/users.js` file again and note that the users
+3. Open `server/src/routes/__tests__/users.todo.js` and add a test that
+   reproduces the bug (note: this is the same test the attendees need to
+   implement in their exercise).
+4. Open the `server/src/routes/users.js` file again and note that the users
    endpoint codepath goes through `server/src/controllers/users.bug.todo.js`.
-4. Notice the bug in the users method.
+5. Notice the bug in the users method.
 
 **Exercise**:
 
-1. Open `server/src/controllers/__tests__/users.bug.todo.js` and
+1. Open `server/src/routes/__tests__/users.bug.todo.js` and
    `server/src/controllers/users.bug.todo.js`
 2. Implement the test for the bug fix first, then fix the bug
 
@@ -332,11 +350,8 @@ could go.
 * Notice also that after we've manually verified things work as well, we should
   hopefully never have to do so again because the test is in place to ensure it
   wont break without failing the test.
-* This could also have been done using an integration test instead. It would
-  have actually been easier to implement the test before we found where the bug
-  was. We didn't do that here in an effort to keep things simple and general,
-  but if you _can_ implement the test at a high level somewhere first, that can
-  be a real benefit in helping identify where the bug is.
+* By implementing this as a higher level test, it was easier to write a test to
+  find the bug without knowing exactly where the bug was or what was causing it.
 
 ### End-to-end testing
 
