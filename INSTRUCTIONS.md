@@ -26,6 +26,7 @@ through it on your own if you like.
   * [New features with Test-Driven Development](#new-features-with-test-driven-development)
   * [Integration tests](#integration-tests)
   * [Fixing bugs with Test-Driven Development](#fixing-bugs-with-test-driven-development)
+  * [End-to-end testing](#end-to-end-testing)
   * [Write tests. Not too many. Mostly integration.](#write-tests-not-too-many-mostly-integration)
 * [⚛️ Testing React and Web Applications:](#-testing-react-and-web-applications)
   * [Course Topics](#course-topics)
@@ -305,6 +306,29 @@ could go.
 ### Fixing bugs with Test-Driven Development
 
 TODO
+
+### End-to-end testing
+
+**Demo**:
+
+1. Open `cypress/e2e/auth.register.todo.js` and run `npm run test:e2e`
+2. Run the tests `auth.register.todo.js`
+3. Implement the register test
+
+**Exercise**:
+
+1. Open `cypress/e2e/auth.login.todo.js` and run `npm run test:e2e`
+2. Run the tests `auth.login.todo.js`
+3. Implement the login test
+
+**Takeaways**:
+
+* Once you've verified registration works in the UI, you should avoid needless
+  test bottlenecks by using a utility to register a new user rather than
+  registering a new user with the UI.
+* E2E tests allow you to use your app like a user which gives you a LOT more
+  confidence that things will work as expected when a user does use your app.
+* Cypress has an AMAZING UX for writing E2E tests for web apps!
 
 ### Write tests. Not too many. Mostly integration.
 
