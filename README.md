@@ -53,7 +53,7 @@ workshop repo to teach you about testing JavaScript applications.
 
 We'll mention other forms of testing, but these are the types we'll focus on and
 learn in this workshop. Learn more about the course goals and specific topics
-covered in the [`other/INSTRUCTIONS.md`](./other/INSTRUCTIONS.md) file.
+covered in the [`INSTRUCTIONS.md`](./INSTRUCTIONS.md) file.
 
 **NOTE: This repository is meant for instructional purposes. While you'll
 probably learn a great deal looking through this project, remember that it's
