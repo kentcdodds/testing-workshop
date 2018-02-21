@@ -114,7 +114,7 @@ successful for this workshop
   `expect({a: {b: 'c'}, d: 'e'}).toEqual({a: {b: 'c'}, d: 'e'})`
 * [`toMatchObject`](https://facebook.github.io/jest/docs/en/expect.html#tomatchobjectobject)
   is similar to `toEqual`, but for partial equality:
-  `expect({a: {b: 'c'}, d: 'e'}).toEqual({d: 'e'})`
+  `expect({a: {b: 'c'}, d: 'e'}).toMatchObject({d: 'e'})`
 * [`toHaveBeenCalledTimes`](https://facebook.github.io/jest/docs/en/expect.html#tohavebeencalledtimesnumber)
   is a jest mock function (`jest.fn()`) assertion:
   `expect(mockFn).toHaveBeenCalledTimes(0)`
