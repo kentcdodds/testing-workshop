@@ -47,6 +47,7 @@
     "faker": "^4.1.0",
     "fs-extra": "^5.0.0",
     "husky": "^0.14.3",
+    "inquirer": "^5.1.0",
     "jest": "^22.1.2",
     "lint-staged": "^6.1.1",
     "lodash.omit": "^4.5.0",
