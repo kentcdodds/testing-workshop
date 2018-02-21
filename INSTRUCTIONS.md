@@ -360,6 +360,12 @@ report that this is intended to create.
 * The new script is `npm run test:e2e`
 * Cypress uses a mocha-like framework for tests (`describe`, and `it`)
 * Cypress uses a chai-like assertion library.
+* Cypress has an internal queueing system for it's commands. Each command can
+  yield a subject which allows you to execute commands on that subject. Think
+  of the `cy` global as `user` and you're giving the user instructions of what
+  to do. You pretty much chain everything from one command to the other unless
+  you want to context switch to a new task.
+  [learn more](https://docs.cypress.io/guides/core-concepts/introduction-to-cypress.html#Subject-Management)
 
 **Instruction**:
 
