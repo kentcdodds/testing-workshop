@@ -14,8 +14,9 @@ import {init as initAPI} from '../utils/api'
 import App from '../app'
 
 beforeEach(() => {
-  window.localStorage.removeItem('jwt')
+  window.localStorage.removeItem('token')
   axiosMock.__mock.reset()
+  initAPI()
 })
 
 test('register a new user', async () => {
@@ -60,7 +61,7 @@ test('register a new user', async () => {
   wrapper.update()
 
   // assert the state of the world
-  expect(window.localStorage.getItem('jwt')).toBe(token)
+  expect(window.localStorage.getItem('token')).toBe(token)
   expect(window.location.href).not.toContain('register')
   expect(findNodeByTestId('username-display').text()).toEqual(fakeUser.username)
   expect(findNodeByTestId('logout-button').length).toBe(1)
@@ -108,7 +109,7 @@ test('login', async () => {
   wrapper.update()
 
   // assert the state of the world
-  expect(window.localStorage.getItem('jwt')).toBe(token)
+  expect(window.localStorage.getItem('token')).toBe(token)
   expect(window.location.href).not.toContain('login')
   expect(findNodeByTestId('username-display').text()).toEqual(fakeUser.username)
   expect(findNodeByTestId('logout-button').length).toBe(1)
@@ -117,11 +118,13 @@ test('login', async () => {
 test('create post', async () => {
   // setup things to simulate being logged in
   const {get, post} = axiosMock.__mock.instance
-  window.localStorage.setItem('jwt', 'my.fake.jwt')
+  const fakeToken = 'my.fake.token'
+  window.localStorage.setItem('token', fakeToken)
   initAPI()
   const fakeUser = {
     username: generate.username(),
     id: generate.id(),
+    token: fakeToken,
   }
   get.mockImplementation(url => {
     if (url === '/auth/me') {

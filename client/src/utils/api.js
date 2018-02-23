@@ -1,11 +1,6 @@
 import axios from 'axios'
-import queryString from 'query-string'
 
-const api = axios.create({
-  baseURL:
-    queryString.parse(window.location.search)['api-url'] ||
-    process.env.REACT_APP_API_URL,
-})
+let api, isLoggedIn
 
 const getData = res => res.data
 
@@ -18,32 +13,29 @@ const requests = {
 
 const auth = {
   me() {
-    if (!api.defaults.headers.common.authorization) {
+    if (!isLoggedIn) {
       return Promise.resolve({user: null})
     }
     return requests.get('/auth/me').catch(error => {
       if (error.response.status === 401) {
-        window.localStorage.removeItem('jwt')
-        setToken(null)
+        logout()
         return {user: null}
       }
       return Promise.reject(error)
     })
   },
   logout: () => {
-    setToken(null)
+    logout()
     return Promise.resolve({user: null})
   },
   login: form =>
     requests.post('/auth/login', form).then(data => {
-      window.localStorage.setItem('jwt', data.user.token)
-      setToken(data.user.token)
+      login({token: data.user.token})
       return data
     }),
   register: form =>
     requests.post('/auth/register', form).then(data => {
-      window.localStorage.setItem('jwt', data.user.token)
-      setToken(data.user.token)
+      login({token: data.user.token})
       return data
     }),
 }
@@ -62,16 +54,30 @@ const posts = {
   create: post => requests.post('/posts', post),
 }
 
-function setToken(token) {
-  if (token) {
-    api.defaults.headers.common.authorization = `Bearer ${token}`
-  } else {
-    delete api.defaults.headers.common.authorization
-  }
+function logout() {
+  window.localStorage.removeItem('token')
+  init({token: null})
 }
 
-function init() {
-  setToken(window.localStorage.getItem('jwt'))
+function login({token}) {
+  window.localStorage.setItem('token', token)
+  init({token})
 }
 
-export {init, users, posts, auth, setToken}
+function init({
+  token = window.localStorage.getItem('token'),
+  baseURL = (api && api.defaults.baseUrl) || process.env.REACT_APP_API_URL,
+  axiosOptions = {headers: {}},
+} = {}) {
+  isLoggedIn = Boolean(token)
+  api = axios.create({
+    baseURL,
+    ...axiosOptions,
+    headers: {
+      authorization: token ? `Bearer ${token}` : undefined,
+      ...axiosOptions.headers,
+    },
+  })
+}
+
+export {init, users, posts, auth}

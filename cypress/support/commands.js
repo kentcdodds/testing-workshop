@@ -1,11 +1,34 @@
-Cypress.Commands.add('visitApp', route => {
-  const clientUrl = Cypress.env('CLIENT_URL').trim()
-  const apiUrl = Cypress.env('API_URL').trim()
-  const query = `?api-url=${encodeURIComponent(apiUrl)}`
-  const fullUrl = [clientUrl, route, query].filter(Boolean).join('/')
-  return cy.visit(fullUrl)
-})
+import {generate} from '../utils'
 
 Cypress.Commands.add('getByTestId', id => {
   return cy.get(`[data-test="${id}"]`)
+})
+
+Cypress.Commands.add('logout', () => {
+  return cy
+    .window()
+    .its('localStorage')
+    .invoke('removeItem', 'token')
+})
+
+Cypress.Commands.add('createNewUser', () => {
+  const user = generate.loginForm()
+
+  return cy
+    .log('create a test new user', user)
+    .request('POST', `${Cypress.env('API_URL').trim()}/auth/register`, user)
+    .then(({body}) => {
+      return Object.assign({}, body.user, user)
+    })
+})
+
+Cypress.Commands.add('loginAsNewUser', () => {
+  return cy.createNewUser().then(user => {
+    window.localStorage.setItem('token', user.token)
+    return user
+  })
+})
+
+Cypress.Commands.add('assertRoute', route => {
+  cy.url().should('equal', `${window.location.origin}${route}`)
 })

@@ -2,13 +2,15 @@
 // Normally I'd just have a file called `auth` and have all my tests
 // in that file. But I've split them up like this to make the workshop
 // flow nicer with the demo and exercises.
-import {generate, assertRoute} from '../utils'
+import {generate} from '../utils'
 
 describe('authentication', () => {
+  beforeEach(() => {
+    return cy.logout().visit('/')
+  })
   it('should allow users to register', () => {
     const user = generate.loginForm()
     cy
-      .visitApp()
       .getByTestId('register-link')
       .click()
       .getByTestId('username-input')
@@ -17,7 +19,7 @@ describe('authentication', () => {
       .type(user.password)
       .getByTestId('login-submit')
       .click()
-    assertRoute('/')
+      .assertRoute('/')
     cy.getByTestId('username-display').should('contain', user.username)
   })
 })
