@@ -1,11 +1,7 @@
 import axios from 'axios'
 
-const api = axios.create({
-  baseURL: 'https://api.myjson.com',
-})
-
 async function createJSON(data) {
-  const response = await api.post('/bins', data)
+  const response = await axios.post('https://api.myjson.com/bins', data)
   return response.data
 }
 

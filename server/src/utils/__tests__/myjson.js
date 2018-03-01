@@ -2,12 +2,18 @@ import axiosMock from 'axios'
 import {createJSON} from '../myjson'
 
 beforeEach(() => {
-  axiosMock.__mock.reset()
+  axiosMock.post.mockClear()
 })
 
 test('makes a request to the myjson API with the given data', async () => {
   const data = {tests: 'rock'}
-  await createJSON(data)
-  expect(axiosMock.__mock.instance.post).toHaveBeenCalledTimes(1)
-  expect(axiosMock.__mock.instance.post).toHaveBeenCalledWith('/bins', data)
+  const mockResponse = {data: {you: 'bet'}}
+  axiosMock.post.mockImplementationOnce(() => Promise.resolve(mockResponse))
+  const responseData = await createJSON(data)
+  expect(responseData).toEqual(mockResponse.data)
+  expect(axiosMock.post).toHaveBeenCalledTimes(1)
+  expect(axiosMock.post).toHaveBeenCalledWith(
+    'https://api.myjson.com/bins',
+    data,
+  )
 })
