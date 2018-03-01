@@ -30,7 +30,7 @@
     "validate": "concurrently --names \"lint,test:coverage,test:e2e\" --prefix \"[{name}]\" --prefix-colors \"bgGreen.reset.bold,bgBlue.reset.bold,bgRed.reset.bold\" \"npm run lint --silent\" \"npm run test:coverage --silent\" \"npm run test:e2e:run --silent\"",
     "precommit": "lint-staged && npm run --silent validate",
     "clean": "rimraf node_modules ./shared/node_modules ./client/node_modules ./server/node_modules",
-    "setup": "node ./scripts/verify && node ./scripts/install && npm run validate && node ./scripts/autofill-feedback-email.js && git commit -am 'email autofill' --no-verify"
+    "setup": "node ./scripts/verify && node ./scripts/install && npm run validate && node ./scripts/autofill-feedback-email.js"
   },
   "devDependencies": {
     "all-contributors-cli": "^4.10.1",
@@ -39,6 +39,7 @@
     "child-process-promise": "^2.2.1",
     "concurrently": "^3.5.1",
     "cross-env": "^5.1.3",
+    "cross-spawn": "^6.0.4",
     "cypress": "^2.0.2",
     "doctoc": "^1.3.0",
     "eslint": "^4.18.0",

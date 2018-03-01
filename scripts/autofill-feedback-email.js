@@ -3,6 +3,7 @@ const path = require('path')
 const inquirer = require('inquirer')
 const replace = require('replace-in-file')
 const isCI = require('is-ci')
+const spawn = require('cross-spawn')
 
 if (isCI) {
   console.log(`Not running autofill feedback as we're on CI`)
@@ -50,6 +51,12 @@ if (isCI) {
     replace(options).then(
       changedFiles => {
         console.log(`Updated ${changedFiles.length} with the email ${email}`)
+        console.log(
+          'committing changes for you so your jest watch mode works nicely',
+        )
+        spawn.sync('git', ['commit', '-am', 'email autofill', '--no-verify'], {
+          stdio: 'inherit',
+        })
       },
       error => {
         console.error('Failed to update files')
