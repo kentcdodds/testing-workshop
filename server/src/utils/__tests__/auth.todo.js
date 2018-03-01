@@ -8,12 +8,20 @@ test('userToJSON excludes secure properties', () => {
   // and then assert that the test user object
   // doesn't have any of the properties it's not
   // supposed to.
+  // Here's an example of a user object:
+  // const user = {
+  //   id: 'some-id',
+  //   username: 'sarah',
+  //   // ↑ above are properties which should
+  //   // be present in the returned object
   //
-  // It should remove properties called:
-  // - exp: Date.now()
-  // - iat: Date.now()
-  // - hash: 'some long string'
-  // - salt: 'some shorter string'
+  //   // ↓ below are properties which shouldn't
+  //   // be present in the returned object
+  //   exp: new Date(),
+  //   iat: new Date(),
+  //   hash: 'some really long string',
+  //   salt: 'some shorter string',
+  // }
 })
 
 //////// Elaboration & Feedback /////////
