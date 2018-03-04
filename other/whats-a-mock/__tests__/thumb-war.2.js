@@ -1,34 +1,24 @@
 import thumbWar from '../thumb-war'
-// remove the next line
 import * as utils from '../utils'
 
-// remove the next line
-const originalGetWinner = utils.getWinner
-
-// add an inline mock with the jest.mock API
-//
-// jest.mock(
-//   relativePathToModuleToMock,
-//   functionThatReturnsMockObject
-// )
-//
-// See hint below
-
 test('returns winner', () => {
-  // remove the next 2 lines
+  // replace the next three lines with a call to jest.spyOn and
+  // call to mockImplementation on the mocked function (See hint #1)
+  const originalGetWinner = utils.getWinner
   // eslint-disable-next-line import/namespace
   utils.getWinner = (p1, p2) => p2
 
   const winner = thumbWar('Ken Wheeler', 'Kent C. Dodds')
   expect(winner).toBe('Kent C. Dodds')
 
-  // remove the next 2 lines
+  // replace the next two lines with a restoration of the original function
+  // (See hint #2)
   // eslint-disable-next-line import/namespace
   utils.getWinner = originalGetWinner
 })
 
 /*
-Hint below:
+Hints below
 
 
 
@@ -75,11 +65,61 @@ Hint below:
 
 
 
-jest.mock('../utils', () => {
-  return {
-    // ...
-    // see answer in the solution file
-  }
-})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Hint #1:
+
+Here's an example of those APIs:
+
+const myObject = {foo: () => 'bar'}
+jest.spyOn(myObject, 'foo')
+myObject.foo.mockImplementation(() => 'not-bar')
+myObject.foo() === 'not-bar' // true
+
+
+See the solution file for the solution
+
+
+
+
+
+
+
+
+
+Hint #2:
+
+If we wanted to restore the mocked `myObject.foo` function
+to its original implementation, we could do:
+myObject.foo.mockRestore()
+
+And then the original implementation will be called.
+myObject.foo() === 'bar' // true
+
 
  */

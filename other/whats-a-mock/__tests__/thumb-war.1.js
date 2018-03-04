@@ -1,9 +1,8 @@
 import thumbWar from '../thumb-war'
 // import the utils module (see hint #1 at the bottom of the file)
 
-// keep track of the original `getWinner` utility function (see hint #2)
-
 test('returns winner', () => {
+  // keep track of the original `getWinner` utility function (see hint #2)
   // overwrite the utils.getWinner function with
   // our own that always returns the second player (see hint #3)
 

@@ -1,9 +1,8 @@
 import thumbWar from '../thumb-war'
 import * as utils from '../utils'
 
-const originalGetWinner = utils.getWinner
-
 test('returns winner', () => {
+  const originalGetWinner = utils.getWinner
   // eslint-disable-next-line import/namespace
   utils.getWinner = (p1, p2) => p2
 

@@ -1,22 +1,30 @@
 import thumbWar from '../thumb-war'
+// remove the next line
+import * as utils from '../utils'
 
-// remove the inline mock function and jest
-// will use the one that exists in the
-// __mocks__ directory which I created for you
-// already (you're welcome)
-jest.mock('../utils', () => {
-  return {
-    getWinner: (p1, p2) => p2,
-  }
-})
+// add an inline mock with the jest.mock API
+//
+// jest.mock(
+//   relativePathToModuleToMock,
+//   functionThatReturnsMockObject
+// )
+//
+// See hint below
 
 test('returns winner', () => {
+  // remove the next two lines
+  jest.spyOn(utils, 'getWinner')
+  utils.getWinner.mockImplementation((p1, p2) => p2)
+
   const winner = thumbWar('Ken Wheeler', 'Kent C. Dodds')
   expect(winner).toBe('Kent C. Dodds')
+
+  // remove the next line
+  utils.getWinner.mockRestore()
 })
 
 /*
-Hint below
+Hint below:
 
 
 
@@ -53,9 +61,21 @@ Hint below
 
 
 
-jest.mock('../utils')
 
 
 
+
+
+
+
+
+
+
+jest.mock('../utils', () => {
+  return {
+    // ...
+    // see answer in the solution file
+  }
+})
 
  */

@@ -1,10 +1,6 @@
 import thumbWar from '../thumb-war'
 
-jest.mock('../utils', () => {
-  return {
-    getWinner: (p1, p2) => p2,
-  }
-})
+jest.mock('../utils')
 
 test('returns winner', () => {
   const winner = thumbWar('Ken Wheeler', 'Kent C. Dodds')
