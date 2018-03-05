@@ -1,6 +1,6 @@
 import {getWinner} from './utils'
 
-function playGame(player1, player2) {
+function thumbWar(player1, player2) {
   const numberToWin = 2
   let player1Wins = 0
   let player2Wins = 0
@@ -15,4 +15,4 @@ function playGame(player1, player2) {
   return player1Wins > player2Wins ? player1 : player2
 }
 
-export default playGame
+export default thumbWar
