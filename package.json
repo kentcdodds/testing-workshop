@@ -20,7 +20,7 @@
     "test": "jest --watch",
     "test:client": "jest --config ./client/jest.config.js --watch",
     "test:server": "jest --config ./server/jest.config.js --watch",
-    "test:coverage": "jest --coverage",
+    "test:run": "jest --config ./other/jest.config.js --coverage",
     "test:mock": "jest --config ./other/whats-a-mock/jest.config.js --watch",
     "pretest:e2e:run": "npm run build --silent",
     "test:e2e:run": "as-a E2E npm-run-all --parallel --race start:core cy:run",
@@ -28,7 +28,7 @@
     "cy:run": "cypress run",
     "cy:open": "cypress open",
     "lint": "eslint . --cache --cache-location node_modules/.cache/eslint",
-    "validate": "concurrently --names \"lint,test:coverage,test:e2e\" --prefix \"[{name}]\" --prefix-colors \"bgGreen.reset.bold,bgBlue.reset.bold,bgRed.reset.bold\" \"npm run lint --silent\" \"npm run test:coverage --silent\" \"npm run test:e2e:run --silent\"",
+    "validate": "concurrently --names \"lint,test:run,test:e2e\" --prefix \"[{name}]\" --prefix-colors \"bgGreen.reset.bold,bgBlue.reset.bold,bgRed.reset.bold\" \"npm run lint --silent\" \"npm run test:run --silent\" \"npm run test:e2e:run --silent\"",
     "precommit": "lint-staged && npm run --silent validate",
     "clean": "rimraf node_modules ./shared/node_modules ./client/node_modules ./server/node_modules",
     "setup": "node ./scripts/verify && node ./scripts/install && npm run validate && node ./scripts/autofill-feedback-email.js"
