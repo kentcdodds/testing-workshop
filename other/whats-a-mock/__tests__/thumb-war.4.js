@@ -1,24 +1,33 @@
 import thumbWar from '../thumb-war'
 import * as utils from '../utils'
 
+// add an inline mock with the jest.mock API
+//
+// jest.mock(
+//   relativePathToModuleToMock,
+//   functionThatReturnsMockObject
+// )
+//
+// (Hint #1)
+
 test('returns winner', () => {
-  // replace the next three lines with a call to jest.spyOn and
-  // call to mockImplementation on the mocked function (See hint #1)
-  const originalGetWinner = utils.getWinner
-  // eslint-disable-next-line import/namespace
-  utils.getWinner = (p1, p2) => p2
+  // remove the next two lines
+  jest.spyOn(utils, 'getWinner')
+  utils.getWinner.mockImplementation((p1, p2) => p2)
 
   const winner = thumbWar('Ken Wheeler', 'Kent C. Dodds')
   expect(winner).toBe('Kent C. Dodds')
+  expect(utils.getWinner).toHaveBeenCalledTimes(2)
+  utils.getWinner.mock.calls.forEach(args => {
+    expect(args).toEqual(['Ken Wheeler', 'Kent C. Dodds'])
+  })
 
-  // replace the next two lines with a restoration of the original function
-  // (See hint #2)
-  // eslint-disable-next-line import/namespace
-  utils.getWinner = originalGetWinner
+  // remove the next line
+  utils.getWinner.mockRestore()
 })
 
 /*
-Hints below
+Hint below:
 
 
 
@@ -65,61 +74,11 @@ Hints below
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Hint #1:
-
-Here's an example of those APIs:
-
-const myObject = {foo: () => 'bar'}
-jest.spyOn(myObject, 'foo')
-myObject.foo.mockImplementation(() => 'not-bar')
-myObject.foo() === 'not-bar' // true
-
-
-See the solution file for the solution
-
-
-
-
-
-
-
-
-
-Hint #2:
-
-If we wanted to restore the mocked `myObject.foo` function
-to its original implementation, we could do:
-myObject.foo.mockRestore()
-
-And then the original implementation will be called.
-myObject.foo() === 'bar' // true
-
+jest.mock('../utils', () => {
+  return {
+    // ...
+    // see answer in the solution file
+  }
+})
 
  */

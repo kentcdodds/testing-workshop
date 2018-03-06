@@ -220,11 +220,31 @@ report that this is intended to create.
 
 #### Mocking dependencies
 
+Mocking can be a little tricky, so we're going to approach it the same way we
+approached learning what a testing framework is. In your terminal, change
+directories to `other/whats-a-mock` and run `./jest`. This will start jest in
+watch mode for the files here. Review the `thumb-war.js` and `utils.js` files
+then open `__tests__/thumb-war.0.js` and follow the instructions there. Continue
+through each of them. You'll find the solutions in the associated `.solution`
+files.
+
 **New Things**:
 
 * `jest.mock` allows you to mock a dependency
 * `jest.fn` allows you to create a function which keeps track of how it's called
 * `jest.spyOn` allows you to wrap an object's function with a mock function.
+
+Learn more about this from:
+["But really, what is a JavaScript mock?"](https://tinyletter.com/kentcdodds/letters/but-really-what-is-a-javascript-mock)
+
+**Takeaways**:
+
+* Mocks are simply fake versions of code that allow us to get coverage on code
+  that may otherwise be very difficult or impossible to test reliably.
+* Mocking dependencies reduces confidence that our application works
+* Jest has an amazing mocking library
+
+Extra Credit:
 
 **Instruction**:
 
@@ -239,12 +259,6 @@ report that this is intended to create.
 2. (Optionally) Implement an axios mock (inline with `jest.mock`)
 3. Write the test and make assertions on the mock
 4. Remove the inline mock use the existing `__mocks__/axios.js` file
-
-**Takeaways**:
-
-* Mocking dependencies reduces confidence that our application works
-* Mocking dependencies is sometimes the _only_ way to write reliable tests
-* Jest has an amazing mocking library
 
 ### Test Object Factories
 

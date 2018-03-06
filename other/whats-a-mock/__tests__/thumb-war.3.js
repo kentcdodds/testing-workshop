@@ -2,24 +2,17 @@ import thumbWar from '../thumb-war'
 import * as utils from '../utils'
 
 test('returns winner', () => {
+  // replace the next three lines with a call to jest.spyOn and
+  // call to mockImplementation on the mocked function (See hint #1)
   const originalGetWinner = utils.getWinner
-  // change this to a jest mock function (Hint #1)
   // eslint-disable-next-line import/namespace
-  utils.getWinner = (...args) => {
-    utils.getWinner.mock.calls.push(args)
-    return args[1]
-  }
-  utils.getWinner.mock = {calls: []}
+  utils.getWinner = (p1, p2) => p2
 
   const winner = thumbWar('Ken Wheeler', 'Kent C. Dodds')
   expect(winner).toBe('Kent C. Dodds')
-  // change this to the built-in jest assertion for how many times a mock
-  // function was called (use toHaveBeenCalledTimes) (Hint #2)
-  expect(utils.getWinner.mock.calls).toHaveLength(2)
-  utils.getWinner.mock.calls.forEach(args => {
-    expect(args).toEqual(['Ken Wheeler', 'Kent C. Dodds'])
-  })
 
+  // replace the next two lines with a restoration of the original function
+  // (See hint #2)
   // eslint-disable-next-line import/namespace
   utils.getWinner = originalGetWinner
 })
@@ -78,23 +71,55 @@ Hints below
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Hint #1:
 
-You can create a jest mock function with `jest.fn()`:
+Here's an example of those APIs:
 
-const myMockFunction = jest.fn((greeting, name) => `${greeting} ${name}`)
-myMockFunction('Hey', 'Joe') // returns 'Hey Joe'
+const myObject = {foo: () => 'bar'}
+jest.spyOn(myObject, 'foo')
+myObject.foo.mockImplementation(() => 'not-bar')
+myObject.foo() === 'not-bar' // true
 
 
-Jest keeps track of mock function metadata the same way we did (via myMockFunction.mock.calls)
+See the solution file for the solution
+
+
+
+
+
+
+
 
 
 Hint #2:
 
-You can assert the number of times called with:
+If we wanted to restore the mocked `myObject.foo` function
+to its original implementation, we could do:
+myObject.foo.mockRestore()
 
-expect(myMockFunction).toHaveBeenCalledTimes(1)
-
+And then the original implementation will be called.
+myObject.foo() === 'bar' // true
 
 
  */
