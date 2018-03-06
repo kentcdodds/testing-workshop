@@ -5,6 +5,14 @@ const secret = 'secret'
 
 const iterations = process.env.NODE_ENV === 'production' ? 100000 : 1
 
+// seconds/minute * minutes/hour * hours/day * 60 days
+const sixtyDaysInSeconds = 60 * 60 * 24 * 60
+// to keep our tests reliable, we'll use the requireTime if we're not in production
+// and we'll use Date.now() if we are.
+const requireTime = Date.now()
+const now = () =>
+  process.env.NODE_ENV === 'production' ? Date.now() : requireTime
+
 function getSaltAndHash(password) {
   const salt = crypto.randomBytes(16).toString('hex')
   const hash = crypto
@@ -21,13 +29,11 @@ function isPasswordValid(password, {salt, hash}) {
 }
 
 function getUserToken({id, username}) {
-  // seconds/minute * minutes/hour * hours/day * 60 days
-  const sixtyDaysInSeconds = 60 * 60 * 24 * 60
   return jwt.sign(
     {
       id,
       username,
-      exp: Math.floor(Date.now() / 1000) + sixtyDaysInSeconds,
+      exp: Math.floor(now() / 1000) + sixtyDaysInSeconds,
     },
     secret,
   )
