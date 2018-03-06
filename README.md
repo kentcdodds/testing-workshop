@@ -7,7 +7,6 @@ workshop repo to teach you about testing JavaScript applications.
 > please [go to the `fem` branch](https://github.com/kentcdodds/testing-workshop/tree/fem)
 > to make sure you're looking at the accurate information for your workshop.
 
-[![slides-badge][slides-badge]][slides]
 [![chat-badge][chat-badge]][chat]
 [![Build Status][build-badge]][build]
 [![AppVeyor Build Status][win-build-badge]][win-build]
@@ -259,18 +258,12 @@ This project follows the [all-contributors](https://github.com/kentcdodds/all-co
 MIT
 
 [npm]: https://www.npmjs.com/
-[yarn]: https://yarnpkg.com/
 [node]: https://nodejs.org
 [git]: https://git-scm.com/
-[mongo]: https://www.mongodb.com/
-[slides]: http://kcd.im/testing-workshop-slides
-[slides-badge]: https://cdn.rawgit.com/kentcdodds/custom-badges/2/badges/slides.svg
 [chat]: https://gitter.im/kentcdodds/testing-workshop
 [chat-badge]: https://img.shields.io/gitter/room/kentcdodds/testing-workshop.js.svg?style=flat-square&logo=gitter-white
 [build-badge]: https://img.shields.io/travis/kentcdodds/testing-workshop.svg?style=flat-square&logo=travis
 [build]: https://travis-ci.org/kentcdodds/testing-workshop
-[dependencyci-badge]: https://dependencyci.com/github/kentcdodds/testing-workshop/badge?style=flat-square
-[dependencyci]: https://dependencyci.com/github/kentcdodds/testing-workshop
 [license-badge]: https://img.shields.io/badge/license-MIT%20License-blue.svg?style=flat-square
 [license]: https://github.com/kentcdodds/testing-workshop/blob/master/LICENSE
 [prs-badge]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square
