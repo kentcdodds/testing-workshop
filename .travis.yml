@@ -12,7 +12,10 @@ notifications:
 branches:
   only:
   - master
-script: npm run setup
+before_script:
+  - npx cypress verify &
+script:
+  - npm run setup
 after_success:
 - npx codecov
 deploy:
