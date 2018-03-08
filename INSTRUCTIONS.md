@@ -21,12 +21,11 @@ through it on your own if you like.
   * [Brief intro to Jest](#brief-intro-to-jest)
     * [Code Coverage](#code-coverage)
   * [Unit tests](#unit-tests)
-    * [Mocking dependencies](#mocking-dependencies)
+  * [Mocking dependencies](#mocking-dependencies)
   * [Test Object Factories](#test-object-factories)
   * [New features with Test-Driven Development](#new-features-with-test-driven-development)
   * [Integration tests](#integration-tests)
   * [Fixing bugs with Test-Driven Development](#fixing-bugs-with-test-driven-development)
-  * [End-to-end testing](#end-to-end-testing)
   * [Write tests. Not too many. Mostly integration.](#write-tests-not-too-many-mostly-integration)
 * [⚛️ Testing React and Web Applications:](#-testing-react-and-web-applications)
   * [Course Topics](#course-topics)
@@ -37,6 +36,8 @@ through it on your own if you like.
   * [Introduction to Jest and Enzyme](#introduction-to-jest-and-enzyme)
     * [Assertions](#assertions)
     * [Utilities](#utilities)
+  * [End-to-end testing](#end-to-end-testing)
+  * [Write tests. Not too many. Mostly integration.](#write-tests-not-too-many-mostly-integration-1)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -218,7 +219,7 @@ report that this is intended to create.
 * Test for use cases rather than for code coverage
 * Using variables to be explicit about relationships is useful (when kept simple).
 
-#### Mocking dependencies
+### Mocking dependencies
 
 Mocking can be a little tricky, so we're going to approach it the same way we
 approached learning what a testing framework is. In your terminal, change
@@ -244,7 +245,7 @@ Learn more about this from:
 * Mocking dependencies reduces confidence that our application works
 * Jest has an amazing mocking library
 
-Extra Credit:
+Extra Credit (old exercise):
 
 **Instruction**:
 
@@ -291,6 +292,8 @@ Extra Credit:
 
 ### New features with Test-Driven Development
 
+<!-- TODO: maybe make a simpler example -->
+
 **Instruction**:
 
 1. Open `server/src/controllers/__tests__/users.todo.js` and `server/src/controllers/users.todo.js`
@@ -336,6 +339,8 @@ Extra Credit:
 
 ### Fixing bugs with Test-Driven Development
 
+<!-- TODO: maybe make a simpler example -->
+
 **New Things**:
 
 **Instruction**:
@@ -366,41 +371,6 @@ Extra Credit:
   wont break without failing the test.
 * By implementing this as a higher level test, it was easier to write a test to
   find the bug without knowing exactly where the bug was or what was causing it.
-
-### End-to-end testing
-
-**New Things**:
-
-* The new script is `npm run test:e2e`
-* Cypress uses a mocha-like framework for tests (`describe`, and `it`)
-* Cypress uses a chai-like assertion library.
-* Cypress has an internal queueing system for it's commands. Each command can
-  yield a subject which allows you to execute commands on that subject. Think
-  of the `cy` global as `user` and you're giving the user instructions of what
-  to do. You pretty much chain everything from one command to the other unless
-  you want to context switch to a new task.
-  [learn more](https://docs.cypress.io/guides/core-concepts/introduction-to-cypress.html#Subject-Management)
-
-**Instruction**:
-
-1. Open `cypress/e2e/auth.register.todo.js` and run `npm run test:e2e`
-2. Run the tests `auth.register.todo.js`
-3. Implement the register test
-
-**Exercise**:
-
-1. Open `cypress/e2e/auth.login.todo.js` and run `npm run test:e2e`
-2. Run the tests `auth.login.todo.js`
-3. Implement the login test
-
-**Takeaways**:
-
-* Once you've verified registration works in the UI, you should avoid needless
-  test bottlenecks by using a utility to register a new user rather than
-  registering a new user with the UI.
-* E2E tests allow you to use your app like a user which gives you a LOT more
-  confidence that things will work as expected when a user does use your app.
-* Cypress has an AMAZING UX for writing E2E tests for web apps!
 
 ### Write tests. Not too many. Mostly integration.
 
@@ -452,6 +422,11 @@ Watch this 5 minute lightning talk:
 
 * Code Coverage: A mechanism for us to understand how much of our code is run during the unit tests. 100% for libs, 70%ish for applications.
 
+**Instruction and Exercise**:
+
+* `npm install --save-dev jest`
+* Update the `test` script in `package.json` to `jest`
+
 **Takeaways**:
 
 * One dependency! `jest`
@@ -497,3 +472,44 @@ list of things we'll need to cover for you to be successful for this workshop:
 * TODO
 
 #### Utilities
+
+* TODO
+
+### End-to-end testing
+
+**New Things**:
+
+* The new script is `npm run test:e2e`
+* Cypress uses a mocha-like framework for tests (`describe`, and `it`)
+* Cypress uses a chai-like assertion library.
+* Cypress has an internal queueing system for it's commands. Each command can
+  yield a subject which allows you to execute commands on that subject. Think
+  of the `cy` global as `user` and you're giving the user instructions of what
+  to do. You pretty much chain everything from one command to the other unless
+  you want to context switch to a new task.
+  [learn more](https://docs.cypress.io/guides/core-concepts/introduction-to-cypress.html#Subject-Management)
+
+**Instruction**:
+
+1. Open `cypress/e2e/auth.register.todo.js` and run `npm run test:e2e`
+2. Run the tests `auth.register.todo.js`
+3. Implement the register test
+
+**Exercise**:
+
+1. Open `cypress/e2e/auth.login.todo.js` and run `npm run test:e2e`
+2. Run the tests `auth.login.todo.js`
+3. Implement the login test
+
+**Takeaways**:
+
+* Once you've verified registration works in the UI, you should avoid needless
+  test bottlenecks by using a utility to register a new user rather than
+  registering a new user with the UI.
+* E2E tests allow you to use your app like a user which gives you a LOT more
+  confidence that things will work as expected when a user does use your app.
+* Cypress has an AMAZING UX for writing E2E tests for web apps!
+
+### Write tests. Not too many. Mostly integration.
+
+Basically [this talk](https://slides.com/kentcdodds/write-tests).

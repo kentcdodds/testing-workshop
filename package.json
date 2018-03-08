@@ -98,7 +98,9 @@
       "complexity": [
         "error",
         12
-      ]
+      ],
+      "react/no-did-update-set-state": "off",
+      "react/prefer-stateless-function": "off"
     }
   },
   "eslintIgnore": [

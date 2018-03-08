@@ -1,0 +1,216 @@
+/* https://fonts.googleapis.com/css?family=Roboto:100 */
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 100;
+  src: local('Roboto Thin'), local('Roboto-Thin'),
+    url(fonts/KFOkCnqEu92Fr1MmgVxFIzIXKMnyrYk.woff2) format('woff2');
+  unicode-range: U+0460-052f, U+1c80-1c88, U+20b4, U+2de0-2dff, U+A640-A69F,
+    U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 100;
+  src: local('Roboto Thin'), local('Roboto-Thin'),
+    url(fonts/KFOkCnqEu92Fr1MmgVxMIzIXKMnyrYk.woff2) format('woff2');
+  unicode-range: U+0400-045f, U+0490-0491, U+04b0-04b1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 100;
+  src: local('Roboto Thin'), local('Roboto-Thin'),
+    url(fonts/KFOkCnqEu92Fr1MmgVxEIzIXKMnyrYk.woff2) format('woff2');
+  unicode-range: U+1f00-1fff;
+}
+/* greek */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 100;
+  src: local('Roboto Thin'), local('Roboto-Thin'),
+    url(fonts/KFOkCnqEu92Fr1MmgVxLIzIXKMnyrYk.woff2) format('woff2');
+  unicode-range: U+0370-03ff;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 100;
+  src: local('Roboto Thin'), local('Roboto-Thin'),
+    url(fonts/KFOkCnqEu92Fr1MmgVxHIzIXKMnyrYk.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+1ea0-1ef9, U+20ab;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 100;
+  src: local('Roboto Thin'), local('Roboto-Thin'),
+    url(fonts/KFOkCnqEu92Fr1MmgVxGIzIXKMnyrYk.woff2) format('woff2');
+  unicode-range: U+0100-024f, U+0259, U+1-1eff, U+2020, U+20a0-20ab, U+20ad-20cf,
+    U+2113, U+2c60-2c7f, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 100;
+  src: local('Roboto Thin'), local('Roboto-Thin'),
+    url(fonts/KFOkCnqEu92Fr1MmgVxIIzIXKMny.woff2) format('woff2');
+  unicode-range: U+0000-00ff, U+0131, U+0152-0153, U+02bb-02bc, U+02c6, U+02da,
+    U+02dc, U+2000-206f, U+2074, U+20ac, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
+}
+
+/*  */
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  font: 100 14px 'Roboto';
+}
+
+button {
+  display: block;
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+  user-select: none;
+  cursor: pointer;
+  outline: none;
+
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+button:active {
+  box-shadow: inset 0px 0px 80px 0px rgba(0, 0, 0, 0.25);
+}
+
+#wrapper {
+  height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#app {
+  width: 320px;
+  height: 520px;
+  position: relative;
+}
+
+.calculator {
+  width: 100%;
+  height: 100%;
+  background: black;
+
+  display: flex;
+  flex-direction: column;
+}
+
+#wrapper .calculator {
+  box-shadow: 0px 0px 20px 0px #aaa;
+}
+
+.calculator-display {
+  color: white;
+  background: #1c191c;
+  line-height: 130px;
+  font-size: 6em;
+
+  flex: 1;
+}
+
+.auto-scaling-text {
+  display: inline-block;
+}
+
+.calculator-display .auto-scaling-text {
+  padding: 0 30px;
+  position: absolute;
+  right: 0;
+  transform-origin: right;
+}
+
+.calculator-keypad {
+  height: 400px;
+
+  display: flex;
+}
+
+.calculator .input-keys {
+  width: 240px;
+}
+
+.calculator .function-keys {
+  display: flex;
+}
+
+.calculator .digit-keys {
+  background: #e0e0e7;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap-reverse;
+}
+
+.calculator-key {
+  width: 80px;
+  height: 80px;
+  border-top: 1px solid #777;
+  border-right: 1px solid #666;
+  text-align: center;
+  line-height: 80px;
+}
+.calculator .function-keys .calculator-key {
+  font-size: 2em;
+}
+.calculator .function-keys .key-multiply {
+  line-height: 50px;
+}
+.calculator .digit-keys .calculator-key {
+  font-size: 2.25em;
+}
+.calculator .digit-keys .key-0 {
+  width: 160px;
+  text-align: left;
+  padding-left: 32px;
+}
+.calculator .digit-keys .key-dot {
+  padding-top: 1em;
+  font-size: 0.75em;
+}
+.calculator .operator-keys .calculator-key {
+  color: white;
+  border-right: 0;
+  font-size: 3em;
+}
+
+.calculator .function-keys {
+  background: linear-gradient(
+    to bottom,
+    rgba(202, 202, 204, 1) 0%,
+    rgba(196, 194, 204, 1) 100%
+  );
+}
+.calculator .operator-keys {
+  background: linear-gradient(
+    to bottom,
+    rgba(252, 156, 23, 1) 0%,
+    rgba(247, 126, 27, 1) 100%
+  );
+}
