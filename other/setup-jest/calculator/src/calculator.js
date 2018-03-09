@@ -1,21 +1,15 @@
 import React from 'react'
 import PointTarget from 'react-point'
+import Loadable from 'react-loadable'
 import styles from './calculator.module.css'
-import AutoScalingText from './auto-scaling-text'
-import {getFormattedValue} from './utils'
 
-class CalculatorDisplay extends React.Component {
-  render() {
-    const {value, ...props} = this.props
-    const formattedValue = getFormattedValue(value, navigator.language)
-
-    return (
-      <div {...props} className={styles.calculatorDisplay}>
-        <AutoScalingText>{formattedValue}</AutoScalingText>
-      </div>
-    )
-  }
-}
+// NOTE: Normally I wouldn't do this, but I wanted to include code
+// splitting in this example because it's something you have to
+// handle with Jest and many people will want to know :).
+const CalculatorDisplay = Loadable({
+  loader: () => import('./calculator-display').then(mod => mod.default),
+  loading: () => <div style={{height: 120}}>Loading display...</div>,
+})
 
 class CalculatorKey extends React.Component {
   render() {
@@ -323,4 +317,4 @@ class Calculator extends React.Component {
 
 export default Calculator
 
-/* eslint no-eq-null:0, eqeqeq:0 */
+/* eslint no-eq-null:0, eqeqeq:0, react/display-name:0 */
