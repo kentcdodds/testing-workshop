@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --coverage",
+    "test:watch": "jest --watch",
     "dev": "webpack-dev-server --mode=development",
     "build": "webpack --mode=production"
   },
@@ -13,7 +14,6 @@
   "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.26.0",
-    "babel-jest": "^22.4.1",
     "babel-loader": "^7.1.4",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
@@ -23,6 +23,7 @@
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "file-loader": "^1.1.11",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^22.4.2",
     "react-test-renderer": "^16.2.0",
     "style-loader": "^0.20.2",

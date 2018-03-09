@@ -1,0 +1,7 @@
+.auto-scaling-text {
+  display: inline-block;
+  padding: 0 30px;
+  position: absolute;
+  right: 0;
+  transform-origin: right;
+}

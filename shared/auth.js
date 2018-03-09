@@ -29,11 +29,13 @@ function isPasswordValid(password, {salt, hash}) {
 }
 
 function getUserToken({id, username}) {
+  const issuedAt = Math.floor(now() / 1000)
   return jwt.sign(
     {
       id,
       username,
-      exp: Math.floor(now() / 1000) + sixtyDaysInSeconds,
+      iat: issuedAt,
+      exp: issuedAt + sixtyDaysInSeconds,
     },
     secret,
   )
