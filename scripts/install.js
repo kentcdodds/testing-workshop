@@ -2,12 +2,14 @@
 const path = require('path')
 const installDeps = require('./workshop-setup').installDeps
 
-const main = path.resolve(__dirname, '..')
-const shared = path.resolve(__dirname, '../shared')
-const server = path.resolve(__dirname, '../server')
-const client = path.resolve(__dirname, '../client')
-
-installDeps([main, shared, server, client]).then(
+installDeps([
+  path.resolve(__dirname, '..'),
+  path.resolve(__dirname, '../shared'),
+  path.resolve(__dirname, '../server'),
+  path.resolve(__dirname, '../client'),
+  path.resolve(__dirname, '../other/setup-jest/calculator'),
+  path.resolve(__dirname, '../other/setup-jest/calculator.solution'),
+]).then(
   () => {
     console.log('👍  all dependencies installed')
   },

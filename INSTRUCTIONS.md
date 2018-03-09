@@ -424,6 +424,8 @@ Watch this 5 minute lightning talk:
 
 **Instruction and Exercise**:
 
+* Navigate to `./other/setup-jest/calculator`
+* Go ahead and run `npm run dev` and open up `localhost:8080` to see the app
 * `npm install --save-dev jest`
 * Update the `test` script in `package.json` to `jest`
 
