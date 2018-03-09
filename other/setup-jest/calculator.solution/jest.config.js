@@ -1,20 +1,17 @@
 module.exports = {
   displayName: 'calculator',
   testEnvironment: 'jsdom',
-  setupTestFrameworkScriptFile: './test/setup-test-framework.js',
+  setupTestFrameworkScriptFile: require.resolve(
+    './test/setup-test-framework.js',
+  ),
   moduleNameMapper: {
     // module must come first
     '\\.module\\.css$': 'identity-obj-proxy',
-    '\\.css$': '<rootDir>/test/style-mock.js',
+    '\\.css$': require.resolve('./test/style-mock.js'),
     // can also map files that are loaded by webpack with the file-loader
   },
   // normally you'd put this here
-  // coverageDirectory: './coverage',
-  // collectCoverageFrom: [
-  //   '**/src/**/*.js',
-  //   '!**/__tests__/**',
-  //   '!**/node_modules/**',
-  // ],
+  // collectCoverageFrom: ['**/src/**/*.js'],
 }
 
 // however, that kinda messes up my setup in this workshop repo
@@ -22,11 +19,14 @@ module.exports = {
 // do it inline like I show above :)
 if (process.cwd() === __dirname) {
   Object.assign(module.exports, {
-    coverageDirectory: './coverage',
-    collectCoverageFrom: [
-      '**/src/**/*.js',
-      '!**/__tests__/**',
-      '!**/node_modules/**',
-    ],
+    collectCoverageFrom: ['**/src/**/*.js'],
+    coverageThreshold: {
+      global: {
+        statements: 17,
+        branches: 8,
+        functions: 20,
+        lines: 17,
+      },
+    },
   })
 }

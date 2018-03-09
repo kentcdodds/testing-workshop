@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo I promise to write tests some day",
     "dev": "webpack-dev-server --mode=development",
     "build": "webpack --mode=production"
   },
