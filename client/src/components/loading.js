@@ -36,7 +36,7 @@ const LoadingContainer = glamorous.span(
 )
 
 function Loading() {
-  return <LoadingContainer> Loading </LoadingContainer>
+  return <LoadingContainer>Loading</LoadingContainer>
 }
 
 export default Loading
