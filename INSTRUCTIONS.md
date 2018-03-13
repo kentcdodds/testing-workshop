@@ -31,7 +31,7 @@ through it on your own if you like.
   * [What's a test](#whats-a-test-1)
   * [What types of testing are there?](#what-types-of-testing-are-there-1)
   * [Configuring Jest](#configuring-jest)
-  * [Brief intro to Jest](#brief-intro-to-jest-1)
+  * [Intro to Jest](#intro-to-jest)
   * [Introduction Enzyme](#introduction-enzyme)
     * [Utilities](#utilities)
   * [Unit testing components](#unit-testing-components)
@@ -42,7 +42,7 @@ through it on your own if you like.
   * [Write tests. Not too many. Mostly integration.](#write-tests-not-too-many-mostly-integration-1)
 * [Shared Content](#shared-content)
   * [What types of testing are there?](#what-types-of-testing-are-there-2)
-  * [Brief intro to Jest](#brief-intro-to-jest-2)
+  * [Jest](#jest)
   * [Code Coverage](#code-coverage)
   * [Write tests. Not too many. Mostly integration.](#write-tests-not-too-many-mostly-integration-2)
 
@@ -108,7 +108,7 @@ See below in the shared content
 
 ### Brief intro to Jest
 
-See below in the shared content
+See section called ["Jest"](#jest) below in the shared content. Keep it brief.
 
 ### Unit tests
 
@@ -439,9 +439,9 @@ Let's turn on watch mode!
   * `collectCoverageFrom` to collect coverage numbers on your whole codebase (`coveragePathIgnorePatterns` can ignore some)
   * `coverageThresholds` to keep your coverage from falling
 
-### Brief intro to Jest
+### Intro to Jest
 
-See below in the shared content
+See section called ["Jest"](#jest) below in the shared content
 
 ### Introduction Enzyme
 
@@ -516,78 +516,21 @@ See below in the shared content
 Watch this 5 minute lightning talk:
 ["What we can learn about testing from the wheel"](https://youtu.be/Da9wfQ0frGA?list=PLV5CVI1eNcJgNqzNwcs4UKrlJdhfDjshf)
 
-### Brief intro to Jest
+### Jest
 
-We're focusing on principles here so this introduction will be useful enough to
-get you productive for the workshop, but brief enough so we can move on to the
-main topics. Here's a list of things we'll need to cover for you to be
-successful for this workshop
-([full list of assertions here](https://facebook.github.io/jest/docs/en/expect.html)):
+**Instruction**:
 
-* [`toBe`](https://facebook.github.io/jest/docs/en/expect.html#tobevalue) is
-  basically `===`: `expect(1).toBe(1)`
-* [`toEqual`](https://facebook.github.io/jest/docs/en/expect.html#toequalvalue)
-  is like [`lodash.isEqual`](https://lodash.com/docs/4.17.4#isEqual):
-  `expect({a: {b: 'c'}, d: 'e'}).toEqual({a: {b: 'c'}, d: 'e'})`
-* [`toMatchObject`](https://facebook.github.io/jest/docs/en/expect.html#tomatchobjectobject)
-  is similar to `toEqual`, but for partial equality:
-  `expect({a: {b: 'c'}, d: 'e'}).toMatchObject({d: 'e'})`
-* [`toHaveBeenCalledTimes`](https://facebook.github.io/jest/docs/en/expect.html#tohavebeencalledtimesnumber)
-  is a jest mock function (`jest.fn()`) assertion:
-  `expect(mockFn).toHaveBeenCalledTimes(0)`
-* [`toHaveBeenCalledWith`](https://facebook.github.io/jest/docs/en/expect.html#tohavebeencalledwitharg1-arg2-)
-  is a jest mock function (`jest.fn()`) assertion. The arguments correspond to
-  what you expect it to have been called with:
-  `expect(mockFn).toHaveBeenCalledWith(arg1, arg2)`
-* [`toBeGreaterThan`](https://facebook.github.io/jest/docs/en/expect.html#tobegreaterthannumber)
-  is a number assertion: `expect(1).toBeGreaterThan(0)`
-* [`toBeFalsy`](https://facebook.github.io/jest/docs/en/expect.html#tobefalsy)
-  is a JavaScript falsy assertion: `expect(0).toBeFalsy()`, `expect(null).toBeFalsy()`
+1. Open `other/jest-expect/__tests__/expect-assertions.js`
+2. Run `npm run test:expect`
+3. Walk through the different assertions (should be pretty quick)
 
-For `toEqual`, `toMatchObject`, and `toHaveBeenCalledWith`, you can match a
-schema using some utilities available on the `expect` global. For example:
+**Exercise**:
 
-```javascript
-const birthday = {
-  day: 18,
-  month: 10,
-  year: 1988,
-  meta: {display: 'Oct 18th, 1988'},
-}
-const schema = {
-  day: expect.any(Number),
-  month: expect.any(Number),
-  year: expect.any(Number),
-  meta: {display: expect.stringContaining('1988')},
-  // there's also expect.arrayContaining, or expect.objectContaining
-}
-expect(birthday).toEqual(schema)
-```
+> I don't think there's time/need for exercises here
 
-You can negate any assertion by prefixing it with `.not`. For example:
-`expect(2).not.toBe(3)`
+**Takeaways**:
 
-If you would like to get more fine-grained assertions on mock function
-arguments, you can get them from the `.mock.calls` property on the mock
-function:
-
-```javascript
-const myFn = jest.fn()
-myFn('first', {second: 'val'})
-const calls = myFn.mock.calls
-const firstCall = calls[0]
-const firstArg = firstCall[0]
-const secondArg = firstCall[1]
-
-expect(firstArg).toBe('first')
-expect(secondArg).toEqual({second: 'val'})
-```
-
-You may also destructure those args in a single line:
-
-```javascript
-const [[firstArg, secondArg]] = myFn.mock.calls
-```
+* Reference all the assertions here: https://facebook.github.io/jest/docs/en/expect.html
 
 ### Code Coverage
 

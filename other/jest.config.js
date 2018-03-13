@@ -10,5 +10,6 @@ module.exports = {
     './server',
     './other/whats-a-mock',
     './other/setup-jest/calculator.solution',
+    './other/jest-expect',
   ],
 }
