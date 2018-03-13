@@ -28,10 +28,10 @@ through it on your own if you like.
   * [Write tests. Not too many. Mostly integration.](#write-tests-not-too-many-mostly-integration)
 * [⚛️ Testing React and Web Applications:](#-testing-react-and-web-applications)
   * [Course Topics](#course-topics)
-  * [What's a test](#whats-a-test-1)
   * [What types of testing are there?](#what-types-of-testing-are-there-1)
-  * [Configuring Jest](#configuring-jest)
+  * [What's a test](#whats-a-test-1)
   * [Intro to Jest](#intro-to-jest)
+  * [Configuring Jest](#configuring-jest)
   * [Introduction Enzyme](#introduction-enzyme)
     * [Utilities](#utilities)
   * [Unit testing components](#unit-testing-components)
@@ -302,6 +302,11 @@ See below in the shared content
 * Configure Cypress for a web application
 * Write E2E (end-to-end) tests with Cypress
 
+### What types of testing are there?
+
+Watch this 5 minute lightning talk:
+["What we can learn about testing from the wheel"](https://youtu.be/Da9wfQ0frGA?list=PLV5CVI1eNcJgNqzNwcs4UKrlJdhfDjshf)
+
 ### What's a test
 
 > NOTE: This is duplicate content from the practices and principles workshop
@@ -327,10 +332,9 @@ Learn more about this from:
 * Tests are simply code that runs other code and performs "assertions"
 * Testing frameworks abstract this away for us to be more productive in writing tests
 
-### What types of testing are there?
+### Intro to Jest
 
-Watch this 5 minute lightning talk:
-["What we can learn about testing from the wheel"](https://youtu.be/Da9wfQ0frGA?list=PLV5CVI1eNcJgNqzNwcs4UKrlJdhfDjshf)
+See section called ["Jest"](#jest) below in the shared content
 
 ### Configuring Jest
 
@@ -438,10 +442,6 @@ Let's turn on watch mode!
   * `"testEnvironment": "jest-environment-node"` if you don't need `jsdom`
   * `collectCoverageFrom` to collect coverage numbers on your whole codebase (`coveragePathIgnorePatterns` can ignore some)
   * `coverageThresholds` to keep your coverage from falling
-
-### Intro to Jest
-
-See section called ["Jest"](#jest) below in the shared content
 
 ### Introduction Enzyme
 
