@@ -5,6 +5,7 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
+import TestUtils from 'react-dom/test-utils'
 // eslint-disable-next-line
 import {generate} from 'client-test-utils'
 import Login from '../login'
@@ -23,12 +24,10 @@ test('calls onSubmit with the username and password when submitted', () => {
   const formNode = findNodeByTestId(div, 'login-form')
   const submitButtonNode = findNodeByTestId(div, 'login-submit')
 
+  // Act
   usernameNode.value = fakeUser.username
   passwordNode.value = fakeUser.password
-
-  // Act
-  const event = new window.Event('submit')
-  formNode.dispatchEvent(event)
+  TestUtils.Simulate.submit(formNode)
 
   // Assert
   expect(handleSubmit).toHaveBeenCalledTimes(1)
