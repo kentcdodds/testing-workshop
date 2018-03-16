@@ -9,10 +9,13 @@
 import React from 'react'
 import {Simulate} from 'react-dom/test-utils'
 import axiosMock from 'axios'
-// eslint-disable-next-line
-import {mountWithRouter, flushAllPromises, generate} from 'client-test-utils'
+import {snapshotDiff, getSnapshotDiffSerializer} from 'snapshot-diff'
+import {fromDOMNode as snapshotFromDOMNode} from 'jest-glamor-react'
+import {renderWithRouter, flushAllPromises, generate} from 'client-test-utils'
 import {init as initAPI} from '../utils/api'
 import App from '../app'
+
+expect.addSnapshotSerializer(getSnapshotDiffSerializer())
 
 beforeEach(() => {
   window.localStorage.removeItem('token')
@@ -21,10 +24,12 @@ beforeEach(() => {
 })
 
 test('register a new user', async () => {
-  const {queryByTestId} = mountWithRouter(<App />)
+  const {queryByTestId, div} = renderWithRouter(<App />)
 
   // wait for /me request to settle
   await flushAllPromises()
+
+  const beforeLogin = snapshotFromDOMNode(div)
 
   // navigate to register
   const leftClick = {button: 0}
@@ -32,7 +37,7 @@ test('register a new user', async () => {
   expect(window.location.href).toContain('register')
 
   // fill out form
-  const fakeUser = generate.loginForm()
+  const fakeUser = generate.loginForm({username: 'chucknorris'})
   const usernameNode = queryByTestId('username-input')
   const passwordNode = queryByTestId('password-input')
   const formWrapper = queryByTestId('login-form')
@@ -59,6 +64,10 @@ test('register a new user', async () => {
   // wait for promises to settle
   await flushAllPromises()
 
+  expect(snapshotDiff(beforeLogin, snapshotFromDOMNode(div))).toMatchSnapshot(
+    'diff between unauthenticated and authenticated',
+  )
+
   // assert the state of the world
   expect(window.localStorage.getItem('token')).toBe(token)
   expect(window.location.href).not.toContain('register')
@@ -69,7 +78,7 @@ test('register a new user', async () => {
 })
 
 test('login', async () => {
-  const {queryByTestId} = mountWithRouter(<App />)
+  const {queryByTestId} = renderWithRouter(<App />)
 
   // wait for /me request to settle
   await flushAllPromises()
@@ -139,7 +148,7 @@ test('create post', async () => {
     }
   })
 
-  const {queryByTestId} = mountWithRouter(<App />)
+  const {queryByTestId} = renderWithRouter(<App />)
 
   // wait for /me request to settle
   await flushAllPromises()
@@ -192,3 +201,5 @@ test('create post', async () => {
   // we could mock out the request to get the /posts as well
   // but maybe we'll do that in another test...
 })
+
+/* eslint max-statements:0 */

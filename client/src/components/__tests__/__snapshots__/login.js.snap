@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders with the proper CSS 1`] = `
+.css-0,
+[data-css-0] {
+  background: white;
+  height: 50px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  border-bottom: 5px;
+  width: 30%;
+  display: block;
+  margin: 0 auto 10px auto;
+  padding-left: 10px;
+}
+
+.css-0::-webkit-input-placeholder,
+[data-css-0]::-webkit-input-placeholder {
+  opacity: 0.5;
+}
+
+.css-0::-moz-placeholder,
+[data-css-0]::-moz-placeholder {
+  opacity: 0.5;
+}
+
+.css-0::-ms-input-placeholder,
+[data-css-0]::-ms-input-placeholder {
+  opacity: 0.5;
+}
+
+.css-0::placeholder,
+[data-css-0]::placeholder {
+  opacity: 0.5;
+}
+
+.css-5,
+[data-css-5] {
+  background: var(--green);
+  padding: 10px 20px;
+  display: block;
+  margin: auto;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+}
+
+.css-5:hover,
+[data-css-5]:hover {
+  box-shadow: var(--shadowHover);
+}
+
+@media only screen and (max-width: 744px) {
+  .css-0,
+  [data-css-0] {
+    width: 70%;
+  }
+}
+
+<div>
+  <form
+    data-test="login-form"
+  >
+    <input
+      class="css-0"
+      data-test="username-input"
+      name="username"
+      placeholder="Username..."
+    />
+    <input
+      class="css-0"
+      data-test="password-input"
+      name="password"
+      placeholder="Password..."
+      type="password"
+    />
+    <input
+      class="css-5"
+      data-test="login-submit"
+      type="submit"
+    />
+  </form>
+</div>
+`;

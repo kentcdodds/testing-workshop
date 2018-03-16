@@ -1,7 +1,6 @@
 import axios from 'axios'
-import db from '../../utils/db'
-// eslint-disable-next-line
 import {resetDb, generate} from 'server-test-utils'
+import db from '../../utils/db'
 import {getUserToken} from '../../utils/auth'
 import startServer from '../../start'
 

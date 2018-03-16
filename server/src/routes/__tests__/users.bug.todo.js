@@ -1,6 +1,5 @@
 import axios from 'axios'
 import {omit} from 'lodash'
-// eslint-disable-next-line
 import {initDb, generate} from 'server-test-utils'
 // comment this back in
 // import db from '../../utils/db'

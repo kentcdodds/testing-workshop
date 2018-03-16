@@ -1,9 +1,8 @@
 // This is how we'd implement unit tests for the auth controller
 // compare this to the integration tests :)
 import passport from 'passport'
-import db from '../../utils/db'
-// eslint-disable-next-line
 import {generate} from 'server-test-utils'
+import db from '../../utils/db'
 import * as authController from '../auth.todo'
 
 function setup() {

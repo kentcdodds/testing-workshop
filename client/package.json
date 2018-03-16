@@ -29,8 +29,10 @@
     ]
   },
   "devDependencies": {
-    "react-scripts": "^2.0.0-next.9754a231",
+    "jest-glamor-react": "^4.2.0",
+    "react-scripts": "^2.0.0-next.47d2d941",
     "react-test-renderer": "^16.2.0",
+    "snapshot-diff": "^0.3.0",
     "til-shared": "file:../shared"
   },
   "browserslist": {

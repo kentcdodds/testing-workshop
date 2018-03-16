@@ -1,8 +1,7 @@
 import {omit} from 'lodash'
+import {initDb, generate} from 'server-test-utils'
 import * as usersController from '../users'
 import db from '../../utils/db'
-// eslint-disable-next-line
-import {initDb, generate} from 'server-test-utils'
 
 // this setup is common across controllers, so it may be useful to
 // add this to the utils, but I'll leave it here for you :)

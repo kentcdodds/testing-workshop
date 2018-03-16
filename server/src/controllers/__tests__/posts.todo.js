@@ -1,6 +1,6 @@
 // import * as postsController from '../posts.todo'
 // import db from '../../utils/db'
-// eslint-disable-next-line
+// eslint-disable-next-line no-unused-vars
 import {initDb, generate} from 'server-test-utils'
 
 // I'll give this one to you. You want the database to be fresh

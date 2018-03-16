@@ -1,6 +1,5 @@
-import db from '../db'
-// eslint-disable-next-line
 import {initDb, generate} from 'server-test-utils'
+import db from '../db'
 
 let mockData
 

@@ -1,0 +1,92 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`register a new user: diff between unauthenticated and authenticated 1`] = `
+Snapshot Diff:
+- First value
++ Second value
+
+@@ -111,10 +111,33 @@
+  .css-10:hover,
+  [data-css-10]:hover {
+    box-shadow: var(--shadowHover);
+  }
+  
++ .css-12,
++ [data-css-12] {
++   background: var(--green);
++   box-shadow: var(--shadow);
++   color: white;
++   font-size: 40px;
++   border-radius: 15px;
++   padding: 15px;
++   line-height: 0.5;
++   transition: 0.5s;
++   cursor: pointer;
++   position: fixed;
++   bottom: 10px;
++   right: 10px;
++   -webkit-transition: 0.5s;
++   -moz-transition: 0.5s;
++ }
++ 
++ .css-12:hover,
++ [data-css-12]:hover {
++   box-shadow: var(--shadowHover);
++ }
++ 
+  @media only screen and (max-width: 819px) {
+    .css-1,
+    [data-css-1] {
+      order: 1;
+      margin-top: 10px;
+@@ -192,30 +215,32 @@
+        </div>
+        <div
+          class="css-1"
+        >
+          <div>
+-           <a
+-             data-test="login-link"
+-             href="/login"
++           <span
++             class="css-10"
++             data-test="username-display"
+            >
+-             <span
+-               class="css-10"
+-             >
+-               Login
+-             </span>
+-           </a>
+-           <a
+-             data-test="register-link"
+-             href="/register"
++             chucknorris
++           </span>
++           <span
++             class="css-10"
++             data-test="logout-button"
+            >
+-             <span
+-               class="css-10"
++             Logout
++           </span>
++           <span
++             class="css-12"
++           >
++             <a
++               data-test="create-post-link"
++               href="/editor"
+              >
+-               Register
+-             </span>
+-           </a>
++               +
++             </a>
++           </span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div>
+`;

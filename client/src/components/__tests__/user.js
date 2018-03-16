@@ -8,10 +8,9 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
+import {flushAllPromises, generate} from 'client-test-utils'
 import User from '../user'
 import * as apiMock from '../../utils/api'
-// eslint-disable-next-line
-import {flushAllPromises, generate} from 'client-test-utils'
 
 jest.mock('../../utils/api', () => {
   const mock = {}
