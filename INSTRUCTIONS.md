@@ -32,8 +32,6 @@ through it on your own if you like.
   * [What's a test](#whats-a-test-1)
   * [Intro to Jest](#intro-to-jest)
   * [Configuring Jest](#configuring-jest)
-  * [Introduction Enzyme](#introduction-enzyme)
-    * [Utilities](#utilities)
   * [Unit testing components](#unit-testing-components)
   * [Effective Snapshot Testing](#effective-snapshot-testing)
   * [Integration testing pages](#integration-testing-pages)
@@ -347,7 +345,8 @@ See section called ["Jest"](#jest) below in the shared content
 * Navigate to `./other/setup-jest/calculator`
 * Go ahead and run `npm run dev` and open up `localhost:8080` to see the app
 * `npm install --save-dev jest`
-* Update the `test` script in `package.json` to `jest`
+* Create a `test` script in `package.json` to `jest`
+* Run `npm test` -- No files found matching the default `testMatch`
 * Copy over `src/__tests__/utils.js` from `calculator.solution`
 * Run `npm test` -- Fails due to syntax error with ES Modules which we have disabled for webpack
 * Update `.babelrc.js` to have `modules: 'commonjs'` in test mode.
@@ -356,32 +355,22 @@ See section called ["Jest"](#jest) below in the shared content
 * Run `npm test` -- notice the huge window object is printed
 * Create a `jest` object property in `package.json` and add `testEnvironment: 'node'`.
 * Run `npm test` -- notice it fails with `window is not defined` which is what we want for node.
+* Remove `console.log(window)`
 
 Now let's deal with CSS imports:
 
-* Copy `src/__tests__/auto-scaling-text.simple.js` from `calculator.solution`
+* Copy `src/__tests__/auto-scaling-text.js` from `calculator.solution`
 * Run `npm test` -- Fails because of the import of css
 * Create `jest.config.js` and move config from `package.json` to that file.
 * Add `moduleNameMapper` to match `.css`. Map it to `<rootDir>/test/style-mock.js`
 * Create `style-mock.js` in `test` directory: `module.exports = {}`
-* Run `npm test` -- The old error is gone! CSS importing is working
-* Add a simple test: `ReactDOM.render(<AutoScalingText />, document.createElement('div'))`
-* Run `npm test` -- Fails because `document` is not defined.
+* Run `npm test` -- The old error is gone! CSS importing is working, but now we're getting `document is not defined`.
 * Update `jest.config.js` to `testEnvironment: 'jsdom'`.
 * Run `npm test` -- Passes!
 
-And now for more React stuff:
-
-* Copy `src/__tests__/auto-scaling-text.js` from `calculator.solution`
-* `npm install --save-dev enzyme`
-* Run `npm test` -- Fails because enzyme needs an adapter
-* Run `npm install --save-dev enzyme-adapter-react-16`
-* Add adapter code to the test
-* Run `npm test` -- Works!
-
 Let's improve the CSS imports a bit:
 
-* Add `console.log(mount(<AutoScalingText />).html())` and notice there is no className because our style mock just returns an empty object for our css modules (I'm actually not sure why the style prop doesn't appear there... I guess React's not using the style attribute to apply those style properties?)
+* Add `console.log(div.outerHTML)` and notice there is no className because our style mock just returns an empty object for our css modules (I'm actually not sure why the style prop doesn't appear there... I guess React's not using the style attribute to apply those style properties?)
 * `npm install --save-dev identity-obj-proxy`
 * Add `moduleNameMapper` to `jest.config.js` that matches `.module.css` and maps to `identity-obj-proxy` (must come BEFORE the other one).
 * Run `npm test` -- Shows the `class`!
@@ -393,18 +382,9 @@ Let's handle dynamic imports:
 * Run `npm test` -- Fails due to syntax error on dynamic import
 * `npm install --save-dev babel-plugin-dynamic-import-node`
 * Update `.babelrc.js` to use `dynamic-import-node` when in tests
-* Run `npm test` -- Fails because Enzyme is not configured
-* Copy configuration from `auto-scaling-text.js`
-* Run `npm test` -- Passes!
-
-Let's improve framework configuration
-
-* Create a file called `./test/setup-test-framework.js`
-* Copy enzyme setup in there
-* Replace setup with an import of that file in the test files
-* Run `npm test` -- Passes!
+* Run `npm test` -- Fails because `window.localStorage` is not supported by JSDOM!
+* Copy `test/setup-test-framework.js` from `calculator.solution`
 * Update `jest.config.js` to have a `setupTestFrameworkScriptFile` that points to `./test/setup-test-framework.js`
-* Remove the imports from the test files
 * Run `npm test` -- Passes!
 
 Ok! Now time for coverage!
@@ -434,23 +414,13 @@ Let's turn on watch mode!
 
 **Takeaways**:
 
-* Dependencies installed: `jest`, `enzyme`, `enzyme-adapter-react-16`, `identity-obj-proxy`, and `babel-plugin-dynamic-import-node`
+* Dependencies installed: `jest`, `identity-obj-proxy`, and `babel-plugin-dynamic-import-node`
 * Get code coverage with: `jest --coverage`
 * Watch mode with: `jest --watch`
 * Configure jest with `jest.config.js`, `--config`, or `package.json` `jest` property:
-
   * `"testEnvironment": "jest-environment-node"` if you don't need `jsdom`
   * `collectCoverageFrom` to collect coverage numbers on your whole codebase (`coveragePathIgnorePatterns` can ignore some)
   * `coverageThresholds` to keep your coverage from falling
-
-### Introduction Enzyme
-
-These are two tools we'll use a lot when testing React applications. Here's a
-list of things we'll need to cover for you to be successful for this workshop:
-
-#### Utilities
-
-* TODO
 
 ### Unit testing components
 

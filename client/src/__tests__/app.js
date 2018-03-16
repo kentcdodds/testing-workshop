@@ -7,6 +7,7 @@
  */
 
 import React from 'react'
+import {Simulate} from 'react-dom/test-utils'
 import axiosMock from 'axios'
 // eslint-disable-next-line
 import {mountWithRouter, flushAllPromises, generate} from 'client-test-utils'
@@ -20,22 +21,21 @@ beforeEach(() => {
 })
 
 test('register a new user', async () => {
-  const {findNodeByTestId, wrapper} = mountWithRouter(<App />)
+  const {queryByTestId} = mountWithRouter(<App />)
 
   // wait for /me request to settle
   await flushAllPromises()
-  wrapper.update()
 
   // navigate to register
   const leftClick = {button: 0}
-  findNodeByTestId('register-link').simulate('click', leftClick)
+  Simulate.click(queryByTestId('register-link'), leftClick)
   expect(window.location.href).toContain('register')
 
   // fill out form
   const fakeUser = generate.loginForm()
-  const usernameNode = findNodeByTestId('username-input').instance()
-  const passwordNode = findNodeByTestId('password-input').instance()
-  const formWrapper = findNodeByTestId('login-form')
+  const usernameNode = queryByTestId('username-input')
+  const passwordNode = queryByTestId('password-input')
+  const formWrapper = queryByTestId('login-form')
   usernameNode.value = fakeUser.username
   passwordNode.value = fakeUser.password
 
@@ -47,7 +47,7 @@ test('register a new user', async () => {
       data: {user: {...fakeUser, token}},
     }),
   )
-  formWrapper.simulate('submit')
+  Simulate.submit(formWrapper)
 
   // assert calls
   expect(axiosMock.__mock.instance.post).toHaveBeenCalledTimes(1)
@@ -58,32 +58,32 @@ test('register a new user', async () => {
 
   // wait for promises to settle
   await flushAllPromises()
-  wrapper.update()
 
   // assert the state of the world
   expect(window.localStorage.getItem('token')).toBe(token)
   expect(window.location.href).not.toContain('register')
-  expect(findNodeByTestId('username-display').text()).toEqual(fakeUser.username)
-  expect(findNodeByTestId('logout-button').length).toBe(1)
+  expect(queryByTestId('username-display').textContent).toEqual(
+    fakeUser.username,
+  )
+  expect(queryByTestId('logout-button')).toBeTruthy()
 })
 
 test('login', async () => {
-  const {findNodeByTestId, wrapper} = mountWithRouter(<App />)
+  const {queryByTestId} = mountWithRouter(<App />)
 
   // wait for /me request to settle
   await flushAllPromises()
-  wrapper.update()
 
   // navigate to register
   const leftClick = {button: 0}
-  findNodeByTestId('login-link').simulate('click', leftClick)
+  Simulate.click(queryByTestId('login-link'), leftClick)
   expect(window.location.href).toContain('login')
 
   // fill out form
   const fakeUser = generate.loginForm()
-  const usernameNode = findNodeByTestId('username-input').instance()
-  const passwordNode = findNodeByTestId('password-input').instance()
-  const formWrapper = findNodeByTestId('login-form')
+  const usernameNode = queryByTestId('username-input')
+  const passwordNode = queryByTestId('password-input')
+  const formWrapper = queryByTestId('login-form')
   usernameNode.value = fakeUser.username
   passwordNode.value = fakeUser.password
 
@@ -95,7 +95,7 @@ test('login', async () => {
       data: {user: {...fakeUser, token}},
     }),
   )
-  formWrapper.simulate('submit')
+  Simulate.submit(formWrapper)
 
   // assert calls
   expect(axiosMock.__mock.instance.post).toHaveBeenCalledTimes(1)
@@ -106,13 +106,14 @@ test('login', async () => {
 
   // wait for promises to settle
   await flushAllPromises()
-  wrapper.update()
 
   // assert the state of the world
   expect(window.localStorage.getItem('token')).toBe(token)
   expect(window.location.href).not.toContain('login')
-  expect(findNodeByTestId('username-display').text()).toEqual(fakeUser.username)
-  expect(findNodeByTestId('logout-button').length).toBe(1)
+  expect(queryByTestId('username-display').textContent).toEqual(
+    fakeUser.username,
+  )
+  expect(queryByTestId('logout-button')).toBeTruthy()
 })
 
 test('create post', async () => {
@@ -138,16 +139,15 @@ test('create post', async () => {
     }
   })
 
-  const {findNodeByTestId, wrapper} = mountWithRouter(<App />)
+  const {queryByTestId} = mountWithRouter(<App />)
 
   // wait for /me request to settle
   await flushAllPromises()
-  wrapper.update()
   axiosMock.__mock.reset()
 
   // navigate to register
   const leftClick = {button: 0}
-  findNodeByTestId('create-post-link').simulate('click', leftClick)
+  Simulate.click(queryByTestId('create-post-link'), leftClick)
   expect(window.location.href).toContain('editor')
 
   // fill out form
@@ -158,10 +158,10 @@ test('create post', async () => {
     authorId: fakeUser.id,
     date: new Date().toJSON(),
   }
-  const titleNode = findNodeByTestId('title-input').instance()
-  const contentNode = findNodeByTestId('content-input').instance()
-  const tagsNode = findNodeByTestId('tags-input').instance()
-  const formWrapper = findNodeByTestId('editor-form')
+  const titleNode = queryByTestId('title-input')
+  const contentNode = queryByTestId('content-input')
+  const tagsNode = queryByTestId('tags-input')
+  const formWrapper = queryByTestId('editor-form')
   titleNode.value = fakePost.title
   contentNode.value = fakePost.content
   tagsNode.value = fakePost.tags.join(',')
@@ -173,7 +173,7 @@ test('create post', async () => {
       data: {post: {...post, id: fakeId}},
     }),
   )
-  formWrapper.simulate('submit')
+  Simulate.submit(formWrapper)
 
   // assert calls
   expect(axiosMock.__mock.instance.post).toHaveBeenCalledTimes(1)
@@ -185,7 +185,6 @@ test('create post', async () => {
 
   // wait for promises to settle
   await flushAllPromises()
-  wrapper.update()
 
   // assert the state of the world
   expect(window.location.href).not.toContain('editor')

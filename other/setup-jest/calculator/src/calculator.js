@@ -169,6 +169,16 @@ class Calculator extends React.Component {
 
   componentDidMount() {
     document.addEventListener('keydown', this.handleKeyDown)
+    const stateFromLocalStorage = window.localStorage.getItem(
+      'calculator-state',
+    )
+    if (stateFromLocalStorage) {
+      this.setState(JSON.parse(stateFromLocalStorage))
+    }
+  }
+
+  componentDidUpdate() {
+    window.localStorage.setItem('calculator-state', JSON.stringify(this.state))
   }
 
   componentWillUnmount() {

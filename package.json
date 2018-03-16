@@ -101,7 +101,8 @@
         12
       ],
       "react/no-did-update-set-state": "off",
-      "react/prefer-stateless-function": "off"
+      "react/prefer-stateless-function": "off",
+      "react/no-did-mount-set-state": "off"
     }
   },
   "eslintIgnore": [

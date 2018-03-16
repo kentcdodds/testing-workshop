@@ -4,22 +4,33 @@
  */
 
 import React from 'react'
-import {mount} from 'enzyme'
+import ReactDOM from 'react-dom'
+import TestUtils from 'react-dom/test-utils'
 // eslint-disable-next-line
-import {findWrapperNodeByTestId, generate} from 'client-test-utils'
+import {generate} from 'client-test-utils'
 import Login from '../login'
 
+const findNodeByTestId = (node, id) => node.querySelector(`[data-test="${id}"]`)
+
 test('calls onSubmit with the username and password when submitted', () => {
-  const handleSubmit = jest.fn()
+  // Arrange
   const fakeUser = generate.loginForm()
-  const wrapper = mount(<Login onSubmit={handleSubmit} />)
-  const findNodeByTestId = findWrapperNodeByTestId.bind(null, wrapper)
-  const usernameNode = findNodeByTestId('username-input').instance()
-  const passwordNode = findNodeByTestId('password-input').instance()
-  const formWrapper = findNodeByTestId('login-form')
+  const handleSubmit = jest.fn()
+  const div = document.createElement('div')
+  ReactDOM.render(<Login onSubmit={handleSubmit} />, div)
+
+  const usernameNode = findNodeByTestId(div, 'username-input')
+  const passwordNode = findNodeByTestId(div, 'password-input')
+  const formNode = findNodeByTestId(div, 'login-form')
+  const submitButtonNode = findNodeByTestId(div, 'login-submit')
+
+  // Act
   usernameNode.value = fakeUser.username
   passwordNode.value = fakeUser.password
-  formWrapper.simulate('submit')
+  TestUtils.Simulate.submit(formNode)
+
+  // Assert
   expect(handleSubmit).toHaveBeenCalledTimes(1)
   expect(handleSubmit).toHaveBeenCalledWith(fakeUser)
+  expect(submitButtonNode.type).toBe('submit')
 })

@@ -7,7 +7,7 @@
  */
 
 import React from 'react'
-import {mount} from 'enzyme'
+import ReactDOM from 'react-dom'
 import User from '../user'
 import * as apiMock from '../../utils/api'
 // eslint-disable-next-line
@@ -126,7 +126,8 @@ async function setup() {
     controller = c
     return null
   })
-  mount(<User>{children}</User>)
+  const div = document.createElement('div')
+  ReactDOM.render(<User>{children}</User>, div)
   await flushAllPromises()
   children.mockClear()
   return {controller, children}
