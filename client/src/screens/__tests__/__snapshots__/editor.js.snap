@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders with the proper CSS 1`] = `
+exports[`snapshot 1`] = `
 .css-0,
 [data-css-0] {
   background: white;
@@ -37,6 +37,41 @@ exports[`renders with the proper CSS 1`] = `
 
 .css-5,
 [data-css-5] {
+  background: white;
+  border: none;
+  height: 200px;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  border-bottom: 5px;
+  width: 30%;
+  display: block;
+  margin: 0 auto 10px auto;
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+.css-5::-webkit-input-placeholder,
+[data-css-5]::-webkit-input-placeholder {
+  opacity: 0.5;
+}
+
+.css-5::-moz-placeholder,
+[data-css-5]::-moz-placeholder {
+  opacity: 0.5;
+}
+
+.css-5::-ms-input-placeholder,
+[data-css-5]::-ms-input-placeholder {
+  opacity: 0.5;
+}
+
+.css-5::placeholder,
+[data-css-5]::placeholder {
+  opacity: 0.5;
+}
+
+.css-10,
+[data-css-10] {
   background: var(--green);
   padding: 10px 20px;
   display: block;
@@ -51,8 +86,8 @@ exports[`renders with the proper CSS 1`] = `
   -moz-transition: 0.5s;
 }
 
-.css-5:hover,
-[data-css-5]:hover {
+.css-10:hover,
+[data-css-10]:hover {
   box-shadow: var(--shadowHover);
 }
 
@@ -63,26 +98,38 @@ exports[`renders with the proper CSS 1`] = `
   }
 }
 
+@media only screen and (max-width: 744px) {
+  .css-5,
+  [data-css-5] {
+    width: 70%;
+  }
+}
+
 <div>
   <form
-    data-test="login-form"
+    data-test="editor-form"
   >
     <input
       class="css-0"
-      data-test="username-input"
-      name="username"
-      placeholder="Username..."
+      data-test="title-input"
+      name="title"
+      placeholder="title"
+    />
+    <textarea
+      class="css-5"
+      data-test="content-input"
+      name="content"
+      placeholder="content"
     />
     <input
       class="css-0"
-      data-test="password-input"
-      name="password"
-      placeholder="Password..."
-      type="password"
+      data-test="tags-input"
+      name="tags"
+      placeholder="tags"
     />
     <input
-      class="css-5"
-      data-test="login-submit"
+      class="css-10"
+      data-test="editor-submit"
       type="submit"
     />
   </form>

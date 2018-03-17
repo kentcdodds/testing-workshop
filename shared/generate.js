@@ -17,7 +17,9 @@ function postData(overrides) {
   return Object.assign(
     {
       title: faker.lorem.words(),
-      content: faker.lorem.paragraphs(),
+      // paragraphs return text with \n\r for newlines
+      // jsdom doesn't like \r very much I think...
+      content: faker.lorem.paragraphs().replace(/\r/g, ''),
       tags: [faker.lorem.word(), faker.lorem.word(), faker.lorem.word()].filter(
         (w, i, a) => a.indexOf(w) === i,
       ),

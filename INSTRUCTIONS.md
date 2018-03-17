@@ -424,11 +424,47 @@ Let's turn on watch mode!
 
 ### Unit testing components
 
+**Instruction**:
+
+1.  Open `client/src/screens/editor.todo.js` and `client/src/screens/__tests__/editor.todo.js`
+2.  Run the tests with `npm test editor.todo`
+3.  Implement the test (not the snapshot yet)
+
+**Exercise**:
+
+1.  Open `client/src/components/login.js` and `client/src/components/__tests__/login.step-1.todo.js`
+2.  Run the tests with `npm test login.step-1.todo`
+3.  Implement the login test
+
+_optional_
+
+4.  Open `client/src/components/__tests__/login.step-2.todo.js`
+5.  Run the tests with `npm test login.step-2.todo`
+6.  Use the utilities provided
+
+**Takeaways**:
+
 * TODO
 
 ### Effective Snapshot Testing
 
+**Instruction**:
+
+1.  Start by explaining what snapshot tests even are (TODO: add something in `other` to facilitate this)
+2.  Open `client/src/screens/editor.todo.js` and `client/src/screens/__tests__/editor.todo.js`
+3.  Run the tests with `npm test editor.todo`
+4.  Implement the snapshot test
+
+**Exercise**:
+
+1.  Open `client/src/components/login.js` and `client/src/components/__tests__/login.step-1.todo.js`
+2.  Run the tests with `npm test login.step-3.todo`
+3.  Implement the snapshot test
+
+**Takeaways**:
+
 * TODO
+* More on this in the integration tests section
 
 ### Integration testing pages
 

@@ -1,31 +1,22 @@
-/*
- * This is a simple unit test for a function component.
- * These are quite easy to test generally.
- */
-
 import React from 'react'
-import ReactDOM from 'react-dom'
+import {generate, render, Simulate} from 'client-test-utils'
 import Login from '../login'
 
 test('calls onSubmit with the username and password when submitted', () => {
   // Arrange
-  const fakeUser = {username: 'chucknorris', password: '(╯°□°）╯︵ ┻━┻'}
+  const fakeUser = generate.loginForm()
   const handleSubmit = jest.fn()
-  const div = document.createElement('div')
-  ReactDOM.render(<Login onSubmit={handleSubmit} />, div)
-  const queryByTestId = id => div.querySelector(`[data-test="${id}"]`)
+  const {queryByTestId} = render(<Login onSubmit={handleSubmit} />)
 
   const usernameNode = queryByTestId('username-input')
   const passwordNode = queryByTestId('password-input')
   const formNode = queryByTestId('login-form')
   const submitButtonNode = queryByTestId('login-submit')
 
+  // Act
   usernameNode.value = fakeUser.username
   passwordNode.value = fakeUser.password
-
-  // Act
-  const event = new window.Event('submit')
-  formNode.dispatchEvent(event)
+  Simulate.submit(formNode)
 
   // Assert
   expect(handleSubmit).toHaveBeenCalledTimes(1)
