@@ -1,3 +1,7 @@
+const React = require('react')
+const ReactDOM = require('react-dom')
+const renderer = require('react-test-renderer')
+const {getFlyingSuperHeros} = require('../super-heros')
 /*
 Find a full list of assertions here: https://facebook.github.io/jest/docs/en/expect.html
 */
@@ -95,3 +99,72 @@ test('mock functions', () => {
 
 // there are other ways to make mock functions/spies
 // we'll cover those later.
+
+/*
+
+Snapshot tests below. We'll cover these later
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ */
+
+test('manual "snapshot"', () => {
+  const flyingHeros = getFlyingSuperHeros()
+  expect(flyingHeros).toEqual([
+    {name: 'Dynaguy', powers: ['disintegration ray', 'fly']},
+    {name: 'Apogee', powers: ['gravity control', 'fly']},
+  ])
+})
+
+test('automatic snapshot', () => {
+  const flyingHeros = getFlyingSuperHeros()
+  expect(flyingHeros).toMatchSnapshot()
+})
+
+test('snapshot examples', () => {
+  const object = {
+    mixedArray: [1, [2, 3], {four: 5, six: [7, 8]}],
+    regex: /do-not-try-to-regex-an-email/,
+    date: new Date('1988-10-18'),
+    error: new Error('some error'),
+    someFunction: () => {},
+    symbol: Symbol('symbol description'),
+    set: new Set([1, 2, 3]),
+    map: new Map([[{}, []], [[], {}]]),
+    // and more!
+  }
+  expect(object).toMatchSnapshot()
+
+  // AND DOM NODES!!!
+  const div = document.createElement('div')
+  const title = '<h2 class="title">Super Heros are great!</h2>'
+  const content =
+    '<p class="content">We can each be a super hero for someone</p>'
+  div.innerHTML = `<section>${title}${content}</section>`
+  expect(div).toMatchSnapshot('title of a snapshot!')
+
+  // And react elements!
+  const onClick = () => {}
+  const element = React.createElement('button', {onClick}, 'Hello World')
+  expect(element).toMatchSnapshot('react element')
+
+  // and rendered elements
+  const rendered = renderer.create(element)
+  expect(rendered).toMatchSnapshot('rendered')
+
+  // and DOM nodes rendered via react
+  const app = document.createElement('div')
+  ReactDOM.render(element, app)
+  expect(app).toMatchSnapshot('react-dom')
+})

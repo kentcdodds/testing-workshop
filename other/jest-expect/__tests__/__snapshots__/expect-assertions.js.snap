@@ -1,0 +1,94 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`automatic snapshot 1`] = `
+Array [
+  Object {
+    "name": "Dynaguy",
+    "powers": Array [
+      "disintegration ray",
+      "fly",
+    ],
+  },
+  Object {
+    "name": "Apogee",
+    "powers": Array [
+      "gravity control",
+      "fly",
+    ],
+  },
+]
+`;
+
+exports[`snapshot examples 1`] = `
+Object {
+  "date": 1988-10-18T00:00:00.000Z,
+  "error": [Error: some error],
+  "map": Map {
+    Object {} => Array [],
+    Array [] => Object {},
+  },
+  "mixedArray": Array [
+    1,
+    Array [
+      2,
+      3,
+    ],
+    Object {
+      "four": 5,
+      "six": Array [
+        7,
+        8,
+      ],
+    },
+  ],
+  "regex": /do-not-try-to-regex-an-email/,
+  "set": Set {
+    1,
+    2,
+    3,
+  },
+  "someFunction": [Function],
+  "symbol": Symbol(symbol description),
+}
+`;
+
+exports[`snapshot examples: react element 1`] = `
+<button
+  onClick={[Function]}
+>
+  Hello World
+</button>
+`;
+
+exports[`snapshot examples: react-dom 1`] = `
+<div>
+  <button>
+    Hello World
+  </button>
+</div>
+`;
+
+exports[`snapshot examples: rendered 1`] = `
+<button
+  onClick={[Function]}
+>
+  Hello World
+</button>
+`;
+
+exports[`snapshot examples: title of a snapshot! 1`] = `
+<div>
+  <section>
+    <h2
+      class="title"
+    >
+      Super Heros are great!
+    </h2>
+    <p
+      class="content"
+    >
+      We can each be a super hero for someone
+    </p>
+  </section>
+</div>
+`;

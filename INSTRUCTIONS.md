@@ -450,7 +450,7 @@ _optional_
 
 **Instruction**:
 
-1.  Start by explaining what snapshot tests even are (TODO: add something in `other` to facilitate this)
+1.  Start by explaining what snapshot tests even are (open `other/jest-expect/__tests__/expect-assertions.js` and go through the snapshots examples)
 2.  Open `client/src/screens/editor.todo.js` and `client/src/screens/__tests__/editor.todo.js`
 3.  Run the tests with `npm test editor.todo`
 4.  Implement the snapshot test
