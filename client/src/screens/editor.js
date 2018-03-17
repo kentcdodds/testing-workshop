@@ -3,6 +3,9 @@ import * as api from '../utils/api'
 import {Input, Button, TextArea} from '../components/inputs'
 
 class Editor extends Component {
+  static defaultProps = {
+    api,
+  }
   handleSubmit = e => {
     e.preventDefault()
     const {title, content, tags} = e.target.elements
@@ -13,7 +16,7 @@ class Editor extends Component {
       date: new Date().toISOString(),
       authorId: this.props.user.id,
     }
-    api.posts.create(newPost).then(() => {
+    this.props.api.posts.create(newPost).then(() => {
       this.props.history.push('/')
     })
   }

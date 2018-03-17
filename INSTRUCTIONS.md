@@ -54,18 +54,18 @@ Follow the instructions in the `README.md` file to set up the project.
 
 There are 3 places where you'll find code that runs in production:
 
-1. client - runs in the browser. Entry at: `client/src/index.js`
-2. server - runs on the server. Entry at: `server/index.js`
-3. shared - runs in both. Entry at: `shared/index.js`
+1.  client - runs in the browser. Entry at: `client/src/index.js`
+2.  server - runs on the server. Entry at: `server/index.js`
+3.  shared - runs in both. Entry at: `shared/index.js`
 
 To get things running, you'll use [`npm scripts`](https://docs.npmjs.com/misc/scripts)
 You can run `npm run` to get a list of the available scripts. There are several
 scripts in there that wont be entirely relevant to you during the workshop.
 The main ones you should care about are:
 
-1. `npm run dev` - runs the dev server so you can work on and use the app in development
-2. `npm run test` - runs the unit and integration tests with jest in watch mode.
-3. `npm run test:e2e` - runs the e2e tests with cypress in dev mode.
+1.  `npm run dev` - runs the dev server so you can work on and use the app in development
+2.  `npm run test` - runs the unit and integration tests with jest in watch mode.
+3.  `npm run test:e2e` - runs the e2e tests with cypress in dev mode.
 
 ## 🕴 Testing Practices and Principles:
 
@@ -112,13 +112,13 @@ See section called ["Jest"](#jest) below in the shared content. Keep it brief.
 
 **Instruction**:
 
-1. Open `server/src/utils/__tests__/auth.todo.js` and `server/src/utils/auth.js`
-2. Implement tests for `isPasswordAllowed`
+1.  Open `server/src/utils/__tests__/auth.todo.js` and `server/src/utils/auth.js`
+2.  Implement tests for `isPasswordAllowed`
 
 **Exercise**:
 
-1. Stay in `server/src/utils/__tests__/auth.todo.js` and `server/src/utils/auth.js`
-2. Implement a single test for `userToJSON`
+1.  Stay in `server/src/utils/__tests__/auth.todo.js` and `server/src/utils/auth.js`
+2.  Implement a single test for `userToJSON`
 
 **Takeaways**:
 
@@ -158,17 +158,17 @@ Extra Credit (old exercise):
 
 **Instruction**:
 
-1. Open `server/src/utils/gist.js` and `server/src/utils/__tests__/gist.todo.js`
-2. Implement an axios mock (inline with `jest.mock`)
-3. Write the test and make assertions on the mock
-4. Remove the inline mock and show the existing `__mocks__/axios.js` file
+1.  Open `server/src/utils/gist.js` and `server/src/utils/__tests__/gist.todo.js`
+2.  Implement an axios mock (inline with `jest.mock`)
+3.  Write the test and make assertions on the mock
+4.  Remove the inline mock and show the existing `__mocks__/axios.js` file
 
 **Exercise**:
 
-1. Open `server/src/utils/myjson.js` and `server/src/utils/__tests__/myjson.todo.js`
-2. (Optionally) Implement an axios mock (inline with `jest.mock`)
-3. Write the test and make assertions on the mock
-4. Remove the inline mock use the existing `__mocks__/axios.js` file
+1.  Open `server/src/utils/myjson.js` and `server/src/utils/__tests__/myjson.todo.js`
+2.  (Optionally) Implement an axios mock (inline with `jest.mock`)
+3.  Write the test and make assertions on the mock
+4.  Remove the inline mock use the existing `__mocks__/axios.js` file
 
 ### Test Object Factories
 
@@ -182,16 +182,16 @@ Extra Credit (old exercise):
 
 **Instruction**:
 
-1. Open `server/src/controllers/__tests__/users.todo.js` and `server/src/controllers/users.todo.js`
-2. Implement a test for `getUsers` and `getUser`
-3. Demonstrate the test object factory pattern by extracting the common `req`, and `res` setup to a `setup` function
+1.  Open `server/src/controllers/__tests__/users.todo.js` and `server/src/controllers/users.todo.js`
+2.  Implement a test for `getUsers` and `getUser`
+3.  Demonstrate the test object factory pattern by extracting the common `req`, and `res` setup to a `setup` function
 
 **Exercise**:
 
 > This one's optional based on how much time is available...
 
-1. Open `server/src/controllers/__tests__/posts.todo.js` and `server/src/controllers/posts.todo.js`
-2. Implement a test for `getPosts` and `getPost` using test object factories
+1.  Open `server/src/controllers/__tests__/posts.todo.js` and `server/src/controllers/posts.todo.js`
+2.  Implement a test for `getPosts` and `getPost` using test object factories
 
 **Takeaways**:
 
@@ -205,13 +205,13 @@ Extra Credit (old exercise):
 
 **Instruction**:
 
-1. Open `server/src/controllers/__tests__/users.todo.js` and `server/src/controllers/users.todo.js`
-2. Implement a `deleteUser` async function using TDD.
+1.  Open `server/src/controllers/__tests__/users.todo.js` and `server/src/controllers/users.todo.js`
+2.  Implement a `deleteUser` async function using TDD.
 
 **Exercise**:
 
-1. Open `server/src/controllers/__tests__/posts.todo.js` and `server/src/controllers/posts.todo.js`
-2. Implement a `deletePost` async function using TDD.
+1.  Open `server/src/controllers/__tests__/posts.todo.js` and `server/src/controllers/posts.todo.js`
+2.  Implement a `deletePost` async function using TDD.
 
 **Takeaways**:
 
@@ -231,13 +231,13 @@ Extra Credit (old exercise):
 
 **Instruction**:
 
-1. Open `server/src/routes/__tests__/users.todo.js` and `server/src/controllers/users.js`
-2. Implement requests to verify each of the users endpoints.
+1.  Open `server/src/routes/__tests__/users.todo.js` and `server/src/controllers/users.js`
+2.  Implement requests to verify each of the users endpoints.
 
 **Exercise**:
 
-1. Open `server/src/routes/__tests__/posts.todo.js` and `server/src/controllers/posts.js`
-2. Implement requests to verify each of the posts endpoints.
+1.  Open `server/src/routes/__tests__/posts.todo.js` and `server/src/controllers/posts.js`
+2.  Implement requests to verify each of the posts endpoints.
 
 **Takeaways**:
 
@@ -254,22 +254,22 @@ Extra Credit (old exercise):
 
 **Instruction**:
 
-1. Open `server/src/routes/users.js` and replace `../controllers/users` with
-   `../controllers/users.bug.todo` (without anyone noticing?)
-2. Run `npm run dev` and open the app. Note that the users endpoint is returning
-   all of the user information (including the `salt` and `hash`).
-3. Open `server/src/routes/__tests__/users.todo.js` and add a test that
-   reproduces the bug (note: this is the same test the attendees need to
-   implement in their exercise).
-4. Open the `server/src/routes/users.js` file again and note that the users
-   endpoint codepath goes through `server/src/controllers/users.bug.todo.js`.
-5. Notice the bug in the users method.
+1.  Open `server/src/routes/users.js` and replace `../controllers/users` with
+    `../controllers/users.bug.todo` (without anyone noticing?)
+2.  Run `npm run dev` and open the app. Note that the users endpoint is returning
+    all of the user information (including the `salt` and `hash`).
+3.  Open `server/src/routes/__tests__/users.todo.js` and add a test that
+    reproduces the bug (note: this is the same test the attendees need to
+    implement in their exercise).
+4.  Open the `server/src/routes/users.js` file again and note that the users
+    endpoint codepath goes through `server/src/controllers/users.bug.todo.js`.
+5.  Notice the bug in the users method.
 
 **Exercise**:
 
-1. Open `server/src/routes/__tests__/users.bug.todo.js` and
-   `server/src/controllers/users.bug.todo.js`
-2. Implement the test for the bug fix first, then fix the bug
+1.  Open `server/src/routes/__tests__/users.bug.todo.js` and
+    `server/src/controllers/users.bug.todo.js`
+2.  Implement the test for the bug fix first, then fix the bug
 
 **Takaways**:
 
@@ -454,15 +454,15 @@ Let's turn on watch mode!
 
 **Instruction**:
 
-1. Open `cypress/e2e/auth.register.todo.js` and run `npm run test:e2e`
-2. Run the tests `auth.register.todo.js`
-3. Implement the register test
+1.  Open `cypress/e2e/auth.register.todo.js` and run `npm run test:e2e`
+2.  Run the tests `auth.register.todo.js`
+3.  Implement the register test
 
 **Exercise**:
 
-1. Open `cypress/e2e/auth.login.todo.js` and run `npm run test:e2e`
-2. Run the tests `auth.login.todo.js`
-3. Implement the login test
+1.  Open `cypress/e2e/auth.login.todo.js` and run `npm run test:e2e`
+2.  Run the tests `auth.login.todo.js`
+3.  Implement the login test
 
 **Takeaways**:
 
@@ -490,9 +490,9 @@ Watch this 5 minute lightning talk:
 
 **Instruction**:
 
-1. Open `other/jest-expect/__tests__/expect-assertions.js`
-2. Run `npm run test:expect`
-3. Walk through the different assertions (should be pretty quick)
+1.  Open `other/jest-expect/__tests__/expect-assertions.js`
+2.  Run `npm run test:expect`
+3.  Walk through the different assertions (should be pretty quick)
 
 **Exercise**:
 
