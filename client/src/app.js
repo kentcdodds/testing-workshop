@@ -149,24 +149,24 @@ function App() {
                 <UserBtnsContainer>
                   {user ? (
                     <div>
-                      <UserBtn data-test="username-display">
+                      <UserBtn data-testid="username-display">
                         {user.username.split('@')[0]}
                       </UserBtn>
-                      <UserBtn data-test="logout-button" onClick={logout}>
+                      <UserBtn data-testid="logout-button" onClick={logout}>
                         Logout
                       </UserBtn>
                       <NewPostBtn>
-                        <Link to="/editor" data-test="create-post-link">
+                        <Link to="/editor" data-testid="create-post-link">
                           +
                         </Link>
                       </NewPostBtn>
                     </div>
                   ) : (
                     <div>
-                      <Link to="/login" data-test="login-link">
+                      <Link to="/login" data-testid="login-link">
                         <UserBtn>Login</UserBtn>
                       </Link>
-                      <Link to="/register" data-test="register-link">
+                      <Link to="/register" data-testid="register-link">
                         <UserBtn>Register</UserBtn>
                       </Link>
                     </div>

@@ -107,29 +107,29 @@ exports[`snapshot 1`] = `
 
 <div>
   <form
-    data-test="editor-form"
+    data-testid="editor-form"
   >
     <input
       class="css-0"
-      data-test="title-input"
+      data-testid="title-input"
       name="title"
       placeholder="title"
     />
     <textarea
       class="css-5"
-      data-test="content-input"
+      data-testid="content-input"
       name="content"
       placeholder="content"
     />
     <input
       class="css-0"
-      data-test="tags-input"
+      data-testid="tags-input"
       name="tags"
       placeholder="tags"
     />
     <input
       class="css-10"
-      data-test="editor-submit"
+      data-testid="editor-submit"
       type="submit"
     />
   </form>

@@ -1,7 +1,7 @@
 import {generate} from '../utils'
 
 Cypress.Commands.add('getByTestId', id => {
-  return cy.get(`[data-test="${id}"]`)
+  return cy.get(`[data-testid="${id}"]`)
 })
 
 Cypress.Commands.add('logout', () => {

@@ -112,13 +112,13 @@ const Tag = glamorous.span({
 function Post({post: {title, content, tags}, author = {username: 'unknown'}}) {
   return (
     <PostContainer>
-      <PostTitle data-test="post-title">{title}</PostTitle>
-      <h4 data-test="post-author-username">by {author.username}</h4>
+      <PostTitle data-testid="post-title">{title}</PostTitle>
+      <h4 data-testid="post-author-username">by {author.username}</h4>
       <PostSeparator />
-      <p data-test="post-content">{content}</p>
+      <p data-testid="post-content">{content}</p>
       <div>
         {tags.map((t, i) => (
-          <Tag key={t} data-test={`post-tag-${i}`}>
+          <Tag key={t} data-testid={`post-tag-${i}`}>
             {t}
           </Tag>
         ))}

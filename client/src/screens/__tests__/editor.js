@@ -1,5 +1,5 @@
 import React from 'react'
-import {generate, render, Simulate, flushAllPromises} from 'client-test-utils'
+import {generate, render, Simulate, flushPromises} from 'client-test-utils'
 import Editor from '../editor'
 
 test('calls onSubmit with the username and password when submitted', async () => {
@@ -27,7 +27,7 @@ test('calls onSubmit with the username and password when submitted', async () =>
   Simulate.submit(formNode)
 
   const postDate = Date.now()
-  await flushAllPromises()
+  await flushPromises()
 
   // Assert
   expect(fakeApi.posts.create).toHaveBeenCalledTimes(1)
@@ -42,6 +42,6 @@ test('calls onSubmit with the username and password when submitted', async () =>
 })
 
 test('snapshot', () => {
-  const {root} = render(<Editor />)
-  expect(root).toMatchSnapshot()
+  const {container} = render(<Editor />)
+  expect(container.firstChild).toMatchSnapshot()
 })

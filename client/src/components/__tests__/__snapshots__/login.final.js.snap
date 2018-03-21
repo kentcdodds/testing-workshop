@@ -65,24 +65,24 @@ exports[`snapshot 1`] = `
 
 <div>
   <form
-    data-test="login-form"
+    data-testid="login-form"
   >
     <input
       class="css-0"
-      data-test="username-input"
+      data-testid="username-input"
       name="username"
       placeholder="Username..."
     />
     <input
       class="css-0"
-      data-test="password-input"
+      data-testid="password-input"
       name="password"
       placeholder="Password..."
       type="password"
     />
     <input
       class="css-5"
-      data-test="login-submit"
+      data-testid="login-submit"
       type="submit"
     />
   </form>

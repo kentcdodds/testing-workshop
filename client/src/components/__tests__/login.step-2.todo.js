@@ -14,7 +14,7 @@ test('calls onSubmit with the username and password when submitted', () => {
   // so you don't need a div anymore!
   const div = document.createElement('div')
   ReactDOM.render(<Login onSubmit={handleSubmit} />, div)
-  const queryByTestId = id => div.querySelector(`[data-test="${id}"]`)
+  const queryByTestId = id => div.querySelector(`[data-testid="${id}"]`)
 
   const usernameNode = queryByTestId('username-input')
   const passwordNode = queryByTestId('password-input')

@@ -9,13 +9,9 @@
 import React from 'react'
 import {Simulate} from 'react-dom/test-utils'
 import axiosMock from 'axios'
-import {snapshotDiff, getSnapshotDiffSerializer} from 'snapshot-diff'
-import {fromDOMNode as snapshotFromDOMNode} from 'jest-glamor-react'
-import {renderWithRouter, flushAllPromises, generate} from 'client-test-utils'
+import {renderWithRouter, flushPromises, generate} from 'client-test-utils'
 import {init as initAPI} from '../utils/api'
 import App from '../app'
-
-expect.addSnapshotSerializer(getSnapshotDiffSerializer())
 
 beforeEach(() => {
   window.localStorage.removeItem('token')
@@ -24,12 +20,10 @@ beforeEach(() => {
 })
 
 test('register a new user', async () => {
-  const {queryByTestId, div} = renderWithRouter(<App />)
+  const {queryByTestId} = renderWithRouter(<App />)
 
   // wait for /me request to settle
-  await flushAllPromises()
-
-  const beforeLogin = snapshotFromDOMNode(div)
+  await flushPromises()
 
   // navigate to register
   const leftClick = {button: 0}
@@ -37,7 +31,7 @@ test('register a new user', async () => {
   expect(window.location.href).toContain('register')
 
   // fill out form
-  const fakeUser = generate.loginForm({username: 'chucknorris'})
+  const fakeUser = generate.loginForm()
   const usernameNode = queryByTestId('username-input')
   const passwordNode = queryByTestId('password-input')
   const formWrapper = queryByTestId('login-form')
@@ -62,11 +56,7 @@ test('register a new user', async () => {
   )
 
   // wait for promises to settle
-  await flushAllPromises()
-
-  expect(snapshotDiff(beforeLogin, snapshotFromDOMNode(div))).toMatchSnapshot(
-    'diff between unauthenticated and authenticated',
-  )
+  await flushPromises()
 
   // assert the state of the world
   expect(window.localStorage.getItem('token')).toBe(token)

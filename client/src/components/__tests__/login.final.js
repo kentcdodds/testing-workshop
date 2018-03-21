@@ -25,6 +25,6 @@ test('calls onSubmit with the username and password when submitted', () => {
 })
 
 test('snapshot', () => {
-  const {root} = render(<Login />)
-  expect(root).toMatchSnapshot()
+  const {container} = render(<Login />)
+  expect(container.firstChild).toMatchSnapshot()
 })

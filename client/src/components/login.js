@@ -5,7 +5,7 @@ function Login({onSubmit}) {
   return (
     <div>
       <form
-        data-test="login-form"
+        data-testid="login-form"
         onSubmit={e => {
           e.preventDefault()
           const {username, password} = e.target.elements
@@ -18,15 +18,15 @@ function Login({onSubmit}) {
         <Input
           placeholder="Username..."
           name="username"
-          data-test="username-input"
+          data-testid="username-input"
         />
         <Input
           placeholder="Password..."
           type="password"
           name="password"
-          data-test="password-input"
+          data-testid="password-input"
         />
-        <Button type="submit" data-test="login-submit" />
+        <Button type="submit" data-testid="login-submit" />
       </form>
     </div>
   )

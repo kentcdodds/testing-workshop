@@ -8,7 +8,7 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {flushAllPromises, generate} from 'client-test-utils'
+import {flushPromises, generate} from 'client-test-utils'
 import User from '../user'
 import * as apiMock from '../../utils/api'
 
@@ -48,7 +48,7 @@ test('login rerenders with the retrieved user', async () => {
   )
   const form = generate.loginForm(fakeUser)
   controller.login(form)
-  await flushAllPromises()
+  await flushPromises()
   expect(apiMock.auth.login).toHaveBeenCalledTimes(1)
   expect(apiMock.auth.login).toHaveBeenCalledWith(form)
   expect(children).toHaveBeenCalledTimes(2)
@@ -71,7 +71,7 @@ test('login rerenders with the retrieved user', async () => {
 test('logout rerenders with a null user', async () => {
   const {children, controller} = await setup()
   controller.logout()
-  await flushAllPromises()
+  await flushPromises()
   expect(apiMock.auth.logout).toHaveBeenCalledTimes(1)
   expect(children).toHaveBeenCalledTimes(2)
   expect(children).toHaveBeenCalledWith(
@@ -99,7 +99,7 @@ test('on register failure, rerenders with the error', async () => {
   const form = generate.loginForm()
   // the catch below is simply to ignore the error thrown
   controller.register(form).catch(i => i)
-  await flushAllPromises()
+  await flushPromises()
   expect(apiMock.auth.register).toHaveBeenCalledTimes(1)
   expect(apiMock.auth.register).toHaveBeenCalledWith(form)
   expect(children).toHaveBeenCalledTimes(2)
@@ -127,7 +127,7 @@ async function setup() {
   })
   const div = document.createElement('div')
   ReactDOM.render(<User>{children}</User>, div)
-  await flushAllPromises()
+  await flushPromises()
   children.mockClear()
   return {controller, children}
 }
