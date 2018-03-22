@@ -23,13 +23,13 @@ beforeEach(() => {
   initAPI()
 })
 
-test('login', async () => {
+test('login as an existing user', async () => {
   const {queryByTestId} = renderWithRouter(<App />)
 
   // wait for /me request to settle
   await flushPromises()
 
-  // navigate to register
+  // navigate to login
   const leftClick = {button: 0}
   Simulate.click(queryByTestId('login-link'), leftClick)
   expect(window.location.href).toContain('login')
@@ -52,15 +52,15 @@ test('login', async () => {
   )
   Simulate.submit(formWrapper)
 
+  // wait for promises to settle
+  await flushPromises()
+
   // assert calls
   expect(axiosMock.__mock.instance.post).toHaveBeenCalledTimes(1)
   expect(axiosMock.__mock.instance.post).toHaveBeenCalledWith(
     '/auth/login',
     fakeUser,
   )
-
-  // wait for promises to settle
-  await flushPromises()
 
   // assert the state of the world
   expect(window.localStorage.getItem('token')).toBe(token)

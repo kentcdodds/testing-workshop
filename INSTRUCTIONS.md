@@ -464,9 +464,23 @@ _optional_
 **Takeaways**:
 
 * TODO
-* More on this in the integration tests section
 
 ### Integration testing pages
+
+**Instruction**:
+
+1.  Explore the app code a little bit. Start at `client/src/app.js`
+2.  Open `client/src/__tests__/app.register.todo.js`
+3.  Run the tests with `npm test app.register.todo`
+4.  Implement the integration test
+
+**Exercise**:
+
+1.  Open `client/src/__tests__/app.login.todo.js`
+2.  Run the tests with `npm test app.login.todo`
+3.  Implement the integration test
+
+**Takeaways**:
 
 * TODO
 

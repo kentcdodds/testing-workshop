@@ -43,14 +43,14 @@ const auth = {
 const users = {
   delete: id => requests.delete(`/users/${id}`),
   get: id => requests.get(id ? `/users/${id}` : '/users'),
-  update: (id, updates) => requests.put(`/users/${updates.id}`, updates),
+  update: (id, updates) => requests.put(`/users/${id}`, updates),
   create: user => requests.post('/users', user),
 }
 
 const posts = {
   delete: id => requests.delete(`/posts/${id}`),
   get: id => requests.get(id ? `/posts/${id}` : '/posts'),
-  update: (id, updates) => requests.put(`/posts/${updates.id}`, updates),
+  update: (id, updates) => requests.put(`/posts/${id}`, updates),
   create: post => requests.post('/posts', post),
 }
 
