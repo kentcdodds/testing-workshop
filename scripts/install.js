@@ -7,8 +7,8 @@ installDeps([
   path.resolve(__dirname, '../shared'),
   path.resolve(__dirname, '../server'),
   path.resolve(__dirname, '../client'),
-  path.resolve(__dirname, '../other/setup-jest/calculator'),
-  path.resolve(__dirname, '../other/setup-jest/calculator.solution'),
+  path.resolve(__dirname, '../other/configuration/calculator'),
+  path.resolve(__dirname, '../other/configuration/calculator.solution'),
 ]).then(
   () => {
     console.log('👍  all dependencies installed')

@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --mode=development",
-    "build": "webpack --mode=production"
+    "build": "webpack --mode=production",
+    "start": "serve -s dist --port 8080"
   },
   "keywords": [],
   "author": "Kent C. Dodds <kent@doddsfamily.us> (http://kentcdodds.com/)",
@@ -19,6 +20,7 @@
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.10",
     "file-loader": "^1.1.11",
+    "serve": "^6.5.3",
     "style-loader": "^0.20.2",
     "webpack": "^4.1.1",
     "webpack-cli": "^2.0.10",

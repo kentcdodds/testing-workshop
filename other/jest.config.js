@@ -9,7 +9,7 @@ module.exports = {
     './client',
     './server',
     './other/whats-a-mock',
-    './other/setup-jest/calculator.solution',
+    './other/configuration/calculator.solution',
     './other/jest-expect',
   ],
 }

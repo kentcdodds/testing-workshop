@@ -342,7 +342,7 @@ See section called ["Jest"](#jest) below in the shared content
 
 **Instruction**:
 
-* Navigate to `./other/setup-jest/calculator`
+* Navigate to `./other/configuration/calculator`
 * Go ahead and run `npm run dev` and open up `localhost:8080` to see the app
 * `npm install --save-dev jest`
 * Create a `test` script in `package.json` to `jest`
@@ -485,6 +485,40 @@ _optional_
 * TODO
 
 ### Configuring Cypress
+
+**Instructions**:
+
+1.  Change directories to `other/configuration/calculator` (further directories relative to this)
+2.  Run `npm install --save-dev cypress`
+3.  Run `npx cypress open`. Play around with it, then stop the process.
+4.  Explore `./cypress`
+
+Now let's have it run on our codebase
+
+1.  In one terminal tab/window start the dev server `npm run dev`. Note this is running on port `8080`
+2.  Open `./cypress.json` and add `"baseUrl": "http://localhost:8080"` and `"integrationFolder": "cypress/e2e"`
+3.  Delete `./cypress/integration` and copy `../calculator.solution/e2e/calculator.js` to `./cypress/e2e/calculator.js`
+4.  Start cypress over again: `npx cypress open` and run the test. It passes!
+
+Now let's make this a script
+
+1.  `npm install --save-dev npm-run-all`
+2.  Add a `test:e2e:dev` script: `npm-run-all --parallel --race dev cy:open`
+3.  Add a `cy:open` script: `cypress open`
+4.  Run `npm run test:e2e:dev`. It works!
+
+Now let's make this work for CI
+
+1.  Add a `test:e2e` script: `npm-run-all --parallel --race start cy:run`
+2.  Add a `cy:run` script: `cypress run`
+3.  Add a `pretest:e2e` script: `npm run build`
+4.  Run `npm run test:e2e`. It works!
+
+**Exercise**:
+
+> No exercise here. It would be really boring I think...
+
+**Takeaways**:
 
 * TODO
 

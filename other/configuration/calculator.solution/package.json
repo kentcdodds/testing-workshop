@@ -6,8 +6,14 @@
   "scripts": {
     "test": "jest --coverage",
     "test:watch": "jest --watch",
+    "cy:run": "cypress run",
+    "cy:open": "cypress open",
+    "pretest:e2e": "npm run build",
+    "test:e2e": "npm-run-all --parallel --race start cy:run",
+    "test:e2e:dev": "npm-run-all --parallel --race dev cy:open",
     "dev": "webpack-dev-server --mode=development",
-    "build": "webpack --mode=production"
+    "build": "webpack --mode=production",
+    "start": "serve -s dist --port 8080"
   },
   "keywords": [],
   "author": "Kent C. Dodds <kent@doddsfamily.us> (http://kentcdodds.com/)",
@@ -22,9 +28,12 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.10",
+    "cypress": "^2.1.0",
     "file-loader": "^1.1.11",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^22.4.2",
+    "npm-run-all": "^4.1.2",
+    "serve": "^6.5.3",
     "style-loader": "^0.20.2",
     "webpack": "^4.1.1",
     "webpack-cli": "^2.0.10",

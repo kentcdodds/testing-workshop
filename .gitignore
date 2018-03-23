@@ -15,3 +15,7 @@ dist
 .eslintcache
 /client/other/shared
 /server/other/shared
+/other/configuration/calculator/cypress/videos
+/other/configuration/calculator/cypress/screenshots
+/other/configuration/calculator.solution/cypress/videos
+/other/configuration/calculator.solution/cypress/screenshots

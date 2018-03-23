@@ -18,7 +18,7 @@ cache:
   - ./client/node_modules -> ./client/package.json
   - ./server/node_modules -> ./server/package.json
   - ./shared/node_modules -> ./shared/package.json
-  - ./other/setup-jest/calculator/node_modules -> ./other/setup-jest/calculator/package.json
-  - ./other/setup-jest/calculator.solution/node_modules -> ./other/setup-jest/calculator.solution/package.json
+  - ./other/configuration/calculator/node_modules -> ./other/configuration/calculator/package.json
+  - ./other/configuration/calculator.solution/node_modules -> ./other/configuration/calculator.solution/package.json
 
 build: off
