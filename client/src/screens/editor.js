@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import * as api from '../utils/api'
-import {HiddenLabel} from '../components/hidden-label'
-import {Input, Button, TextArea} from '../components/inputs'
+import Form from '../components/form'
+import {Input, TextArea} from '../components/inputs'
 
 class Editor extends Component {
   static defaultProps = {
@@ -24,32 +24,23 @@ class Editor extends Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.handleSubmit} data-testid="editor-form">
-          <HiddenLabel htmlFor="title-input">Post Title</HiddenLabel>
-          <Input
-            id="title-input"
-            placeholder="Title"
-            name="title"
-            data-testid="title-input"
-          />
-          <HiddenLabel htmlFor="content-input">Post Content</HiddenLabel>
-          <TextArea
-            id="content-input"
-            placeholder="Content"
-            name="content"
-            data-testid="content-input"
-          />
-          <HiddenLabel htmlFor="tags-input">Post Tags</HiddenLabel>
-          <Input
-            id="tags-input"
-            placeholder="tags"
-            name="tags"
-            data-testid="tags-input"
-          />
-          <Button type="submit" data-testid="editor-submit">
-            Submit
-          </Button>
-        </form>
+        <Form onSubmit={this.handleSubmit}>
+          <label style={{justifySelf: 'right'}} htmlFor="title-input">
+            Title
+          </label>
+          <Input id="title-input" placeholder="Title" name="title" />
+          <label
+            style={{justifySelf: 'right', alignSelf: 'baseline'}}
+            htmlFor="content-input"
+          >
+            Content
+          </label>
+          <TextArea id="content-input" placeholder="Content" name="content" />
+          <label style={{justifySelf: 'right'}} htmlFor="tags-input">
+            Tags
+          </label>
+          <Input id="tags-input" placeholder="tags" name="tags" />
+        </Form>
       </div>
     )
   }

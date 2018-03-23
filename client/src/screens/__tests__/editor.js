@@ -12,15 +12,15 @@ test('calls onSubmit with the username and password when submitted', async () =>
       create: jest.fn(() => Promise.resolve()),
     },
   }
-  const {queryByTestId} = render(
+  const {container, getByText, getByLabelText} = render(
     <Editor api={fakeApi} user={fakeUser} history={fakeHistory} />,
   )
 
-  queryByTestId('title-input').value = fakePost.title
-  queryByTestId('content-input').value = fakePost.content
-  queryByTestId('tags-input').value = fakePost.tags.join(', ')
-  const submitButtonNode = queryByTestId('editor-submit')
-  const formNode = queryByTestId('editor-form')
+  getByLabelText('Title').value = fakePost.title
+  getByLabelText('Content').value = fakePost.content
+  getByLabelText('Tags').value = fakePost.tags.join(', ')
+  const submitButtonNode = getByText('submit')
+  const formNode = container.querySelector('form')
   const preDate = Date.now()
 
   // Act

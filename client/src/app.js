@@ -17,14 +17,19 @@ const Header = glamorous.div({
   margin: '20px 0px',
 })
 const TitleContainer = glamorous.div({
-  background: 'white',
-  textAlign: 'center',
   display: 'flex',
-  padding: '30px 50px',
-  boxShadow: 'var(--shadow)',
-  borderRadius: '50px',
   '@media only screen and (max-width: 819px)': {
     order: 0,
+    width: '100%',
+  },
+  '& > div': {
+    borderRadius: '50px',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    background: 'white',
+    textAlign: 'center',
+    padding: '30px 50px',
+    boxShadow: 'var(--shadow)',
   },
 })
 
@@ -46,7 +51,7 @@ const Inspired = glamorous.small({
   },
 })
 const SocialLogo = glamorous.img({
-  width: 25,
+  width: 55,
   background: 'white',
   boxShadow: 'var(--shadow)',
   borderRadius: 20,
@@ -65,7 +70,7 @@ const UserBtnsContainer = glamorous.div({
   '@media only screen and (max-width: 819px)': {
     order: 1,
     marginTop: 10,
-    width: '50%',
+    flex: 1,
   },
 })
 const UserBtn = glamorous.span({
@@ -152,21 +157,19 @@ function App() {
                       <UserBtn data-testid="username-display">
                         {user.username.split('@')[0]}
                       </UserBtn>
-                      <UserBtn data-testid="logout-button" onClick={logout}>
-                        Logout
-                      </UserBtn>
+                      <UserBtn onClick={logout}>Logout</UserBtn>
                       <NewPostBtn>
-                        <Link to="/editor" data-testid="create-post-link">
+                        <Link to="/editor">
                           <span>+</span>
                         </Link>
                       </NewPostBtn>
                     </div>
                   ) : (
                     <div>
-                      <Link to="/login" data-testid="login-link">
+                      <Link to="/login">
                         <UserBtn>Login</UserBtn>
                       </Link>
-                      <Link to="/register" data-testid="register-link">
+                      <Link to="/register">
                         <UserBtn>Register</UserBtn>
                       </Link>
                     </div>

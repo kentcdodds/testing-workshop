@@ -1,12 +1,11 @@
 import React from 'react'
-import {HiddenLabel} from './hidden-label'
-import {Input, Button} from './inputs'
+import {Input} from './inputs'
+import Form from './form'
 
 function Login({onSubmit}) {
   return (
     <div>
-      <form
-        data-testid="login-form"
+      <Form
         onSubmit={e => {
           e.preventDefault()
           const {username, password} = e.target.elements
@@ -16,17 +15,25 @@ function Login({onSubmit}) {
           })
         }}
       >
-        <HiddenLabel htmlFor="username-input">Username</HiddenLabel>
-        <Input id="username-input" placeholder="Username..." name="username" />
-        <HiddenLabel id="password-input">Password</HiddenLabel>
+        <label style={{justifySelf: 'right'}} htmlFor="username-input">
+          Username
+        </label>
+        <Input
+          id="username-input"
+          placeholder="Username..."
+          name="username"
+          style={{flex: 1}}
+        />
+        <label style={{justifySelf: 'right'}} id="password-input">
+          Password
+        </label>
         <Input
           placeholder="Password..."
           type="password"
           name="password"
           aria-labelledby="password-input"
         />
-        <Button type="submit">Submit</Button>
-      </form>
+      </Form>
     </div>
   )
 }

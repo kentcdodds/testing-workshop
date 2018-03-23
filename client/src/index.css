@@ -13,6 +13,10 @@ html {
   text-shadow: 0 2px 0 rgba(0, 0, 0, 0.07);
 }
 
+* {
+  box-sizing: border-box;
+}
+
 input,
 textarea {
   font-family: 'Raleway', sans-serif;
@@ -26,8 +30,12 @@ textarea {
 
 body {
   background: #fffef3;
-  width: 80%;
-  margin: auto;
+  max-width: 800px;
+  min-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 h1,
