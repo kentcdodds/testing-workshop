@@ -9,7 +9,7 @@ Cypress.Commands.add('getByLabelText', (...args) => {
   return cy
     .window()
     .then(({document}) =>
-      getComandWaiter(document, () =>
+      getCommandWaiter(document, () =>
         queries.queryByLabelText(document, ...args),
       )(),
     )
@@ -19,11 +19,13 @@ Cypress.Commands.add('getByText', (...args) => {
   return cy
     .window()
     .then(({document}) =>
-      getComandWaiter(document, () => queries.queryByText(document, ...args))(),
+      getCommandWaiter(document, () =>
+        queries.queryByText(document, ...args),
+      )(),
     )
 })
 
-function getComandWaiter(container, fn) {
+function getCommandWaiter(container, fn) {
   return function waiter() {
     const val = fn()
     if (val) {
