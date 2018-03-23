@@ -42,7 +42,7 @@ test('create post', async () => {
     }
   })
 
-  const {queryByTestId} = renderWithRouter(<App />)
+  const {container, getByText, getByLabelText} = renderWithRouter(<App />)
 
   // wait for /me request to settle
   await flushPromises()
@@ -50,7 +50,7 @@ test('create post', async () => {
 
   // navigate to register
   const leftClick = {button: 0}
-  Simulate.click(queryByTestId('create-post-link'), leftClick)
+  Simulate.click(getByText(/^\+$/), leftClick)
   expect(window.location.href).toContain('editor')
 
   // fill out form
@@ -61,10 +61,10 @@ test('create post', async () => {
     authorId: fakeUser.id,
     date: new Date().toJSON(),
   }
-  const titleNode = queryByTestId('title-input')
-  const contentNode = queryByTestId('content-input')
-  const tagsNode = queryByTestId('tags-input')
-  const formWrapper = queryByTestId('editor-form')
+  const titleNode = getByLabelText('title')
+  const contentNode = getByLabelText('content')
+  const tagsNode = getByLabelText('tags')
+  const formWrapper = container.querySelector('form')
   titleNode.value = fakePost.title
   contentNode.value = fakePost.content
   tagsNode.value = fakePost.tags.join(',')
@@ -94,5 +94,3 @@ test('create post', async () => {
   // we could mock out the request to get the /posts as well
   // but maybe we'll do that in another test...
 })
-
-/* eslint max-statements:0 */

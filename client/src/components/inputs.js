@@ -39,7 +39,9 @@ const TextArea = glamorous.textarea({
   },
 })
 
-const Button = glamorous.input({
+const Button = glamorous.button({
+  fontSize: 13,
+  fontFamily: 'Raleway,sans-serif',
   background: 'var(--green)',
   padding: '10px 20px',
   display: 'block',

@@ -14,13 +14,13 @@ describe('authentication', () => {
 
   it('should allow existing users to login', () => {
     cy
-      .getByTestId('login-link')
+      .getByText('login')
       .click()
-      .getByTestId('username-input')
+      .getByLabelText('Username')
       .type(user.username)
-      .getByTestId('password-input')
+      .getByLabelText('Password')
       .type(user.password)
-      .getByTestId('login-submit')
+      .getByText('Submit')
       .click()
       .assertRoute('/')
     cy.getByTestId('username-display').should('contain', user.username)

@@ -6,12 +6,14 @@ test('calls onSubmit with the username and password when submitted', () => {
   // Arrange
   const fakeUser = generate.loginForm()
   const handleSubmit = jest.fn()
-  const {queryByTestId} = render(<Login onSubmit={handleSubmit} />)
+  const {container, queryByLabelText, queryByText} = render(
+    <Login onSubmit={handleSubmit} />,
+  )
 
-  const usernameNode = queryByTestId('username-input')
-  const passwordNode = queryByTestId('password-input')
-  const formNode = queryByTestId('login-form')
-  const submitButtonNode = queryByTestId('login-submit')
+  const usernameNode = queryByLabelText('username')
+  const passwordNode = queryByLabelText('password')
+  const formNode = container.querySelector('form')
+  const submitButtonNode = queryByText('submit')
 
   // Act
   usernameNode.value = fakeUser.username

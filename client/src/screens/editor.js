@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import * as api from '../utils/api'
+import {HiddenLabel} from '../components/hidden-label'
 import {Input, Button, TextArea} from '../components/inputs'
 
 class Editor extends Component {
@@ -24,14 +25,30 @@ class Editor extends Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit} data-testid="editor-form">
-          <Input placeholder="title" name="title" data-testid="title-input" />
+          <HiddenLabel htmlFor="title-input">Post Title</HiddenLabel>
+          <Input
+            id="title-input"
+            placeholder="Title"
+            name="title"
+            data-testid="title-input"
+          />
+          <HiddenLabel htmlFor="content-input">Post Content</HiddenLabel>
           <TextArea
-            placeholder="content"
+            id="content-input"
+            placeholder="Content"
             name="content"
             data-testid="content-input"
           />
-          <Input placeholder="tags" name="tags" data-testid="tags-input" />
-          <Button type="submit" data-testid="editor-submit" />
+          <HiddenLabel htmlFor="tags-input">Post Tags</HiddenLabel>
+          <Input
+            id="tags-input"
+            placeholder="tags"
+            name="tags"
+            data-testid="tags-input"
+          />
+          <Button type="submit" data-testid="editor-submit">
+            Submit
+          </Button>
         </form>
       </div>
     )

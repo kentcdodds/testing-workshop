@@ -157,7 +157,7 @@ function App() {
                       </UserBtn>
                       <NewPostBtn>
                         <Link to="/editor" data-testid="create-post-link">
-                          +
+                          <span>+</span>
                         </Link>
                       </NewPostBtn>
                     </div>

@@ -20,21 +20,23 @@ beforeEach(() => {
 })
 
 test('register a new user', async () => {
-  const {queryByTestId} = renderWithRouter(<App />)
+  const {container, getByTestId, getByText, getByLabelText} = renderWithRouter(
+    <App />,
+  )
 
   // wait for /me request to settle
   await flushPromises()
 
   // navigate to register
   const leftClick = {button: 0}
-  Simulate.click(queryByTestId('register-link'), leftClick)
+  Simulate.click(getByText('Register'), leftClick)
   expect(window.location.href).toContain('register')
 
   // fill out form
   const fakeUser = generate.loginForm()
-  const usernameNode = queryByTestId('username-input')
-  const passwordNode = queryByTestId('password-input')
-  const formWrapper = queryByTestId('login-form')
+  const usernameNode = getByLabelText('Username')
+  const passwordNode = getByLabelText('Password')
+  const formWrapper = container.querySelector('form')
   usernameNode.value = fakeUser.username
   passwordNode.value = fakeUser.password
 
@@ -61,8 +63,6 @@ test('register a new user', async () => {
   // assert the state of the world
   expect(window.localStorage.getItem('token')).toBe(token)
   expect(window.location.href).not.toContain('register')
-  expect(queryByTestId('username-display').textContent).toEqual(
-    fakeUser.username,
-  )
-  expect(queryByTestId('logout-button')).toBeTruthy()
+  expect(getByTestId('username-display').textContent).toEqual(fakeUser.username)
+  expect(getByText('Logout')).toBeTruthy()
 })

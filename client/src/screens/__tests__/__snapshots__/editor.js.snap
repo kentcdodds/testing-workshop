@@ -3,6 +3,20 @@
 exports[`snapshot 1`] = `
 .css-0,
 [data-css-0] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  border: 0px;
+}
+
+.css-1,
+[data-css-1] {
   background: white;
   height: 50px;
   border: none;
@@ -15,28 +29,28 @@ exports[`snapshot 1`] = `
   padding-left: 10px;
 }
 
-.css-0::-webkit-input-placeholder,
-[data-css-0]::-webkit-input-placeholder {
+.css-1::-webkit-input-placeholder,
+[data-css-1]::-webkit-input-placeholder {
   opacity: 0.5;
 }
 
-.css-0::-moz-placeholder,
-[data-css-0]::-moz-placeholder {
+.css-1::-moz-placeholder,
+[data-css-1]::-moz-placeholder {
   opacity: 0.5;
 }
 
-.css-0::-ms-input-placeholder,
-[data-css-0]::-ms-input-placeholder {
+.css-1::-ms-input-placeholder,
+[data-css-1]::-ms-input-placeholder {
   opacity: 0.5;
 }
 
-.css-0::placeholder,
-[data-css-0]::placeholder {
+.css-1::placeholder,
+[data-css-1]::placeholder {
   opacity: 0.5;
 }
 
-.css-5,
-[data-css-5] {
+.css-6,
+[data-css-6] {
   background: white;
   border: none;
   height: 200px;
@@ -50,28 +64,30 @@ exports[`snapshot 1`] = `
   padding-left: 10px;
 }
 
-.css-5::-webkit-input-placeholder,
-[data-css-5]::-webkit-input-placeholder {
+.css-6::-webkit-input-placeholder,
+[data-css-6]::-webkit-input-placeholder {
   opacity: 0.5;
 }
 
-.css-5::-moz-placeholder,
-[data-css-5]::-moz-placeholder {
+.css-6::-moz-placeholder,
+[data-css-6]::-moz-placeholder {
   opacity: 0.5;
 }
 
-.css-5::-ms-input-placeholder,
-[data-css-5]::-ms-input-placeholder {
+.css-6::-ms-input-placeholder,
+[data-css-6]::-ms-input-placeholder {
   opacity: 0.5;
 }
 
-.css-5::placeholder,
-[data-css-5]::placeholder {
+.css-6::placeholder,
+[data-css-6]::placeholder {
   opacity: 0.5;
 }
 
-.css-10,
-[data-css-10] {
+.css-11,
+[data-css-11] {
+  font-size: 13px;
+  font-family: Raleway,sans-serif;
   background: var(--green);
   padding: 10px 20px;
   display: block;
@@ -86,21 +102,21 @@ exports[`snapshot 1`] = `
   -moz-transition: 0.5s;
 }
 
-.css-10:hover,
-[data-css-10]:hover {
+.css-11:hover,
+[data-css-11]:hover {
   box-shadow: var(--shadowHover);
 }
 
 @media only screen and (max-width: 744px) {
-  .css-0,
-  [data-css-0] {
+  .css-1,
+  [data-css-1] {
     width: 70%;
   }
 }
 
 @media only screen and (max-width: 744px) {
-  .css-5,
-  [data-css-5] {
+  .css-6,
+  [data-css-6] {
     width: 70%;
   }
 }
@@ -109,29 +125,52 @@ exports[`snapshot 1`] = `
   <form
     data-testid="editor-form"
   >
-    <input
+    <label
       class="css-0"
+      for="title-input"
+    >
+      Post Title
+    </label>
+    <input
+      class="css-1"
       data-testid="title-input"
+      id="title-input"
       name="title"
-      placeholder="title"
+      placeholder="Title"
     />
-    <textarea
-      class="css-5"
-      data-testid="content-input"
-      name="content"
-      placeholder="content"
-    />
-    <input
+    <label
       class="css-0"
+      for="content-input"
+    >
+      Post Content
+    </label>
+    <textarea
+      class="css-6"
+      data-testid="content-input"
+      id="content-input"
+      name="content"
+      placeholder="Content"
+    />
+    <label
+      class="css-0"
+      for="tags-input"
+    >
+      Post Tags
+    </label>
+    <input
+      class="css-1"
       data-testid="tags-input"
+      id="tags-input"
       name="tags"
       placeholder="tags"
     />
-    <input
-      class="css-10"
+    <button
+      class="css-11"
       data-testid="editor-submit"
       type="submit"
-    />
+    >
+      Submit
+    </button>
   </form>
 </div>
 `;

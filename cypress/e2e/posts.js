@@ -14,17 +14,17 @@ describe('posts', () => {
     // shorten the content so we don't have to wait so long
     fakePost.content = fakePost.content.slice(0, 50)
     cy
-      .getByTestId('create-post-link')
+      .getByText(/^\+$/)
       .click()
-      .getByTestId('title-input')
+      .getByLabelText('Title')
       .type(fakePost.title)
-      .getByTestId('content-input')
+      .getByLabelText('Content')
       // the delay is because the content takes
       // forever to type otherwise
       .type(fakePost.content, {delay: 1})
-      .getByTestId('tags-input')
+      .getByLabelText('Tags')
       .type(fakePost.tags.join(', '))
-      .getByTestId('editor-submit')
+      .getByText('Submit')
       .click()
       .assertRoute('/')
     cy

@@ -1,6 +1,7 @@
 import axios from 'axios'
 
 let api, isLoggedIn
+const envBaseUrl = process.env.REACT_APP_API_URL
 
 const getData = res => res.data
 
@@ -66,7 +67,7 @@ function login({token}) {
 
 function init({
   token = window.localStorage.getItem('token'),
-  baseURL = (api && api.defaults.baseUrl) || process.env.REACT_APP_API_URL,
+  baseURL = (api && api.defaults.baseURL) || envBaseUrl,
   axiosOptions = {headers: {}},
 } = {}) {
   isLoggedIn = Boolean(token)

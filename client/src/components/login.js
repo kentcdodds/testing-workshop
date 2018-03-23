@@ -1,4 +1,5 @@
 import React from 'react'
+import {HiddenLabel} from './hidden-label'
 import {Input, Button} from './inputs'
 
 function Login({onSubmit}) {
@@ -15,18 +16,16 @@ function Login({onSubmit}) {
           })
         }}
       >
-        <Input
-          placeholder="Username..."
-          name="username"
-          data-testid="username-input"
-        />
+        <HiddenLabel htmlFor="username-input">Username</HiddenLabel>
+        <Input id="username-input" placeholder="Username..." name="username" />
+        <HiddenLabel id="password-input">Password</HiddenLabel>
         <Input
           placeholder="Password..."
           type="password"
           name="password"
-          data-testid="password-input"
+          aria-labelledby="password-input"
         />
-        <Button type="submit" data-testid="login-submit" />
+        <Button type="submit">Submit</Button>
       </form>
     </div>
   )

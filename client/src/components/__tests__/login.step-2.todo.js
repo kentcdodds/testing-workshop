@@ -10,16 +10,17 @@ test('calls onSubmit with the username and password when submitted', () => {
   const fakeUser = {username: 'chucknorris', password: '(╯°□°）╯︵ ┻━┻'}
   const handleSubmit = jest.fn()
   // use: render(<Login onSubmit={handleSubmit} />)
-  // It'll give you back an object with a `queryByTestId` function
+  // It'll give you back an object with
+  // `queryByLabelText` and `queryByText` functions
   // so you don't need a div anymore!
   const div = document.createElement('div')
   ReactDOM.render(<Login onSubmit={handleSubmit} />, div)
-  const queryByTestId = id => div.querySelector(`[data-testid="${id}"]`)
 
-  const usernameNode = queryByTestId('username-input')
-  const passwordNode = queryByTestId('password-input')
-  const formNode = queryByTestId('login-form')
-  const submitButtonNode = queryByTestId('login-submit')
+  const inputs = div.querySelectorAll('input')
+  const usernameNode = inputs[0]
+  const passwordNode = inputs[1]
+  const formNode = div.querySelector('form')
+  const submitButtonNode = div.querySelector('button')
 
   usernameNode.value = fakeUser.username
   passwordNode.value = fakeUser.password
