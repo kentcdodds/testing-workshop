@@ -82,23 +82,7 @@ The main ones you should care about are:
 
 ### What's a test
 
-Before we get into all the testing frameworks, let's learn about what a test
-even is. In your terminal, change directories to `other/whats-a-test` and open
-the `0.js` file in your editor. Follow the instructions there and continue
-through to `5.js`. You'll find the solutions in the associated `.solution`
-files.
-
-Learn more about this from:
-["But really, what is a JavaScript test?"](https://blog.kentcdodds.com/46fe5f3fad77)
-
-**New Things**:
-
-* Assertion: A way for you to specify how things should be. Will throw an error if they are not that way, this is what fails the test.
-
-**Takeaways**:
-
-* Tests are simply code that runs other code and performs "assertions"
-* Testing frameworks abstract this away for us to be more productive in writing tests.
+See below in the shared content
 
 ### What types of testing are there?
 
@@ -300,45 +284,29 @@ See below in the shared content
 * Configure Cypress for a web application
 * Write E2E (end-to-end) tests with Cypress
 
-### What types of testing are there?
-
-Watch this 5 minute lightning talk:
-["What we can learn about testing from the wheel"](https://youtu.be/Da9wfQ0frGA?list=PLV5CVI1eNcJgNqzNwcs4UKrlJdhfDjshf)
-
 ### What's a test
+
+See below in the shared content
+
+### What types of testing are there?
 
 > NOTE: This is duplicate content from the practices and principles workshop
 > In this one however, folks should just watch the instructor go through things
 > to make time for the rest of the content and not bore those who have already
 > gone through this material.
 
-Before we get into all the testing frameworks, let's learn about what a test
-even is. In your terminal, change directories to `other/whats-a-test` and open
-the `0.js` file in your editor. Follow the instructions there and continue
-through to `5.js`. You'll find the solutions in the associated `.solution`
-files.
-
-Learn more about this from:
-["But really, what is a JavaScript test?"](https://blog.kentcdodds.com/46fe5f3fad77)
-
-**New Things**:
-
-* Assertion: A way for you to specify how things should be. Will throw an error if they are not that way, this is what fails the test.
-
-**Takeaways**:
-
-* Tests are simply code that runs other code and performs "assertions"
-* Testing frameworks abstract this away for us to be more productive in writing tests
+See below in the shared content
 
 ### Intro to Jest
 
-See section called ["Jest"](#jest) below in the shared content
+See below in the shared content
 
 ### Configuring Jest
 
 **New Things**:
 
-* Code Coverage: A mechanism for us to understand how much of our code is run during the unit tests. 100% for libs, 70%ish for applications.
+* Code Coverage: A mechanism for us to understand how much of our code is run
+  during the unit tests. 100% for libs, 70%ish for applications.
 
 **Instruction**:
 
@@ -565,6 +533,26 @@ See below in the shared content
 
 ## Shared Content
 
+### What's a test
+
+Before we get into all the testing frameworks, let's learn about what a test
+even is. In your terminal, change directories to `other/whats-a-test` and open
+the `0.js` file in your editor. Follow the instructions there and continue
+through to `5.js`. You'll find the solutions in the associated `.solution`
+files.
+
+Learn more about this from:
+["But really, what is a JavaScript test?"](https://blog.kentcdodds.com/46fe5f3fad77)
+
+**New Things**:
+
+* Assertion: A way for you to specify how things should be. Will throw an error if they are not that way, this is what fails the test.
+
+**Takeaways**:
+
+* Tests are simply code that runs other code and performs "assertions"
+* Testing frameworks abstract this away for us to be more productive in writing tests.
+
 ### What types of testing are there?
 
 Watch this 5 minute lightning talk:
@@ -586,7 +574,7 @@ Watch this 5 minute lightning talk:
 
 * Reference all the assertions here: https://facebook.github.io/jest/docs/en/expect.html
 
-### Code Coverage
+#### Code Coverage
 
 Take a look at `other/coverage-example`. Look at the `example.js` file and
 compare it to the `example.coverage.js` file. The one with coverage has been
