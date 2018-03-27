@@ -64,6 +64,16 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "indiesquidge",
+      "name": "Austin Wood",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/3409645?v=4",
+      "profile": "https://github.com/indiesquidge",
+      "contributions": [
+        "doc"
+      ]
     }
-  ]
+  ],
+  "repoType": "github"
 }

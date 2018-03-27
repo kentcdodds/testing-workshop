@@ -12,7 +12,7 @@ workshop repo to teach you about testing JavaScript applications.
 [![AppVeyor Build Status][win-build-badge]][win-build]
 [![Code Coverage][coverage-badge]][coverage]
 [![MIT License][license-badge]][license]
-[![All Contributors](https://img.shields.io/badge/all_contributors-6-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-7-orange.svg?style=flat-square)](#contributors)
 
 [![PRs Welcome][prs-badge]][prs]
 [![Code of Conduct][coc-badge]][coc]
@@ -46,9 +46,9 @@ workshop repo to teach you about testing JavaScript applications.
 
 ## Topics covered
 
-1. Unit Testing with [Jest](http://facebook.github.io/jest)
-2. Integration Testing with [Jest](http://facebook.github.io/jest)
-3. End to End (E2E) Testing with [Cypress](https://www.cypress.io/)
+1.  Unit Testing with [Jest](http://facebook.github.io/jest)
+2.  Integration Testing with [Jest](http://facebook.github.io/jest)
+3.  End to End (E2E) Testing with [Cypress](https://www.cypress.io/)
 
 We'll mention other forms of testing, but these are the types we'll focus on and
 learn in this workshop. Learn more about the course goals and specific topics
@@ -230,6 +230,29 @@ help if I can.
 
 </details>
 
+<details>
+
+<summary>"npm test" command not working; "./jest" command not working</summary>
+
+When attempting to run Jest in watch mode, you may encounter an error that says
+something like:
+
+```
+`fsevents` unavailable (this watcher can only be used on Darwin)'
+```
+
+Jest watch mode has a dependency on a tool called `watchman`, which needs to be
+installed globally on your machine.
+
+To fix this error, please make sure you have [watchman][watchman] installed for
+your preferred operating system.
+
+NOTE: installing `watchman` via `npm` installs an outdated version of the package.
+To get the latest version of `watchman`, it is preferred that you install through
+your operating system's package manager instead.
+
+</details>
+
 ## Structure
 
 This project has a bit of a unique setup. Normally you'll have just a single
@@ -246,8 +269,8 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 
 <!-- prettier-ignore -->
-| [<img src="https://avatars.githubusercontent.com/u/1500684?v=3" width="100px;"/><br /><sub><b>Kent C. Dodds</b></sub>](https://kentcdodds.com)<br />[💻](https://github.com/kentcdodds/testing-workshop/commits?author=kentcdodds "Code") [📖](https://github.com/kentcdodds/testing-workshop/commits?author=kentcdodds "Documentation") [🚇](#infra-kentcdodds "Infrastructure (Hosting, Build-Tools, etc)") [⚠️](https://github.com/kentcdodds/testing-workshop/commits?author=kentcdodds "Tests") | [<img src="https://avatars3.githubusercontent.com/u/13832392?v=4" width="100px;"/><br /><sub><b>Osama Jandali</b></sub>](https://github.com/osamajandali)<br />[💻](https://github.com/kentcdodds/testing-workshop/commits?author=osamajandali "Code") [🎨](#design-osamajandali "Design") | [<img src="https://avatars2.githubusercontent.com/u/3818515?v=4" width="100px;"/><br /><sub><b>Stefan Ivic</b></sub>](http://stefanivic.me/)<br />[🐛](https://github.com/kentcdodds/testing-workshop/issues?q=author%3Astefanivic "Bug reports") | [<img src="https://avatars2.githubusercontent.com/u/2413413?v=4" width="100px;"/><br /><sub><b>Nick Klepinger</b></sub>](https://github.com/bodiddlie)<br />[🐛](https://github.com/kentcdodds/testing-workshop/issues?q=author%3Abodiddlie "Bug reports") | [<img src="https://avatars2.githubusercontent.com/u/6417910?v=4" width="100px;"/><br /><sub><b>Abinav Seelan</b></sub>](http://abinavseelan.com)<br />[🐛](https://github.com/kentcdodds/testing-workshop/issues?q=author%3Aabinavseelan "Bug reports") | [<img src="https://avatars0.githubusercontent.com/u/2751691?v=4" width="100px;"/><br /><sub><b>Philip Sotirov</b></sub>](http://philipsotirov.com)<br />[🐛](https://github.com/kentcdodds/testing-workshop/issues?q=author%3Afipo "Bug reports") |
-| :---: | :---: | :---: | :---: | :---: | :---: |
+| [<img src="https://avatars.githubusercontent.com/u/1500684?v=3" width="100px;"/><br /><sub><b>Kent C. Dodds</b></sub>](https://kentcdodds.com)<br />[💻](https://github.com/kentcdodds/testing-workshop/commits?author=kentcdodds "Code") [📖](https://github.com/kentcdodds/testing-workshop/commits?author=kentcdodds "Documentation") [🚇](#infra-kentcdodds "Infrastructure (Hosting, Build-Tools, etc)") [⚠️](https://github.com/kentcdodds/testing-workshop/commits?author=kentcdodds "Tests") | [<img src="https://avatars3.githubusercontent.com/u/13832392?v=4" width="100px;"/><br /><sub><b>Osama Jandali</b></sub>](https://github.com/osamajandali)<br />[💻](https://github.com/kentcdodds/testing-workshop/commits?author=osamajandali "Code") [🎨](#design-osamajandali "Design") | [<img src="https://avatars2.githubusercontent.com/u/3818515?v=4" width="100px;"/><br /><sub><b>Stefan Ivic</b></sub>](http://stefanivic.me/)<br />[🐛](https://github.com/kentcdodds/testing-workshop/issues?q=author%3Astefanivic "Bug reports") | [<img src="https://avatars2.githubusercontent.com/u/2413413?v=4" width="100px;"/><br /><sub><b>Nick Klepinger</b></sub>](https://github.com/bodiddlie)<br />[🐛](https://github.com/kentcdodds/testing-workshop/issues?q=author%3Abodiddlie "Bug reports") | [<img src="https://avatars2.githubusercontent.com/u/6417910?v=4" width="100px;"/><br /><sub><b>Abinav Seelan</b></sub>](http://abinavseelan.com)<br />[🐛](https://github.com/kentcdodds/testing-workshop/issues?q=author%3Aabinavseelan "Bug reports") | [<img src="https://avatars0.githubusercontent.com/u/2751691?v=4" width="100px;"/><br /><sub><b>Philip Sotirov</b></sub>](http://philipsotirov.com)<br />[🐛](https://github.com/kentcdodds/testing-workshop/issues?q=author%3Afipo "Bug reports") | [<img src="https://avatars3.githubusercontent.com/u/3409645?v=4" width="100px;"/><br /><sub><b>Austin Wood</b></sub>](https://github.com/indiesquidge)<br />[📖](https://github.com/kentcdodds/testing-workshop/commits?author=indiesquidge "Documentation") |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
@@ -287,3 +310,4 @@ MIT
 [win-build]: https://ci.appveyor.com/project/kentcdodds/testing-workshop
 [coverage-badge]: https://img.shields.io/codecov/c/github/kentcdodds/testing-workshop.svg?style=flat-square
 [coverage]: https://codecov.io/github/kentcdodds/testing-workshop
+[watchman]: https://facebook.github.io/watchman/docs/install.html
