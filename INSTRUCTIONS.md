@@ -330,8 +330,8 @@ Now let's deal with CSS imports:
 * Copy `src/__tests__/auto-scaling-text.js` from `calculator.solution`
 * Run `npm test` -- Fails because of the import of css
 * Create `jest.config.js` and move config from `package.json` to that file.
-* Add `moduleNameMapper` to match `.css`. Map it to `<rootDir>/test/style-mock.js`
-* Create `style-mock.js` in `test` directory: `module.exports = {}`
+* Add `moduleNameMapper` to match `.css`. Map it to `require.resolve('./test/style-mock')`
+* Create `style-mock.js` in `test` directory. It needs no contents.
 * Run `npm test` -- The old error is gone! CSS importing is working, but now we're getting `document is not defined`.
 * Update `jest.config.js` to `testEnvironment: 'jsdom'`.
 * Run `npm test` -- Passes!
@@ -352,7 +352,7 @@ Let's handle dynamic imports:
 * Update `.babelrc.js` to use `dynamic-import-node` when in tests
 * Run `npm test` -- Fails because `window.localStorage` is not supported by JSDOM!
 * Copy `test/setup-test-framework.js` from `calculator.solution`
-* Update `jest.config.js` to have a `setupTestFrameworkScriptFile` that points to `./test/setup-test-framework.js`
+* Update `jest.config.js` to have a `setupTestFrameworkScriptFile` that points to `require.resolve('./test/setup-test-framework')`
 * Run `npm test` -- Passes!
 
 Ok! Now time for coverage!
