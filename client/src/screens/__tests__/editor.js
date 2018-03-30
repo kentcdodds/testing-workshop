@@ -1,5 +1,5 @@
 import React from 'react'
-import {generate, render, Simulate, wait} from 'client-test-utils'
+import {generate, render, Simulate, wait} from 'til-client-test-utils'
 import Editor from '../editor'
 
 test('calls onSubmit with the username and password when submitted', async () => {

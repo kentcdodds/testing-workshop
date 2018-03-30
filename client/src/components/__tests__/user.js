@@ -8,7 +8,7 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {wait, generate} from 'client-test-utils'
+import {wait, generate} from 'til-client-test-utils'
 import User from '../user'
 import * as apiMock from '../../utils/api'
 

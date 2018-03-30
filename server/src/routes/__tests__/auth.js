@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {resetDb, generate} from 'server-test-utils'
+import {resetDb, generate} from 'til-server-test-utils'
 import db from '../../utils/db'
 import {getUserToken} from '../../utils/auth'
 import startServer from '../../start'

@@ -8,7 +8,7 @@
 
 import React from 'react'
 import axiosMock from 'axios'
-import {renderWithRouter, generate, Simulate} from 'client-test-utils'
+import {renderWithRouter, generate, Simulate} from 'til-client-test-utils'
 import {init as initAPI} from '../utils/api'
 import App from '../app'
 

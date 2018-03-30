@@ -1,4 +1,4 @@
-import {initDb, generate} from 'server-test-utils'
+import {initDb, generate} from 'til-server-test-utils'
 import db from '../db'
 
 let mockData

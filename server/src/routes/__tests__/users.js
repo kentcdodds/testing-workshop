@@ -1,6 +1,6 @@
 import axios from 'axios'
 import {omit} from 'lodash'
-import {initDb, generate} from 'server-test-utils'
+import {initDb, generate} from 'til-server-test-utils'
 import db from '../../utils/db'
 import startServer from '../../start'
 
