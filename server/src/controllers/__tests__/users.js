@@ -97,7 +97,7 @@ test('deleteUser deletes a user', async () => {
   const firstArg = firstCall[0]
   const {user} = firstArg
   expect(user).toEqual(safeUser(testUser))
-  const userFromDb = await db.getPost(user.id)
+  const userFromDb = await db.getUser(user.id)
   expect(userFromDb).not.toBeDefined()
 })
 
@@ -115,7 +115,7 @@ test('deleteUser will 404 if made to a non-existing user', async () => {
 })
 
 test('deleteUser will 403 if not made by the author', async () => {
-  const testUser = await db.insertPost(generate.userData())
+  const testUser = await db.insertUser(generate.userData())
   const {req, res} = setup()
   req.params = {id: testUser.id}
 
@@ -125,6 +125,6 @@ test('deleteUser will 403 if not made by the author', async () => {
   expect(res.status).toHaveBeenCalledTimes(1)
   expect(res.status).toHaveBeenCalledWith(403)
   expect(res.send).toHaveBeenCalledTimes(1)
-  const userFromDb = await db.getPost(testUser.id)
+  const userFromDb = await db.getUser(testUser.id)
   expect(userFromDb).toEqual(testUser)
 })
