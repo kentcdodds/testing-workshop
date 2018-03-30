@@ -8,7 +8,7 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {flushPromises, generate} from 'client-test-utils'
+import {wait, generate} from 'client-test-utils'
 import User from '../user'
 import * as apiMock from '../../utils/api'
 
@@ -48,10 +48,11 @@ test('login rerenders with the retrieved user', async () => {
   )
   const form = generate.loginForm(fakeUser)
   controller.login(form)
-  await flushPromises()
   expect(apiMock.auth.login).toHaveBeenCalledTimes(1)
   expect(apiMock.auth.login).toHaveBeenCalledWith(form)
-  expect(children).toHaveBeenCalledTimes(2)
+
+  await wait(() => expect(children).toHaveBeenCalledTimes(2))
+
   expect(children).toHaveBeenCalledWith(
     expect.objectContaining({
       pending: true,
@@ -71,9 +72,8 @@ test('login rerenders with the retrieved user', async () => {
 test('logout rerenders with a null user', async () => {
   const {children, controller} = await setup()
   controller.logout()
-  await flushPromises()
   expect(apiMock.auth.logout).toHaveBeenCalledTimes(1)
-  expect(children).toHaveBeenCalledTimes(2)
+  await wait(() => expect(children).toHaveBeenCalledTimes(2))
   expect(children).toHaveBeenCalledWith(
     expect.objectContaining({
       pending: true,
@@ -99,10 +99,9 @@ test('on register failure, rerenders with the error', async () => {
   const form = generate.loginForm()
   // the catch below is simply to ignore the error thrown
   controller.register(form).catch(i => i)
-  await flushPromises()
   expect(apiMock.auth.register).toHaveBeenCalledTimes(1)
   expect(apiMock.auth.register).toHaveBeenCalledWith(form)
-  expect(children).toHaveBeenCalledTimes(2)
+  await wait(() => expect(children).toHaveBeenCalledTimes(2))
   expect(children).toHaveBeenCalledWith(
     expect.objectContaining({
       pending: true,
@@ -127,7 +126,8 @@ async function setup() {
   })
   const div = document.createElement('div')
   ReactDOM.render(<User>{children}</User>, div)
-  await flushPromises()
+  children.mockClear()
+  await wait(() => expect(children).toHaveBeenCalledTimes(1))
   children.mockClear()
   return {controller, children}
 }

@@ -31,8 +31,7 @@
   "devDependencies": {
     "jest-glamor-react": "^4.2.0",
     "react-scripts": "^2.0.0-next.47d2d941",
-    "react-test-renderer": "^16.2.0",
-    "react-testing-library": "^1.6.0",
+    "react-testing-library": "^1.9.1",
     "til-shared": "file:../shared"
   },
   "browserslist": {

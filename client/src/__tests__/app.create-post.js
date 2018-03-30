@@ -9,7 +9,7 @@
 import React from 'react'
 import {Simulate} from 'react-dom/test-utils'
 import axiosMock from 'axios'
-import {renderWithRouter, flushPromises, generate} from 'client-test-utils'
+import {renderWithRouter, generate} from 'client-test-utils'
 import {init as initAPI} from '../utils/api'
 import App from '../app'
 
@@ -42,10 +42,15 @@ test('create post', async () => {
     }
   })
 
-  const {container, getByText, getByLabelText} = renderWithRouter(<App />)
+  const {
+    container,
+    getByText,
+    getByLabelText,
+    finishLoading,
+  } = renderWithRouter(<App />)
 
-  // wait for /me request to settle
-  await flushPromises()
+  // wait for the app to finish loading the mocked requests
+  await finishLoading()
   axiosMock.__mock.reset()
 
   // navigate to register
@@ -86,8 +91,8 @@ test('create post', async () => {
     date: expect.any(String),
   })
 
-  // wait for promises to settle
-  await flushPromises()
+  // wait for the mocked requests to finish
+  await finishLoading()
 
   expect(window.location.href).not.toContain('editor')
 

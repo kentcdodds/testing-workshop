@@ -9,7 +9,7 @@
 import React from 'react'
 import {Simulate} from 'react-dom/test-utils'
 import axiosMock from 'axios'
-import {renderWithRouter, flushPromises, generate} from 'client-test-utils'
+import {renderWithRouter, generate} from 'client-test-utils'
 import {init as initAPI} from '../utils/api'
 import App from '../app'
 
@@ -20,12 +20,16 @@ beforeEach(() => {
 })
 
 test('register a new user', async () => {
-  const {container, getByTestId, getByText, getByLabelText} = renderWithRouter(
-    <App />,
-  )
+  const {
+    container,
+    getByTestId,
+    getByText,
+    finishLoading,
+    getByLabelText,
+  } = renderWithRouter(<App />)
 
-  // wait for /me request to settle
-  await flushPromises()
+  // wait for the app to finish loading the mocked requests
+  await finishLoading()
 
   // navigate to register
   const leftClick = {button: 0}
@@ -50,8 +54,8 @@ test('register a new user', async () => {
   )
   Simulate.submit(formWrapper)
 
-  // wait for promises to settle
-  await flushPromises()
+  // wait for the mocked requests to finish
+  await finishLoading()
 
   // assert calls
   expect(axiosMock.__mock.instance.post).toHaveBeenCalledTimes(1)

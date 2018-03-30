@@ -3,7 +3,7 @@
 test('login as an existing user', async () => {
   // render the app with the router provider and custom history
   //
-  // wait for /me request to settle
+  // wait for the app to finish loading the mocked requests
   //
   // navigate to login by clicking login-link
   //
@@ -16,7 +16,7 @@ test('login as an existing user', async () => {
   // which you can generate with generate.token(fakeUser)
   // Now simulate a submit event on the form
   //
-  // wait for promises to settle
+  // wait for the mocked requests to finish
   //
   // assert post was called correctly
   // assert localStorage is correct

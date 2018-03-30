@@ -8,7 +8,7 @@
 
 import React from 'react'
 import axiosMock from 'axios'
-import {renderWithRouter, flushPromises, generate} from 'client-test-utils'
+import {renderWithRouter} from 'client-test-utils'
 import {init as initAPI} from '../utils/api'
 import App from '../app'
 
@@ -41,9 +41,9 @@ test('snapshot', async () => {
     }
   })
 
-  const {container} = renderWithRouter(<App />)
+  const {container, finishLoading} = renderWithRouter(<App />)
 
-  // wait for /me request to settle
-  await flushPromises()
+  // wait for the app to finish loading the mocked requests
+  await finishLoading()
   expect(container.firstChild).toMatchSnapshot()
 })
