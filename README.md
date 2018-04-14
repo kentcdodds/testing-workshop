@@ -278,7 +278,10 @@ This project follows the [all-contributors](https://github.com/kentcdodds/all-co
 
 ## LICENSE
 
-MIT
+This material is available for private, non-commercial use under the
+[GPL version 3](http://www.gnu.org/licenses/gpl-3.0-standalone.html). If you
+would like to use this material to conduct your own workshop, please contact me
+at kent@doddsfamily.us
 
 [npm]: https://www.npmjs.com/
 [node]: https://nodejs.org
@@ -287,7 +290,7 @@ MIT
 [chat-badge]: https://img.shields.io/gitter/room/kentcdodds/testing-workshop.js.svg?style=flat-square&logo=gitter-white
 [build-badge]: https://img.shields.io/travis/kentcdodds/testing-workshop.svg?style=flat-square&logo=travis
 [build]: https://travis-ci.org/kentcdodds/testing-workshop
-[license-badge]: https://img.shields.io/badge/license-MIT%20License-blue.svg?style=flat-square
+[license-badge]: https://img.shields.io/badge/license-GPL%203.0%20License-blue.svg?style=flat-square
 [license]: https://github.com/kentcdodds/testing-workshop/blob/master/LICENSE
 [prs-badge]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square
 [prs]: http://makeapullrequest.com
