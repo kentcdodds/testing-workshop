@@ -1,15 +1,21 @@
-const assert = require('assert')
 const {sum, subtract} = require('./math')
 
-/*
+let result, expected
 
-Rewrite your tests using the assert module!
+result = sum(3, 7)
+expected = 10
+expect(result).toBe(expected)
 
-Hint: add `console.log(Object.keys(assert))` to know
-what methods are available from the assert module!
+result = subtract(7, 3)
+expected = 4
+expect(result).toBe(expected)
 
-Then run this code with `node 2`
-
-> Make sure you're in the right directory!
-
- */
+function expect(actual) {
+  return {
+    toBe(expected) {
+      if (actual !== expected) {
+        throw new Error(`${actual} is not equal to ${expected}`)
+      }
+    },
+  }
+}

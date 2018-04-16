@@ -1,13 +1,17 @@
-const {sum, subtract} = require('./math')
+// sum is intentionally broken so you can see errors in the tests
+const sum = (a, b) => a - b
+const subtract = (a, b) => a - b
 
-/*
+let result, expected
 
-Normally your tests aren't in the same file as your source code.
+result = sum(3, 7)
+expected = 10
+if (result !== expected) {
+  throw new Error(`${result} is not equal to ${expected}`)
+}
 
-So now take your tests from before and copy it in here.
-
-Then run this code with `node 0`
-
-> Make sure you're in the right directory!
-
- */
+result = subtract(7, 3)
+expected = 4
+if (result !== expected) {
+  throw new Error(`${result} is not equal to ${expected}`)
+}

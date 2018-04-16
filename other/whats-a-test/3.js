@@ -1,17 +1,33 @@
 const {sum, subtract} = require('./math')
 
-/*
+test('sum adds numbers', () => {
+  const result = sum(3, 7)
+  const expected = 10
+  expect(result).toBe(expected)
+})
 
-Now let's implement our own assertion library.
-Create a function called `expect` that accepts an "actual"
-and returns an object of assertions.
+test('subtract subtracts numbers', () => {
+  const result = subtract(7, 3)
+  const expected = 4
+  expect(result).toBe(expected)
+})
 
-Tip: I want to be able to use it like so:
+function test(title, callback) {
+  try {
+    callback()
+    console.log(`✓ ${title}`)
+  } catch (error) {
+    console.error(`✕ ${title}`)
+    console.error(error)
+  }
+}
 
-> expect(actual).toBe(expected)
-
-Then run this code with `node 3`
-
-> Make sure you're in the right directory!
-
- */
+function expect(actual) {
+  return {
+    toBe(expected) {
+      if (actual !== expected) {
+        throw new Error(`${actual} is not equal to ${expected}`)
+      }
+    },
+  }
+}

@@ -1,3 +1,3 @@
 module.exports = {
-  testMatch: ['**/5.js']
+  testMatch: ['**/4.js'],
 }
