@@ -1,12 +1,9 @@
 import React from 'react'
-import {
-  generate,
-  renderIntoDocument,
-  cleanup,
-  render,
-} from 'til-client-test-utils'
+import {generate, renderIntoDocument, cleanup} from 'til-client-test-utils'
 import Login from '../login'
 
+// If you render your components with renderIntoDocument via react-testing-library
+// then you can get automatic cleanup of any components rendered like this:
 afterEach(cleanup)
 
 test('calls onSubmit with the username and password when submitted', () => {
@@ -28,9 +25,4 @@ test('calls onSubmit with the username and password when submitted', () => {
   // Assert
   expect(handleSubmit).toHaveBeenCalledTimes(1)
   expect(handleSubmit).toHaveBeenCalledWith(fakeUser)
-})
-
-test('snapshot', () => {
-  const {container} = render(<Login />)
-  expect(container.firstChild).toMatchSnapshot()
 })

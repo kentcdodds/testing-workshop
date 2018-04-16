@@ -2,6 +2,8 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 // you'll need these:
 // import {generate, render, Simulate} from 'til-client-test-utils'
+// note that til-client-test-utils is found in `client/test/til-client-test-utils`
+// and it re-exports some utilities from react-testing-library (like render and Simulate)
 import Login from '../login'
 
 test('calls onSubmit with the username and password when submitted', () => {
@@ -11,7 +13,7 @@ test('calls onSubmit with the username and password when submitted', () => {
   const handleSubmit = jest.fn()
   // use: render(<Login onSubmit={handleSubmit} />)
   // It'll give you back an object with
-  // `queryByLabelText` and `queryByText` functions
+  // `getByLabelText` and `getByText` functions
   // so you don't need a div anymore!
   const div = document.createElement('div')
   ReactDOM.render(<Login onSubmit={handleSubmit} />, div)
@@ -44,7 +46,7 @@ test('calls onSubmit with the username and password when submitted', () => {
 // 3. Change submitted from `false` to `true`
 // 4. And you're all done!
 /*
-http://ws.kcd.im/?ws=Testing&e=login.step-2&em=
+http://ws.kcd.im/?ws=Testing&e=login.step-2%20(react-testing-library)&em=
 */
 test.skip('I submitted my elaboration and feedback', () => {
   const submitted = false // change this when you've submitted!

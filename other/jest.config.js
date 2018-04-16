@@ -11,5 +11,6 @@ module.exports = {
     './other/whats-a-mock',
     './other/configuration/calculator.solution',
     './other/jest-expect',
+    './other/simple-react',
   ],
 }

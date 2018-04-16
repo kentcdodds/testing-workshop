@@ -31,6 +31,7 @@ through it on your own if you like.
   * [What types of testing are there?](#what-types-of-testing-are-there-1)
   * [What's a test](#whats-a-test-1)
   * [Intro to Jest](#intro-to-jest)
+  * [Testing a React Component](#testing-a-react-component)
   * [Configuring Jest](#configuring-jest)
   * [Unit testing components](#unit-testing-components)
   * [Effective Snapshot Testing](#effective-snapshot-testing)
@@ -39,9 +40,10 @@ through it on your own if you like.
   * [End-to-end testing](#end-to-end-testing)
   * [Write tests. Not too many. Mostly integration.](#write-tests-not-too-many-mostly-integration-1)
 * [Shared Content](#shared-content)
+  * [What's a test](#whats-a-test-2)
   * [What types of testing are there?](#what-types-of-testing-are-there-2)
   * [Jest](#jest)
-  * [Code Coverage](#code-coverage)
+    * [Code Coverage](#code-coverage)
   * [Write tests. Not too many. Mostly integration.](#write-tests-not-too-many-mostly-integration-2)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -284,22 +286,42 @@ See below in the shared content
 * Configure Cypress for a web application
 * Write E2E (end-to-end) tests with Cypress
 
-### What's a test
+### What types of testing are there?
 
 See below in the shared content
 
-### What types of testing are there?
+### What's a test
+
+See below in the shared content
 
 > NOTE: This is duplicate content from the practices and principles workshop
 > In this one however, folks should just watch the instructor go through things
 > to make time for the rest of the content and not bore those who have already
 > gone through this material.
 
-See below in the shared content
-
 ### Intro to Jest
 
 See below in the shared content
+
+### Testing a React Component
+
+**Instruction**:
+
+* Nothing much here, direct people to the exercise and inform them they can
+  use the solution for reference
+
+**Exercise**:
+
+* Start the simple react tests in watch mode with `npm run test:react`
+* Open `other/simple-react/item-list.js` and `other/simple-react/__tests__/item-list.todo.js`
+* Follow the instructions to test the component
+
+**Takeaways**
+
+* The key here is to render the component and assert on the output.
+* Assuming this were the only component for your entire application, attempt to
+  use it the way the user would and let that inform your decisions of how you
+  test it.
 
 ### Configuring Jest
 

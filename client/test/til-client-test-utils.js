@@ -1,6 +1,6 @@
 import React from 'react'
 import {Router} from 'react-router-dom'
-import {render, wait, Simulate} from 'react-testing-library'
+import {render, wait} from 'react-testing-library'
 import {createMemoryHistory} from 'history'
 import 'jest-dom/extend-expect'
 import * as generate from 'til-shared/generate'
@@ -17,4 +17,12 @@ function renderWithRouter(ui, {route = '/', ...renderOptions} = {}) {
   }
 }
 
-export {renderWithRouter, generate, render, wait, Simulate}
+export {
+  Simulate,
+  wait,
+  render,
+  cleanup,
+  renderIntoDocument,
+  fireEvent,
+} from 'react-testing-library'
+export {renderWithRouter, generate}

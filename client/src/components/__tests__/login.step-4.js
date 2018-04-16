@@ -2,8 +2,8 @@ import React from 'react'
 import {
   generate,
   renderIntoDocument,
-  cleanup,
   render,
+  cleanup,
 } from 'til-client-test-utils'
 import Login from '../login'
 
@@ -31,6 +31,11 @@ test('calls onSubmit with the username and password when submitted', () => {
 })
 
 test('snapshot', () => {
+  // note that we don't need to render this into the document so we'll just
+  // use a regular `render` here.
   const {container} = render(<Login />)
+  // note that we're snapshotting the firstChild rather than the container.
+  // That's just because the container will always be the same. A div.
+  // So no reason to include that in the snapshot.
   expect(container.firstChild).toMatchSnapshot()
 })

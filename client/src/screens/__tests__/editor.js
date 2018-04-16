@@ -1,6 +1,15 @@
 import React from 'react'
-import {generate, render, Simulate, wait} from 'til-client-test-utils'
+import {
+  generate,
+  wait,
+  cleanup,
+  fireEvent,
+  renderIntoDocument,
+  render,
+} from 'til-client-test-utils'
 import Editor from '../editor'
+
+afterEach(cleanup)
 
 test('calls onSubmit with the username and password when submitted', async () => {
   // Arrange
@@ -12,19 +21,17 @@ test('calls onSubmit with the username and password when submitted', async () =>
       create: jest.fn(() => Promise.resolve()),
     },
   }
-  const {container, getByText, getByLabelText} = render(
+  const {getByText, getByLabelText} = renderIntoDocument(
     <Editor api={fakeApi} user={fakeUser} history={fakeHistory} />,
   )
 
   getByLabelText('Title').value = fakePost.title
   getByLabelText('Content').value = fakePost.content
   getByLabelText('Tags').value = fakePost.tags.join(', ')
-  const submitButtonNode = getByText('submit')
-  const formNode = container.querySelector('form')
   const preDate = Date.now()
 
   // Act
-  Simulate.submit(formNode)
+  fireEvent.click(getByText('submit'))
 
   // Assert
   expect(fakeApi.posts.create).toHaveBeenCalledTimes(1)
@@ -39,7 +46,6 @@ test('calls onSubmit with the username and password when submitted', async () =>
   const date = new Date(fakeApi.posts.create.mock.calls[0][0].date).getTime()
   expect(date).toBeGreaterThanOrEqual(preDate)
   expect(date).toBeLessThanOrEqual(postDate)
-  expect(submitButtonNode.type).toBe('submit')
 })
 
 test('snapshot', () => {

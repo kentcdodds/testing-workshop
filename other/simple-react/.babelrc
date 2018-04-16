@@ -1,0 +1,3 @@
+{
+  "presets": "../configuration/calculator.solution/.babelrc.js"
+}

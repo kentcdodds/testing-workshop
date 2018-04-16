@@ -1,0 +1,148 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot 1`] = `
+.css-0,
+[data-css-0] {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-width: 200px;
+  max-width: 400px;
+  margin-left: -116px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+}
+
+.css-1,
+[data-css-1] {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  grid-gap: 16px;
+  font-size: 18px;
+  align-items: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  width: 100%;
+  -ms-grid-template-columns: 100px 1fr;
+  -ms-grid-gap: 16px;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+}
+
+.css-2,
+[data-css-2] {
+  background: white;
+  height: 50px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  border-bottom: 5px;
+  width: 100%;
+  min-width: 150px;
+  display: block;
+  padding-left: 10px;
+}
+
+.css-2::-webkit-input-placeholder,
+[data-css-2]::-webkit-input-placeholder {
+  opacity: 0.5;
+}
+
+.css-2::-moz-placeholder,
+[data-css-2]::-moz-placeholder {
+  opacity: 0.5;
+}
+
+.css-2::-ms-input-placeholder,
+[data-css-2]::-ms-input-placeholder {
+  opacity: 0.5;
+}
+
+.css-2::placeholder,
+[data-css-2]::placeholder {
+  opacity: 0.5;
+}
+
+.css-7,
+[data-css-7] {
+  font-size: 13px;
+  font-family: Raleway,sans-serif;
+  background: var(--green);
+  padding: 10px 20px;
+  display: block;
+  margin-left: auto;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+}
+
+.css-7:hover,
+[data-css-7]:hover {
+  box-shadow: var(--shadowHover);
+}
+
+@media only screen and (max-width: 819px) {
+  .css-0,
+  [data-css-0] {
+    margin-left: 0;
+    width: 90%;
+  }
+}
+
+<div>
+  <div
+    style="display: flex;"
+  >
+    <form
+      class="css-0"
+    >
+      <div
+        class="css-1"
+      >
+        <label
+          for="username-input"
+        >
+          Username
+        </label>
+        <input
+          class="css-2"
+          id="username-input"
+          name="username"
+          placeholder="Username..."
+        />
+        <label
+          id="password-input"
+        >
+          Password
+        </label>
+        <input
+          aria-labelledby="password-input"
+          class="css-2"
+          name="password"
+          placeholder="Password..."
+          type="password"
+        />
+      </div>
+      <button
+        class="css-7"
+        type="submit"
+      >
+        Submit
+      </button>
+    </form>
+  </div>
+</div>
+`;
