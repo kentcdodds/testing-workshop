@@ -1,46 +1,4 @@
 import {generate} from '../utils'
-import * as queries from './queries'
-
-Cypress.Commands.add('getByTestId', id => {
-  return cy.get(`[data-testid="${id}"]`)
-})
-
-Cypress.Commands.add('getByLabelText', (...args) => {
-  return cy
-    .window()
-    .then(({document}) =>
-      getCommandWaiter(document, () =>
-        queries.queryByLabelText(document, ...args),
-      )(),
-    )
-})
-
-Cypress.Commands.add('getByText', (...args) => {
-  return cy
-    .window()
-    .then(({document}) =>
-      getCommandWaiter(document, () =>
-        queries.queryByText(document, ...args),
-      )(),
-    )
-})
-
-function getCommandWaiter(container, fn) {
-  return function waiter() {
-    const val = fn()
-    if (val) {
-      return val
-    } else {
-      return new Promise(resolve => {
-        const observer = new MutationObserver(() => {
-          observer.disconnect()
-          resolve(waiter())
-        })
-        observer.observe(container, {subtree: true, childList: true})
-      })
-    }
-  }
-}
 
 Cypress.Commands.add('logout', () => {
   return cy
