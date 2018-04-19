@@ -11,7 +11,7 @@ workshop repo to teach you about testing JavaScript applications.
 [![Build Status][build-badge]][build]
 [![AppVeyor Build Status][win-build-badge]][win-build]
 [![Code Coverage][coverage-badge]][coverage]
-[![MIT License][license-badge]][license]
+[![License][license-badge]](#license)
 [![All Contributors](https://img.shields.io/badge/all_contributors-7-orange.svg?style=flat-square)](#contributors)
 
 [![PRs Welcome][prs-badge]][prs]
@@ -291,7 +291,6 @@ at kent@doddsfamily.us
 [build-badge]: https://img.shields.io/travis/kentcdodds/testing-workshop.svg?style=flat-square&logo=travis
 [build]: https://travis-ci.org/kentcdodds/testing-workshop
 [license-badge]: https://img.shields.io/badge/license-GPL%203.0%20License-blue.svg?style=flat-square
-[license]: https://github.com/kentcdodds/testing-workshop/blob/master/LICENSE
 [prs-badge]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square
 [prs]: http://makeapullrequest.com
 [donate-badge]: https://img.shields.io/badge/$-support-green.svg?style=flat-square
