@@ -1,5 +1,6 @@
 import React from 'react'
-import {generate, render, Simulate} from 'til-client-test-utils'
+import {generate} from 'til-client-test-utils'
+import {render, Simulate} from 'react-testing-library'
 import Login from '../login'
 
 test('calls onSubmit with the username and password when submitted', () => {

@@ -1,3 +1,4 @@
+// Basic unit test
 test('calls onSubmit with the username and password when submitted', () => {
   // Arrange
   // create a fake object to hold the form field values (username and password)

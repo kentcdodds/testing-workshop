@@ -1,5 +1,6 @@
 import React from 'react'
-import {generate, renderIntoDocument, cleanup} from 'til-client-test-utils'
+import {generate} from 'til-client-test-utils'
+import {renderIntoDocument, cleanup} from 'react-testing-library'
 import Login from '../login'
 
 // If you render your components with renderIntoDocument via react-testing-library

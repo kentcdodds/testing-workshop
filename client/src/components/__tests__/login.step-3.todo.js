@@ -1,5 +1,7 @@
+// dealing with react's simulated events
 import React from 'react'
-import {generate, render, Simulate} from 'til-client-test-utils'
+import {generate} from 'til-client-test-utils'
+import {render, Simulate} from 'react-testing-library'
 import Login from '../login'
 
 // Due to the fact that our element is not in the document, the
@@ -16,6 +18,9 @@ import Login from '../login'
 //
 // Bonus: Don't forget to cleanup after yourselve when you're finished so you don't
 // have things hanging out in the document!
+//
+// Extra bonus, rather than manually inserting the container into the document
+// check out the docs for react-testing-library and the renderIntoDocument method!
 
 test('calls onSubmit with the username and password when submitted', () => {
   // Arrange

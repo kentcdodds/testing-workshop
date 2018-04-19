@@ -1,9 +1,10 @@
+// using helpful utilities
 import React from 'react'
 import ReactDOM from 'react-dom'
 // you'll need these:
-// import {generate, render, Simulate} from 'til-client-test-utils'
+// import {generate} from 'til-client-test-utils'
+// import {render, Simulate} from 'react-testing-library'
 // note that til-client-test-utils is found in `client/test/til-client-test-utils`
-// and it re-exports some utilities from react-testing-library (like render and Simulate)
 import Login from '../login'
 
 test('calls onSubmit with the username and password when submitted', () => {

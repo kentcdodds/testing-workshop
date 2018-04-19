@@ -1,10 +1,6 @@
 import React from 'react'
-import {
-  generate,
-  renderIntoDocument,
-  cleanup,
-  render,
-} from 'til-client-test-utils'
+import {generate} from 'til-client-test-utils'
+import {render, renderIntoDocument, cleanup} from 'react-testing-library'
 import Login from '../login'
 
 afterEach(cleanup)

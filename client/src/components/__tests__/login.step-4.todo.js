@@ -1,5 +1,7 @@
+// snapshot testing
 import React from 'react'
-import {generate, renderIntoDocument, cleanup} from 'til-client-test-utils'
+import {generate} from 'til-client-test-utils'
+import {renderIntoDocument, cleanup} from 'react-testing-library'
 import Login from '../login'
 
 afterEach(cleanup)
