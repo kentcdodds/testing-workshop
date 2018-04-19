@@ -487,8 +487,10 @@ Now let's have it run on our codebase
 
 1.  In one terminal tab/window start the dev server `npm run dev`. Note this is running on port `8080`
 2.  Open `./cypress.json` and add `"baseUrl": "http://localhost:8080"` and `"integrationFolder": "cypress/e2e"`
-3.  Delete `./cypress/integration` and copy `../calculator.solution/e2e/calculator.js` to `./cypress/e2e/calculator.js`
-4.  Start cypress over again: `npx cypress open` and run the test. It passes!
+3.  `npm install --save-dev cypress-testing-library`
+4.  Update `cypress/support/index.js` to import `cypress-testing-library/add-commands`
+5.  Delete `./cypress/integration` and copy `../calculator.solution/e2e/calculator.js` to `./cypress/e2e/calculator.js`
+6.  Start cypress over again: `npx cypress open` and run the test. It passes!
 
 Now let's make this a script
 
