@@ -140,7 +140,7 @@ exports[`snapshot 1`] = `
 
 <div>
   <div
-    style="display: flex;"
+    style="display: flex; flex-direction: column; align-items: center;"
   >
     <form
       class="css-0"
