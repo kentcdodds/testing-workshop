@@ -73,6 +73,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "wk32",
+      "name": "WK",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/7888225?v=4",
+      "profile": "https://github.com/wk32",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "repoType": "github"

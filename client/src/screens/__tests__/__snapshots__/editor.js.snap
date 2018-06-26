@@ -10,6 +10,22 @@ exports[`snapshot 1`] = `
   display: flex;
   flex-direction: column;
   align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+}
+
+.css-1,
+[data-css-1] {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
   min-width: 200px;
   max-width: 400px;
@@ -21,8 +37,8 @@ exports[`snapshot 1`] = `
   -webkit-align-items: center;
 }
 
-.css-1,
-[data-css-1] {
+.css-2,
+[data-css-2] {
   display: grid;
   grid-template-columns: 100px 1fr;
   grid-gap: 16px;
@@ -37,8 +53,8 @@ exports[`snapshot 1`] = `
   -webkit-align-items: center;
 }
 
-.css-2,
-[data-css-2] {
+.css-3,
+[data-css-3] {
   background: white;
   height: 50px;
   border: none;
@@ -51,28 +67,28 @@ exports[`snapshot 1`] = `
   padding-left: 10px;
 }
 
-.css-2::-webkit-input-placeholder,
-[data-css-2]::-webkit-input-placeholder {
+.css-3::-webkit-input-placeholder,
+[data-css-3]::-webkit-input-placeholder {
   opacity: 0.5;
 }
 
-.css-2::-moz-placeholder,
-[data-css-2]::-moz-placeholder {
+.css-3::-moz-placeholder,
+[data-css-3]::-moz-placeholder {
   opacity: 0.5;
 }
 
-.css-2::-ms-input-placeholder,
-[data-css-2]::-ms-input-placeholder {
+.css-3::-ms-input-placeholder,
+[data-css-3]::-ms-input-placeholder {
   opacity: 0.5;
 }
 
-.css-2::placeholder,
-[data-css-2]::placeholder {
+.css-3::placeholder,
+[data-css-3]::placeholder {
   opacity: 0.5;
 }
 
-.css-7,
-[data-css-7] {
+.css-8,
+[data-css-8] {
   background: white;
   border: none;
   height: 200px;
@@ -87,28 +103,28 @@ exports[`snapshot 1`] = `
   padding-left: 10px;
 }
 
-.css-7::-webkit-input-placeholder,
-[data-css-7]::-webkit-input-placeholder {
+.css-8::-webkit-input-placeholder,
+[data-css-8]::-webkit-input-placeholder {
   opacity: 0.5;
 }
 
-.css-7::-moz-placeholder,
-[data-css-7]::-moz-placeholder {
+.css-8::-moz-placeholder,
+[data-css-8]::-moz-placeholder {
   opacity: 0.5;
 }
 
-.css-7::-ms-input-placeholder,
-[data-css-7]::-ms-input-placeholder {
+.css-8::-ms-input-placeholder,
+[data-css-8]::-ms-input-placeholder {
   opacity: 0.5;
 }
 
-.css-7::placeholder,
-[data-css-7]::placeholder {
+.css-8::placeholder,
+[data-css-8]::placeholder {
   opacity: 0.5;
 }
 
-.css-12,
-[data-css-12] {
+.css-13,
+[data-css-13] {
   font-size: 13px;
   font-family: Raleway,sans-serif;
   background: var(--green);
@@ -125,14 +141,14 @@ exports[`snapshot 1`] = `
   -moz-transition: 0.5s;
 }
 
-.css-12:hover,
-[data-css-12]:hover {
+.css-13:hover,
+[data-css-13]:hover {
   box-shadow: var(--shadowHover);
 }
 
 @media only screen and (max-width: 819px) {
-  .css-0,
-  [data-css-0] {
+  .css-1,
+  [data-css-1] {
     margin-left: 0;
     width: 90%;
   }
@@ -140,13 +156,13 @@ exports[`snapshot 1`] = `
 
 <div>
   <div
-    style="display: flex;"
+    class="css-0"
   >
     <form
-      class="css-0"
+      class="css-1"
     >
       <div
-        class="css-1"
+        class="css-2"
       >
         <label
           for="title-input"
@@ -154,7 +170,7 @@ exports[`snapshot 1`] = `
           Title
         </label>
         <input
-          class="css-2"
+          class="css-3"
           id="title-input"
           name="title"
           placeholder="Title"
@@ -165,7 +181,7 @@ exports[`snapshot 1`] = `
           Content
         </label>
         <textarea
-          class="css-7"
+          class="css-8"
           id="content-input"
           name="content"
           placeholder="Content"
@@ -176,14 +192,14 @@ exports[`snapshot 1`] = `
           Tags
         </label>
         <input
-          class="css-2"
+          class="css-3"
           id="tags-input"
           name="tags"
           placeholder="tags"
         />
       </div>
       <button
-        class="css-12"
+        class="css-13"
         type="submit"
       >
         Submit

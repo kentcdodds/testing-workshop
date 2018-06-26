@@ -32,14 +32,14 @@ const FieldContainer = glamorous.div({
 
 function Form({children, ...props}) {
   return (
-    <div
-      style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}
+    <glamorous.Div
+      css={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}
     >
       <StyledForm {...props}>
         <FieldContainer>{children}</FieldContainer>
         <Button type="submit">Submit</Button>
       </StyledForm>
-    </div>
+    </glamorous.Div>
   )
 }
 
