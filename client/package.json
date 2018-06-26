@@ -29,10 +29,9 @@
     ]
   },
   "devDependencies": {
-    "babel-preset-react-app": "^3.1.2",
     "jest-dom": "^1.0.0",
     "jest-glamor-react": "^4.2.0",
-    "react-scripts": "2.0.0-next.b2fd8db8",
+    "react-scripts": "^1.1.4",
     "react-testing-library": "^2.1.1",
     "til-shared": "file:../shared"
   },
