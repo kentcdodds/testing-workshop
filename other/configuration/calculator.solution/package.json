@@ -13,7 +13,7 @@
     "test:e2e:dev": "start-server-and-test dev 8080 cy:open",
     "dev": "webpack-dev-server --mode=development",
     "build": "webpack --mode=production",
-    "start": "serve -S dist --port 8080"
+    "start": "serve --port 8080"
   },
   "keywords": [],
   "author": "Kent C. Dodds <kent@doddsfamily.us> (http://kentcdodds.com/)",
