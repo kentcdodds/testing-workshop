@@ -52,6 +52,7 @@
     "eslint-config-kentcdodds": "^14.0.0",
     "eslint-import-resolver-jest": "^2.1.1",
     "eslint-plugin-cypress": "^2.0.1",
+    "eslint-plugin-flowtype": "^2.50.0",
     "faker": "^4.1.0",
     "fs-extra": "^7.0.0",
     "husky": "^0.14.3",
