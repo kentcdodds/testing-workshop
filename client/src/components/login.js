@@ -1,5 +1,5 @@
 import React from 'react'
-import {Input} from './inputs'
+import {Input, Button} from './inputs'
 import Form from './form'
 
 function Login({onSubmit}) {
@@ -33,6 +33,9 @@ function Login({onSubmit}) {
           name="password"
           aria-labelledby="password-input"
         />
+        <Button type="submit" style={{gridColumnStart: 2, marginTop: 20}}>
+          Submit
+        </Button>
       </Form>
     </div>
   )

@@ -1,7 +1,6 @@
 import React from 'react'
 import {css as emoCSS} from 'emotion'
 import styled from 'react-emotion'
-import {Button} from './inputs'
 
 const css = (...args) => ({className: emoCSS(...args)})
 
@@ -41,7 +40,6 @@ function Form({children, ...props}) {
     >
       <StyledForm {...props}>
         <FieldContainer>{children}</FieldContainer>
-        <Button type="submit">Submit</Button>
       </StyledForm>
     </div>
   )

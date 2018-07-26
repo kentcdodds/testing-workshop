@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import * as api from '../utils/api'
 import Form from '../components/form'
-import {Input, TextArea} from '../components/inputs'
+import {Input, TextArea, Button} from '../components/inputs'
 
 class Editor extends Component {
   static defaultProps = {
@@ -40,6 +40,9 @@ class Editor extends Component {
             Tags
           </label>
           <Input id="tags-input" placeholder="tags" name="tags" />
+          <Button type="submit" style={{gridColumnStart: 2, marginTop: 20}}>
+            Submit
+          </Button>
         </Form>
       </div>
     )
