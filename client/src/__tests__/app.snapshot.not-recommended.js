@@ -45,5 +45,5 @@ test('snapshot', async () => {
 
   // wait for the app to finish loading the mocked requests
   await finishLoading()
-  expect(container.firstChild).toMatchSnapshot()
+  expect(container).toMatchSnapshot()
 })

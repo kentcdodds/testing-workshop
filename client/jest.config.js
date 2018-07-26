@@ -12,5 +12,4 @@ module.exports = {
   moduleNameMapper: {
     '\\.svg$': '<rootDir>/test/svg-file-mock.js',
   },
-  snapshotSerializers: ['jest-glamor-react'],
 }

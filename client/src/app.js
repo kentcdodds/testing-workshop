@@ -1,5 +1,5 @@
 import React from 'react'
-import glamorous from 'glamorous'
+import styled from 'react-emotion'
 import {BrowserRouter as Router, Route, Link, Redirect} from 'react-router-dom'
 import User from './components/user'
 import Login from './components/login'
@@ -9,19 +9,21 @@ import Editor from './screens/editor'
 import githubLogo from './assets/github.svg'
 import twitterLogo from './assets/twitter.svg'
 
-const Header = glamorous.div({
+const Header = styled('div')({
   display: 'flex',
   flexWrap: 'wrap',
   alignItems: 'center',
   justifyContent: 'center',
   margin: '20px 0px',
 })
-const TitleContainer = glamorous.div({
+const TitleContainer = styled('div')({
   display: 'flex',
+
   '@media only screen and (max-width: 819px)': {
     order: 0,
     width: '100%',
   },
+
   '& > div': {
     borderRadius: '50px',
     marginLeft: 'auto',
@@ -33,24 +35,25 @@ const TitleContainer = glamorous.div({
   },
 })
 
-const Title = glamorous.h1({
+const Title = styled('h1')({
   color: 'var(--green)',
   fontSize: 50,
   lineHeight: '40px',
   textTransform: 'upperase',
 })
 
-const SecondaryTitle = glamorous.span({
+const SecondaryTitle = styled('span')({
   color: 'var(--black)',
 })
 
-const Inspired = glamorous.small({
+const Inspired = styled('small')({
   transition: '0.5s',
+
   ':hover': {
     color: 'var(--green)',
   },
 })
-const SocialLogo = glamorous.img({
+const SocialLogo = styled('img')({
   width: 55,
   background: 'white',
   boxShadow: 'var(--shadow)',
@@ -59,21 +62,23 @@ const SocialLogo = glamorous.img({
   marginRight: 15,
   cursor: 'pointer',
   transition: '0.5s',
+
   ':hover': {
     boxShadow: 'var(--shadowHover)',
   },
 })
-const UserBtnsContainer = glamorous.div({
+const UserBtnsContainer = styled('div')({
   width: '25%',
   display: 'flex',
   justifyContent: 'center',
+
   '@media only screen and (max-width: 819px)': {
     order: 1,
     marginTop: 10,
     flex: 1,
   },
 })
-const UserBtn = glamorous.span({
+const UserBtn = styled('span')({
   background: 'white',
   boxShadow: 'var(--shadow)',
   borderRadius: 15,
@@ -81,12 +86,13 @@ const UserBtn = glamorous.span({
   marginLeft: 15,
   cursor: 'pointer',
   transition: '0.5s',
+
   ':hover': {
     boxShadow: 'var(--shadowHover)',
   },
 })
 
-const NewPostBtn = glamorous.span({
+const NewPostBtn = styled('span')({
   background: 'var(--green)',
   boxShadow: 'var(--shadow)',
   color: 'white',
@@ -99,12 +105,13 @@ const NewPostBtn = glamorous.span({
   position: 'fixed',
   bottom: 10,
   right: 10,
+
   ':hover': {
     boxShadow: 'var(--shadowHover)',
   },
 })
 
-const SocialButton = glamorous.a({
+const SocialButton = styled('a')({
   border: 'none',
   backgroundColor: 'transparent',
   outline: 'none',

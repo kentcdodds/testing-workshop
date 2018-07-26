@@ -7,18 +7,18 @@
   "dependencies": {
     "axios": "^0.18.0",
     "cross-env": "^5.1.3",
-    "glamor": "^2.20.40",
-    "glamorous": "^4.12.3",
+    "emotion": "^9.2.6",
     "history": "^4.7.2",
     "prop-types": "^15.6.0",
     "query-string": "^6.0.0",
     "react": "^16.3.1",
     "react-dom": "^16.3.1",
+    "react-emotion": "^9.2.6",
     "react-router-dom": "^4.2.2",
-    "serve": "^6.5.5"
+    "serve": "^9.4.0"
   },
   "scripts": {
-    "start": "cross-env serve -S build --port $CLIENT_PORT",
+    "start": "cross-env serve --no-clipboard build --listen $CLIENT_PORT",
     "dev": "cross-env PORT=$CLIENT_PORT react-scripts start",
     "build": "react-scripts build",
     "test": "cd ../ && npm run test:client --silent"
@@ -29,10 +29,10 @@
     ]
   },
   "devDependencies": {
-    "jest-dom": "^1.0.0",
-    "jest-glamor-react": "^4.2.0",
+    "jest-dom": "^1.10.0",
+    "jest-emotion": "^9.2.6",
     "react-scripts": "^1.1.4",
-    "react-testing-library": "^2.1.1",
+    "react-testing-library": "^4.1.4",
     "til-shared": "file:../shared"
   }
 }

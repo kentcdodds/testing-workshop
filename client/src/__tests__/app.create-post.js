@@ -7,9 +7,8 @@
  */
 
 import React from 'react'
-import {Simulate} from 'react-dom/test-utils'
 import axiosMock from 'axios'
-import {renderWithRouter, generate} from 'til-client-test-utils'
+import {renderWithRouter, fireEvent, generate} from 'til-client-test-utils'
 import {init as initAPI} from '../utils/api'
 import App from '../app'
 
@@ -55,7 +54,7 @@ test('create post', async () => {
 
   // navigate to register
   const leftClick = {button: 0}
-  Simulate.click(getByText(/^\+$/), leftClick)
+  fireEvent.click(getByText(/^\+$/), leftClick)
   expect(window.location.href).toContain('editor')
 
   // fill out form
@@ -66,9 +65,9 @@ test('create post', async () => {
     authorId: fakeUser.id,
     date: new Date().toJSON(),
   }
-  const titleNode = getByLabelText('title')
-  const contentNode = getByLabelText('content')
-  const tagsNode = getByLabelText('tags')
+  const titleNode = getByLabelText(/title/i)
+  const contentNode = getByLabelText(/content/i)
+  const tagsNode = getByLabelText(/tags/i)
   const formWrapper = container.querySelector('form')
   titleNode.value = fakePost.title
   contentNode.value = fakePost.content
@@ -81,7 +80,7 @@ test('create post', async () => {
       data: {post: {...post, id: fakeId}},
     }),
   )
-  Simulate.submit(formWrapper)
+  fireEvent.submit(formWrapper)
 
   // assert calls
   expect(axiosMock.__mock.instance.post).toHaveBeenCalledTimes(1)

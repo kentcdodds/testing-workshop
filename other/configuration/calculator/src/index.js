@@ -16,3 +16,5 @@ ReactDOM.render(
   </React.Fragment>,
   document.getElementById('app'),
 )
+
+/* eslint react/jsx-child-element-spacing:0 */

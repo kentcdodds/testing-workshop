@@ -1,12 +1,5 @@
 import React from 'react'
-import {
-  generate,
-  wait,
-  cleanup,
-  fireEvent,
-  renderIntoDocument,
-  render,
-} from 'til-client-test-utils'
+import {generate, wait, cleanup, fireEvent, render} from 'til-client-test-utils'
 import Editor from '../editor'
 
 afterEach(cleanup)
@@ -21,7 +14,7 @@ test('calls onSubmit with the username and password when submitted', async () =>
       create: jest.fn(() => Promise.resolve()),
     },
   }
-  const {getByText, getByLabelText} = renderIntoDocument(
+  const {getByText, getByLabelText} = render(
     <Editor api={fakeApi} user={fakeUser} history={fakeHistory} />,
   )
 
@@ -31,7 +24,7 @@ test('calls onSubmit with the username and password when submitted', async () =>
   const preDate = Date.now()
 
   // Act
-  fireEvent.click(getByText('submit'))
+  fireEvent.click(getByText(/submit/i))
 
   // Assert
   expect(fakeApi.posts.create).toHaveBeenCalledTimes(1)
@@ -50,5 +43,5 @@ test('calls onSubmit with the username and password when submitted', async () =>
 
 test('snapshot', () => {
   const {container} = render(<Editor />)
-  expect(container.firstChild).toMatchSnapshot()
+  expect(container).toMatchSnapshot()
 })

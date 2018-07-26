@@ -1,60 +1,60 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`snapshot 1`] = `
-.css-0,
-[data-css-0] {
+.emotion-6 {
   display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
   display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
   -webkit-flex-direction: column;
-  -webkit-box-align: center;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
-.css-1,
-[data-css-1] {
+.emotion-5 {
   display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
   display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   width: 100%;
   min-width: 200px;
   max-width: 400px;
   margin-left: -116px;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
 }
 
-.css-2,
-[data-css-2] {
+@media only screen and (max-width:819px) {
+  .emotion-5 {
+    margin-left: 0;
+    width: 90%;
+  }
+}
+
+.emotion-3 {
   display: grid;
   grid-template-columns: 100px 1fr;
   grid-gap: 16px;
   font-size: 18px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   margin-top: 30px;
   margin-bottom: 30px;
   width: 100%;
-  -ms-grid-template-columns: 100px 1fr;
-  -ms-grid-gap: 16px;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
 }
 
-.css-3,
-[data-css-3] {
+.emotion-0 {
   background: white;
   height: 50px;
   border: none;
@@ -67,28 +67,23 @@ exports[`snapshot 1`] = `
   padding-left: 10px;
 }
 
-.css-3::-webkit-input-placeholder,
-[data-css-3]::-webkit-input-placeholder {
+.emotion-0::-webkit-input-placeholder {
   opacity: 0.5;
 }
 
-.css-3::-moz-placeholder,
-[data-css-3]::-moz-placeholder {
+.emotion-0::-moz-placeholder {
   opacity: 0.5;
 }
 
-.css-3::-ms-input-placeholder,
-[data-css-3]::-ms-input-placeholder {
+.emotion-0:-ms-input-placeholder {
   opacity: 0.5;
 }
 
-.css-3::placeholder,
-[data-css-3]::placeholder {
+.emotion-0::placeholder {
   opacity: 0.5;
 }
 
-.css-8,
-[data-css-8] {
+.emotion-1 {
   background: white;
   border: none;
   height: 200px;
@@ -103,28 +98,23 @@ exports[`snapshot 1`] = `
   padding-left: 10px;
 }
 
-.css-8::-webkit-input-placeholder,
-[data-css-8]::-webkit-input-placeholder {
+.emotion-1::-webkit-input-placeholder {
   opacity: 0.5;
 }
 
-.css-8::-moz-placeholder,
-[data-css-8]::-moz-placeholder {
+.emotion-1::-moz-placeholder {
   opacity: 0.5;
 }
 
-.css-8::-ms-input-placeholder,
-[data-css-8]::-ms-input-placeholder {
+.emotion-1:-ms-input-placeholder {
   opacity: 0.5;
 }
 
-.css-8::placeholder,
-[data-css-8]::placeholder {
+.emotion-1::placeholder {
   opacity: 0.5;
 }
 
-.css-13,
-[data-css-13] {
+.emotion-4 {
   font-size: 13px;
   font-family: Raleway,sans-serif;
   background: var(--green);
@@ -136,75 +126,67 @@ exports[`snapshot 1`] = `
   border-radius: 10px;
   box-shadow: var(--shadow);
   cursor: pointer;
-  transition: 0.5s;
   -webkit-transition: 0.5s;
-  -moz-transition: 0.5s;
+  transition: 0.5s;
 }
 
-.css-13:hover,
-[data-css-13]:hover {
+.emotion-4:hover {
   box-shadow: var(--shadowHover);
 }
 
-@media only screen and (max-width: 819px) {
-  .css-1,
-  [data-css-1] {
-    margin-left: 0;
-    width: 90%;
-  }
-}
-
 <div>
-  <div
-    class="css-0"
-  >
-    <form
-      class="css-1"
+  <div>
+    <div
+      class="emotion-6"
     >
-      <div
-        class="css-2"
+      <form
+        class="emotion-5"
       >
-        <label
-          for="title-input"
+        <div
+          class="emotion-3"
         >
-          Title
-        </label>
-        <input
-          class="css-3"
-          id="title-input"
-          name="title"
-          placeholder="Title"
-        />
-        <label
-          for="content-input"
+          <label
+            for="title-input"
+          >
+            Title
+          </label>
+          <input
+            class="emotion-0"
+            id="title-input"
+            name="title"
+            placeholder="Title"
+          />
+          <label
+            for="content-input"
+          >
+            Content
+          </label>
+          <textarea
+            class="emotion-1"
+            id="content-input"
+            name="content"
+            placeholder="Content"
+          />
+          <label
+            for="tags-input"
+          >
+            Tags
+          </label>
+          <input
+            class="emotion-0"
+            id="tags-input"
+            name="tags"
+            placeholder="tags"
+          />
+        </div>
+        <button
+          class="emotion-4"
+          type="submit"
         >
-          Content
-        </label>
-        <textarea
-          class="css-8"
-          id="content-input"
-          name="content"
-          placeholder="Content"
-        />
-        <label
-          for="tags-input"
-        >
-          Tags
-        </label>
-        <input
-          class="css-3"
-          id="tags-input"
-          name="tags"
-          placeholder="tags"
-        />
-      </div>
-      <button
-        class="css-13"
-        type="submit"
-      >
-        Submit
-      </button>
-    </form>
+          Submit
+        </button>
+      </form>
+    </div>
   </div>
 </div>
 `;

@@ -1,11 +1,14 @@
 import React from 'react'
-import glamorous from 'glamorous'
+import {css as emoCSS} from 'emotion'
+import styled from 'react-emotion'
 import {Button} from './inputs'
+
+const css = (...args) => ({className: emoCSS(...args)})
 
 const labelSpace = 100
 const gridGap = 16
 
-const StyledForm = glamorous.form({
+const StyledForm = styled('form')({
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
@@ -13,13 +16,14 @@ const StyledForm = glamorous.form({
   minWidth: 200,
   maxWidth: 400,
   marginLeft: -(labelSpace + gridGap),
+
   '@media only screen and (max-width: 819px)': {
     marginLeft: 0,
     width: '90%',
   },
 })
 
-const FieldContainer = glamorous.div({
+const FieldContainer = styled('div')({
   display: 'grid',
   gridTemplateColumns: `${labelSpace}px 1fr`,
   gridGap,
@@ -32,14 +36,14 @@ const FieldContainer = glamorous.div({
 
 function Form({children, ...props}) {
   return (
-    <glamorous.Div
-      css={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}
+    <div
+      {...css({display: 'flex', flexDirection: 'column', alignItems: 'center'})}
     >
       <StyledForm {...props}>
         <FieldContainer>{children}</FieldContainer>
         <Button type="submit">Submit</Button>
       </StyledForm>
-    </glamorous.Div>
+    </div>
   )
 }
 

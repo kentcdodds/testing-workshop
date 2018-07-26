@@ -1,6 +1,6 @@
 import React from 'react'
 import {generate} from 'til-client-test-utils'
-import {render, Simulate} from 'react-testing-library'
+import {render, fireEvent} from 'react-testing-library'
 import Login from '../login'
 
 test('calls onSubmit with the username and password when submitted', () => {
@@ -11,15 +11,15 @@ test('calls onSubmit with the username and password when submitted', () => {
     <Login onSubmit={handleSubmit} />,
   )
 
-  const usernameNode = getByLabelText('username')
-  const passwordNode = getByLabelText('password')
+  const usernameNode = getByLabelText(/username/i)
+  const passwordNode = getByLabelText(/password/i)
   const formNode = container.querySelector('form')
-  const submitButtonNode = getByText('submit')
+  const submitButtonNode = getByText(/submit/i)
 
   // Act
   usernameNode.value = fakeUser.username
   passwordNode.value = fakeUser.password
-  Simulate.submit(formNode)
+  fireEvent.submit(formNode)
 
   // Assert
   expect(handleSubmit).toHaveBeenCalledTimes(1)

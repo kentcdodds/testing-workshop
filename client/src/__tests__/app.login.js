@@ -8,7 +8,7 @@
 
 import React from 'react'
 import axiosMock from 'axios'
-import {renderWithRouter, generate, Simulate} from 'til-client-test-utils'
+import {renderWithRouter, generate, fireEvent} from 'til-client-test-utils'
 import {init as initAPI} from '../utils/api'
 import App from '../app'
 
@@ -32,13 +32,13 @@ test('login as an existing user', async () => {
 
   // navigate to login
   const leftClick = {button: 0}
-  Simulate.click(getByText('Login'), leftClick)
+  fireEvent.click(getByText('Login'), leftClick)
   expect(window.location.href).toContain('login')
 
   // fill out form
   const fakeUser = generate.loginForm()
-  const usernameNode = getByLabelText('Username')
-  const passwordNode = getByLabelText('Password')
+  const usernameNode = getByLabelText(/username/i)
+  const passwordNode = getByLabelText(/password/i)
   const formWrapper = container.querySelector('form')
   usernameNode.value = fakeUser.username
   passwordNode.value = fakeUser.password
@@ -51,7 +51,7 @@ test('login as an existing user', async () => {
       data: {user: {...fakeUser, token}},
     }),
   )
-  Simulate.submit(formWrapper)
+  fireEvent.submit(formWrapper)
 
   // wait for the mocked requests to finish
   await finishLoading()

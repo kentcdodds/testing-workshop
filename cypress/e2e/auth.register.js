@@ -10,14 +10,13 @@ describe('authentication', () => {
   })
   it('should allow users to register', () => {
     const user = generate.loginForm()
-    cy
-      .getByText('Register')
+    cy.getByText(/register/i)
       .click()
-      .getByLabelText('Username')
+      .getByLabelText(/username/i)
       .type(user.username)
-      .getByLabelText('Password')
+      .getByLabelText(/password/i)
       .type(user.password)
-      .getByText('Submit')
+      .getByText(/submit/i)
       .click()
       .assertRoute('/')
     cy.getByTestId('username-display').should('contain', user.username)

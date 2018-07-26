@@ -1,8 +1,7 @@
 import React from 'react'
-import glamorous from 'glamorous'
-import * as glamor from 'glamor'
+import styled, {keyframes} from 'react-emotion'
 
-const bounce = glamor.css.keyframes({
+const bounce = keyframes({
   '0%': {
     color: 'var(--black)',
     boxShadow: 'var(--shadowHover)',
@@ -17,7 +16,7 @@ const loadingAnimation = {
   animation: `${bounce} 0.7s infinite ease-in-out alternate`,
 }
 
-const LoadingContainer = glamorous.span(
+const LoadingContainer = styled('span')(
   {
     position: 'fixed',
     left: '50%',

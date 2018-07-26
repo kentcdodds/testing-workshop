@@ -7,9 +7,8 @@
  */
 
 import React from 'react'
-import {Simulate} from 'react-dom/test-utils'
 import axiosMock from 'axios'
-import {renderWithRouter, generate} from 'til-client-test-utils'
+import {renderWithRouter, fireEvent, generate} from 'til-client-test-utils'
 import {init as initAPI} from '../utils/api'
 import App from '../app'
 
@@ -33,7 +32,7 @@ test('register a new user', async () => {
 
   // navigate to register
   const leftClick = {button: 0}
-  Simulate.click(getByText('Register'), leftClick)
+  fireEvent.click(getByText('Register'), leftClick)
   expect(window.location.href).toContain('register')
 
   // fill out form
@@ -52,7 +51,7 @@ test('register a new user', async () => {
       data: {user: {...fakeUser, token}},
     }),
   )
-  Simulate.submit(formWrapper)
+  fireEvent.submit(formWrapper)
 
   // wait for the mocked requests to finish
   await finishLoading()

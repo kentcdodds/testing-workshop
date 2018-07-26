@@ -17,12 +17,5 @@ function renderWithRouter(ui, {route = '/', ...renderOptions} = {}) {
   }
 }
 
-export {
-  Simulate,
-  wait,
-  render,
-  cleanup,
-  renderIntoDocument,
-  fireEvent,
-} from 'react-testing-library'
+export {Simulate, wait, render, cleanup, fireEvent} from 'react-testing-library'
 export {renderWithRouter, generate}

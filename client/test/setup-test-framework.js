@@ -1,3 +1,7 @@
+import 'react-testing-library/cleanup-after-each'
+import {createSerializer} from 'jest-emotion'
+import * as emotion from 'emotion'
+
 // here we set up a fake localStorage because jsdom doesn't support it
 // https://github.com/tmpvar/jsdom/issues/1137
 if (!window.localStorage) {
@@ -14,3 +18,5 @@ if (!window.localStorage) {
     }.bind(window.localStorage),
   })
 }
+
+expect.addSnapshotSerializer(createSerializer(emotion))

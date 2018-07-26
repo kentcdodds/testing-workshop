@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
-import glamorous from 'glamorous'
+import styled from 'react-emotion'
 import * as api from '../utils/api'
-import Loading from './../components/loading'
+import Loading from '../components/loading'
 
 class RenderPromise extends Component {
   initialState = {result: null, error: null, pending: false}
@@ -81,7 +81,7 @@ function sortByLatest(p1, p2) {
   return p1.date > p2.date ? -1 : 1
 }
 
-const PostContainer = glamorous.div({
+const PostContainer = styled('div')({
   background: 'white',
   marginBottom: 20,
   padding: '30px 50px',
@@ -89,11 +89,11 @@ const PostContainer = glamorous.div({
   boxShadow: 'var(--shadow)',
 })
 
-const PostTitle = glamorous.h2({
+const PostTitle = styled('h2')({
   color: 'var(--green)',
 })
 
-const PostSeparator = glamorous.hr({
+const PostSeparator = styled('hr')({
   border: 0,
   borderRadius: 10,
   height: 5,
@@ -102,7 +102,7 @@ const PostSeparator = glamorous.hr({
   background: 'var(--green)',
 })
 
-const Tag = glamorous.span({
+const Tag = styled('span')({
   background: 'var(--green)',
   color: 'white',
   padding: 5,

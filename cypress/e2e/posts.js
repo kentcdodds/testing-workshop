@@ -13,36 +13,31 @@ describe('posts', () => {
     const fakePost = generate.postData()
     // shorten the content so we don't have to wait so long
     fakePost.content = fakePost.content.slice(0, 50)
-    cy
-      .getByText(/^\+$/)
+    cy.getByText(/^\+$/)
       .click()
-      .getByLabelText('Title')
+      .getByLabelText(/title/i)
       .type(fakePost.title)
-      .getByLabelText('Content')
+      .getByLabelText(/content/i)
       // the delay is because the content takes
       // forever to type otherwise
       .type(fakePost.content, {delay: 1})
-      .getByLabelText('Tags')
+      .getByLabelText(/tags/i)
       .type(fakePost.tags.join(', '))
-      .getByText('Submit')
+      .getByText(/submit/i)
       .click()
       .assertRoute('/')
-    cy
-      .getByTestId('post-title')
+    cy.getByTestId('post-title')
       .first()
       .should('contain', fakePost.title)
-    cy
-      .getByTestId('post-content')
+    cy.getByTestId('post-content')
       .first()
       .should('contain', fakePost.content)
     fakePost.tags.forEach((t, i) => {
-      cy
-        .getByTestId(`post-tag-${i}`)
+      cy.getByTestId(`post-tag-${i}`)
         .first()
         .should('contain', t)
     })
-    cy
-      .getByTestId('post-author-username')
+    cy.getByTestId('post-author-username')
       .first()
       .should('contain', user.username)
   })

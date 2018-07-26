@@ -1,6 +1,6 @@
-import glamorous from 'glamorous'
+import styled from 'react-emotion'
 
-const Input = glamorous.input({
+const Input = styled('input')({
   background: 'white',
   height: 50,
   border: 'none',
@@ -11,12 +11,13 @@ const Input = glamorous.input({
   minWidth: 150,
   display: 'block',
   paddingLeft: 10,
+
   '::placeholder': {
     opacity: 0.5,
   },
 })
 
-const TextArea = glamorous.textarea({
+const TextArea = styled('textarea')({
   background: 'white',
   border: 'none',
   height: 200,
@@ -29,12 +30,13 @@ const TextArea = glamorous.textarea({
   margin: '0 auto 10px auto',
   paddingTop: 10,
   paddingLeft: 10,
+
   '::placeholder': {
     opacity: 0.5,
   },
 })
 
-const Button = glamorous.button({
+const Button = styled('button')({
   fontSize: 13,
   fontFamily: 'Raleway,sans-serif',
   background: 'var(--green)',
@@ -47,6 +49,7 @@ const Button = glamorous.button({
   boxShadow: 'var(--shadow)',
   cursor: 'pointer',
   transition: '0.5s',
+
   ':hover': {
     boxShadow: 'var(--shadowHover)',
   },
