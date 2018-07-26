@@ -7,6 +7,8 @@ cache:
   - node_modules
   - server/node_modules
   - client/node_modules
+  - ~/.npm
+  - ~/.cache
 notifications:
   email: false
 branches:
