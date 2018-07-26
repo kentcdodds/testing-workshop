@@ -21,7 +21,6 @@ beforeEach(() => {
 test('login as an existing user', async () => {
   const {
     getByTestId,
-    container,
     getByText,
     getByLabelText,
     finishLoading,
@@ -32,14 +31,13 @@ test('login as an existing user', async () => {
 
   // navigate to login
   const leftClick = {button: 0}
-  fireEvent.click(getByText('Login'), leftClick)
+  fireEvent.click(getByText(/login/i), leftClick)
   expect(window.location.href).toContain('login')
 
   // fill out form
   const fakeUser = generate.loginForm()
   const usernameNode = getByLabelText(/username/i)
   const passwordNode = getByLabelText(/password/i)
-  const formWrapper = container.querySelector('form')
   usernameNode.value = fakeUser.username
   passwordNode.value = fakeUser.password
 
@@ -51,7 +49,7 @@ test('login as an existing user', async () => {
       data: {user: {...fakeUser, token}},
     }),
   )
-  fireEvent.submit(formWrapper)
+  fireEvent.click(getByText(/submit/i))
 
   // wait for the mocked requests to finish
   await finishLoading()
@@ -67,5 +65,5 @@ test('login as an existing user', async () => {
   expect(window.localStorage.getItem('token')).toBe(token)
   expect(window.location.href).not.toContain('login')
   expect(getByTestId('username-display').textContent).toEqual(fakeUser.username)
-  expect(getByText('Logout')).toBeTruthy()
+  expect(getByText(/logout/i)).toBeTruthy()
 })

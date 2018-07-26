@@ -1,9 +1,7 @@
 import React from 'react'
 import {generate} from 'til-client-test-utils'
-import {render, cleanup} from 'react-testing-library'
+import {render} from 'react-testing-library'
 import Login from '../login'
-
-afterEach(cleanup)
 
 test('calls onSubmit with the username and password when submitted', () => {
   // Arrange

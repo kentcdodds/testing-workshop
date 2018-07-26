@@ -32,7 +32,7 @@ test('register a new user', async () => {
 
   // navigate to register
   const leftClick = {button: 0}
-  fireEvent.click(getByText('Register'), leftClick)
+  fireEvent.click(getByText(/register/i), leftClick)
   expect(window.location.href).toContain('register')
 
   // fill out form
@@ -67,5 +67,5 @@ test('register a new user', async () => {
   expect(window.localStorage.getItem('token')).toBe(token)
   expect(window.location.href).not.toContain('register')
   expect(getByTestId('username-display').textContent).toEqual(fakeUser.username)
-  expect(getByText('Logout')).toBeTruthy()
+  expect(getByText(/logout/i)).toBeTruthy()
 })

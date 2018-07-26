@@ -17,12 +17,12 @@
 // import ItemList from '../item-list'
 
 // and here's an outline example of your first test:
-//   Create a "container" to render your component into (tip: use document.createElement('div'))
+//   Create a "container" to render your component into (💰 use document.createElement('div'))
 //
-//   Render your component (tip: use ReactDOM.render(JSX, container))
+//   Render your component (💰 use ReactDOM.render(JSX, container))
 //
 //   Make your assertion(s) on the textContent of the container
-//   (tip: expect's toMatch function might be what you want
+//   (💰 expect's toMatch function might be what you want
 //   for example: `expect('some text content').toMatch('text')`)
 //
 // For your second test, it will be very similar to the first.
