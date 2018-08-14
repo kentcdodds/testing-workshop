@@ -1,9 +1,7 @@
 // ./client/jest.config.js
 module.exports = {
   displayName: 'client',
-  testEnvironmentOptions: {
-    url: 'https://til.test.com',
-  },
+  testURL: 'https://til.test.com',
   testPathIgnorePatterns: ['/node_modules/', '/helpers/'],
   setupTestFrameworkScriptFile: require.resolve(
     './test/setup-test-framework.js',
