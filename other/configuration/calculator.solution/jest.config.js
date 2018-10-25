@@ -1,6 +1,7 @@
 module.exports = {
   displayName: 'calculator',
   testEnvironment: 'jsdom',
+  testURL: 'http://localhost',
   setupTestFrameworkScriptFile: require.resolve(
     './test/setup-test-framework.js',
   ),
