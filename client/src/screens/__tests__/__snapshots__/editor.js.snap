@@ -59,6 +59,7 @@ exports[`snapshot 1`] = `
   height: 50px;
   border: none;
   border-radius: 10px;
+  color: var(--black);
   box-shadow: var(--shadow);
   border-bottom: 5px;
   width: 100%;
@@ -88,6 +89,7 @@ exports[`snapshot 1`] = `
   border: none;
   height: 200px;
   border-radius: 10px;
+  color: var(--black);
   box-shadow: var(--shadow);
   border-bottom: 5px;
   width: 100%;
