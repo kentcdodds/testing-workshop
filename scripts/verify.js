@@ -1,5 +1,5 @@
 // this file needs to be able to _parse_ in node v0.12.0
-if (Number(process.versions.node.slice(0, 1)) < 6) {
+if (Number(process.versions.node.split(".")[0]) < 6) {
   throw new Error('You must have node version 6 installed.')
 }
 var verifySystem = require('./workshop-setup').verifySystem
