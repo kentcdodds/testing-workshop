@@ -42,7 +42,7 @@ if (isCI) {
         path.join(__dirname, '..', 'client/test/**/*.js'),
         path.join(__dirname, '..', 'server/src/**/*.js'),
         path.join(__dirname, '..', 'server/test/**/*.js'),
-        path.join(__dirname, '..', 'cypress/e2e/**/*.js'),
+        path.join(__dirname, '..', 'cypress/integration/**/*.js'),
       ],
       from: /&em=\n/,
       to: `&em=${email}\n`,
