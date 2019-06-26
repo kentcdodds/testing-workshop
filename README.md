@@ -196,7 +196,7 @@ npm install --prefix client
 
 # verify the project is ready to run
 npm run lint
-npm run test:coverage
+npm run test:run
 npm run test:e2e:run
 ```
 
