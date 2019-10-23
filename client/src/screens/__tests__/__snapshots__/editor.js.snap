@@ -166,6 +166,7 @@ exports[`snapshot 1`] = `
       >
         <label
           for="title-input"
+          style="justify-self: right;"
         >
           Title
         </label>
@@ -177,6 +178,7 @@ exports[`snapshot 1`] = `
         />
         <label
           for="content-input"
+          style="justify-self: right; align-self: baseline;"
         >
           Content
         </label>
@@ -188,6 +190,7 @@ exports[`snapshot 1`] = `
         />
         <label
           for="tags-input"
+          style="justify-self: right;"
         >
           Tags
         </label>

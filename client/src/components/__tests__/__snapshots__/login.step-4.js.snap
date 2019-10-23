@@ -130,6 +130,7 @@ exports[`snapshot 1`] = `
       >
         <label
           for="username-input"
+          style="justify-self: right;"
         >
           Username
         </label>
@@ -138,9 +139,11 @@ exports[`snapshot 1`] = `
           id="username-input"
           name="username"
           placeholder="Username..."
+          style="flex: 1;"
         />
         <label
           id="password-input"
+          style="justify-self: right;"
         >
           Password
         </label>
