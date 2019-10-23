@@ -1,6 +1,10 @@
 sudo: false
 language: node_js
 node_js: 8
+addons:
+  apt:
+    packages:
+      - libgconf-2-4
 install: echo "Installation happens in the setup script"
 cache:
   directories:
