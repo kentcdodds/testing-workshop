@@ -4,8 +4,8 @@
   "private": true,
   "main": "./index",
   "dependencies": {
-    "faker": "^4.1.0",
-    "jsonwebtoken": "^8.2.1",
-    "lodash.omit": "^4.5.0"
+    "faker": "4.1.0",
+    "jsonwebtoken": "8.2.1",
+    "lodash.omit": "4.5.0"
   }
 }
