@@ -9,7 +9,7 @@ describe('posts', () => {
       .visit('/')
   })
 
-  it('should allow existing users to login', () => {
+  it('should allow adding a post', () => {
     const fakePost = generate.postData()
     // shorten the content so we don't have to wait so long
     fakePost.content = fakePost.content.slice(0, 50)
