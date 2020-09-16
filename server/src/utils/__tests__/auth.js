@@ -18,7 +18,7 @@ describe('isPasswordAllowed only allows some passwords', () => {
 
   disallowedPasswords.forEach(password => {
     test(`disallows ${password}`, () => {
-      expect(isPasswordAllowed(password)).toBe(true)
+      expect(isPasswordAllowed(password)).toBe(false)
     })
   })
 })
