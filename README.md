@@ -268,11 +268,26 @@ able to leave you command line in the root directory for the whole workshop.
 Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore -->
-| [<img src="https://avatars.githubusercontent.com/u/1500684?v=3" width="100px;"/><br /><sub><b>Kent C. Dodds</b></sub>](https://kentcdodds.com)<br />[💻](https://github.com/kentcdodds/testing-workshop/commits?author=kentcdodds "Code") [📖](https://github.com/kentcdodds/testing-workshop/commits?author=kentcdodds "Documentation") [🚇](#infra-kentcdodds "Infrastructure (Hosting, Build-Tools, etc)") [⚠️](https://github.com/kentcdodds/testing-workshop/commits?author=kentcdodds "Tests") | [<img src="https://avatars3.githubusercontent.com/u/13832392?v=4" width="100px;"/><br /><sub><b>Osama Jandali</b></sub>](https://github.com/osamajandali)<br />[💻](https://github.com/kentcdodds/testing-workshop/commits?author=osamajandali "Code") [🎨](#design-osamajandali "Design") | [<img src="https://avatars2.githubusercontent.com/u/3818515?v=4" width="100px;"/><br /><sub><b>Stefan Ivic</b></sub>](http://stefanivic.me/)<br />[🐛](https://github.com/kentcdodds/testing-workshop/issues?q=author%3Astefanivic "Bug reports") | [<img src="https://avatars2.githubusercontent.com/u/2413413?v=4" width="100px;"/><br /><sub><b>Nick Klepinger</b></sub>](https://github.com/bodiddlie)<br />[🐛](https://github.com/kentcdodds/testing-workshop/issues?q=author%3Abodiddlie "Bug reports") | [<img src="https://avatars2.githubusercontent.com/u/6417910?v=4" width="100px;"/><br /><sub><b>Abinav Seelan</b></sub>](http://abinavseelan.com)<br />[🐛](https://github.com/kentcdodds/testing-workshop/issues?q=author%3Aabinavseelan "Bug reports") | [<img src="https://avatars0.githubusercontent.com/u/2751691?v=4" width="100px;"/><br /><sub><b>Philip Sotirov</b></sub>](http://philipsotirov.com)<br />[🐛](https://github.com/kentcdodds/testing-workshop/issues?q=author%3Afipo "Bug reports") | [<img src="https://avatars3.githubusercontent.com/u/3409645?v=4" width="100px;"/><br /><sub><b>Austin Wood</b></sub>](https://github.com/indiesquidge)<br />[📖](https://github.com/kentcdodds/testing-workshop/commits?author=indiesquidge "Documentation") |
-| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| [<img src="https://avatars3.githubusercontent.com/u/7888225?v=4" width="100px;"/><br /><sub><b>WK</b></sub>](https://github.com/wk32)<br />[🐛](https://github.com/kentcdodds/testing-workshop/issues?q=author%3Awk32 "Bug reports") |
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://kentcdodds.com"><img src="https://avatars.githubusercontent.com/u/1500684?v=3" width="100px;" alt=""/><br /><sub><b>Kent C. Dodds</b></sub></a><br /><a href="https://github.com/kentcdodds/testing-workshop/commits?author=kentcdodds" title="Code">💻</a> <a href="https://github.com/kentcdodds/testing-workshop/commits?author=kentcdodds" title="Documentation">📖</a> <a href="#infra-kentcdodds" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="https://github.com/kentcdodds/testing-workshop/commits?author=kentcdodds" title="Tests">⚠️</a></td>
+    <td align="center"><a href="https://github.com/osamajandali"><img src="https://avatars3.githubusercontent.com/u/13832392?v=4" width="100px;" alt=""/><br /><sub><b>Osama Jandali</b></sub></a><br /><a href="https://github.com/kentcdodds/testing-workshop/commits?author=osamajandali" title="Code">💻</a> <a href="#design-osamajandali" title="Design">🎨</a></td>
+    <td align="center"><a href="http://stefanivic.me/"><img src="https://avatars2.githubusercontent.com/u/3818515?v=4" width="100px;" alt=""/><br /><sub><b>Stefan Ivic</b></sub></a><br /><a href="https://github.com/kentcdodds/testing-workshop/issues?q=author%3Astefanivic" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://github.com/bodiddlie"><img src="https://avatars2.githubusercontent.com/u/2413413?v=4" width="100px;" alt=""/><br /><sub><b>Nick Klepinger</b></sub></a><br /><a href="https://github.com/kentcdodds/testing-workshop/issues?q=author%3Abodiddlie" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="http://abinavseelan.com"><img src="https://avatars2.githubusercontent.com/u/6417910?v=4" width="100px;" alt=""/><br /><sub><b>Abinav Seelan</b></sub></a><br /><a href="https://github.com/kentcdodds/testing-workshop/issues?q=author%3Aabinavseelan" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="http://philipsotirov.com"><img src="https://avatars0.githubusercontent.com/u/2751691?v=4" width="100px;" alt=""/><br /><sub><b>Philip Sotirov</b></sub></a><br /><a href="https://github.com/kentcdodds/testing-workshop/issues?q=author%3Afipo" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://github.com/indiesquidge"><img src="https://avatars3.githubusercontent.com/u/3409645?v=4" width="100px;" alt=""/><br /><sub><b>Austin Wood</b></sub></a><br /><a href="https://github.com/kentcdodds/testing-workshop/commits?author=indiesquidge" title="Documentation">📖</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/wk32"><img src="https://avatars3.githubusercontent.com/u/7888225?v=4" width="100px;" alt=""/><br /><sub><b>WK</b></sub></a><br /><a href="https://github.com/kentcdodds/testing-workshop/issues?q=author%3Awk32" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://github.com/rjperkins"><img src="https://avatars1.githubusercontent.com/u/57779301?v=4" width="100px;" alt=""/><br /><sub><b>Richard Perkins</b></sub></a><br /><a href="https://github.com/kentcdodds/testing-workshop/commits?author=rjperkins" title="Tests">⚠️</a></td>
+  </tr>
+</table>
 
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification. Contributions of any kind welcome!

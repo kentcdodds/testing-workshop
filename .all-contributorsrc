@@ -82,7 +82,19 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "rjperkins",
+      "name": "Richard Perkins",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/57779301?v=4",
+      "profile": "https://github.com/rjperkins",
+      "contributions": [
+        "test"
+      ]
     }
   ],
-  "repoType": "github"
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true,
+  "contributorsPerLine": 7
 }
